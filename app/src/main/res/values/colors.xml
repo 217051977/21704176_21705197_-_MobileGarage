@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
+<!--  primaries  -->
+    <color name="color_primary_black">#000000</color>
+    <color name="color_primary_white">#FFFFFF</color>
+    <color name="color_primary_red">#FF0000</color>
+    <color name="color_primary_green">#00FF00</color>
+    <color name="color_primary_blue">#0000FF</color>
+<!--  app colors  -->
+    <color name="app_color_orange">#FABE3F</color>
+    <color name="app_color_green">#20BE8B</color>
+    <color name="app_color_blue">#04c7c7</color>
+<!--  others  -->
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="black">#000000</color>
-    <color name="green">#00FF00</color>
+    <color name="lightGrey">#cccccc</color>
 </resources>
