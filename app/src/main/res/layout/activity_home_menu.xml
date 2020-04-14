@@ -19,7 +19,11 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:theme="@style/toolbarTheme"
-            />
+            >
+
+
+
+        </androidx.appcompat.widget.Toolbar>
 
 
         <LinearLayout
@@ -95,8 +99,8 @@
                 >
 
                 <ImageButton
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
                     android:layout_centerInParent="true"
                     android:background="@drawable/ic_local_parking_black_24dp"
                     />
@@ -111,8 +115,8 @@
                 >
 
                 <ImageButton
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
                     android:layout_centerInParent="true"
                     android:background="@drawable/ic_person_black_24dp"
                     />
