@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 //            WindowManager.LayoutParams.FLAG_FULLSCREEN,
 //            WindowManager.LayoutParams.FLAG_FULLSCREEN
 //        )
-//        set content view AFTER ABOVE sequence (to avoid crash
-        setContentView(R.layout.splashscreen)
+//        set content view AFTER ABOVE sequence (to avoid crash)
+        setContentView(R.layout.activity_home_menu)
     }
 }
