@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <group>
+
+        <item
+            android:id="@+id/nav_contacts"
+            android:icon="@drawable/ic_contact_phone_black_24dp"
+            android:title="@string/contacts"
+        />
+
+        <item
+            android:id="@+id/gira"
+            android:icon="@drawable/gira_logo"
+            android:title="@string/gira"
+            />
+
+    </group>
+
+    <item
+        android:id="@+id/nav_others"
+        android:title="@string/others"
+        >
+
+        <menu>
+
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/ic_settings_black_24dp"
+                android:title="@string/settings" />
+
+            <item
+                android:id="@+id/nav_log_out"
+                android:icon="@drawable/log_out"
+                android:title="@string/log_out"
+                />
+
+        </menu>
+
+    </item>
+
+</menu>
