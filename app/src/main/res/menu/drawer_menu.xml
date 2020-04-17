@@ -9,12 +9,24 @@
             android:id="@+id/nav_contacts"
             android:icon="@drawable/ic_contact_phone_black_24dp"
             android:title="@string/contacts"
-        />
+            />
 
         <item
             android:id="@+id/gira"
             android:icon="@drawable/gira_logo"
             android:title="@string/gira"
+            />
+
+        <item
+            android:id="@+id/trafic"
+            android:icon="@drawable/ic_traffic_black_24dp"
+            android:title="@string/traffic"
+            />
+
+        <item
+            android:id="@+id/map"
+            android:icon="@drawable/ic_map_black_24dp"
+            android:title="@string/map"
             />
 
     </group>
