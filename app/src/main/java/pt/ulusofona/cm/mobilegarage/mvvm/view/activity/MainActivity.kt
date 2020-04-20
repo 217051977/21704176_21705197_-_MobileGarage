@@ -1,13 +1,13 @@
-package pt.ulusofona.cm.mobilegarage
+package pt.ulusofona.cm.mobilegarage.mvvm.view.activity
 
 import android.os.Bundle
-import android.view.Gravity
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_home_menu.*
+import pt.ulusofona.cm.mobilegarage.R
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 

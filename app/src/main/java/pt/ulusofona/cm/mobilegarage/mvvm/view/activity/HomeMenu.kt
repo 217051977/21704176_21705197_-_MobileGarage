@@ -1,7 +1,8 @@
-package pt.ulusofona.cm.mobilegarage
+package pt.ulusofona.cm.mobilegarage.mvvm.view.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import pt.ulusofona.cm.mobilegarage.R
 
 class HomeMenu : AppCompatActivity() {
 

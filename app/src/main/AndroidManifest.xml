@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/appTheme" >
-        <activity android:name=".HomeMenu" >
+        <activity android:name=".mvvm.view.activity.HomeMenu" >
         </activity>
-        <activity android:name=".MainActivity" >
+        <activity android:name=".mvvm.view.activity.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
