@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="pt.ulusofona.cm.mobilegarage" >
+    package="pt.ulusofona.cm.mobilegarage">
 
     <application
         android:allowBackup="true"
@@ -8,10 +8,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/appTheme" >
-        <activity android:name=".mvvm.view.activity.HomeMenu" >
-        </activity>
-        <activity android:name=".mvvm.view.activity.MainActivity" >
+        android:theme="@style/appTheme">
+        <activity android:name=".mvvm.view.activity.AppActivity"/>
+        <activity android:name=".mvvm.view.activity.MainActivity">
+<!--        <activity android:name=".mvvm.view.activity.SplashScreenActivity">-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

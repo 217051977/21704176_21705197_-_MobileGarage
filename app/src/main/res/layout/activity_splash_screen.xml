@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/large_mobile_garage"
         android:layout_centerInParent="true"
-    />
+        />
 
     <TextView
         android:id="@+id/loading"

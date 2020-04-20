@@ -1,29 +1,17 @@
 package pt.ulusofona.cm.mobilegarage.mvvm.view.activity
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import com.google.android.material.navigation.NavigationView
-import kotlinx.android.synthetic.main.activity_home_menu.*
+import kotlinx.android.synthetic.main.activity_app.*
 import pt.ulusofona.cm.mobilegarage.R
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
-            R.id.nav_log_out -> finish()
-        }
-        return true
-    }
-
-    override fun onBackPressed() {
-        if(drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START)
-        }
-        super.onBackPressed()
-    }
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,25 +23,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 //            WindowManager.LayoutParams.FLAG_FULLSCREEN
 //        )
 //        set content view AFTER ABOVE sequence (to avoid crash)
-        setContentView(R.layout.activity_home_menu)
+        setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-        setupDrawerMenu()
-    }
 
-    private fun setupDrawerMenu() {
-
-        val toggle = ActionBarDrawerToggle(
-
-            this,
-            drawer,
-            toolbar,
-            R.string.drawer_open,
-            R.string.drawer_close
-
-        )
-        nav_drawer.setNavigationItemSelectedListener(this)
-        drawer.addDrawerListener(toggle)
-        toggle.syncState()
+//        Handler().postDelayed(
+//            {
+//                kotlin.run {
+//                    val intent = Intent(this, AppActivity::class.java)
+//
+////                    Thread.sleep(5000)
+//                    startActivity(intent)
+//                    finish()
+//                }
+//            },
+//            2000
+//        )
 
     }
 
