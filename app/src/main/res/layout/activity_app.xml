@@ -65,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_alignParentBottom="true"
-                android:background="@drawable/navbarbackground"
+                android:background="@drawable/shape_nav_bar_background"
                 >
                 <!--            android:theme="@style/navBarTheme"-->
 

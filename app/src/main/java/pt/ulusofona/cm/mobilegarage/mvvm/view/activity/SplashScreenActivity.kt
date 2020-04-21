@@ -16,7 +16,6 @@ class SplashScreenActivity : AppCompatActivity() {
             {
                 kotlin.run {
                     val intent = Intent(this, MainActivity::class.java)
-
 //                    Thread.sleep(5000)
                     startActivity(intent)
                     finish()

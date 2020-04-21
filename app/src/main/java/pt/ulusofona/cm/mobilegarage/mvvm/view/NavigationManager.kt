@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import pt.ulusofona.cm.mobilegarage.R
 import pt.ulusofona.cm.mobilegarage.mvvm.view.fragment.HomeMenuFragment
+import pt.ulusofona.cm.mobilegarage.mvvm.view.fragment.LogInFragment
 
 class NavigationManager {
 
@@ -18,6 +19,10 @@ class NavigationManager {
 
         fun goToHomePage(fm: FragmentManager) {
             placeFragment(fm, HomeMenuFragment())
+        }
+
+        fun goToLogInPage(fm: FragmentManager) {
+            placeFragment(fm, LogInFragment())
         }
 
     }

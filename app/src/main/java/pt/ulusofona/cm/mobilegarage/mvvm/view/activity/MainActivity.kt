@@ -10,6 +10,7 @@ import androidx.core.view.GravityCompat
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_app.*
 import pt.ulusofona.cm.mobilegarage.R
+import pt.ulusofona.cm.mobilegarage.mvvm.view.NavigationManager
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
 //        set content view AFTER ABOVE sequence (to avoid crash)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+        NavigationManager.goToLogInPage(supportFragmentManager)
 
 //        Handler().postDelayed(
 //            {
