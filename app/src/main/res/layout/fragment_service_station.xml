@@ -11,6 +11,7 @@
         android:layout_height="match_parent"
         android:weightSum="6"
         android:orientation="vertical"
+        android:layout_marginTop="10dp"
         >
 
         <LinearLayout
@@ -24,8 +25,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Loja do Cidadão do Saldanha"
-                android:textSize="24dp"
+                android:text="@string/contact_name_saldanha"
+                android:textSize="24sp"
                 />
 
             <LinearLayout
@@ -33,12 +34,11 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="10"
-                android:layout_marginStart="10dp"
                 >
 
                 <ImageView
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="30dp"
                     android:layout_weight="1"
                     android:src="@drawable/ic_map_black_24dp"
                     />
@@ -48,16 +48,35 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="8"
                     android:layout_marginStart="10dp"
-                    android:text="Mercado 31 de Janeiro, Rua Engenheiro Vieira da Silva"
+                    android:text="@string/contact_address_saldanha"
                     />
 
             </LinearLayout>
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Horário: Segunda a Sexta - 9:00 às 19:00"
-                />
+                android:orientation="horizontal"
+                android:weightSum="10"
+                >
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_access_time_black_24dp"
+                    />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="9"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/contact_timetable_saldanha"
+                    />
+
+            </LinearLayout>
+
+
 
         </LinearLayout>
 
@@ -65,26 +84,64 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginStart="10dp"
+            >
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Loja do Cidadão das Laranjeiras"
-                android:textSize="24dp"
+                android:text="@string/contact_name_laranjeiras"
+                android:textSize="24sp"
                 />
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Rua Abranches Ferrão, 10"
-                />
+                android:orientation="horizontal"
+                android:weightSum="10"
+                >
 
-            <TextView
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_map_black_24dp"
+                    />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/contact_address_laranjeiras"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Horário: Segunda a Sexta - 8:30 às 19:30\n Sábados: das 09:30 às 15:00"
-                />
+                android:orientation="horizontal"
+                android:weightSum="10"
+                >
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_access_time_black_24dp"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="9"
+                    android:text="@string/contact_timetable_laranjeiras"
+                    />
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
@@ -92,26 +149,65 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginStart="10dp"
+            >
 
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Edifício central do Município de Lisboa"
-                android:textSize="24dp"
+                android:text="@string/contact_name_lisboa"
+                android:textSize="24sp"
                 />
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Campo Grande, 25"
-                />
+                android:orientation="horizontal"
+                android:weightSum="10"
+                >
 
-            <TextView
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_map_black_24dp"
+                    />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="9"
+                    android:text="@string/contact_address_lisboa"
+                    android:layout_marginStart="10dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Horário: Segunda a Sexta - 9:00 às 19:00"
-                />
+                android:orientation="horizontal"
+                android:weightSum="10"
+                >
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_access_time_black_24dp"
+                    />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="9"
+                    android:text="@string/contact_timetable_lisboa"
+                    />
+
+            </LinearLayout>
+
+
 
         </LinearLayout>
 
