@@ -1,13 +1,7 @@
 package pt.ulusofona.cm.mobilegarage.mvvm.view.activity
 
-import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.view.MenuItem
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
-import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_app.*
 import pt.ulusofona.cm.mobilegarage.R
 import pt.ulusofona.cm.mobilegarage.mvvm.view.NavigationManager
@@ -27,6 +21,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
         NavigationManager.goToLogInPage(supportFragmentManager)
+
+
 
 //        Handler().postDelayed(
 //            {
