@@ -79,7 +79,7 @@
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:layout_centerInParent="true"
-                        android:background="@drawable/ic_directions_car_black_24dp"
+                        android:background="@drawable/ic_directions_car_border_black_24dp"
                         />
 
                 </RelativeLayout>
@@ -94,7 +94,7 @@
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:layout_centerInParent="true"
-                        android:background="@drawable/ic_favorite_black_24dp"
+                        android:background="@drawable/ic_favorite_border_black_24dp"
                         />
 
 
@@ -116,7 +116,7 @@
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:layout_centerInParent="true"
-                        android:background="@drawable/ic_local_parking_black_24dp"
+                        android:background="@drawable/ic_local_parking_border_black_24dp"
                         />
 
 
@@ -132,7 +132,7 @@
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:layout_centerInParent="true"
-                        android:background="@drawable/ic_person_black_24dp"
+                        android:background="@drawable/ic_person_border_black_24dp"
                         />
 
                 </RelativeLayout>
