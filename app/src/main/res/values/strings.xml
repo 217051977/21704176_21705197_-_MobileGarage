@@ -32,6 +32,19 @@
     <string name="contact_address_lisboa">Campo Grande, 25</string>
     <string name="contact_timetable_lisboa">Segunda a Sexta - 9:00 às 19:00</string>
 
+    <string name="contact_removed_vehicles">Park of Removed Vehicles</string>
+    <string name="contact_address_removed_vehicles">Rua Francisco Lyon de Castro</string>
+    <string name="contact_email_removed_vehicles">parque.rebocados@emel.pt</string>
+    <string name="contact_timetable_removed_vehicles">2ª a domingo, todos os dias: 8H às 24H</string>
+    <string name="contact_info_removed_vehicles">
+SMS Gratuito para o número 3838, indicando-se a palavra Reboque seguida de um espaço e da matrícula do carro (Com ou sem traços entre os caracteres).
+    </string>
+
+    <string name="contact_blocked_vehicles">Blocked Vehicles</string>
+    <string name="contact_phone_blocked_vehicles">217803131</string>
+    <string name="contact_timetable_blocked_vehicles"> 2ª a 6ª Feira - 8:00 às 24:00\nSábados, Domingos e Feriados - 9:00 às 18:00</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
