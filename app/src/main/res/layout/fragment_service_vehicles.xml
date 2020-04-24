@@ -64,7 +64,7 @@
                     android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:layout_weight="1"
-                    android:src="@drawable/app_logo"
+                    android:src="@drawable/ic_email"
                     />
                 <TextView
                     android:layout_width="0dp"
@@ -109,9 +109,10 @@
 
                 <ImageView
                     android:layout_width="0dp"
-                    android:layout_height="30dp"
+                    android:layout_height="35dp"
                     android:layout_weight="1"
-                    android:src="@drawable/app_logo"
+                    android:src="@drawable/ic_info"
+                    android:layout_marginTop="10dp"
                     />
 
                 <TextView
@@ -156,7 +157,7 @@
                     android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:layout_weight="1"
-                    android:src="@drawable/app_logo"
+                    android:src="@drawable/ic_call"
                     />
 
                 <TextView
