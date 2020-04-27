@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.park_element.view.*
+import kotlinx.android.synthetic.main.layout_park_element.view.*
 import pt.ulusofona.cm.mobilegarage.objects.Park
 
 class FavoritesAdapter(

@@ -3,10 +3,7 @@ package pt.ulusofona.cm.mobilegarage.mvvm.view
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import pt.ulusofona.cm.mobilegarage.R
-import pt.ulusofona.cm.mobilegarage.mvvm.view.fragment.HomeMenuFragment
-import pt.ulusofona.cm.mobilegarage.mvvm.view.fragment.LogInFragment
-import pt.ulusofona.cm.mobilegarage.mvvm.view.fragment.RegisterFragment
-import pt.ulusofona.cm.mobilegarage.mvvm.view.fragment.SettingsFragment
+import pt.ulusofona.cm.mobilegarage.mvvm.view.fragment.*
 
 class NavigationManager {
 
@@ -33,6 +30,10 @@ class NavigationManager {
 
         fun goToSettingsPage(fm: FragmentManager) {
             placeFragment(fm, SettingsFragment())
+        }
+
+        fun goToContactsPage(fm: FragmentManager) {
+            placeFragment(fm, ContactsFragment())
         }
 
     }

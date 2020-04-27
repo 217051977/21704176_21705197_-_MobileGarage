@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 //        set content view AFTER ABOVE sequence (to avoid crash)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-        NavigationManager.goToLogInPage(supportFragmentManager)
+//        NavigationManager.goToLogInPage(supportFragmentManager)
 
 
 
