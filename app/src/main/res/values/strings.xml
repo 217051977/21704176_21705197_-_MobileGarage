@@ -42,7 +42,7 @@ Free SMS to the number 3838, indicating the word "Reboque" followed by a space a
 
     <string name="contact_blocked_vehicles">Blocked Vehicles</string>
     <string name="contact_phone_blocked_vehicles">+351 217803131</string>
-    <string name="contact_timetable_blocked_vehicles"> 2ª a 6ª Feira - 8:00 às 24:00\nSábados, Domingos e Feriados - 9:00 às 18:00</string>
+    <string name="contact_timetable_blocked_vehicles"> Monday to Friday - 8h00 to 24h00\nSaturday, Sunday e Holiday - 9h00 to 18h00</string>
     <!--  vehicle details  -->
     <string name="vehicle_detail_is_parked">Is parked?</string>
     <string name="vehicle_detail_plate">Plate</string>
