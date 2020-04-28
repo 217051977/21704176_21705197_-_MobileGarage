@@ -60,6 +60,16 @@ Free SMS to the number 3838, indicating the word "Reboque" followed by a space a
     <string name="vehicle_detail_model">Model</string>
     <string name="vehicle_detail_year">Year</string>
 
+    <!-- Park details -->
+    <string name="park_details_name">Park name</string>
+    <string name="park_details_address">Park address</string>
+    <string name="park_details_last_update">Last Update</string>
+    <string name="park_details_distance">Distance</string>
+    <string name="park_details_park_type">Type</string>
+    <string name="park_details_availability">Availability</string>
+    <string name="park_details_nr_parks">Nr. Parks</string>
+    <string name="park_details_acessability">Acessible for passengers with disabilities</string>
+
     <!--  profile  -->
     <string name="profile_name">Profile name</string>
     <string name="profile_b_day_title">Date of birth</string>
