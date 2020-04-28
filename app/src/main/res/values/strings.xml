@@ -2,6 +2,8 @@
     <string name="app_name">MobileGarage</string>
     <string name="loading">Loading…</string>
     <!--  drawer  -->
+    <string name="drawer_user_name">User name</string>
+    <string name="drawer_user_image_description">User image</string>
     <string name="drawer_option_contacts">Contacts</string>
     <string name="drawer_option_gira">Gira</string>
     <string name="drawer_option_map">Map</string>
