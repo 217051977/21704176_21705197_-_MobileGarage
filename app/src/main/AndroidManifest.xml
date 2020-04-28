@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/appTheme">
-        <activity android:name=".mvvm.view.activity.ContactsActivity"></activity>
-        <activity android:name=".mvvm.view.activity.AppActivity" />
-        <activity android:name=".mvvm.view.activity.MainActivity">
+        <activity android:name=".ui.activities.ContactsActivity"></activity>
+        <activity android:name=".ui.activities.AppActivity" >
+<!--        <activity android:name=".mvvm.view.activity.MainActivity">-->
 
             <!-- <activity android:name=".mvvm.view.activity.SplashScreenActivity"> -->
             <intent-filter>
