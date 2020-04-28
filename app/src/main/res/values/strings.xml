@@ -2,6 +2,8 @@
     <string name="app_name">MobileGarage</string>
     <string name="loading">Loading…</string>
     <!--  drawer  -->
+    <string name="drawer_user_name">User name</string>
+    <string name="drawer_user_image_description">User image</string>
     <string name="drawer_option_contacts">Contacts</string>
     <string name="drawer_option_gira">Gira</string>
     <string name="drawer_option_map">Map</string>
@@ -12,8 +14,8 @@
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
     <!--  hints  -->
-    <string name="user_name_hint">User name</string>
-    <string name="password_hint">Password</string>
+    <string name="hint_user_name">User name</string>
+    <string name="hint_password">Password</string>
     <!--  buttons  -->
     <string name="button_text_register">Register</string>
     <string name="button_text_log_in">Log In</string>
@@ -42,7 +44,8 @@ Free SMS to the number 3838, indicating the word "Reboque" followed by a space a
 
     <string name="contact_blocked_vehicles">Blocked Vehicles</string>
     <string name="contact_phone_blocked_vehicles">+351 217803131</string>
-    <string name="contact_timetable_blocked_vehicles"> Monday to Friday - 8h00 to 24h00\nSaturday, Sunday e Holiday - 9h00 to 18h00</string>
+    <string name="contact_timetable_blocked_vehicles"> Monday to Friday - 8h00 to 24h00\nSaturday, Sundays and Holiday - 9h00 to 18h00</string>
+
     <!--  vehicle details  -->
     <string name="vehicle_detail_is_parked">Is parked?</string>
     <string name="vehicle_detail_plate">Plate</string>
@@ -51,6 +54,20 @@ Free SMS to the number 3838, indicating the word "Reboque" followed by a space a
     <string name="vehicle_detail_model">Model</string>
     <string name="vehicle_detail_year">Year</string>
 
+    <!--  profile  -->
+    <string name="profile_name">Profile name</string>
+    <string name="profile_b_day_title">Date of birth</string>
+    <string name="profile_b_day">DD/MM/AAAA</string>
+    <string name="profile_license_cat_title">License cat</string>
+    <string name="profile_license_cat">Cat</string>
+    <string name="profile_locality_title">Location</string>
+    <string name="profile_locality">Locality</string>
+    <string name="profile_number_of_vehicles_title">Nº vehicles</string>
+    <string name="profile_number_of_vehicles">Vehicles</string>
+    <string name="profile_edit_button">Edit profile</string>
+    <string name="profile_monthly_average_spent_title">Monthly avg. spent</string>
+    <string name="profile_monthly_average_spent">Monthly avg. spent</string>
+    <string name="profile_emel_support">EMEL support</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
