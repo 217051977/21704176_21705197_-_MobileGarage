@@ -35,7 +35,7 @@
     <string name="contact_removed_vehicles">Park of Removed Vehicles</string>
     <string name="contact_address_removed_vehicles">Rua Francisco Lyon de Castro</string>
     <string name="contact_email_removed_vehicles">parque.rebocados@emel.pt</string>
-    <string name="contact_timetable_removed_vehicles">2ª a domingo, todos os dias: 8H às 24H</string>
+    <string name="contact_timetable_removed_vehicles">EveryDay: 8h to 24h</string>
     <string name="contact_info_removed_vehicles">
 Free SMS to the number 3838, indicating the word "Reboque" followed by a space and the plate number of the car (with or without dashes between the characters).
     </string>
