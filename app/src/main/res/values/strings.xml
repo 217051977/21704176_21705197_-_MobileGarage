@@ -22,27 +22,34 @@
     <!-- Contact Activity -->
     <string name="contact_name_saldanha">Loja do Cidadão do Saldanha</string>
     <string name="contact_address_saldanha">Mercado 31 de Janeiro, Rua Engenheiro Vieira da Silva</string>
-    <string name="contact_timetable_saldanha">Horário: Segunda a Sexta - 9:00 às 19:00</string>
+    <string name="contact_timetable_saldanha">TimeTable: Monday to Friday - 9h00 to 19h00</string>
 
     <string name="contact_name_laranjeiras">Loja do Cidadão das Laranjeiras</string>
     <string name="contact_address_laranjeiras">Rua Abranches Ferrão, 10</string>
-    <string name="contact_timetable_laranjeiras">Horário: Segunda a Sexta - 8:30 às 19:30\n Sábados: das 09:30 às 15:00</string>
+    <string name="contact_timetable_laranjeiras">TimeTable: Monday to Friday - 8h30 to 19h30\n Saturday: 09h30 to 15h00</string>
 
     <string name="contact_name_lisboa">Edifício central do Município de Lisboa</string>
     <string name="contact_address_lisboa">Campo Grande, 25</string>
-    <string name="contact_timetable_lisboa">Segunda a Sexta - 9:00 às 19:00</string>
+    <string name="contact_timetable_lisboa">TimeTable: Monday to Friday - 9h00 to 19h00</string>
 
     <string name="contact_removed_vehicles">Park of Removed Vehicles</string>
     <string name="contact_address_removed_vehicles">Rua Francisco Lyon de Castro</string>
     <string name="contact_email_removed_vehicles">parque.rebocados@emel.pt</string>
     <string name="contact_timetable_removed_vehicles">2ª a domingo, todos os dias: 8H às 24H</string>
     <string name="contact_info_removed_vehicles">
-SMS Gratuito para o número 3838, indicando-se a palavra Reboque seguida de um espaço e da matrícula do carro (Com ou sem traços entre os caracteres).
+Free SMS to the number 3838, indicating the word "Reboque" followed by a space and the plate number of the car (with or without dashes between the characters).
     </string>
 
     <string name="contact_blocked_vehicles">Blocked Vehicles</string>
     <string name="contact_phone_blocked_vehicles">+351 217803131</string>
     <string name="contact_timetable_blocked_vehicles"> 2ª a 6ª Feira - 8:00 às 24:00\nSábados, Domingos e Feriados - 9:00 às 18:00</string>
+    <!--  vehicle details  -->
+    <string name="vehicle_detail_is_parked">Is parked?</string>
+    <string name="vehicle_detail_plate">Plate</string>
+    <string name="vehicle_detail_insurance">Insurance paid?</string>
+    <string name="vehicle_detail_brand">Brand</string>
+    <string name="vehicle_detail_model">Model</string>
+    <string name="vehicle_detail_year">Year</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
