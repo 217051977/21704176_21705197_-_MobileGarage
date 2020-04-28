@@ -34,7 +34,7 @@ class ServiceStationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return view/*inflater.inflate(R.layout.fragment_service_station, container, false)*/
+        return view/*inflater.inflate(R.layout.fragment_contact_service_station, container, false)*/
     }
 
     companion object {

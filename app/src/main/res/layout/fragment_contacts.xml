@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:icon="@drawable/ic_traffic_black_24dp"
-            android:text="Lock vehicles"
+            android:text="Towed vehicles"
             />
 
     </com.google.android.material.tabs.TabLayout>
