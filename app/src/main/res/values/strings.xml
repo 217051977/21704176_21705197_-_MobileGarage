@@ -20,22 +20,19 @@
     <string name="button_text_register">Register</string>
     <string name="button_text_log_in">Log In</string>
     <string name="button_forget_password">Forget password?</string>
+
     <!-- Contact Activity -->
     <string name="contact_name_saldanha">Loja do Cidadão do Saldanha</string>
-    <string name="contact_address_saldanha">
-        Mercado 31 de Janeiro, Rua Engenheiro Vieira da Silva
-    </string>
-    <string name="contact_timetable_saldanha">Horário: Segunda a Sexta - 9:00 às 19:00</string>
+    <string name="contact_address_saldanha">Mercado 31 de Janeiro, Rua Engenheiro Vieira da Silva</string>
+    <string name="contact_timetable_saldanha">TimeTable: Segunda a Sexta - 9:00 às 19:00</string>
+
     <string name="contact_name_laranjeiras">Loja do Cidadão das Laranjeiras</string>
     <string name="contact_address_laranjeiras">Rua Abranches Ferrão, 10</string>
-    <string name="contact_timetable_laranjeiras">
-        Horário: Segunda a Sexta - 8:30 às 19:30\n Sábados: das 09:30 às 15:00
-    </string>
+    <string name="contact_timetable_laranjeiras">Horário: Segunda a Sexta - 8:30 às 19:30\n Sábados: das 09:30 às 15:00</string>
+
     <string name="contact_name_lisboa">Edifício central do Município de Lisboa</string>
     <string name="contact_address_lisboa">Campo Grande, 25</string>
-    <string name="contact_timetable_lisboa">
-        Horário: Segunda a Sexta - 8:30 às 19:30\n Sábados: das 09:30 às 15:00
-    </string>
+    <string name="contact_timetable_lisboa">Horário: Segunda a Sexta - 8:30 às 19:30\n Sábados: das 09:30 às 15:00</string>
     <!--  vehicle details  -->
     <string name="vehicle_detail_is_parked">Is parked?</string>
     <string name="vehicle_detail_plate">Plate</string>
