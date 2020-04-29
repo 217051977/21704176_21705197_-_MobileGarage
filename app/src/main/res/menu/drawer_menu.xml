@@ -13,7 +13,7 @@
 
         <item
             android:id="@+id/gira"
-            android:icon="@drawable/gira_logo"
+            android:icon="@mipmap/gira_logo"
             android:title="@string/drawer_option_gira"
             />
 
@@ -57,7 +57,7 @@
 
             <item
                 android:id="@+id/nav_log_out"
-                android:icon="@drawable/log_out"
+                android:icon="@mipmap/log_out"
                 android:title="@string/drawer_option_log_out"
                 />
 

@@ -14,6 +14,7 @@
 
         <!--Aviso texto do icon grande demais-->
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_service_station"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:icon="@drawable/ic_traffic_black_24dp"
@@ -21,6 +22,7 @@
             />
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_general"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:icon="@drawable/ic_traffic_black_24dp"
@@ -28,6 +30,7 @@
             />
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_towed_vehicles"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:icon="@drawable/ic_traffic_black_24dp"

@@ -16,13 +16,6 @@ class NavigationManager {
             transition.commit()
         }
 
-        fun goToHomePage(fm: FragmentManager) {
-            placeFragment(
-                fm,
-                HomeMenuFragment()
-            )
-        }
-
         fun goToLogInPage(fm: FragmentManager) {
             placeFragment(
                 fm,

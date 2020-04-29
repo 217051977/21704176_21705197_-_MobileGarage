@@ -3,14 +3,21 @@ package pt.ulusofona.cm.mobilegarage.ui.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
+import androidx.lifecycle.ViewModelProviders
+import butterknife.OnClick
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_app.*
 import pt.ulusofona.cm.mobilegarage.R
+import pt.ulusofona.cm.mobilegarage.ui.utils.NavBarNavigationManager
 import pt.ulusofona.cm.mobilegarage.ui.utils.NavigationManager
+import pt.ulusofona.cm.mobilegarage.ui.viewmodels.NavBarViewModel
 
 class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    private lateinit var viewModel: NavBarViewModel
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
@@ -28,24 +35,25 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        remove title bar
-//        this.supportActionBar?.hide()
-//        remove notification bar
-//        this.window.setFlags(
-//            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//            WindowManager.LayoutParams.FLAG_FULLSCREEN
-//        )
-//        set content view AFTER ABOVE sequence (to avoid crash)
+/*        remove title bar
+        this.supportActionBar?.hide()
+        remove notification bar
+        this.window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
+        set content view AFTER ABOVE sequence (to avoid crash)*/
         setContentView(R.layout.activity_app)
         setSupportActionBar(toolbar)
         setupDrawerMenu()
-        NavigationManager.goToContactsPage(supportFragmentManager)
+//        viewModel = ViewModelProvider(this).get(NavBarViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(NavBarViewModel::class.java)
+        NavBarNavigationManager.goToHomePage(supportFragmentManager)
     }
 
     private fun setupDrawerMenu() {
 
         val toggle = ActionBarDrawerToggle(
-
             this,
             drawer,
             toolbar,
@@ -58,4 +66,40 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         toggle.syncState()
 
     }
+
+    @OnClick(
+        R.id.nav_bar_vehicle_list
+    )
+    fun onClickVehicleList(view: View) {
+        viewModel.onClickVehicleList()
+    }
+
+    @OnClick(
+        R.id.nav_bar_favorites
+    )
+    fun onClickFavorites(view: View) {
+        viewModel.onClickFavorites()
+    }
+
+    @OnClick(
+        R.id.nav_bar_home
+    )
+    fun onClickHome(view: View) {
+        viewModel.onClickHome(this.supportFragmentManager)
+    }
+
+    @OnClick(
+        R.id.nav_bar_park_me_now
+    )
+    fun onClickParkMeNow(view: View) {
+        viewModel.onClickParkMeNow()
+    }
+
+    @OnClick(
+        R.id.nav_bar_profile
+    )
+    fun onClickProfile(view: View) {
+        viewModel.onClickProfile()
+    }
+
 }
