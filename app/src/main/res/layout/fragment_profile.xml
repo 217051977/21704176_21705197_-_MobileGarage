@@ -1,30 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/frame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragments.ProfileFragment"
-    android:layout_marginHorizontal="15dp"
+    android:orientation="vertical"
     >
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true"
-        >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:weightSum="3"
         >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:orientation="vertical"
-            android:weightSum="2"
+            android:layout_weight="1.5"
             >
 
             <LinearLayout
@@ -210,7 +207,6 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:weightSum="9"
             android:layout_marginHorizontal="35dp"
             >
 
@@ -218,7 +214,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="25dp"
                 >
 
                 <TextView
@@ -276,7 +271,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="10"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="10dp"
                 >
 
                 <ImageView
@@ -301,399 +296,4 @@
 
     </LinearLayout>
 
-    </ScrollView>
-
 </FrameLayout>
-<!--
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".mvvm.view.fragment.ProfileFragment"
-    android:layout_marginHorizontal="15dp"
-    >
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-
-        &lt;!&ndash;<LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:weightSum="2"
-            android:orientation="vertical"
-            >&ndash;&gt;
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:weightSum="10"
-                >
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="3"
-                    android:orientation="vertical"
-                    android:layout_gravity="center"
-                    android:layout_marginVertical="20dp"
-                    android:weightSum="3"
-                    >
-
-                    <ImageView
-                        android:id="@+id/profile_image"
-                        android:layout_width="110dp"
-                        android:layout_height="0dp"
-                        android:layout_weight="2"
-                        android:layout_gravity="center"
-                        android:background="@drawable/shape_rounded_image"
-                        />
-
-                    <TextView
-                        android:id="@+id/profile_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:textAlignment="center"
-                        android:gravity="center"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:text="@string/profile_name"
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="4"
-                    android:orientation="vertical"
-                    android:weightSum="2"
-                    >
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:orientation="horizontal"
-                        android:weightSum="2"
-                        >
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:weightSum="2"
-                            >
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="1"
-                                android:textAlignment="center"
-                                android:gravity="center"
-                                android:textSize="22sp"
-                                android:textStyle="bold"
-                                android:text="@string/profile_b_day_title"
-                                />
-
-                            <TextView
-                                android:id="@+id/profile_b_bay"
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="1"
-                                android:textAlignment="center"
-                                android:gravity="center"
-                                android:textSize="20sp"
-                                android:text="@string/profile_b_day"
-                                />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:weightSum="2"
-                            >
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="1"
-                                android:textAlignment="center"
-                                android:gravity="center"
-                                android:textSize="22sp"
-                                android:textStyle="bold"
-                                android:text="@string/profile_license_cat_title"
-                                />
-
-                            <TextView
-                                android:id="@+id/profile_licence_category"
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="1"
-                                android:textAlignment="center"
-                                android:gravity="center"
-                                android:textSize="20sp"
-                                android:text="@string/profile_license_cat"
-                                />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:orientation="horizontal"
-                        android:weightSum="2"
-                        >
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:weightSum="2"
-                            >
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="1"
-                                android:textAlignment="center"
-                                android:gravity="center"
-                                android:textSize="22sp"
-                                android:textStyle="bold"
-                                android:text="@string/profile_locality_title"
-                                />
-
-                            <TextView
-                                android:id="@+id/profile_locality"
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="1"
-                                android:textAlignment="center"
-                                android:gravity="center"
-                                android:textSize="20sp"
-                                android:text="@string/profile_locality"
-                                />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:weightSum="2"
-                            >
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="1"
-                                android:textAlignment="center"
-                                android:gravity="center"
-                                android:textSize="22sp"
-                                android:textStyle="bold"
-                                android:text="@string/profile_number_of_vehicles_title"
-                                />
-
-                            <TextView
-                                android:id="@+id/profile_vehicles"
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="1"
-                                android:textAlignment="center"
-                                android:gravity="center"
-                                android:textSize="20sp"
-                                android:text="@string/profile_number_of_vehicles"
-                                />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="2"
-                    android:orientation="vertical"
-                    >
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:textAlignment="center"
-                        android:gravity="center"
-                        android:textSize="22sp"
-                        android:textStyle="bold"
-                        android:text="@string/profile_monthly_average_spent_title"
-                        />
-
-                    <TextView
-                        android:id="@+id/profile_monthly_avg_spent"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:textAlignment="center"
-                        android:gravity="center"
-                        android:textSize="20sp"
-                        android:text="@string/profile_monthly_average_spent"
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/profile_emel_support_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:weightSum="10"
-                    android:gravity="center"
-                    android:layout_marginHorizontal="70dp"
-                    >
-
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="2"
-                        app:srcCompat="@drawable/ic_info_outline_black_24dp" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="8"
-                        android:text="@string/profile_emel_support"
-                        android:gravity="center|left"
-                        android:textStyle="bold"
-                        android:textSize="30sp"
-                        />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            &lt;!&ndash;<LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:weightSum="9"
-                android:layout_marginHorizontal="35dp"
-                >
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="3"
-                    android:orientation="vertical"
-                    >
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:textAlignment="center"
-                        android:gravity="center"
-                        android:textSize="22sp"
-                        android:textStyle="bold"
-                        android:text="@string/profile_monthly_average_spent_title"
-                        />
-
-                    <TextView
-                        android:id="@+id/profile_monthly_avg_spent"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:textAlignment="center"
-                        android:gravity="center"
-                        android:textSize="20sp"
-                        android:text="@string/profile_monthly_average_spent"
-                        />
-
-                </LinearLayout>
-
-                &lt;!&ndash;<LinearLayout
-                    android:id="@+id/profile_edit_profile_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:weightSum="10"
-                    android:layout_marginTop="30dp"
-                    >
-
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2"
-                        app:srcCompat="@drawable/ic_edit_black_24dp" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="8"
-                        android:text="@string/profile_edit_button"
-                        android:gravity="center|left"
-                        android:textStyle="bold"
-                        android:textSize="30sp"
-                        />
-
-                </LinearLayout>&ndash;&gt;
-
-                &lt;!&ndash;<LinearLayout
-                    android:id="@+id/profile_emel_support_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:weightSum="10"
-                    android:layout_marginTop="30dp"
-                    >
-
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2"
-                        app:srcCompat="@drawable/ic_info_outline_black_24dp" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="8"
-                        android:text="@string/profile_emel_support"
-                        android:gravity="center|left"
-                        android:textStyle="bold"
-                        android:textSize="30sp"
-                        />
-
-                </LinearLayout>&ndash;&gt;
-
-            </LinearLayout>&ndash;&gt;
-
-        &lt;!&ndash;</LinearLayout>&ndash;&gt;
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            app:srcCompat="@drawable/ic_edit_black_24dp"
-            />
-
-    </RelativeLayout>
-
-</FrameLayout>-->

@@ -8,161 +8,47 @@
     android:orientation="vertical"
     >
 
-    <RelativeLayout
-        android:id="@+id/main_layout"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/toolbarTheme"
+            />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="40dp"
             android:orientation="vertical"
             >
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:theme="@style/toolbarTheme"
-                />
-
 
             <FrameLayout
                 android:id="@+id/frame"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:layout_marginHorizontal="30dp"
-                android:scrollY="@dimen/cardview_default_elevation"
+                />
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/nav_bar"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/shape_nav_bar_background"
+                app:itemIconTint="@color/color_primary_black"
+                app:itemTextColor="@color/color_primary_black"
+                app:menu="@menu/bottom_navigation_menu"
                 />
 
         </LinearLayout>
 
-        <!--<RelativeLayout
-
-            android:id="@+id/nav_bar"
-            android:weightSum="5"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal"
-            >
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_alignParentBottom="true"
-                android:background="@drawable/shape_nav_bar_background"
-                >
-                &lt;!&ndash;            android:theme="@style/navBarTheme"&ndash;&gt;
-
-                <RelativeLayout
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    >
-
-                    <ImageButton
-                        android:id="@+id/nav_bar_my_vehicles"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:layout_centerInParent="true"
-                        android:background="@drawable/ic_directions_car_border_black_24dp"
-                        />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    >
-
-                    <ImageButton
-                        android:id="@+id/nav_bar_favorites"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:layout_centerInParent="true"
-                        android:background="@drawable/ic_favorite_border_black_24dp"
-                        />
-
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    />
-
-                <RelativeLayout
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    >
-
-                    <ImageButton
-                        android:id="@+id/nav_bar_park_me_now"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:layout_centerInParent="true"
-                        android:background="@drawable/ic_local_parking_border_black_24dp"
-                        />
-
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    >
-
-                    <ImageButton
-                        android:id="@+id/nav_bar_profile"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:layout_centerInParent="true"
-                        android:background="@drawable/ic_person_border_black_24dp"
-                        />
-
-                </RelativeLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_alignParentBottom="true"
-                >
-
-                <ImageButton
-                    android:id="@+id/nav_bar_home"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:background="@drawable/ic_home_black_24dp"
-                    android:layout_gravity="center_horizontal"
-                    />
-
-            </LinearLayout>
-
-        </RelativeLayout>-->
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/nav_bar"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/shape_nav_bar_background"
-            app:itemIconTint="@color/color_primary_black"
-            app:itemTextColor="@color/color_primary_black"
-            app:menu="@menu/bottom_navigation_menu"
-            />
-
-    </RelativeLayout>
+    </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_drawer"
