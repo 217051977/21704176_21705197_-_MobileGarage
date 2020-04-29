@@ -5,9 +5,14 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import butterknife.OnClick
+import butterknife.OnItemSelected
+import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_app.*
 import pt.ulusofona.cm.mobilegarage.R
@@ -45,9 +50,78 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         setContentView(R.layout.activity_app)
         setSupportActionBar(toolbar)
         setupDrawerMenu()
-//        viewModel = ViewModelProvider(this).get(NavBarViewModel::class.java)
-        viewModel = ViewModelProviders.of(this).get(NavBarViewModel::class.java)
+        setupNavBar()
+        viewModel = ViewModelProvider(this).get(NavBarViewModel::class.java)
         NavBarNavigationManager.goToHomePage(supportFragmentManager)
+    }
+
+    private fun setupNavBar() {
+
+        nav_bar.setOnNavigationItemSelectedListener { item ->
+
+            when(item.itemId) {
+
+                R.id.nav_bar_my_vehicles -> {
+                    viewModel.onClickMyVehicles(
+                        this,
+                        this::class.java.simpleName,
+                        this.supportFragmentManager
+                    )
+
+                    return@setOnNavigationItemSelectedListener true
+
+                }
+
+                R.id.nav_bar_favorites -> {
+                    viewModel.onClickFavorites(
+                        this,
+                        this::class.java.simpleName,
+                        this.supportFragmentManager
+                    )
+
+                    return@setOnNavigationItemSelectedListener true
+
+                }
+
+                R.id.nav_bar_home -> {
+                    viewModel.onClickHome(
+                        this,
+                        this::class.java.simpleName,
+                        this.supportFragmentManager
+                    )
+
+                    return@setOnNavigationItemSelectedListener true
+
+                }
+
+                R.id.nav_bar_park_me_now -> {
+                    viewModel.onClickParkMeNow(
+                        this,
+                        this::class.java.simpleName,
+                        this.supportFragmentManager
+                    )
+
+                    return@setOnNavigationItemSelectedListener true
+
+                }
+
+                R.id.nav_bar_profile -> {
+                    viewModel.onClickProfile(
+                        this,
+                        this::class.java.simpleName,
+                        this.supportFragmentManager
+                    )
+
+                    return@setOnNavigationItemSelectedListener true
+
+                }
+
+            }
+
+            false
+
+        }
+
     }
 
     private fun setupDrawerMenu() {
@@ -64,61 +138,6 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         drawer.addDrawerListener(toggle)
         toggle.syncState()
 
-    }
-
-    @OnClick(
-        R.id.nav_bar_my_vehicles
-    )
-    fun onClickMyVehicles(view: View) {
-        viewModel.onClickMyVehicles(
-            this,
-            this::class.java.simpleName,
-            this.supportFragmentManager
-        )
-    }
-
-    @OnClick(
-        R.id.nav_bar_favorites
-    )
-    fun onClickFavorites(view: View) {
-        viewModel.onClickFavorites(
-            this,
-            this::class.java.simpleName,
-            this.supportFragmentManager
-        )
-    }
-
-    @OnClick(
-        R.id.nav_bar_home
-    )
-    fun onClickHome(view: View) {
-        viewModel.onClickHome(
-            this,
-            this::class.java.simpleName,
-            this.supportFragmentManager
-        )
-    }
-
-    @OnClick(
-        R.id.nav_bar_park_me_now
-    )
-    fun onClickParkMeNow(view: View) {
-        viewModel.onClickParkMeNow(
-            this,
-            this::class.java.simpleName,
-            this.supportFragmentManager
-        )
-    }
-
-    @OnClick(
-        R.id.nav_bar_profile
-    )
-    fun onClickProfile(view: View) {
-        viewModel.onClickProfile(
-            this,
-            this::class.java.simpleName,
-            this.supportFragmentManager
-        )
     }
 
 }
