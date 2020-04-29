@@ -150,24 +150,16 @@
 
         </RelativeLayout>-->
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/nav_bar"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_alignParentBottom="true"
-            >
-
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/nav_bar"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_alignParentBottom="true"
-                android:background="@drawable/shape_nav_bar_background"
-                app:itemIconTint="@color/color_primary_black"
-                app:itemTextColor="@color/color_primary_black"
-                app:menu="@menu/bottom_navigation_menu"
-                />
-
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+            android:background="@drawable/shape_nav_bar_background"
+            app:itemIconTint="@color/color_primary_black"
+            app:itemTextColor="@color/color_primary_black"
+            app:menu="@menu/bottom_navigation_menu"
+            />
 
     </RelativeLayout>
 
@@ -179,5 +171,5 @@
         app:headerLayout="@layout/drawer_header"
         app:menu="@menu/drawer_menu"
         />
-    
+
 </androidx.drawerlayout.widget.DrawerLayout>

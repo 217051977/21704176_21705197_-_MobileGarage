@@ -16,6 +16,13 @@ class NavBarNavigationManager {
             transition.commit()
         }
 
+        fun goToContacts(fm: FragmentManager) {
+            placeFragment(
+                fm,
+                ContactsFragment()
+            )
+        }
+
         fun goToMyVehicles(fm: FragmentManager) {
             placeFragment(
                 fm,

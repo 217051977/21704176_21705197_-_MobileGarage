@@ -3,16 +3,9 @@ package pt.ulusofona.cm.mobilegarage.ui.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
-import butterknife.OnClick
-import butterknife.OnItemSelected
-import com.google.android.material.bottomappbar.BottomAppBar
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_app.*
 import pt.ulusofona.cm.mobilegarage.R
@@ -21,11 +14,17 @@ import pt.ulusofona.cm.mobilegarage.ui.viewmodels.NavBarViewModel
 
 class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    private lateinit var viewModel: NavBarViewModel
+    private lateinit var navBarViewModel: NavBarViewModel
+//    private lateinit var viewModel: NavBarViewModel
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.nav_log_out -> finish()
+            R.id.nav_contacts -> navBarViewModel.onClickContacts(
+                this,
+                this::class.java.simpleName,
+                this.supportFragmentManager
+            )
         }
         return true
     }
@@ -51,7 +50,7 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         setSupportActionBar(toolbar)
         setupDrawerMenu()
         setupNavBar()
-        viewModel = ViewModelProvider(this).get(NavBarViewModel::class.java)
+        navBarViewModel = ViewModelProvider(this).get(NavBarViewModel::class.java)
         NavBarNavigationManager.goToHomePage(supportFragmentManager)
     }
 
@@ -62,7 +61,7 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
             when(item.itemId) {
 
                 R.id.nav_bar_my_vehicles -> {
-                    viewModel.onClickMyVehicles(
+                    navBarViewModel.onClickMyVehicles(
                         this,
                         this::class.java.simpleName,
                         this.supportFragmentManager
@@ -73,7 +72,7 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
                 }
 
                 R.id.nav_bar_favorites -> {
-                    viewModel.onClickFavorites(
+                    navBarViewModel.onClickFavorites(
                         this,
                         this::class.java.simpleName,
                         this.supportFragmentManager
@@ -84,7 +83,7 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
                 }
 
                 R.id.nav_bar_home -> {
-                    viewModel.onClickHome(
+                    navBarViewModel.onClickHome(
                         this,
                         this::class.java.simpleName,
                         this.supportFragmentManager
@@ -95,7 +94,7 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
                 }
 
                 R.id.nav_bar_park_me_now -> {
-                    viewModel.onClickParkMeNow(
+                    navBarViewModel.onClickParkMeNow(
                         this,
                         this::class.java.simpleName,
                         this.supportFragmentManager
@@ -106,7 +105,7 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
                 }
 
                 R.id.nav_bar_profile -> {
-                    viewModel.onClickProfile(
+                    navBarViewModel.onClickProfile(
                         this,
                         this::class.java.simpleName,
                         this.supportFragmentManager

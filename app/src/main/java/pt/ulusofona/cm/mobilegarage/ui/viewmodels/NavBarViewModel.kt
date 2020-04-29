@@ -13,6 +13,16 @@ class NavBarViewModel : ViewModel() {
 
     private val navBarLogic = NavBarLogic()
 
+    fun onClickContacts(
+        context: Context,
+        TAG: String?,
+        supportFragmentManager: FragmentManager
+    ) {
+        makeLog(TAG, "nav_contacts")
+        makeToast(context, "nav_contacts")
+        NavBarNavigationManager.goToContacts(supportFragmentManager)
+    }
+
     fun onClickMyVehicles(
         context: Context,
         TAG: String?,

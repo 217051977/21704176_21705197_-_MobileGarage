@@ -8,11 +8,27 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+import butterknife.ButterKnife
 import pt.ulusofona.cm.mobilegarage.R
 
 class ContactsFragment : Fragment() {
 
     override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(
+            R.layout.fragment_contacts,
+            container,
+            false
+        )
+
+        ButterKnife.bind(this, view)
+        return view
+    }
+
+    /*override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,9 +40,9 @@ class ContactsFragment : Fragment() {
 
 //        val viewPager = view.findViewById(R.id.pager)
 //        viewPager.set
-    }
+    }*/
 
-}
+}/*
 
 class DemoCollectionPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
 
@@ -63,4 +79,4 @@ class DemoObjectFragment : Fragment() {
             textView.text = getInt(ARG_OBJECT).toString()
         }
     }
-}
+}*/
