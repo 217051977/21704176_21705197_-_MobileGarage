@@ -13,6 +13,12 @@
     <string name="others">Others</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
+    <!--  nav bar  -->
+    <string name="nav_bar_my_vehicles">My Vehicles</string>
+    <string name="nav_bar_favorites">Favorites</string>
+    <string name="nav_bar_home">Home</string>
+    <string name="nav_bar_park_me_now">Park Me Now</string>
+    <string name="nav_bar_profile">Profile</string>
     <!--  hints  -->
     <string name="hint_user_name">User name</string>
     <string name="hint_password">Password</string>

@@ -16,10 +16,10 @@ class NavBarNavigationManager {
             transition.commit()
         }
 
-        fun goToHomePage(fm: FragmentManager) {
+        fun goToMyVehicles(fm: FragmentManager) {
             placeFragment(
                 fm,
-                HomeMenuFragment()
+                MyVehiclesFragment()
             )
         }
 
@@ -27,6 +27,27 @@ class NavBarNavigationManager {
             placeFragment(
                 fm,
                 FavoritesFragment()
+            )
+        }
+
+        fun goToHomePage(fm: FragmentManager) {
+            placeFragment(
+                fm,
+                HomeMenuFragment()
+            )
+        }
+
+        fun goToParkMeNow(fm: FragmentManager) {
+            placeFragment(
+                fm,
+                ParkMeNowFragment()
+            )
+        }
+
+        fun goToProfile(fm: FragmentManager) {
+            placeFragment(
+                fm,
+                ProfileFragment()
             )
         }
 

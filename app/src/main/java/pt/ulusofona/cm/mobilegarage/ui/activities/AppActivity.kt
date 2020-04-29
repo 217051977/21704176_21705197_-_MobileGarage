@@ -12,7 +12,6 @@ import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_app.*
 import pt.ulusofona.cm.mobilegarage.R
 import pt.ulusofona.cm.mobilegarage.ui.utils.NavBarNavigationManager
-import pt.ulusofona.cm.mobilegarage.ui.utils.NavigationManager
 import pt.ulusofona.cm.mobilegarage.ui.viewmodels.NavBarViewModel
 
 class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -68,38 +67,58 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
     }
 
     @OnClick(
-        R.id.nav_bar_vehicle_list
+        R.id.nav_bar_my_vehicles
     )
-    fun onClickVehicleList(view: View) {
-        viewModel.onClickVehicleList()
+    fun onClickMyVehicles(view: View) {
+        viewModel.onClickMyVehicles(
+            this,
+            this::class.java.simpleName,
+            this.supportFragmentManager
+        )
     }
 
     @OnClick(
         R.id.nav_bar_favorites
     )
     fun onClickFavorites(view: View) {
-        viewModel.onClickFavorites()
+        viewModel.onClickFavorites(
+            this,
+            this::class.java.simpleName,
+            this.supportFragmentManager
+        )
     }
 
     @OnClick(
         R.id.nav_bar_home
     )
     fun onClickHome(view: View) {
-        viewModel.onClickHome(this.supportFragmentManager)
+        viewModel.onClickHome(
+            this,
+            this::class.java.simpleName,
+            this.supportFragmentManager
+        )
     }
 
     @OnClick(
         R.id.nav_bar_park_me_now
     )
     fun onClickParkMeNow(view: View) {
-        viewModel.onClickParkMeNow()
+        viewModel.onClickParkMeNow(
+            this,
+            this::class.java.simpleName,
+            this.supportFragmentManager
+        )
     }
 
     @OnClick(
         R.id.nav_bar_profile
     )
     fun onClickProfile(view: View) {
-        viewModel.onClickProfile()
+        viewModel.onClickProfile(
+            this,
+            this::class.java.simpleName,
+            this.supportFragmentManager
+        )
     }
 
 }

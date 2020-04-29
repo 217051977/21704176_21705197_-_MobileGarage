@@ -18,7 +18,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="70dp"
             android:orientation="vertical"
             >
 
@@ -27,31 +27,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:theme="@style/toolbarTheme"
-                >
-
-            </androidx.appcompat.widget.Toolbar>
+                />
 
 
             <FrameLayout
                 android:id="@+id/frame"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginHorizontal="15dp"
+                android:layout_marginHorizontal="30dp"
                 />
-
-
-            <!--        <LinearLayout-->
-            <!--            android:layout_width="match_parent"-->
-            <!--            android:layout_height="match_parent"-->
-            <!--            android:background="@color/app_color_blue"-->
-            <!--            android:layout_marginHorizontal="15dp"-->
-            <!--            >-->
-
-            <!--        </LinearLayout>-->
 
         </LinearLayout>
 
-        <RelativeLayout
+        <!--<RelativeLayout
 
             android:id="@+id/nav_bar"
             android:weightSum="5"
@@ -67,16 +55,16 @@
                 android:layout_alignParentBottom="true"
                 android:background="@drawable/shape_nav_bar_background"
                 >
-                <!--            android:theme="@style/navBarTheme"-->
+                &lt;!&ndash;            android:theme="@style/navBarTheme"&ndash;&gt;
 
                 <RelativeLayout
-                    android:id="@+id/nav_bar_vehicle_list"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     >
 
                     <ImageButton
+                        android:id="@+id/nav_bar_my_vehicles"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:layout_centerInParent="true"
@@ -86,13 +74,13 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/nav_bar_favorites"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     >
 
                     <ImageButton
+                        android:id="@+id/nav_bar_favorites"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:layout_centerInParent="true"
@@ -109,13 +97,13 @@
                     />
 
                 <RelativeLayout
-                    android:id="@+id/nav_bar_park_me_now"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     >
 
                     <ImageButton
+                        android:id="@+id/nav_bar_park_me_now"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:layout_centerInParent="true"
@@ -126,13 +114,13 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/nav_bar_profile"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     >
 
                     <ImageButton
+                        android:id="@+id/nav_bar_profile"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:layout_centerInParent="true"
@@ -144,7 +132,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/nav_bar_home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -152,6 +139,7 @@
                 >
 
                 <ImageButton
+                    android:id="@+id/nav_bar_home"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:background="@drawable/ic_home_black_24dp"
@@ -160,7 +148,18 @@
 
             </LinearLayout>
 
-        </RelativeLayout>
+        </RelativeLayout>-->
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/shape_nav_bar_background"
+            app:itemIconTint="@color/color_primary_black"
+            app:itemTextColor="@color/color_primary_black"
+            app:menu="@menu/bottom_navigation_menu"
+            />
+
 
     </RelativeLayout>
 
