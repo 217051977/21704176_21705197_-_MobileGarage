@@ -1,132 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="10dp"
     tools:context=".ui.fragments.ContactGeneralFragment">
 
     <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/contact_general_vehicles"
+        android:textSize="24sp"
+        />
+
+    <!-- Phone Number -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10"
         >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="30dp"
             android:layout_weight="1"
-            android:orientation="vertical"
+            app:srcCompat="@drawable/ic_call"
+            android:contentDescription="@string/description_icon_call"
+            />
+
+        <TextView
+            android:id="@+id/contact_general_phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="9"
             android:layout_marginStart="10dp"
-            >
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/contact_general_vehicles"
-                android:textSize="24sp"
-                />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="10"
-                >
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/ic_call"
-                    />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="8"
-                    android:layout_marginStart="10dp"
-                    android:text="@string/contact_phone_general_vehicles"
-                    />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="10"
-                >
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/ic_fax"
-                    />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="8"
-                    android:layout_marginStart="10dp"
-                    android:text="@string/contact_fax_general_vehicles"
-                    />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="10"
-                >
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/ic_access_time_black_24dp"
-                    />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="9"
-                    android:layout_marginStart="10dp"
-                    android:text="@string/contact_timetable_general_vehicles"
-                    />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="10"
-                >
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/ic_info"
-                    />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="8"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="5dp"
-                    android:text="@string/contact_info_general_vehicles"
-                    />
-
-            </LinearLayout>
-
-        </LinearLayout>
+            android:text="@string/contact_phone_general_vehicles"
+            />
 
     </LinearLayout>
 
-</FrameLayout>
+    <!-- Fax Number -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        >
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_fax"
+            android:contentDescription="@string/description_icon_fax"
+            />
+
+        <TextView
+            android:id="@+id/contact_general_fax"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="9"
+            android:layout_marginStart="10dp"
+            android:text="@string/contact_fax_general_vehicles"
+            />
+
+    </LinearLayout>
+
+    <!-- TimeTable -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        >
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_access_time_black_24dp"
+            android:contentDescription="@string/description_icon_clock"
+            />
+
+        <TextView
+            android:id="@+id/contact_general_timetable"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="9"
+            android:layout_marginStart="10dp"
+            android:text="@string/contact_timetable_general_vehicles"
+            />
+
+    </LinearLayout>
+
+    <!-- Info -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        >
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_info"
+            android:contentDescription="@string/description_icon_info"
+            />
+
+        <TextView
+            android:id="@+id/contact_general_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/contact_info_general_vehicles"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -22,6 +22,7 @@
     <string name="button_forget_password">Forget password?</string>
 
     <!-- Contact Activity -->
+    <string name="contact_service_station">Service Station</string>
     <string name="contact_name_saldanha">Loja do Cidadão do Saldanha</string>
     <string name="contact_address_saldanha">Mercado 31 de Janeiro, Rua Engenheiro Vieira da Silva</string>
     <string name="contact_timetable_saldanha">TimeTable: Monday to Friday - 9h00 to 19h00</string>
@@ -34,7 +35,8 @@
     <string name="contact_address_lisboa">Campo Grande, 25</string>
     <string name="contact_timetable_lisboa">TimeTable: Monday to Friday - 9h00 to 19h00</string>
 
-    <string name="contact_removed_vehicles">Park of Removed Vehicles</string>
+    <string name="contact_towed_vehicles">Towed Vehicles</string>
+    <string name="contact_removed_vehicles">Park of Towed Vehicles</string>
     <string name="contact_address_removed_vehicles">Rua Francisco Lyon de Castro</string>
     <string name="contact_email_removed_vehicles">parque.rebocados@emel.pt</string>
     <string name="contact_timetable_removed_vehicles">EveryDay: 8h to 24h</string>
@@ -51,6 +53,14 @@ Free SMS to the number 3838, indicating the word "Reboque" followed by a space a
     <string name="contact_blocked_vehicles">Blocked Vehicles</string>
     <string name="contact_phone_blocked_vehicles">+351 217803131</string>
     <string name="contact_timetable_blocked_vehicles"> Monday to Friday - 8h00 to 24h00\nSaturday, Sundays and Holiday - 9h00 to 18h00</string>
+
+    <string name="description_icon_map">Map Icon</string>
+    <string name="description_icon_call">Call Icon</string>
+    <string name="description_icon_info">Info Icon</string>
+    <string name="description_icon_email">Email Icon</string>
+    <string name="description_icon_fax">Fax Icon</string>
+    <string name="description_icon_clock">Clock Icon</string>
+    <string name="description_icon_park">Park Icon</string>
 
     <!--  vehicle details  -->
     <string name="vehicle_detail_is_parked">Is parked?</string>
