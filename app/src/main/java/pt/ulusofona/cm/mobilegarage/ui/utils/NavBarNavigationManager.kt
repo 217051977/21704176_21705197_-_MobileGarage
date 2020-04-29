@@ -3,6 +3,7 @@ package pt.ulusofona.cm.mobilegarage.ui.utils
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import pt.ulusofona.cm.mobilegarage.R
+import pt.ulusofona.cm.mobilegarage.ui.activities.ContactsActivity
 import pt.ulusofona.cm.mobilegarage.ui.fragments.*
 
 class NavBarNavigationManager {

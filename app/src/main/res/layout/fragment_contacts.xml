@@ -8,11 +8,12 @@
     >
 
     <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
 
-        <!--Aviso texto do icon grande demais-->
+        <!--Aviso texto do icon grande demais
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tab_service_station"
             android:layout_height="wrap_content"
@@ -36,7 +37,7 @@
             android:icon="@drawable/ic_traffic_black_24dp"
             android:text="@string/contact_towed_vehicles"
             />
-
+        -->
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager

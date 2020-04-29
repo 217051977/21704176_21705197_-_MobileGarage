@@ -2,7 +2,6 @@ package pt.ulusofona.cm.mobilegarage.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import pt.ulusofona.cm.mobilegarage.R
 
 class ContactsActivity : AppCompatActivity() {
 
