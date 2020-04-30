@@ -5,9 +5,11 @@
     android:layout_height="100dp"
     android:orientation="horizontal"
     android:weightSum="2"
+    android:layout_marginVertical="5dp"
     >
 
    <ImageView
+       android:id="@+id/vehicle_image"
        android:layout_width="0dp"
        android:layout_height="match_parent"
        android:src="@mipmap/mustang_shelby_gt500"
@@ -23,6 +25,7 @@
         >
 
         <TextView
+            android:id="@+id/is_parked"
             android:layout_width="match_parent"
             android:layout_height="0sp"
             android:layout_weight="1"
@@ -31,6 +34,7 @@
             />
 
         <TextView
+            android:id="@+id/insurance_paid"
             android:layout_width="match_parent"
             android:layout_height="0sp"
             android:layout_weight="1"
@@ -39,6 +43,7 @@
             />
 
         <TextView
+            android:id="@+id/plate"
             android:layout_width="match_parent"
             android:layout_height="0sp"
             android:layout_weight="1"

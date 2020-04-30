@@ -28,6 +28,9 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
                 this.supportFragmentManager
             )
         }
+        for (i in 0 until nav_bar.menu.size()) {
+            nav_bar.menu.getItem(i).isChecked = false
+        }
         drawer.closeDrawers()
         return true
     }
@@ -54,7 +57,7 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         setupDrawerMenu()
         setupNavBar()
         setLastInitVars()
-        NavBarNavigationManager.goToHomePage(supportFragmentManager)
+        NavBarNavigationManager.goToMyVehicles(supportFragmentManager)
     }
 
     private fun setLastInitVars() {
