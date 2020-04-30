@@ -4,9 +4,23 @@ import java.util.*
 
 class Park(
     val name: String,
-    val availability: Boolean,
+    var availability: Double,
     var distance: Double,
-    var lastUpdate: Date,
-    val type: ParkType,
+    var lastUpdate: Calendar,
+    val type: String,
     var price: Double
-)
+) {
+
+    fun getAvailabilityStatus(): String = when {
+        availability > 90 -> {
+            "Free"
+        }
+        availability >= 10 -> {
+            "Potentially crowded"
+        }
+        else -> {
+            "Full"
+        }
+    }
+
+}

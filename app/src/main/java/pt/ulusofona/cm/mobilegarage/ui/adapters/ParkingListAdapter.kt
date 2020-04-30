@@ -35,10 +35,12 @@ class ParkingListAdapter(
 
     override fun onBindViewHolder(holder: ParkingListViewHolder, position: Int) {
         holder.parkName.text = items[position].name
-        holder.availability.text = items[position].availability.toString()
-        holder.parkType.text = items[position].type.toString()
+        holder.availability.text = items[position].getAvailabilityStatus()
+        holder.parkType.text = items[position].type
     }
 
     override fun getItemCount() = items.size
+
+
 
 }
