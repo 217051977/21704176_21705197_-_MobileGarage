@@ -10,22 +10,25 @@ import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_app.*
 import pt.ulusofona.cm.mobilegarage.R
 import pt.ulusofona.cm.mobilegarage.ui.utils.NavBarNavigationManager
+import pt.ulusofona.cm.mobilegarage.ui.viewmodels.DrawerViewModel
 import pt.ulusofona.cm.mobilegarage.ui.viewmodels.NavBarViewModel
 
 class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var navBarViewModel: NavBarViewModel
+    private lateinit var drawerViewModel: DrawerViewModel
 //    private lateinit var viewModel: NavBarViewModel
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.nav_log_out -> finish()
-            R.id.nav_contacts -> navBarViewModel.onClickContacts(
+            R.id.nav_contacts -> drawerViewModel.onClickContacts(
                 this,
                 this::class.java.simpleName,
                 this.supportFragmentManager
             )
         }
+        drawer.closeDrawers()
         return true
     }
 
@@ -50,8 +53,13 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         setSupportActionBar(toolbar)
         setupDrawerMenu()
         setupNavBar()
-        navBarViewModel = ViewModelProvider(this).get(NavBarViewModel::class.java)
+        setLastInitVars()
         NavBarNavigationManager.goToHomePage(supportFragmentManager)
+    }
+
+    private fun setLastInitVars() {
+        navBarViewModel = ViewModelProvider(this).get(NavBarViewModel::class.java)
+        drawerViewModel = ViewModelProvider(this).get(DrawerViewModel::class.java)
     }
 
     private fun setupNavBar() {

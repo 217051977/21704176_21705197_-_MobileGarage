@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentManager
 import pt.ulusofona.cm.mobilegarage.R
 import pt.ulusofona.cm.mobilegarage.ui.fragments.*
 
-class NavigationManager {
+class DrawerNavigationManager {
 
     companion object {
 
@@ -16,24 +16,10 @@ class NavigationManager {
             transition.commit()
         }
 
-        fun goToLogInPage(fm: FragmentManager) {
+        fun goToContacts(fm: FragmentManager) {
             placeFragment(
                 fm,
-                LogInFragment()
-            )
-        }
-
-        fun goToRegisterPage(fm: FragmentManager) {
-            placeFragment(
-                fm,
-                RegisterFragment()
-            )
-        }
-
-        fun goToSettingsPage(fm: FragmentManager) {
-            placeFragment(
-                fm,
-                SettingsFragment()
+                ContactsFragment()
             )
         }
 
