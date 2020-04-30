@@ -4,47 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="4"
     android:orientation="vertical"
-    android:layout_margin="10dp"
-    tools:context=".ui.fragments.ServiceVehiclesFragment">
+    android:layout_marginVertical="10dp"
+    tools:context=".ui.fragments.ServiceVehiclesFragment"
+    android:weightSum="18"
+    >
 
-    <!-- Park of Removed Vehicles -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:text="@string/contact_removed_vehicles"
+        android:textSize="24sp"
+        />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="6"
         android:orientation="vertical"
-        android:layout_marginStart="10dp"
+        android:weightSum="3"
+        android:layout_marginHorizontal="20dp"
         >
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/contact_removed_vehicles"
-            android:textSize="24sp"
-            />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="horizontal"
             android:weightSum="10"
             >
 
             <ImageView
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/ic_map_black_24dp"
                 android:contentDescription="@string/description_icon_map"
-                />
+                android:gravity="center"
+                app:srcCompat="@drawable/ic_map_black_24dp" />
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="8"
                 android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
                 android:text="@string/contact_address_removed_vehicles"
                 />
 
@@ -52,23 +56,26 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="horizontal"
             android:weightSum="10"
             >
 
             <ImageView
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/ic_email"
                 android:contentDescription="@string/description_icon_email"
-                />
+                android:gravity="center"
+                app:srcCompat="@drawable/ic_email" />
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="9"
+                android:layout_weight="8"
                 android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
                 android:text="@string/contact_email_removed_vehicles"
                 />
 
@@ -76,14 +83,15 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="horizontal"
             android:weightSum="10"
             >
 
             <ImageView
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/ic_access_time_black_24dp"
                 android:contentDescription="@string/description_icon_clock"
@@ -94,66 +102,42 @@
                 android:layout_height="match_parent"
                 android:layout_weight="9"
                 android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
                 android:text="@string/contact_timetable_removed_vehicles"
-                />
-
-            </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="10"
-            >
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="35dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/ic_info"
-                android:layout_marginTop="10dp"
-                android:contentDescription="@string/description_icon_info"
-                />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="9"
-                android:layout_marginStart="10dp"
-                android:text="@string/contact_info_removed_vehicles"
                 />
 
         </LinearLayout>
 
     </LinearLayout>
 
-    <!-- Blocked Vehicles -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:text="@string/contact_blocked_vehicles"
+        android:textSize="24sp"
+        />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="4"
         android:orientation="vertical"
-        android:layout_marginStart="10dp"
+        android:weightSum="2"
+        android:layout_marginHorizontal="20dp"
         >
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/contact_blocked_vehicles"
-            android:textSize="24sp"
-            android:layout_marginTop="10dp"
-            />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="horizontal"
             android:weightSum="10"
             >
 
             <ImageView
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/ic_call"
                 android:contentDescription="@string/description_icon_call"
@@ -164,6 +148,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="8"
                 android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
                 android:text="@string/contact_phone_blocked_vehicles"
                 />
 
@@ -171,14 +156,15 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="horizontal"
             android:weightSum="10"
             >
 
             <ImageView
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/ic_access_time_black_24dp"
                 android:contentDescription="@string/description_icon_clock"
@@ -186,14 +172,17 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="9"
                 android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
                 android:text="@string/contact_timetable_blocked_vehicles"
                 />
 
         </LinearLayout>
 
     </LinearLayout>
+
+
 
 </LinearLayout>

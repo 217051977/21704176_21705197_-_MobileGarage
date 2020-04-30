@@ -4,47 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="6"
     android:orientation="vertical"
     android:layout_marginTop="10dp"
-    tools:context=".ui.fragments.ServiceStationFragment">
+    tools:context=".ui.fragments.ServiceStationFragment"
+    android:weightSum="18"
+    >
 
-    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:text="@string/contact_name_saldanha"
+        android:textSize="24sp"
+        />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="4"
         android:orientation="vertical"
-        android:layout_marginStart="10dp"
+        android:weightSum="2"
+        android:layout_marginHorizontal="20dp"
         >
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/contact_name_saldanha"
-            android:textSize="24sp"
-            />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="horizontal"
             android:weightSum="10"
             >
 
             <ImageView
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/ic_map_black_24dp"
                 android:contentDescription="@string/description_icon_map"
-                />
+                android:gravity="center"
+                app:srcCompat="@drawable/ic_map_black_24dp" />
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="8"
                 android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
                 android:text="@string/contact_address_saldanha"
                 />
 
@@ -52,14 +56,15 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="horizontal"
             android:weightSum="10"
             >
 
             <ImageView
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/ic_access_time_black_24dp"
                 android:contentDescription="@string/description_icon_clock"
@@ -70,6 +75,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="9"
                 android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
                 android:text="@string/contact_timetable_saldanha"
                 />
 
@@ -77,31 +83,34 @@
 
     </LinearLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:text="@string/contact_name_laranjeiras"
+        android:textSize="24sp"
+        />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="4"
         android:orientation="vertical"
-        android:layout_marginStart="10dp"
+        android:weightSum="2"
+        android:layout_marginHorizontal="20dp"
         >
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/contact_name_laranjeiras"
-            android:textSize="24sp"
-            />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="horizontal"
             android:weightSum="10"
             >
 
             <ImageView
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/ic_map_black_24dp"
                 android:contentDescription="@string/description_icon_map"
@@ -112,6 +121,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="8"
                 android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
                 android:text="@string/contact_address_laranjeiras"
                 />
 
@@ -119,81 +129,15 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="horizontal"
             android:weightSum="10"
             >
 
             <ImageView
                 android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/ic_access_time_black_24dp"
-                android:contentDescription="@string/description_icon_map"
-                />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="9"
-                android:layout_marginStart="10dp"
-                android:text="@string/contact_timetable_laranjeiras"
-                />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:layout_marginStart="10dp"
-        >
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/contact_name_lisboa"
-            android:textSize="24sp"
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="10"
-            >
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/ic_map_black_24dp"
-                android:contentDescription="@string/description_icon_map"
-                />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="9"
-                android:text="@string/contact_address_lisboa"
-                android:layout_marginStart="10dp"
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="10"
-            >
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/ic_access_time_black_24dp"
                 android:contentDescription="@string/description_icon_clock"
@@ -201,8 +145,83 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="9"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/contact_timetable_laranjeiras"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:text="@string/contact_name_lisboa"
+        android:textSize="24sp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:orientation="vertical"
+        android:weightSum="2"
+        android:layout_marginHorizontal="20dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="10"
+            >
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_map_black_24dp"
+                android:contentDescription="@string/description_icon_map"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="8"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/contact_address_lisboa"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="10"
+            >
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_access_time_black_24dp"
+                android:contentDescription="@string/description_icon_clock"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
                 android:text="@string/contact_timetable_lisboa"
                 />
 
