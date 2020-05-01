@@ -36,7 +36,7 @@ class MockingDBParks private constructor(){
             Calendar.getInstance(),
             "Structure",
             0.0,
-            "rua 3",
+            "Odivelas",
             100,
             10
         )
