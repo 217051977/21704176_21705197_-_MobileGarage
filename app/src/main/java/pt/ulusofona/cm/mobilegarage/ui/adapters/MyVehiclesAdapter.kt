@@ -6,14 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_vehicle_list.view.*
+import pt.ulusofona.cm.mobilegarage.data.local.entities.Park
 import pt.ulusofona.cm.mobilegarage.data.local.entities.Vehicle
 
 class MyVehiclesAdapter(
     private val context: Context,
     private val layout: Int,
-    private val items: MutableList<Vehicle>
+    private val items: MutableList<Vehicle>,
+    private val supportFragmentManager: FragmentManager
 ) : RecyclerView.Adapter<MyVehiclesAdapter.MyVehiclesViewHolder>() {
 
     class MyVehiclesViewHolder(view: View) : RecyclerView.ViewHolder(view) {

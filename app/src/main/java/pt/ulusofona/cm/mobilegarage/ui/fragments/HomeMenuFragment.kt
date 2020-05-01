@@ -61,7 +61,8 @@ class HomeMenuFragment : Fragment() {
         parking_list.adapter = ParkingListAdapter(
             activity as Context,
             R.layout.item_park_element,
-            parks as MutableList<Park>
+            parks as MutableList<Park>,
+            activity?.supportFragmentManager!!
         )
     }
 

@@ -1,5 +1,6 @@
 package pt.ulusofona.cm.mobilegarage.ui.adapters
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
@@ -8,15 +9,20 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_park_element.view.*
 import pt.ulusofona.cm.mobilegarage.R
 import pt.ulusofona.cm.mobilegarage.data.local.entities.Park
+import pt.ulusofona.cm.mobilegarage.ui.utils.ParkNavigationManager
+import pt.ulusofona.cm.mobilegarage.ui.viewmodels.ParkViewModel
 
 class ParkingListAdapter(
     private val context: Context,
     private val layout: Int,
-    private val items: MutableList<Park>
+    private val items: MutableList<Park>,
+    private val supportFragmentManager: FragmentManager
 ) : RecyclerView.Adapter<ParkingListAdapter.ParkingListViewHolder>() {
 
     class ParkingListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -70,11 +76,13 @@ class ParkingListAdapter(
         }
 
         holder.itemView.setOnClickListener {
+            var parkViewModel: ParkViewModel
             Toast.makeText(
                 context,
                 items[position].name,
                 Toast.LENGTH_SHORT
             ).show()
+            ParkNavigationManager.goToParkDetails(supportFragmentManager)
         }
     }
 

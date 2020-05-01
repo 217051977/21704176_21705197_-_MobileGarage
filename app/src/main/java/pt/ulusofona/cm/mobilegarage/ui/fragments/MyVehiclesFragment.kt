@@ -57,7 +57,8 @@ class MyVehiclesFragment : Fragment() {
         vehicle_list.adapter = MyVehiclesAdapter(
             activity as Context,
             R.layout.item_vehicle_list,
-            vehicles as MutableList<Vehicle>
+            vehicles as MutableList<Vehicle>,
+            activity?.supportFragmentManager!!
         )
     }
 
