@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.item_park_element.view.*
 import pt.ulusofona.cm.mobilegarage.R
 import pt.ulusofona.cm.mobilegarage.data.local.entities.Feedback
 import pt.ulusofona.cm.mobilegarage.data.local.entities.Park
+import pt.ulusofona.cm.mobilegarage.ui.utils.ParkNavigationManager
 
 class FavoritesAdapter(
     private val context: Context,
@@ -71,6 +72,7 @@ class FavoritesAdapter(
                 context,
                 items[position].name
             )
+            ParkNavigationManager.goToParkDetails(supportFragmentManager)
         }
     }
 
