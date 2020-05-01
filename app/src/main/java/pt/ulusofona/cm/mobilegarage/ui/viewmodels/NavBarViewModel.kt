@@ -1,15 +1,15 @@
 package pt.ulusofona.cm.mobilegarage.ui.viewmodels
 
 import android.content.Context
-import android.util.Log
-import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModel
+import pt.ulusofona.cm.mobilegarage.data.local.entities.Feedback
 import pt.ulusofona.cm.mobilegarage.domain.mobilegarage.NavBarLogic
 import pt.ulusofona.cm.mobilegarage.ui.utils.NavBarNavigationManager
-import pt.ulusofona.cm.mobilegarage.ui.utils.NavigationManager
 
 class NavBarViewModel : ViewModel() {
+
+    private val feedback: Feedback = Feedback.getInstance()
 
     private val navBarLogic = NavBarLogic()
 
@@ -18,8 +18,8 @@ class NavBarViewModel : ViewModel() {
         TAG: String?,
         supportFragmentManager: FragmentManager
     ) {
-        makeLog(TAG, "nav_bar_my_vehicles")
-        makeToast(context, "nav_bar_my_vehicles")
+        feedback.makeLog(TAG, "nav_bar_my_vehicles")
+        feedback.makeToast(context, "nav_bar_my_vehicles")
         NavBarNavigationManager.goToMyVehicles(supportFragmentManager)
     }
 
@@ -28,8 +28,8 @@ class NavBarViewModel : ViewModel() {
         TAG: String?,
         supportFragmentManager: FragmentManager
     ) {
-        makeLog(TAG, "nav_bar_favorites")
-        makeToast(context, "nav_bar_favorites")
+        feedback.makeLog(TAG, "nav_bar_favorites")
+        feedback.makeToast(context, "nav_bar_favorites")
         NavBarNavigationManager.goToFavorites(supportFragmentManager)
     }
 
@@ -38,8 +38,8 @@ class NavBarViewModel : ViewModel() {
         TAG: String?,
         supportFragmentManager: FragmentManager
     ) {
-        makeLog(TAG, "nav_bar_home")
-        makeToast(context, "nav_bar_home")
+        feedback.makeLog(TAG, "nav_bar_home")
+        feedback.makeToast(context, "nav_bar_home")
         NavBarNavigationManager.goToHomePage(supportFragmentManager)
     }
 
@@ -48,8 +48,8 @@ class NavBarViewModel : ViewModel() {
         TAG: String?,
         supportFragmentManager: FragmentManager
     ) {
-        makeLog(TAG, "nav_bar_park_me_now")
-        makeToast(context, "nav_bar_park_me_now")
+        feedback.makeLog(TAG, "nav_bar_park_me_now")
+        feedback.makeToast(context, "nav_bar_park_me_now")
         NavBarNavigationManager.goToParkMeNow(supportFragmentManager)
     }
 
@@ -58,23 +58,9 @@ class NavBarViewModel : ViewModel() {
         TAG: String?,
         supportFragmentManager: FragmentManager
     ) {
-        makeLog(TAG, "nav_bar_profile")
-        makeToast(context, "nav_bar_profile")
+        feedback.makeLog(TAG, "nav_bar_profile")
+        feedback.makeToast(context, "nav_bar_profile")
         NavBarNavigationManager.goToProfile(supportFragmentManager)
-    }
-
-    private fun makeToast(context: Context, buttonName: String) {
-        Toast.makeText(
-            context,
-            "Button $buttonName has been pressed!",
-            Toast.LENGTH_SHORT
-        ).show()
-    }
-
-    private fun makeLog(TAG: String?, buttonName: String) {
-        Log.i(TAG,
-            "Button $buttonName has been pressed!"
-        )
     }
 
 }

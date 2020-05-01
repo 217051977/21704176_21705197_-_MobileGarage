@@ -1,19 +1,16 @@
 package pt.ulusofona.cm.mobilegarage.ui.adapters
 
-import android.app.Activity
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_park_element.view.*
 import pt.ulusofona.cm.mobilegarage.R
+import pt.ulusofona.cm.mobilegarage.data.local.entities.Feedback
 import pt.ulusofona.cm.mobilegarage.data.local.entities.Park
 import pt.ulusofona.cm.mobilegarage.ui.utils.ParkNavigationManager
 import pt.ulusofona.cm.mobilegarage.ui.viewmodels.ParkViewModel
@@ -24,6 +21,8 @@ class ParkingListAdapter(
     private val items: MutableList<Park>,
     private val supportFragmentManager: FragmentManager
 ) : RecyclerView.Adapter<ParkingListAdapter.ParkingListViewHolder>() {
+
+    private val feedback: Feedback = Feedback.getInstance()
 
     class ParkingListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val parkName: TextView = view.text_park_name
@@ -49,6 +48,11 @@ class ParkingListAdapter(
         holder.parkName.text = items[position].name
         holder.availability.text = items[position].getAvailabilityStatus()
         holder.parkType.text = items[position].type
+        if (items[position].favorite) {
+            holder.favIcon.setImageResource(R.drawable.ic_favorite_black_24dp)
+        } else {
+            holder.favIcon.setImageResource(R.drawable.ic_favorite_border_black_24dp)
+        }
     }
 
     override fun getItemCount() = items.size
@@ -56,11 +60,10 @@ class ParkingListAdapter(
     private fun setOnClickTreatment(holder: ParkingListViewHolder, position: Int) {
         holder.itemView.add_favorite.setOnClickListener {
             val park: Park = items[position]
-            Toast.makeText(
+            feedback.makeToast(
                 context,
-                "${park.name} added to the Favorites",
-                Toast.LENGTH_SHORT
-            ).show()
+                "${park.name} added to the Favorites"
+            )
             if (park.favorite) {
                 park.favorite = false
                 holder.favIcon.setImageResource(
@@ -77,11 +80,10 @@ class ParkingListAdapter(
 
         holder.itemView.setOnClickListener {
             var parkViewModel: ParkViewModel
-            Toast.makeText(
+            feedback.makeToast(
                 context,
-                items[position].name,
-                Toast.LENGTH_SHORT
-            ).show()
+                items[position].name
+            )
             ParkNavigationManager.goToParkDetails(supportFragmentManager)
         }
     }

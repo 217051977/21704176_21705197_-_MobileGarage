@@ -6,40 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import butterknife.ButterKnife
 import kotlinx.android.synthetic.main.fragment_home_menu.*
 import pt.ulusofona.cm.mobilegarage.R
 import pt.ulusofona.cm.mobilegarage.data.local.entities.Park
+import pt.ulusofona.cm.mobilegarage.data.local.list.MockingDBParks
 import pt.ulusofona.cm.mobilegarage.ui.adapters.ParkingListAdapter
+import pt.ulusofona.cm.mobilegarage.ui.viewmodels.HomeMenuViewModel
 import java.util.*
 
 class HomeMenuFragment : Fragment() {
 
-    private val parks: List<Park> = listOf(
-        Park(
-            "park1",
-            90.1,
-            25.0,
-            Calendar.getInstance(),
-            "Structure",
-            0.0
-        ), Park(
-            "park2",
-            0.0,
-            25.0,
-            Calendar.getInstance(),
-            "Surface",
-            0.0
-        ), Park(
-            "park3",
-            10.0,
-            25.0,
-            Calendar.getInstance(),
-            "Structure",
-            0.0
-        )
-    )
+    private val storage: MockingDBParks = MockingDBParks.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,7 +31,7 @@ class HomeMenuFragment : Fragment() {
             container,
             false
         )
-
+//        homeMenuViewModel = ViewModelProvider(this).get(HomeMenuViewModel::class.java)
         ButterKnife.bind(this, view)
         return view
     }
@@ -61,23 +41,9 @@ class HomeMenuFragment : Fragment() {
         parking_list.adapter = ParkingListAdapter(
             activity as Context,
             R.layout.item_park_element,
-            parks as MutableList<Park>,
+            storage.getAll() as MutableList<Park>,
             activity?.supportFragmentManager!!
         )
     }
-
-//    @OnClick(
-//        R.id.add_favorite
-//    )
-//    fun onClickAddFavorite(view: View) {
-//
-//
-////        val imageToChange: Drawable? = if (view.)
-////            Drawable.createFromPath("drawable/ic_favorite_black_24dp.xml")
-////        add_favorite.setImageDrawable(imageToChange)
-//
-////        parking_list.item
-//
-//    }
 
 }

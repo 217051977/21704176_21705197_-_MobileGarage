@@ -2,17 +2,15 @@ package pt.ulusofona.cm.mobilegarage.ui.viewmodels
 
 import android.content.Context
 import android.util.Log
-import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModel
+import pt.ulusofona.cm.mobilegarage.data.local.entities.Feedback
 import pt.ulusofona.cm.mobilegarage.domain.mobilegarage.DrawerLogic
-import pt.ulusofona.cm.mobilegarage.domain.mobilegarage.NavBarLogic
 import pt.ulusofona.cm.mobilegarage.ui.utils.DrawerNavigationManager
-import pt.ulusofona.cm.mobilegarage.ui.utils.NavBarNavigationManager
-import pt.ulusofona.cm.mobilegarage.ui.utils.NavigationManager
 
 class DrawerViewModel : ViewModel() {
 
+    private val feedback: Feedback = Feedback.getInstance()
     private val drawerLogic = DrawerLogic()
 
     fun onClickContacts(
@@ -26,11 +24,10 @@ class DrawerViewModel : ViewModel() {
     }
 
     private fun makeToast(context: Context, buttonName: String) {
-        Toast.makeText(
+        feedback.makeToast(
             context,
-            "Button $buttonName has been pressed!",
-            Toast.LENGTH_SHORT
-        ).show()
+            "Button $buttonName has been pressed!"
+        )
     }
 
     private fun makeLog(TAG: String?, buttonName: String) {

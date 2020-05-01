@@ -5,12 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
-import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_vehicle_list.view.*
-import pt.ulusofona.cm.mobilegarage.data.local.entities.Park
+import pt.ulusofona.cm.mobilegarage.data.local.entities.Feedback
 import pt.ulusofona.cm.mobilegarage.data.local.entities.Vehicle
 
 class MyVehiclesAdapter(
@@ -19,6 +17,8 @@ class MyVehiclesAdapter(
     private val items: MutableList<Vehicle>,
     private val supportFragmentManager: FragmentManager
 ) : RecyclerView.Adapter<MyVehiclesAdapter.MyVehiclesViewHolder>() {
+
+    private val feedback: Feedback = Feedback.getInstance()
 
     class MyVehiclesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val isParked: TextView = view.is_parked
@@ -49,11 +49,10 @@ class MyVehiclesAdapter(
 
     private fun setOnClickTreatment(holder: MyVehiclesViewHolder, position: Int) {
         holder.itemView.setOnClickListener {
-            Toast.makeText(
+            feedback.makeToast(
                 context,
-                items[position].plate,
-                Toast.LENGTH_SHORT
-            ).show()
+                items[position].plate
+            )
         }
     }
 

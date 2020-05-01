@@ -6,12 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_park_element.view.*
 import pt.ulusofona.cm.mobilegarage.R
+import pt.ulusofona.cm.mobilegarage.data.local.entities.Feedback
 import pt.ulusofona.cm.mobilegarage.data.local.entities.Park
 
 class FavoritesAdapter(
@@ -20,6 +19,8 @@ class FavoritesAdapter(
     private val items: MutableList<Park>,
     private val supportFragmentManager: FragmentManager
 ) : RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHolder>() {
+
+    private val feedback: Feedback = Feedback.getInstance()
 
     class FavoritesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val parkName: TextView = view.text_park_name
@@ -45,6 +46,7 @@ class FavoritesAdapter(
         holder.parkName.text = items[position].name
         holder.availability.text = items[position].getAvailabilityStatus()
         holder.parkType.text = items[position].type
+        holder.favIcon.setImageResource(R.drawable.ic_favorite_black_24dp)
     }
 
     override fun getItemCount() = items.size
@@ -52,11 +54,10 @@ class FavoritesAdapter(
     private fun setOnClickTreatment(holder: FavoritesViewHolder, position: Int) {
         holder.itemView.add_favorite.setOnClickListener {
             val park: Park = items[position]
-            Toast.makeText(
+            feedback.makeToast(
                 context,
-                "${park.name} added to the Favorites",
-                Toast.LENGTH_SHORT
-            ).show()
+                "${park.name} added to the Favorites"
+            )
             park.favorite = false
             holder.favIcon.setImageResource(
                 R.drawable.ic_favorite_border_black_24dp
@@ -66,11 +67,10 @@ class FavoritesAdapter(
         }
 
         holder.itemView.setOnClickListener {
-            Toast.makeText(
+            feedback.makeToast(
                 context,
-                items[position].name,
-                Toast.LENGTH_SHORT
-            ).show()
+                items[position].name
+            )
         }
     }
 
