@@ -11,6 +11,8 @@ class Park(
     var price: Double
 ) {
 
+    var favorite: Boolean = false
+
     fun getAvailabilityStatus(): String = when {
         availability > 90 -> {
             "Free"

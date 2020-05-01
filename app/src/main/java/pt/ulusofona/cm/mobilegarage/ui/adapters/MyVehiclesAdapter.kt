@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_vehicle_list.view.*
 import pt.ulusofona.cm.mobilegarage.data.local.entities.Vehicle
@@ -34,11 +35,22 @@ class MyVehiclesAdapter(
     }
 
     override fun onBindViewHolder(holder: MyVehiclesViewHolder, position: Int) {
+        setOnClickTreatment(holder, position)
         holder.isParked.text = items[position].getParkedStatus()
         holder.insurancePaid.text = items[position].insuranceState()
         holder.plate.text = items[position].plate
     }
 
     override fun getItemCount(): Int = items.size
+
+    private fun setOnClickTreatment(holder: MyVehiclesViewHolder, position: Int) {
+        holder.itemView.setOnClickListener {
+            Toast.makeText(
+                context,
+                items[position].plate,
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
 
 }
