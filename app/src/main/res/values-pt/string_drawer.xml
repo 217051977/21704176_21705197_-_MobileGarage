@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="drawer_user_name">Nome de utilizador</string>
+    <string name="drawer_user_image_description">Imagem de utilizador</string>
+    <string name="drawer_option_contacts">Contactos</string>
+    <string name="drawer_option_gira">Gira</string>
+    <string name="drawer_option_map">Mapa</string>
+    <string name="drawer_option_traffic">Tráfico</string>
+    <string name="drawer_option_settings">Definições</string>
+    <string name="drawer_option_log_out">Sair</string>
+    <string name="others">Outros</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+</resources>

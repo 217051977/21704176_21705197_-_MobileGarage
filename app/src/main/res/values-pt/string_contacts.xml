@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="contact_service_station">Estação de serviço</string>
+    <string name="contact_name_saldanha">Saldanha</string>
+    <string name="contact_address_saldanha">Mercado 31 de Janeiro, Rua Engenheiro Vieira da Silva</string>
+    <string name="contact_timetable_saldanha">Horário: Segunda-feira a Sexta-feira - 9h00 às 19h00</string>
+
+    <string name="contact_name_laranjeiras">Loja do Cidadão das Laranjeiras</string>
+    <string name="contact_address_laranjeiras">Rua Abranches Ferrão, 10</string>
+    <string name="contact_timetable_laranjeiras">Horário: Segunda-feira a Sexta-feira - 8h30 às 19h30\n Sábado: 09h30 às 15h00</string>
+
+    <string name="contact_name_lisboa">Edifício central do Município de Lisboa</string>
+    <string name="contact_address_lisboa">Campo Grande, 25</string>
+    <string name="contact_timetable_lisboa">Horário: Segunda-feira a Sexta-feira - 9h00 às 19h00</string>
+
+    <string name="contact_towed_vehicles">Veículos rebocados</string>
+    <string name="contact_removed_vehicles">Parque de veículos rebocados</string>
+    <string name="contact_address_removed_vehicles">Rua Francisco Lyon de Castro</string>
+    <string name="contact_email_removed_vehicles">parque.rebocados@emel.pt</string>
+    <string name="contact_timetable_removed_vehicles">Todos os dias: 8h às 24h</string>
+    <string name="contact_info_removed_vehicles">
+Free SMS to the number 3838, indicating the word "Reboque" followed by a space and the plate number of the car (with or without dashes between the characters).
+    </string>
+
+    <string name="contact_general_vehicles">Geral</string>
+    <string name="contact_phone_general_vehicles">+351 211163060 </string>
+    <string name="contact_fax_general_vehicles">+351 217813699</string>
+    <string name="contact_timetable_general_vehicles">Horário: Segunda-feira a Sexta-feira - 8h00 às 20h00\nSábados - 9h00 às 15h00</string>
+    <string name="contact_info_general_vehicles">Consulte a àrea de cliente da EMEL</string>
+
+    <string name="contact_blocked_vehicles">Veículos bloqueados</string>
+    <string name="contact_phone_blocked_vehicles">+351 217803131</string>
+    <string name="contact_timetable_blocked_vehicles"> Horário: Segunda-feira a Sexta-feira - 8h00 às 24h00\nSábados, Domingos e feriados - 9h00 às 18h00</string>
+</resources>

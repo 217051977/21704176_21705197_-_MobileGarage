@@ -23,7 +23,7 @@
             android:layout_weight="1"
             android:textSize="16sp"
             android:gravity="center"
-            android:text="text_name"
+            android:text="@string/item_park_name"
             />
 
         <LinearLayout
@@ -49,7 +49,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="2"
                     android:textSize="16sp"
-                    android:text="Structure"
+                    android:text="@string/item_park_type"
                     android:gravity="center"
                     />
 
@@ -69,7 +69,7 @@
                 android:layout_weight="1"
                 android:textSize="16sp"
                 android:gravity="center"
-                android:text="Potencialmente lotado"
+                android:text="@string/item_park_availability"
                 />
 
         </LinearLayout>

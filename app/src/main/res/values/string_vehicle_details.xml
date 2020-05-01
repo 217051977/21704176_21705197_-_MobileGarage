@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vehicle_detail_is_parked">Is parked?</string>
+    <string name="vehicle_detail_plate">Plate</string>
+    <string name="vehicle_detail_insurance">Insurance paid?</string>
+    <string name="vehicle_detail_brand">Brand</string>
+    <string name="vehicle_detail_model">Model</string>
+    <string name="vehicle_detail_year">Year</string>
+</resources>

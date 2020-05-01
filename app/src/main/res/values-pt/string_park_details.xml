@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="park_details_name">Park name</string>
+    <string name="park_details_address">Park address</string>
+    <string name="park_details_last_update">Last Update</string>
+    <string name="park_details_distance">Distance</string>
+    <string name="park_details_park_type">Type</string>
+    <string name="park_details_availability">Availability</string>
+    <string name="park_details_nr_parks">Nr. Parks</string>
+    <string name="park_details_acessability">Acessible for passengers with disabilities</string>
+</resources>

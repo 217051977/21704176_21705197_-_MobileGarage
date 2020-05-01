@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_bar_my_vehicles">My Vehicles</string>
+    <string name="nav_bar_favorites">Favorites</string>
+    <string name="nav_bar_home">Home</string>
+    <string name="nav_bar_park_me_now">Park Me Now</string>
+    <string name="nav_bar_profile">Profile</string>
+</resources>

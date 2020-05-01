@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_name">Profile name</string>
+    <string name="profile_b_day_title">Date of birth</string>
+    <string name="profile_b_day">DD/MM/AAAA</string>
+    <string name="profile_license_cat_title">License cat</string>
+    <string name="profile_license_cat">Cat</string>
+    <string name="profile_locality_title">Location</string>
+    <string name="profile_locality">Locality</string>
+    <string name="profile_number_of_vehicles_title">Nº vehicles</string>
+    <string name="profile_number_of_vehicles">Vehicles</string>
+    <string name="profile_edit_button">Edit profile</string>
+    <string name="profile_monthly_average_spent_title">Monthly avg. spent</string>
+    <string name="profile_monthly_average_spent">Monthly avg. spent</string>
+    <string name="profile_emel_support">EMEL support</string>
+</resources>
