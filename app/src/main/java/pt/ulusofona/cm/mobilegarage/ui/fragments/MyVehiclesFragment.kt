@@ -6,36 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import butterknife.ButterKnife
+import butterknife.OnClick
 import kotlinx.android.synthetic.main.fragment_my_vehicles.*
 import pt.ulusofona.cm.mobilegarage.R
-import pt.ulusofona.cm.mobilegarage.data.local.entities.Car
 import pt.ulusofona.cm.mobilegarage.data.local.entities.Vehicle
+import pt.ulusofona.cm.mobilegarage.data.local.list.MockingDBCars
 import pt.ulusofona.cm.mobilegarage.ui.adapters.MyVehiclesAdapter
-import java.util.*
+import pt.ulusofona.cm.mobilegarage.ui.utils.MyVehiclesNavigationManager
+import pt.ulusofona.cm.mobilegarage.ui.viewmodels.MyVehiclesViewModel
 
 class MyVehiclesFragment : Fragment() {
 
-    private val vehicles: List<Vehicle> = listOf(
-        Car(
-            "25-SW-00",
-            Calendar.getInstance()
-        ),
-        Car(
-            "DF-08-23",
-            Calendar.getInstance()
-        ),
-        Car(
-            "25-26-AD",
-            Calendar.getInstance()
-        )
-    )
-
-    init {
-        vehicles[1].setInsuranceDate(2020, 6, 2)
-        vehicles[2].setInsuranceDate(1999, 5, 2)
-    }
+    private lateinit var viewModel: MyVehiclesViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,19 +32,24 @@ class MyVehiclesFragment : Fragment() {
             container,
             false
         )
-
+        viewModel = ViewModelProvider(this).get(MyVehiclesViewModel::class.java)
         ButterKnife.bind(this, view)
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         vehicle_list.layoutManager = LinearLayoutManager(activity as Context)
-        vehicle_list.adapter = MyVehiclesAdapter(
+        vehicle_list.adapter = viewModel.setAdapter(
             activity as Context,
-            R.layout.item_vehicle_list,
-            vehicles as MutableList<Vehicle>,
             activity?.supportFragmentManager!!
         )
+    }
+
+    @OnClick(
+        R.id.add_vehicle
+    )
+    fun onClickAddVehicle(view: View) {
+        viewModel.onClickAddVehicle(activity?.supportFragmentManager!!)
     }
 
 }

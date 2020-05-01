@@ -20,7 +20,6 @@ class ContactGeneralFragment : Fragment() {
             container,
             false
         )
-
         ButterKnife.bind(this, view)
         return view
     }

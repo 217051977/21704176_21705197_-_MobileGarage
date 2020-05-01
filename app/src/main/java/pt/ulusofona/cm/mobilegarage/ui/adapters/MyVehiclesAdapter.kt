@@ -49,7 +49,8 @@ class MyVehiclesAdapter(
 
     private fun setOnClickTreatment(holder: MyVehiclesViewHolder, position: Int) {
         holder.itemView.setOnClickListener {
-            feedback.makeToast(
+            feedback.createFullButton(
+                this::class.java.simpleName,
                 context,
                 items[position].plate
             )

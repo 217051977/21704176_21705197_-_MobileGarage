@@ -1,10 +1,30 @@
 package pt.ulusofona.cm.mobilegarage.data.local.list
 
-import pt.ulusofona.cm.mobilegarage.data.local.entities.Park
+import pt.ulusofona.cm.mobilegarage.data.local.entities.Car
+import pt.ulusofona.cm.mobilegarage.data.local.entities.Vehicle
+import java.util.*
 
 class MockingDBCars private constructor(){
 
-    private val storage: MutableList<Park> = mutableListOf()
+    private val storage: MutableList<Vehicle> = mutableListOf(
+        Car(
+            "25-SW-00",
+            Calendar.getInstance()
+        ),
+        Car(
+            "DF-08-23",
+            Calendar.getInstance()
+        ),
+        Car(
+            "25-26-AD",
+            Calendar.getInstance()
+        )
+    )
+
+    init {
+        storage[1].setInsuranceDate(2020, 6, 2)
+        storage[2].setInsuranceDate(1999, 5, 2)
+    }
 
     companion object {
 
@@ -21,10 +41,10 @@ class MockingDBCars private constructor(){
 
     }
 
-    fun insert(park: Park) {
-        storage.add(park)
+    fun insert(vehicle: Vehicle) {
+        storage.add(vehicle)
     }
 
-    fun getAll(): List<Park> = storage.toList()
+    fun getAll(): List<Vehicle> = storage.toList()
 
 }

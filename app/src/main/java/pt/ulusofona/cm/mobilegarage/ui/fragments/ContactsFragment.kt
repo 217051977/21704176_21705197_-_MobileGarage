@@ -5,13 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import butterknife.ButterKnife
 import com.google.android.material.tabs.TabLayout
 import pt.ulusofona.cm.mobilegarage.R
 import pt.ulusofona.cm.mobilegarage.ui.adapters.ViewPagerAdapter
+import pt.ulusofona.cm.mobilegarage.ui.viewmodels.DrawerViewModel
 
 class ContactsFragment : Fragment() {
+
+    private lateinit var viewModel: DrawerViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,17 +27,12 @@ class ContactsFragment : Fragment() {
             container,
             false
         )
-
         val viewPager: ViewPager = view.findViewById(R.id.pager)
         val tabLayout: TabLayout = view.findViewById(R.id.tab_layout)
 
-        val adapter = ViewPagerAdapter(childFragmentManager)
+        viewModel = ViewModelProvider(this).get(DrawerViewModel::class.java)
 
-        adapter.addFragment(ServiceStationFragment(), "Station")
-        adapter.addFragment(ContactGeneralFragment(), "General")
-        adapter.addFragment(ServiceVehiclesFragment(), "Vehicles")
-
-        viewPager.adapter = adapter
+        viewPager.adapter = viewModel.setAdapter(childFragmentManager)
         tabLayout.setupWithViewPager(viewPager)
 
         ButterKnife.bind(this, view)

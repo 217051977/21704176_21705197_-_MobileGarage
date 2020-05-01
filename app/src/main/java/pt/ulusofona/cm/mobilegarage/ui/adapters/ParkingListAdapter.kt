@@ -60,7 +60,8 @@ class ParkingListAdapter(
     private fun setOnClickTreatment(holder: ParkingListViewHolder, position: Int) {
         holder.itemView.add_favorite.setOnClickListener {
             val park: Park = items[position]
-            feedback.makeToast(
+            feedback.createFullButton(
+                this::class.java.simpleName,
                 context,
                 "${park.name} added to the Favorites"
             )
@@ -79,8 +80,8 @@ class ParkingListAdapter(
         }
 
         holder.itemView.setOnClickListener {
-            var parkViewModel: ParkViewModel
-            feedback.makeToast(
+            feedback.createFullButton(
+                this::class.java.simpleName,
                 context,
                 items[position].name
             )

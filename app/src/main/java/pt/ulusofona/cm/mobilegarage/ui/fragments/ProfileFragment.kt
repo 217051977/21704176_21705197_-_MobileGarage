@@ -28,10 +28,8 @@ class ProfileFragment : Fragment() {
             container,
             false
         )
-
 //        profile_edit_profile_button.visibility = View.INVISIBLE
         drawerViewModel = ViewModelProvider(this).get(DrawerViewModel::class.java)
-
         ButterKnife.bind(this, view)
         return view
     }
@@ -40,13 +38,11 @@ class ProfileFragment : Fragment() {
         R.id.profile_emel_support_button
     )
     fun onClickEmelSupport(view: View) {
-
         drawerViewModel.onClickContacts(
             activity as Context,
             this::class.java.simpleName,
             activity?.supportFragmentManager!!
         )
-
     }
 
 }

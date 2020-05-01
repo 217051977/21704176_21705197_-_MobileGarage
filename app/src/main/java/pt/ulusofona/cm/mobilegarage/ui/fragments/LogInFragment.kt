@@ -1,19 +1,22 @@
 package pt.ulusofona.cm.mobilegarage.ui.fragments
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import butterknife.ButterKnife
 import butterknife.OnClick
 import pt.ulusofona.cm.mobilegarage.R
-import pt.ulusofona.cm.mobilegarage.ui.utils.NavigationManager
 import pt.ulusofona.cm.mobilegarage.ui.activities.AppActivity
+import pt.ulusofona.cm.mobilegarage.ui.viewmodels.LogInViewModel
 
 class LogInFragment : Fragment() {
+
+    private lateinit var viewModel: LogInViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,7 +28,7 @@ class LogInFragment : Fragment() {
             container,
             false
         )
-
+        viewModel = ViewModelProvider(this).get(LogInViewModel::class.java)
         ButterKnife.bind(this, view)
         return view
     }
@@ -34,18 +37,22 @@ class LogInFragment : Fragment() {
         R.id.button_register
     )
     fun onClickRegister(view: View) {
-        Log.i(this::class.java.simpleName, "Sending to register fragment")
-        NavigationManager.goToRegisterPage(activity?.supportFragmentManager!!)
+        viewModel.onClickRegister(
+            activity as Context,
+            activity?.supportFragmentManager!!
+        )
     }
 
     @OnClick(
         R.id.button_log_in
     )
     fun onClickLogIn(view: View) {
-        Log.i(this::class.java.simpleName, "Sending to ")
+        viewModel.onClickLogIn(
+            activity as Context,
+            activity?.supportFragmentManager!!
+        )
         val intent = Intent(this.context, AppActivity::class.java)
         startActivity(intent)
-//        NavigationManager.goToRegisterPage(activity?.supportFragmentManager!!)
     }
 
 }

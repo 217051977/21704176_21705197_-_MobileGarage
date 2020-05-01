@@ -55,7 +55,8 @@ class FavoritesAdapter(
     private fun setOnClickTreatment(holder: FavoritesViewHolder, position: Int) {
         holder.itemView.add_favorite.setOnClickListener {
             val park: Park = items[position]
-            feedback.makeToast(
+            feedback.createFullButton(
+                this::class.java.simpleName,
                 context,
                 "${park.name} added to the Favorites"
             )
@@ -68,7 +69,8 @@ class FavoritesAdapter(
         }
 
         holder.itemView.setOnClickListener {
-            feedback.makeToast(
+            feedback.createFullButton(
+                this::class.java.simpleName,
                 context,
                 items[position].name
             )

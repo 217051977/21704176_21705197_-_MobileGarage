@@ -21,7 +21,31 @@ class Feedback private constructor(){
 
     }
 
-    fun makeToast(context: Context, buttonName: String) {
+    fun createFullMessage(TAG: String?, context: Context, message: String) {
+        makeToastMessage(context, message)
+        makeLogMessage(TAG, message)
+    }
+
+    fun createFullButton(TAG: String?, context: Context, message: String) {
+        makeToastButton(context, message)
+        makeLogButton(TAG, message)
+    }
+
+    private fun makeToastMessage(context: Context, message: String) {
+        Toast.makeText(
+            context,
+            message,
+            Toast.LENGTH_SHORT
+        ).show()
+    }
+
+    private fun makeLogMessage(TAG: String?, message: String) {
+        Log.i(TAG,
+            message
+        )
+    }
+
+    private fun makeToastButton(context: Context, buttonName: String) {
         Toast.makeText(
             context,
             "Button $buttonName has been pressed!",
@@ -29,7 +53,7 @@ class Feedback private constructor(){
         ).show()
     }
 
-    fun makeLog(TAG: String?, buttonName: String) {
+    private fun makeLogButton(TAG: String?, buttonName: String) {
         Log.i(TAG,
             "Button $buttonName has been pressed!"
         )
