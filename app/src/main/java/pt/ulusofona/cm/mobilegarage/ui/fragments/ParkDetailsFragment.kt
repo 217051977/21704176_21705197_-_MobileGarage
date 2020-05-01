@@ -42,17 +42,15 @@ class ParkDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         parkToShow = viewModel.getParkToShow()!!
-        if (parkToShow != null) {
-            park_details_name.text = (parkToShow as Park).name
-            park_details_address.text = "Address: ${(parkToShow as Park).address}"
-            park_details_last_update.text = "Last update: ${(parkToShow as Park).getLastUpdate()}"
-            park_details_distance.text = (parkToShow as Park).distance.toString()
-            park_details_type.text = (parkToShow as Park).type
-            park_details_nr_parks.text = (parkToShow as Park).nrParkingSpot.toString()
-            park_details_availability.text = (parkToShow as Park).getAvailabilityStatus()
-            park_details_availability_nr_parks.text =
-                (parkToShow as Park).nrParkingSpotForDisablePeople.toString()
-        }
+        park_details_name.text = (parkToShow as Park).name
+        park_details_address.text = "Address: ${(parkToShow as Park).address}"
+        park_details_last_update.text = "Last update: ${(parkToShow as Park).getLastUpdate()}"
+        park_details_distance.text = (parkToShow as Park).distance.toString()
+        park_details_type.text = (parkToShow as Park).type
+        park_details_nr_parks.text = (parkToShow as Park).nrParkingSpot.toString()
+        park_details_availability.text = (parkToShow as Park).getAvailabilityStatus()
+        park_details_availability_nr_parks.text =
+            (parkToShow as Park).nrParkingSpotForDisablePeople.toString()
     }
 
     @OnClick(

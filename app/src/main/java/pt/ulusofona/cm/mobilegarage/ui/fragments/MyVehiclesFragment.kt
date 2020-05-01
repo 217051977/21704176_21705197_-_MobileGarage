@@ -12,10 +12,6 @@ import butterknife.ButterKnife
 import butterknife.OnClick
 import kotlinx.android.synthetic.main.fragment_my_vehicles.*
 import pt.ulusofona.cm.mobilegarage.R
-import pt.ulusofona.cm.mobilegarage.data.local.entities.Vehicle
-import pt.ulusofona.cm.mobilegarage.data.local.list.MockingDBCars
-import pt.ulusofona.cm.mobilegarage.ui.adapters.MyVehiclesAdapter
-import pt.ulusofona.cm.mobilegarage.ui.utils.MyVehiclesNavigationManager
 import pt.ulusofona.cm.mobilegarage.ui.viewmodels.MyVehiclesViewModel
 
 class MyVehiclesFragment : Fragment() {
