@@ -1,24 +1,16 @@
 package pt.ulusofona.cm.mobilegarage.ui.fragments
 
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import butterknife.ButterKnife
-import butterknife.OnClick
 import kotlinx.android.synthetic.main.fragment_home_menu.*
-import kotlinx.android.synthetic.main.fragment_my_vehicles.*
-import kotlinx.android.synthetic.main.layout_park_element.*
 import pt.ulusofona.cm.mobilegarage.R
 import pt.ulusofona.cm.mobilegarage.data.local.entities.Park
-import pt.ulusofona.cm.mobilegarage.data.local.entities.ParkType
-import pt.ulusofona.cm.mobilegarage.data.local.entities.Vehicle
-import pt.ulusofona.cm.mobilegarage.ui.adapters.MyVehiclesAdapter
 import pt.ulusofona.cm.mobilegarage.ui.adapters.ParkingListAdapter
 import java.util.*
 
@@ -68,7 +60,7 @@ class HomeMenuFragment : Fragment() {
         parking_list.layoutManager = LinearLayoutManager(activity as Context)
         parking_list.adapter = ParkingListAdapter(
             activity as Context,
-            R.layout.layout_park_element,
+            R.layout.item_park_element,
             parks as MutableList<Park>
         )
     }
