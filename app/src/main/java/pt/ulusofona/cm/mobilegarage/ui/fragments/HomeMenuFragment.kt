@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import butterknife.ButterKnife
 import kotlinx.android.synthetic.main.fragment_home_menu.*
 import pt.ulusofona.cm.mobilegarage.R
-import pt.ulusofona.cm.mobilegarage.ui.adapters.ParkingListAdapter
 import pt.ulusofona.cm.mobilegarage.ui.viewmodels.ParkViewModel
 
 class HomeMenuFragment : Fragment() {
@@ -37,7 +36,8 @@ class HomeMenuFragment : Fragment() {
         parking_list.layoutManager = LinearLayoutManager(activity as Context)
         parking_list.adapter = viewModel.setAdapter(
             activity as Context,
-            activity?.supportFragmentManager!!
+            activity?.supportFragmentManager!!,
+            viewModel
         )
     }
 

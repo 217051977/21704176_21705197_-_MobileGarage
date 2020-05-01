@@ -5,6 +5,8 @@ import java.util.*
 
 class MockingDBParks private constructor(){
 
+    var parkToShow: Park? = null
+
     private val storage: MutableList<Park> = mutableListOf(
         Park(
             "park1",
@@ -12,21 +14,31 @@ class MockingDBParks private constructor(){
             25.0,
             Calendar.getInstance(),
             "Structure",
-            0.0
+            0.0,
+            "rua 1",
+            100,
+            10,
+            true
         ), Park(
             "park2",
             0.0,
             25.0,
             Calendar.getInstance(),
             "Surface",
-            0.0
+            0.0,
+            "rua 2",
+            100,
+            10
         ), Park(
             "park3",
             10.0,
             25.0,
             Calendar.getInstance(),
             "Structure",
-            0.0
+            0.0,
+            "rua 3",
+            100,
+            10
         )
     )
 

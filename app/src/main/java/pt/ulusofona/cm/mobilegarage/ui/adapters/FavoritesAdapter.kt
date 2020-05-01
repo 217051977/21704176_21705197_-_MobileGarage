@@ -13,12 +13,14 @@ import pt.ulusofona.cm.mobilegarage.R
 import pt.ulusofona.cm.mobilegarage.data.local.entities.Feedback
 import pt.ulusofona.cm.mobilegarage.data.local.entities.Park
 import pt.ulusofona.cm.mobilegarage.ui.utils.ParkNavigationManager
+import pt.ulusofona.cm.mobilegarage.ui.viewmodels.ParkViewModel
 
 class FavoritesAdapter(
     private val context: Context,
     private val layout: Int,
     private val items: MutableList<Park>,
-    private val supportFragmentManager: FragmentManager
+    private val supportFragmentManager: FragmentManager,
+    private var viewModel: ParkViewModel
 ) : RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHolder>() {
 
     private val feedback: Feedback = Feedback.getInstance()
@@ -74,6 +76,7 @@ class FavoritesAdapter(
                 context,
                 items[position].name
             )
+            viewModel.setParkToShow(items[position])
             ParkNavigationManager.goToParkDetails(supportFragmentManager)
         }
     }

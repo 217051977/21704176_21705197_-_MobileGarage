@@ -8,10 +8,21 @@ class Park(
     var distance: Double,
     var lastUpdate: Calendar,
     val type: String,
-    var price: Double
+    var price: Double,
+    val address: String,
+    val nrParkingSpot: Int,
+    val nrParkingSpotForDisablePeople: Int,
+    var favorite: Boolean = false
 ) {
 
-    var favorite: Boolean = false
+    fun getLastUpdate(): String =
+        "${lastUpdate.get(
+            Calendar.DATE
+        )}/${lastUpdate.get(
+            Calendar.MONTH
+        ) + 1}/${lastUpdate.get(
+            Calendar.YEAR
+        )}"
 
     fun getAvailabilityStatus(): String = when {
         availability > 90 -> {
@@ -24,5 +35,14 @@ class Park(
             "Full"
         }
     }
+
+    override fun toString(): String =
+        "name: $name\n" +
+                "availability: $availability\n" +
+                "distance: $distance\n" +
+                "lastUpdate: $lastUpdate\n" +
+                "type: $type\n" +
+                "price: $price\n" +
+                "price: $address\n"
 
 }

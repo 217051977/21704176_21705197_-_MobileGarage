@@ -21,6 +21,8 @@ class MockingDBCars private constructor(){
         )
     )
 
+    var vehicle: Vehicle? = null
+
     init {
         storage[1].setInsuranceDate(2020, 6, 2)
         storage[2].setInsuranceDate(1999, 5, 2)

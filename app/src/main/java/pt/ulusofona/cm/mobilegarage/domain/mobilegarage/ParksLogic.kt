@@ -7,6 +7,12 @@ class ParksLogic {
 
     private val storage: MockingDBParks = MockingDBParks.getInstance()
 
+    fun getParkToShow(): Park? = storage.parkToShow
+
+    fun setParkToShow(park: Park) {
+        storage.parkToShow = park
+    }
+
     fun getAll(): List<Park> = storage.getAll()
 
     fun getAllFavorites(): List<Park> = storage.getAllFavorites()

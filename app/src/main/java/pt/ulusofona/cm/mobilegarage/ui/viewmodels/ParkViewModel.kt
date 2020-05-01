@@ -13,27 +13,37 @@ class ParkViewModel : ViewModel() {
 
     private val parksLogic: ParksLogic = ParksLogic()
 
+    fun getParkToShow(): Park? = parksLogic.getParkToShow()
+
+    fun setParkToShow(park: Park) {
+        parksLogic.setParkToShow(park)
+    }
+
     fun setFavoritesAdapter(
         context: Context,
-        supportFragmentManager: FragmentManager
+        supportFragmentManager: FragmentManager,
+        viewModel: ParkViewModel
     ): FavoritesAdapter {
         return FavoritesAdapter(
             context,
             R.layout.item_park_element,
             parksLogic.getAllFavorites() as MutableList<Park>,
-            supportFragmentManager
+            supportFragmentManager,
+            viewModel
         )
     }
 
     fun setAdapter(
         context: Context,
-        supportFragmentManager: FragmentManager
+        supportFragmentManager: FragmentManager,
+        viewModel: ParkViewModel
     ): ParkingListAdapter {
         return ParkingListAdapter(
             context,
             R.layout.item_park_element,
             parksLogic.getAll() as MutableList<Park>,
-            supportFragmentManager
+            supportFragmentManager,
+            viewModel
         )
     }
 

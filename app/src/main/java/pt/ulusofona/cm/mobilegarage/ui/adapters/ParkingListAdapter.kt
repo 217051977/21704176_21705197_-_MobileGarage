@@ -19,7 +19,8 @@ class ParkingListAdapter(
     private val context: Context,
     private val layout: Int,
     private val items: MutableList<Park>,
-    private val supportFragmentManager: FragmentManager
+    private val supportFragmentManager: FragmentManager,
+    private var viewModel: ParkViewModel
 ) : RecyclerView.Adapter<ParkingListAdapter.ParkingListViewHolder>() {
 
     private val feedback: Feedback = Feedback.getInstance()
@@ -85,6 +86,7 @@ class ParkingListAdapter(
                 context,
                 items[position].name
             )
+            viewModel.setParkToShow(items[position])
             ParkNavigationManager.goToParkDetails(supportFragmentManager)
         }
     }

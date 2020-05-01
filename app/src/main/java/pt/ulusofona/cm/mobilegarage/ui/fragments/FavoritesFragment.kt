@@ -36,7 +36,8 @@ class FavoritesFragment : Fragment() {
         parking_list.layoutManager = LinearLayoutManager(activity as Context)
         parking_list.adapter = viewModel.setFavoritesAdapter(
             activity as Context,
-            activity?.supportFragmentManager!!
+            activity?.supportFragmentManager!!,
+            viewModel
         )
     }
 
