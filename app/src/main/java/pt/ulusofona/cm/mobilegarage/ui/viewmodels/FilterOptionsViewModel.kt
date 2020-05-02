@@ -23,17 +23,9 @@ class FilterOptionsViewModel : ViewModel() {
 
     fun getFilterParkTypeStatus(): String = filterLogic.getFilterParkTypeStatus()
 
-    fun manageMovementSeekBar(progress: Int, distanceValue: TextView) {
-        distanceBarValue = progress
-        val value: String = "${distanceBarValue}m"
-        distanceValue.text = value
-    }
+    fun getAccessibilityStatus(): Boolean = filterLogic.getAccessibilityStatus()
 
-    fun manageStopMovementSeekBar(TAG: String, context: Context, messageIntro: String) {
-        feedback.createFullMessage(TAG, context, "$messageIntro $distanceBarValue")
-    }
-
-    fun manageStartMovementSeekBar() = null
+    fun getDistanceValueStatus(): Int = filterLogic.getDistanceValueStatus()
 
     fun onClickSortByDistanceFilter(TAG: String, context: Context, messageIntro: String) {
         feedback.createFullMessage(TAG, context, messageIntro)
@@ -60,9 +52,28 @@ class FilterOptionsViewModel : ViewModel() {
         filterLogic.setAllParkAllStatus()
     }
 
-    fun onClickCheckableDisablePeopleFilter(TAG: String, context: Context, messageIntro: String) {
+    fun onClickCheckableDisablePeopleFilter(
+        TAG: String,
+        context: Context,
+        messageIntro: String,
+        status: Boolean
+    ) {
         feedback.createFullMessage(TAG, context, messageIntro)
+        filterLogic.setAccessibilityStatus(status)
     }
+
+    fun manageMovementSeekBar(progress: Int, distanceValue: TextView) {
+        distanceBarValue = progress
+        val value: String = "${distanceBarValue}m"
+        distanceValue.text = value
+    }
+
+    fun manageStopMovementSeekBar(TAG: String, context: Context, messageIntro: String) {
+        feedback.createFullMessage(TAG, context, "$messageIntro $distanceBarValue")
+        filterLogic.setDistanceValueStatus(distanceBarValue)
+    }
+
+    fun manageStartMovementSeekBar() = null
 
     fun onClickApplyButton(
         TAG: String,

@@ -1,6 +1,5 @@
 package pt.ulusofona.cm.mobilegarage.domain.mobilegarage
 
-import pt.ulusofona.cm.mobilegarage.data.local.entities.Park
 import pt.ulusofona.cm.mobilegarage.data.local.list.MockingDBParks
 
 class FilterLogic {
@@ -11,24 +10,22 @@ class FilterLogic {
 
     fun getFilterParkTypeStatus(): String = storage.getFilterParkTypeStatus()
 
-    fun setSortByDistanceStatus() {
-        storage.setSortByDistanceStatus()
-    }
+    fun getAccessibilityStatus(): Boolean = storage.getAccessibilityStatus()
 
-    fun setSortByAvailabilityStatus() {
-        storage.setSortByAvailabilityStatus()
-    }
+    fun getDistanceValueStatus(): Int = storage.getDistanceValueStatus()
 
-    fun setSurfaceParkDistanceStatus() {
-        storage.setSurfaceParkDistanceStatus()
-    }
+    fun setSortByDistanceStatus() { storage.setSortByDistanceStatus() }
 
-    fun setStructureParkAvailabilityStatus() {
-        storage.setStructureParkAvailabilityStatus()
-    }
+    fun setSortByAvailabilityStatus() { storage.setSortByAvailabilityStatus() }
 
-    fun setAllParkAllStatus() {
-        storage.setAllParkAllStatus()
-    }
+    fun setSurfaceParkDistanceStatus() { storage.setSurfaceParkStatus() }
+
+    fun setStructureParkAvailabilityStatus() { storage.setStructureParkStatus() }
+
+    fun setAllParkAllStatus() { storage.setAllParksStatus() }
+
+    fun setAccessibilityStatus(status: Boolean) { storage.setAccessibilityStatus(status) }
+
+    fun setDistanceValueStatus(value: Int) { storage.setDistanceValueStatus(value) }
 
 }

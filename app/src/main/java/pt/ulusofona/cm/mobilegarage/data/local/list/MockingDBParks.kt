@@ -6,13 +6,23 @@ import java.util.*
 class MockingDBParks private constructor(){
 
     var parkToShow: Park? = null
-//    mutableListOf(<"distance" || "availability" || "all">, <"surface" || "structure" || "all">)
-    private val filterStatus: MutableList<String> = mutableListOf("availability", "all")
+    //    mutableListOf(
+//0    <"distance" || "availability">(sort),
+//1    <"surface" || "structure" || "all">(park type),
+//2    <"true", "false">
+//3    <"$distanceValue">
+//    )
+    private val filterStatus: MutableList<String> = mutableListOf(
+        "availability",
+        "all",
+        "false",
+        "0"
+    )
     private val storage: MutableList<Park> = mutableListOf(
         Park(
             "park1",
             90.1,
-            25.0,
+            5.0,
             Calendar.getInstance(),
             "Structure",
             0.0,
@@ -23,7 +33,7 @@ class MockingDBParks private constructor(){
         ), Park(
             "park2",
             0.0,
-            25.0,
+            50.0,
             Calendar.getInstance(),
             "Surface",
             0.0,
@@ -62,33 +72,30 @@ class MockingDBParks private constructor(){
 
     fun getFilterParkTypeStatus(): String = filterStatus[1]
 
-    fun setSortByDistanceStatus() {
-        filterStatus[0] = "distance"
-    }
+    fun getAccessibilityStatus(): Boolean = filterStatus[2].toBoolean()
 
-    fun setSortByAvailabilityStatus() {
-        filterStatus[0] = "availability"
-    }
+    fun getDistanceValueStatus(): Int = filterStatus[3].toInt()
 
-    fun setSurfaceParkDistanceStatus() {
-        filterStatus[1] = "surface"
-    }
+    fun setSortByDistanceStatus() { filterStatus[0] = "distance" }
 
-    fun setStructureParkAvailabilityStatus() {
-        filterStatus[1] = "structure"
-    }
+    fun setSortByAvailabilityStatus() { filterStatus[0] = "availability" }
 
-    fun setAllParkAllStatus() {
-        filterStatus[1] = "all"
-    }
+    fun setSurfaceParkStatus() { filterStatus[1] = "surface" }
 
-    fun insert(park: Park) {
-        storage.add(park)
-    }
+    fun setStructureParkStatus() { filterStatus[1] = "structure" }
+
+    fun setAllParksStatus() { filterStatus[1] = "all" }
+
+    fun setAccessibilityStatus(status: Boolean) { filterStatus[2] = status.toString() }
+
+    fun setDistanceValueStatus(value: Int) { filterStatus[3] = value.toString() }
+
+    fun insert(park: Park) { storage.add(park) }
 
     fun getAll(): List<Park> {
 
         var parks: MutableList<Park> = mutableListOf()
+        val parksAux: MutableList<Park> = mutableListOf()
 
         when (filterStatus[1]) {
             "all" -> {
@@ -108,6 +115,27 @@ class MockingDBParks private constructor(){
                     }
                 }
             }
+        }
+
+        if (filterStatus[2].toBoolean()) {
+            for (park in parks) {
+                if (park.nrParkingSpotForDisablePeople > 0) {
+                    parksAux.add(park)
+                }
+            }
+            parks = parksAux
+            parksAux.clear()
+        }
+
+        val distance = filterStatus[3].toInt()
+
+        if (distance > 0) {
+            for (park in parks) {
+                if (park.distance <= distance) {
+                    parksAux.add(park)
+                }
+            }
+            parks = parksAux
         }
 
         when (filterStatus[0]) {
