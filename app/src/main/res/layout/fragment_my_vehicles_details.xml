@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginHorizontal="15dp"
+    android:weightSum="5"
+    tools:context=".ui.fragments.MyVehiclesDetailsFragment"
+    >
+
+    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/vehicle_image"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:layout_gravity="center"
+        android:src="@mipmap/mustang_shelby_gt500"
+        android:contentDescription="@string/description_icon_park"
+        /> <!-- Change later to "description_icon_vehicle" -->
+
+
+
+    <!-- Field Brand & Model-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:weightSum="2"
+        >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:text="@string/vehicle_detail_brand"
+                />
+
+            <TextView
+                android:id="@+id/park_details_distance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:text="@string/vehicle_detail_brand"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:text="@string/vehicle_detail_model"
+                />
+
+            <TextView
+                android:id="@+id/vehicle_detail_model"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:text="@string/vehicle_detail_model"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Field Plate & Plate Date-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:weightSum="2"
+        >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:text="@string/vehicle_detail_plate"
+                />
+
+            <TextView
+                android:id="@+id/vehicle_detail_plate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:text="@string/vehicle_detail_plate"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:text="@string/vehicle_detail_plate"
+                />
+
+            <TextView
+            android:id="@+id/vehicle_detail_plate_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="@string/vehicle_detail_plate"
+            /> <!-- Change later to "vehicle_detail_plate_date" -->
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/my_vehicles_details_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Edit"
+        /> <!-- Change later to "vehicle_detail_edit" -->
+
+    <Button
+        android:id="@+id/my_vehicles_details_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:textColor="@color/color_primary_white"
+        android:background="@color/color_primary_red"
+        />
+    <!-- Change later to "vehicle_detail_delete" -->
+
+</LinearLayout>

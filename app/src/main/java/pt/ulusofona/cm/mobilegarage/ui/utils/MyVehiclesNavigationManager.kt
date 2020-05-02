@@ -3,6 +3,8 @@ package pt.ulusofona.cm.mobilegarage.ui.utils
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import pt.ulusofona.cm.mobilegarage.R
+import pt.ulusofona.cm.mobilegarage.ui.fragments.MyVehiclesDetailsFragment
+import pt.ulusofona.cm.mobilegarage.ui.fragments.MyVehiclesFragment
 import pt.ulusofona.cm.mobilegarage.ui.fragments.ParkDetailsFragment
 
 class MyVehiclesNavigationManager {
@@ -19,7 +21,7 @@ class MyVehiclesNavigationManager {
         fun goToVehicleDetails(fm: FragmentManager) {
             placeFragment(
                 fm,
-                ParkDetailsFragment() /**IT WILL BE CHANGED TO THE VehicleDetailsFragment**/
+                MyVehiclesDetailsFragment()
             )
         }
 
