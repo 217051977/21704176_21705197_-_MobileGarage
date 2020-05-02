@@ -16,19 +16,6 @@ class ParkNavigationManager {
             transition.commit()
         }
 
-        /*fun goToFilterOptions(fm: FragmentManager) {
-            placeFragment(
-                fm,
-                HomeMenuFilterOptionsFragment()
-            )
-        }
-
-        fun goToFilterOptions(fm: FragmentManager, fav: Boolean = false) {
-            placeFragment(
-                fm,
-                FavoritesFilterOptionsFragment()
-            )
-        }*/
         fun goToFilterOptions(fm: FragmentManager, fav: Boolean = false) {
             if (fav) {
                 placeFragment(
