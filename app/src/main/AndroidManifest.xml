@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/appTheme">
         <activity android:name=".ui.activities.ContactsActivity"></activity>
-        <activity android:name=".ui.activities.AppActivity" ><!--</activity>
-        <activity android:name=".ui.activities.SplashScreenActivity">-->
+        <activity android:name=".ui.activities.AppActivity" ></activity>
+        <activity android:name=".ui.activities.SplashScreenActivity">
 
             <!-- <activity android:name=".mvvm.view.activity.SplashScreenActivity"> -->
             <intent-filter>
