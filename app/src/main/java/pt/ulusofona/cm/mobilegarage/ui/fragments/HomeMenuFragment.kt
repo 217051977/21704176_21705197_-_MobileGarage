@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import butterknife.ButterKnife
+import butterknife.OnClick
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.fragment_home_menu.*
 import pt.ulusofona.cm.mobilegarage.R
 import pt.ulusofona.cm.mobilegarage.ui.viewmodels.ParkViewModel
@@ -39,6 +41,29 @@ class HomeMenuFragment : Fragment() {
             activity?.supportFragmentManager!!,
             viewModel
         )
+    }
+
+    @OnClick(
+        R.id.filter_button_home_menu
+    )
+    fun onClickFilter(view: View) {
+        viewModel.goToFilterOption(
+            activity as Context,
+            this::class.java.simpleName,
+            activity?.supportFragmentManager!!
+        )
+//        MaterialAlertDialogBuilder(activity as Context)
+//            .setTitle(resources.getString(R.string.filter_title))
+//            .setNeutralButton(resources.getString(R.string.filter_cancel)) { dialog, which ->
+//
+//            }
+//            .setPositiveButton(resources.getString(R.string.filter_ok)) { dialog, which ->
+//
+//            }
+//            .setMultiChoiceItems(arrayOf("q", "w", "e", "r"), booleanArrayOf(false, false, true, true)) { dialog, which, isChecked ->
+//
+//            }
+//            .show()
     }
 
 }

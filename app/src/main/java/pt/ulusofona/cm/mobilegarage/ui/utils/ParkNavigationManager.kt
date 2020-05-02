@@ -16,6 +16,13 @@ class ParkNavigationManager {
             transition.commit()
         }
 
+        fun goToFilterOptions(fm: FragmentManager) {
+            placeFragment(
+                fm,
+                FilterOptionsFragment()
+            )
+        }
+
         fun goToParkDetails(fm: FragmentManager) {
             placeFragment(
                 fm,

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="filter_title">Filtros</string>
+    <string name="filter_ok">OK</string>
+    <string name="filter_cancel">Cancelar</string>
+
+    <string name="filter_orders_title">ordens</string>
+    <string name="filter_orders_name">Nome</string>
+    <string name="filter_orders_last_update">Última atualização</string>
+    <string name="filter_orders_distance">Distância</string>
+    <string name="filter_orders_type">Tipo</string>
+
+    <string name="filter_checkable_title">checkable</string>
+    <string name="filter_checkable_availability">Availability</string>
+    <string name="filter_checkable_accessible_to_disable_people">Accessible to disable people</string>
+
+    <string name="filter_distance_title">distância</string>
+    <string name="filter_distance_value">0m</string>
+</resources>

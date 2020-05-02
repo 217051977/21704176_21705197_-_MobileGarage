@@ -15,6 +15,10 @@ class Park(
     var favorite: Boolean = false
 ) {
 
+    fun getAddressNotification(): String = "Address: $address"
+
+    fun getLastUpdateNotification(): String = "Last update: ${getLastUpdate()}"
+
     fun getLastUpdate(): String =
         "${lastUpdate.get(
             Calendar.DATE
