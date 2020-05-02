@@ -16,7 +16,11 @@ class MyVehiclesViewModel : ViewModel() {
     private val myVehiclesLogic: MyVehiclesLogic = MyVehiclesLogic()
 
     fun onClickAddVehicle(supp: FragmentManager) {
-        MyVehiclesNavigationManager.goToVehicleDetails(supp)
+        MyVehiclesNavigationManager.goToVehicleAdd(supp)
+    }
+
+    fun onClickCancelAddVehicle(supp: FragmentManager) {
+        MyVehiclesNavigationManager.goToVehicleList(supp)
     }
 
     fun setAdapter(context: Context, supportFragmentManager: FragmentManager): MyVehiclesAdapter {
