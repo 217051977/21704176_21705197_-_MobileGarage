@@ -3,9 +3,13 @@ package pt.ulusofona.cm.mobilegarage.data.local.entities
 import java.util.*
 
 open class Vehicle (
-    val plate: String,
+    val brand: String = "Mustang",
+    val model: String = "GT500",
+    val plate: String = "NN-NN-NN",
+    val plateDate: String = "10/10",
     var insuranceDeadLineDate: Calendar,
-    val category: String,
+    val category: String = "N",
+    var month: Int = 0,
     var year: Int = 0,
     var pictureSrc: String = "mipmap-xxxhdpi/mustang_shelby_gt500.jpg",
     var isParked: Boolean = false,
@@ -81,5 +85,6 @@ open class Vehicle (
 
     private fun equalDayTo(actualDate: Calendar): Boolean =
         actualDate.get(Calendar.DAY_OF_MONTH) == insuranceDeadLineDate.get(Calendar.DAY_OF_MONTH)
+
 
 }

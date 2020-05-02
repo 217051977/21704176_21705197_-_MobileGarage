@@ -1,22 +1,24 @@
 package pt.ulusofona.cm.mobilegarage.ui.fragments
 
-import android.content.Context
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import butterknife.ButterKnife
 import butterknife.OnClick
-import kotlinx.android.synthetic.main.fragment_my_vehicles.*
+import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.fragment_my_vehicles_details.*
+
 import pt.ulusofona.cm.mobilegarage.R
+import pt.ulusofona.cm.mobilegarage.data.local.entities.Vehicle
 import pt.ulusofona.cm.mobilegarage.ui.viewmodels.MyVehiclesViewModel
 
-class MyVehiclesFragment : Fragment() {
+class MyVehiclesDetailsFragment : Fragment() {
 
     private lateinit var viewModel: MyVehiclesViewModel
+    private lateinit var vehicleToShow: Vehicle
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,7 +26,7 @@ class MyVehiclesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(
-            R.layout.fragment_my_vehicles,
+            R.layout.fragment_my_vehicles_details,
             container,
             false
         )
@@ -34,19 +36,17 @@ class MyVehiclesFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        vehicle_list.layoutManager = LinearLayoutManager(activity as Context)
-        vehicle_list.adapter = viewModel.setAdapter(
-            activity as Context,
-            activity?.supportFragmentManager!!,
-            viewModel
-        )
+        vehicleToShow = viewModel.getVehicleToShow()!!
+        vehicle_detail_brand.text = vehicleToShow.brand
+        vehicle_detail_model.text = vehicleToShow.model
+        vehicle_detail_plate.text = vehicleToShow.plate
+        vehicle_detail_plate_date.text = vehicleToShow.plateDate
     }
 
-    @OnClick(
-        R.id.add_vehicle
-    )
-    fun onClickAddVehicle(view: View) {
-        viewModel.onClickAddVehicle(activity?.supportFragmentManager!!)
+    @OnClick(R.id.my_vehicles_details_delete)
+    fun onClickDeleteVehicle(view: View) {
+        viewModel.onClickCancelAddVehicle(activity?.supportFragmentManager!!)
     }
 
 }
+
