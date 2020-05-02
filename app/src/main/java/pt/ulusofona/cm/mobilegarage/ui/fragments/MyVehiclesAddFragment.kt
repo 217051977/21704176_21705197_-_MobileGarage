@@ -1,6 +1,5 @@
 package pt.ulusofona.cm.mobilegarage.ui.fragments
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,10 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import butterknife.ButterKnife
 import butterknife.OnClick
-import kotlinx.android.synthetic.main.fragment_my_vehicles.*
 
 import pt.ulusofona.cm.mobilegarage.R
 import pt.ulusofona.cm.mobilegarage.data.local.entities.Vehicle
@@ -34,6 +31,7 @@ class MyVehiclesAddFragment : Fragment() {
             false
         )
 
+
         val vehicleBrand: EditText = view.findViewById(R.id.vehicle_brand)
         val vehicleModel: EditText = view.findViewById(R.id.vehicle_model)
         val vehiclePlate: EditText = view.findViewById(R.id.vehicle_plate)
@@ -54,6 +52,7 @@ class MyVehiclesAddFragment : Fragment() {
             )
 
 
+
         viewModel = ViewModelProvider(this).get(MyVehiclesViewModel::class.java)
         ButterKnife.bind(this, view)
         return view
@@ -62,7 +61,7 @@ class MyVehiclesAddFragment : Fragment() {
 
     @OnClick(R.id.vehicles_submit)
     fun onClickSubmitAdd(view: View) {
-        viewModel.onClickSubmitAddVehicle(activity?.supportFragmentManager!!)
+        viewModel.onClickSubmitAddVehicle(activity?.supportFragmentManager!!, vehicleCreated)
     }
 
     @OnClick(R.id.vehicles_cancel)

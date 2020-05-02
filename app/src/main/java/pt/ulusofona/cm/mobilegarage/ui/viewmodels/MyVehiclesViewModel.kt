@@ -23,7 +23,8 @@ class MyVehiclesViewModel : ViewModel() {
         MyVehiclesNavigationManager.goToVehicleList(supp)
     }
 
-    fun onClickSubmitAddVehicle(supp: FragmentManager) {
+    fun onClickSubmitAddVehicle(supp: FragmentManager, vehicle: Vehicle) {
+        myVehiclesLogic.add(vehicle)
         MyVehiclesNavigationManager.goToVehicleList(supp)
     }
 
