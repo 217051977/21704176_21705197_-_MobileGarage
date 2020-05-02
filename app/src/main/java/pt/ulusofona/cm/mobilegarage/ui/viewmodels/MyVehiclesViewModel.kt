@@ -23,6 +23,10 @@ class MyVehiclesViewModel : ViewModel() {
         MyVehiclesNavigationManager.goToVehicleList(supp)
     }
 
+    fun onClickSubmitAddVehicle(supp: FragmentManager) {
+        MyVehiclesNavigationManager.goToVehicleList(supp)
+    }
+
     fun setAdapter(context: Context, supportFragmentManager: FragmentManager): MyVehiclesAdapter {
         return MyVehiclesAdapter(
             context,
@@ -31,5 +35,4 @@ class MyVehiclesViewModel : ViewModel() {
             supportFragmentManager
         )
     }
-
 }

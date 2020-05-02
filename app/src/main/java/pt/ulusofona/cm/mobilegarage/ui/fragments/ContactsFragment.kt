@@ -10,7 +10,6 @@ import androidx.viewpager.widget.ViewPager
 import butterknife.ButterKnife
 import com.google.android.material.tabs.TabLayout
 import pt.ulusofona.cm.mobilegarage.R
-import pt.ulusofona.cm.mobilegarage.ui.adapters.ViewPagerAdapter
 import pt.ulusofona.cm.mobilegarage.ui.viewmodels.DrawerViewModel
 
 class ContactsFragment : Fragment() {

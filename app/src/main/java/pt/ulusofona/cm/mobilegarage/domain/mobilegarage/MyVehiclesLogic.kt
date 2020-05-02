@@ -7,6 +7,8 @@ class MyVehiclesLogic {
 
     private val storage: MockingDBCars = MockingDBCars.getInstance()
 
+    fun getVehicleToShow(): Vehicle? = storage.vehicle
+
     fun getAll(): List<Vehicle> = storage.getAll()
 
     fun add(vehicle: Vehicle) {

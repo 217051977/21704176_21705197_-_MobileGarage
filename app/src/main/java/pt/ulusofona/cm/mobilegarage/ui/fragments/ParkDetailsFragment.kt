@@ -20,7 +20,6 @@ import java.net.URI
 class ParkDetailsFragment : Fragment() {
 
     private lateinit var viewModel: ParkViewModel
-
     private lateinit var parkToShow: Park
 
     override fun onCreateView(
