@@ -34,7 +34,7 @@
                     />
 
                 <item
-                    android:id="@+id/trafic"
+                    android:id="@+id/traffic"
                     android:icon="@drawable/ic_traffic_black_24dp"
                     android:title="@string/drawer_option_traffic"
                     />

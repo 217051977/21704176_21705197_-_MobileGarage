@@ -22,15 +22,6 @@ class DrawerViewModel : ViewModel() {
         return adapter
     }
 
-    fun onClickContacts(
-        context: Context,
-        TAG: String?,
-        supportFragmentManager: FragmentManager
-    ) {
-        feedback.createFullButton(TAG, context,"nav_contacts")
-        DrawerNavigationManager.goToContacts(supportFragmentManager)
-    }
-
     fun onClickProfile(
         context: Context,
         TAG: String?,
@@ -47,6 +38,60 @@ class DrawerViewModel : ViewModel() {
     ) {
         feedback.createFullButton(TAG, context, "nav_bar_my_vehicles")
         DrawerNavigationManager.goToMyVehicles(supportFragmentManager)
+    }
+
+    fun onClickContacts(
+        context: Context,
+        TAG: String?,
+        supportFragmentManager: FragmentManager
+    ) {
+        feedback.createFullButton(TAG, context,"nav_contacts")
+        DrawerNavigationManager.goToContacts(supportFragmentManager)
+    }
+
+    fun onClickGira(
+        context: Context,
+        TAG: String?,
+        supportFragmentManager: FragmentManager
+    ) {
+        feedback.createFullButton(TAG, context,"nav_contacts")
+        DrawerNavigationManager.goToGira(supportFragmentManager)
+    }
+
+    fun onClickTraffic(
+        context: Context,
+        TAG: String?,
+        supportFragmentManager: FragmentManager
+    ) {
+        feedback.createFullButton(TAG, context,"nav_contacts")
+        DrawerNavigationManager.goToTraffic(supportFragmentManager)
+    }
+
+    fun onClickMap(
+        context: Context,
+        TAG: String?,
+        supportFragmentManager: FragmentManager
+    ) {
+        feedback.createFullButton(TAG, context,"nav_contacts")
+        DrawerNavigationManager.goToMap(supportFragmentManager)
+    }
+
+    fun onClickFindVehicle(
+        context: Context,
+        TAG: String?,
+        supportFragmentManager: FragmentManager
+    ) {
+        feedback.createFullButton(TAG, context,"nav_contacts")
+        DrawerNavigationManager.goToFindVehicle(supportFragmentManager)
+    }
+
+    fun onClickShareLocation(
+        context: Context,
+        TAG: String?,
+        supportFragmentManager: FragmentManager
+    ) {
+        feedback.createFullButton(TAG, context,"nav_contacts")
+        DrawerNavigationManager.goToShareLocation(supportFragmentManager)
     }
 
 }

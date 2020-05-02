@@ -38,6 +38,31 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
                 TAG,
                 this.supportFragmentManager
             )
+            R.id.gira -> drawerViewModel.onClickGira(
+                this,
+                TAG,
+                this.supportFragmentManager
+            )
+            R.id.traffic -> drawerViewModel.onClickTraffic(
+                this,
+                TAG,
+                this.supportFragmentManager
+            )
+            R.id.map -> drawerViewModel.onClickMap(
+                this,
+                TAG,
+                this.supportFragmentManager
+            )
+            R.id.find_vehicle -> drawerViewModel.onClickFindVehicle(
+                this,
+                TAG,
+                this.supportFragmentManager
+            )
+            R.id.share_location -> drawerViewModel.onClickShareLocation(
+                this,
+                TAG,
+                this.supportFragmentManager
+            )
             R.id.nav_log_out -> finish()
         }
         nav_bar.menu.getItem(nav_bar.menu.size() - 1).isChecked = true

@@ -37,6 +37,41 @@ class DrawerNavigationManager {
             )
         }
 
+        fun goToGira(fm: FragmentManager) {
+            placeFragment(
+                fm,
+                GiraFragment()
+            )
+        }
+
+        fun goToTraffic(fm: FragmentManager) {
+            placeFragment(
+                fm,
+                TrafficFragment()
+            )
+        }
+
+        fun goToMap(fm: FragmentManager) {
+            placeFragment(
+                fm,
+                MapFragment()
+            )
+        }
+
+        fun goToFindVehicle(fm: FragmentManager) {
+            placeFragment(
+                fm,
+                FindVehicleFragment()
+            )
+        }
+
+        fun goToShareLocation(fm: FragmentManager) {
+            placeFragment(
+                fm,
+                ShareLocationFragment()
+            )
+        }
+
     }
 
 }
