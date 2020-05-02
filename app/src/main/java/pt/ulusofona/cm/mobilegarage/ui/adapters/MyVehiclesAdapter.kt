@@ -22,9 +22,7 @@ class MyVehiclesAdapter(
 ) : RecyclerView.Adapter<MyVehiclesAdapter.MyVehiclesViewHolder>() {
 
     private val feedback: Feedback = Feedback.getInstance()
-    lateinit var brand: String
-    lateinit var model: String
-    lateinit var plateDate: String
+
 
     class MyVehiclesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val isParked: TextView = view.is_parked
