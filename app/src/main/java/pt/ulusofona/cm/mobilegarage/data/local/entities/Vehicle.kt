@@ -5,13 +5,12 @@ import java.util.*
 open class Vehicle (
     val plate: String,
     var insuranceDeadLineDate: Calendar,
-    val category: String
-) {
-
-    var year: Int = 0
-    var pictureSrc: String = "mipmap-xxxhdpi/mustang_shelby_gt500.jpg"
-    var isParked: Boolean = false
+    val category: String,
+    var year: Int = 0,
+    var pictureSrc: String = "mipmap-xxxhdpi/mustang_shelby_gt500.jpg",
+    var isParked: Boolean = false,
     var vehicleTypeIconSrc: String = "drawable/ic_directions_car_black_24dp.xml"
+) {
 
     fun isYoungerThan(year: Int): Boolean = this.year < year
 

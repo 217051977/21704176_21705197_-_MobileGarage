@@ -4,16 +4,24 @@
     <string name="filter_ok">OK</string>
     <string name="filter_cancel">Cancel</string>
 
-    <string name="filter_orders_title">orders</string>
-    <string name="filter_orders_name">Name</string>
-    <string name="filter_orders_last_update">Last update</string>
-    <string name="filter_orders_distance">Distance</string>
-    <string name="filter_orders_type">Type</string>
+    <string name="filter_sort_title">sort by:</string>
+    <string name="filter_sort_distance">Distance</string>
+    <string name="filter_sort_availability">Availability</string>
+    <string name="filter_sort_all">All</string>
 
-    <string name="filter_checkable_title">checkable</string>
+    <string name="filter_park_type_title">park type</string>
+    <string name="filter_park_type_surface">Surface</string>
+    <string name="filter_park_type_structure">Structure</string>
+    <string name="filter_park_type_all">All</string>
+
+    <string name="filter_others_title">others</string>
     <string name="filter_checkable_availability">Availability</string>
-    <string name="filter_checkable_accessible_to_disable_people">Accessible to disable people</string>
+    <string name="filter_checkable_accessible_to_disable_people">
+        Accessible to disable people
+    </string>
 
     <string name="filter_distance_title">distance</string>
     <string name="filter_distance_value">0m</string>
+
+    <string name="filter_apply_button">Apply</string>
 </resources>
