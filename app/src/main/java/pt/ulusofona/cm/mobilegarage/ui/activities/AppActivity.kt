@@ -33,12 +33,12 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
                 this::class.java.simpleName,
                 this.supportFragmentManager
             )
-            R.id.nav_log_out -> finish()
             R.id.nav_contacts -> drawerViewModel.onClickContacts(
                 this,
                 TAG,
                 this.supportFragmentManager
             )
+            R.id.nav_log_out -> finish()
         }
         nav_bar.menu.getItem(nav_bar.menu.size() - 1).isChecked = true
         drawer.closeDrawers()
