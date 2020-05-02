@@ -50,13 +50,24 @@ class ParkViewModel : ViewModel() {
         supportFragmentManager: FragmentManager,
         viewModel: ParkViewModel
     ): ParkingListAdapter {
-        return ParkingListAdapter(
-            context,
-            R.layout.item_park_element,
-            parksLogic.getAll() as MutableList<Park>,
+        val parks: List<Park> = parksLogic.getAll()
+        return if (parks.isNotEmpty()) {
+            ParkingListAdapter(
+                context,
+                R.layout.item_park_element,
+                parks as MutableList <Park>,
             supportFragmentManager,
             viewModel
-        )
+            )
+        } else {
+            ParkingListAdapter(
+                context,
+                R.layout.item_park_element,
+                mutableListOf(),
+                supportFragmentManager,
+                viewModel
+            )
+        }
     }
 
 }

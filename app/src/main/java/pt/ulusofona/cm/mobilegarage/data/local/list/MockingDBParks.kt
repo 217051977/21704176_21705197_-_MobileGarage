@@ -123,7 +123,8 @@ class MockingDBParks private constructor(){
                     parksAux.add(park)
                 }
             }
-            parks = parksAux
+            parks.clear()
+            parks.addAll(parksAux)
             parksAux.clear()
         }
 
@@ -135,7 +136,9 @@ class MockingDBParks private constructor(){
                     parksAux.add(park)
                 }
             }
-            parks = parksAux
+            parks.clear()
+            parks.addAll(parksAux)
+            parksAux.clear()
         }
 
         when (filterStatus[0]) {
