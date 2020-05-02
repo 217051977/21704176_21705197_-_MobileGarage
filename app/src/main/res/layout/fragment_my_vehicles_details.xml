@@ -18,9 +18,8 @@
         android:layout_weight="2"
         android:layout_gravity="center"
         android:src="@mipmap/mustang_shelby_gt500"
-        android:contentDescription="@string/description_icon_park"
-        /> <!-- Change later to "description_icon_vehicle" -->
-
+        android:contentDescription="@string/description_icon_vehicle"
+        />
 
 
     <!-- Field Brand & Model-->
@@ -154,8 +153,8 @@
             android:textAlignment="center"
             android:gravity="center"
             android:textSize="20sp"
-            android:text="@string/vehicle_detail_plate"
-            /> <!-- Change later to "vehicle_detail_plate_date" -->
+            android:text="@string/vehicle_detail_plate_date"
+                />
 
         </LinearLayout>
 
@@ -172,9 +171,10 @@
         android:id="@+id/my_vehicles_details_delete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Delete"
         android:textColor="@color/color_primary_white"
         android:background="@color/color_primary_red"
+        android:text="Delete"
+        android:onClick="onClickDeleteVehicle"
         />
     <!-- Change later to "vehicle_detail_delete" -->
 

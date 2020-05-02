@@ -31,7 +31,6 @@ class MyVehiclesAddFragment : Fragment() {
             false
         )
 
-
         val vehicleBrand: EditText = view.findViewById(R.id.vehicle_brand)
         val vehicleModel: EditText = view.findViewById(R.id.vehicle_model)
         val vehiclePlate: EditText = view.findViewById(R.id.vehicle_plate)
@@ -51,13 +50,10 @@ class MyVehiclesAddFragment : Fragment() {
             vehicleTypeIconSrc = "drawable/ic_directions_car_black_24dp.xml"
             )
 
-
-
         viewModel = ViewModelProvider(this).get(MyVehiclesViewModel::class.java)
         ButterKnife.bind(this, view)
         return view
     }
-
 
     @OnClick(R.id.vehicles_submit)
     fun onClickSubmitAdd(view: View) {

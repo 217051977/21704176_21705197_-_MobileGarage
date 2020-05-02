@@ -37,7 +37,8 @@ class MyVehiclesFragment : Fragment() {
         vehicle_list.layoutManager = LinearLayoutManager(activity as Context)
         vehicle_list.adapter = viewModel.setAdapter(
             activity as Context,
-            activity?.supportFragmentManager!!
+            activity?.supportFragmentManager!!,
+            viewModel
         )
     }
 

@@ -6,9 +6,9 @@
     <string name="vehicle_detail_brand">Brand</string>
     <string name="vehicle_detail_model">Model</string>
     <string name="vehicle_detail_year">Year</string>
-    <!-- <string name="vehicle_detail_plate_date">Data de Matricula</string> -->
-    <!-- <string name="vehicle_detail_edit">Editar</string> -->
-    <!-- <string name="vehicle_detail_delete">Apagar</string> -->
-    <!-- <string name="description_icon_vehicle">Meu Veiculo</string> -->
+    <string name="vehicle_detail_plate_date">Data de Matricula</string>
+    <string name="vehicle_detail_edit">Editar</string>
+    <string name="vehicle_detail_delete">Apagar</string>
+    <string name="description_icon_vehicle">Meu Veículo</string>
 
 </resources>

@@ -10,15 +10,21 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_vehicle_list.view.*
 import pt.ulusofona.cm.mobilegarage.data.local.entities.Feedback
 import pt.ulusofona.cm.mobilegarage.data.local.entities.Vehicle
+import pt.ulusofona.cm.mobilegarage.ui.utils.MyVehiclesNavigationManager
+import pt.ulusofona.cm.mobilegarage.ui.viewmodels.MyVehiclesViewModel
 
 class MyVehiclesAdapter(
     private val context: Context,
     private val layout: Int,
     private val items: MutableList<Vehicle>,
-    private val supportFragmentManager: FragmentManager
+    private val supportFragmentManager: FragmentManager,
+    private var viewModel: MyVehiclesViewModel
 ) : RecyclerView.Adapter<MyVehiclesAdapter.MyVehiclesViewHolder>() {
 
     private val feedback: Feedback = Feedback.getInstance()
+    lateinit var brand: String
+    lateinit var model: String
+    lateinit var plateDate: String
 
     class MyVehiclesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val isParked: TextView = view.is_parked
@@ -54,6 +60,9 @@ class MyVehiclesAdapter(
                 context,
                 items[position].plate
             )
+            viewModel.setVehicleToShow(items[position])
+            MyVehiclesNavigationManager.goToVehicleDetails(supportFragmentManager)
+
         }
     }
 
