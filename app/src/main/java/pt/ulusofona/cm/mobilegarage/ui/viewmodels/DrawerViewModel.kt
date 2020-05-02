@@ -31,4 +31,22 @@ class DrawerViewModel : ViewModel() {
         DrawerNavigationManager.goToContacts(supportFragmentManager)
     }
 
+    fun onClickProfile(
+        context: Context,
+        TAG: String?,
+        supportFragmentManager: FragmentManager
+    ) {
+        feedback.createFullButton(TAG, context, "nav_bar_profile")
+        DrawerNavigationManager.goToProfile(supportFragmentManager)
+    }
+
+    fun onClickMyVehicles(
+        context: Context,
+        TAG: String?,
+        supportFragmentManager: FragmentManager
+    ) {
+        feedback.createFullButton(TAG, context, "nav_bar_my_vehicles")
+        DrawerNavigationManager.goToMyVehicles(supportFragmentManager)
+    }
+
 }

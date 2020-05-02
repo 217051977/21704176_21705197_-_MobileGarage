@@ -6,40 +6,58 @@
     <group>
 
         <item
-            android:id="@+id/nav_contacts"
-            android:icon="@drawable/ic_contact_phone_black_24dp"
-            android:title="@string/drawer_option_contacts"
+            android:id="@+id/profile"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:title="@string/drawer_profile"
             />
 
         <item
-            android:id="@+id/gira"
-            android:icon="@mipmap/gira_logo"
-            android:title="@string/drawer_option_gira"
+            android:id="@+id/vehicles"
+            android:icon="@drawable/ic_directions_car_black_24dp"
+            android:title="@string/drawer_my_vehicles"
             />
 
         <item
-            android:id="@+id/trafic"
-            android:icon="@drawable/ic_traffic_black_24dp"
-            android:title="@string/drawer_option_traffic"
-            />
+            android:id="@+id/nav_functionality"
+            android:title="@string/functionality">
+            <menu>
+                <item
+                    android:id="@+id/nav_contacts"
+                    android:icon="@drawable/ic_contact_phone_black_24dp"
+                    android:title="@string/drawer_option_contacts"
+                    />
 
-        <item
-            android:id="@+id/map"
-            android:icon="@drawable/ic_map_black_24dp"
-            android:title="@string/drawer_option_map"
-            />
+                <item
+                    android:id="@+id/gira"
+                    android:icon="@mipmap/gira_logo"
+                    android:title="@string/drawer_option_gira"
+                    />
 
-        <item
-            android:id="@+id/find_vehicle"
-            android:icon="@drawable/ic_map_black_24dp"
-            android:title="Find Vehicle"
-            />
+                <item
+                    android:id="@+id/trafic"
+                    android:icon="@drawable/ic_traffic_black_24dp"
+                    android:title="@string/drawer_option_traffic"
+                    />
 
-        <item
-            android:id="@+id/share_location"
-            android:icon="@drawable/ic_map_black_24dp"
-            android:title="Share Location"
-            />
+                <item
+                    android:id="@+id/map"
+                    android:icon="@drawable/ic_map_black_24dp"
+                    android:title="@string/drawer_option_map"
+                    />
+
+                <item
+                    android:id="@+id/find_vehicle"
+                    android:icon="@drawable/ic_map_black_24dp"
+                    android:title="Find Vehicle"
+                    />
+
+                <item
+                    android:id="@+id/share_location"
+                    android:icon="@drawable/ic_map_black_24dp"
+                    android:title="Share Location"
+                    />
+            </menu>
+        </item>
 
     </group>
 

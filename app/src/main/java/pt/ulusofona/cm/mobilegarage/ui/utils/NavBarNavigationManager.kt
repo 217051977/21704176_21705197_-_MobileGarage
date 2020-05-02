@@ -44,13 +44,6 @@ class NavBarNavigationManager {
             )
         }
 
-        fun goToProfile(fm: FragmentManager) {
-            placeFragment(
-                fm,
-                ProfileFragment()
-            )
-        }
-
     }
 
 }

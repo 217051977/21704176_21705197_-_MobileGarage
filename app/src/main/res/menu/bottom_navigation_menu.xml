@@ -4,12 +4,6 @@
     >
 
     <item
-        android:id="@+id/nav_bar_my_vehicles"
-        android:icon="@drawable/ic_directions_car_black_24dp"
-        android:title="@string/nav_bar_my_vehicles"
-        />
-
-    <item
         android:id="@+id/nav_bar_favorites"
         android:icon="@drawable/ic_favorite_black_24dp"
         android:title="@string/nav_bar_favorites"
@@ -29,9 +23,8 @@
         />
 
     <item
-        android:id="@+id/nav_bar_profile"
-        android:icon="@drawable/ic_person_black_24dp"
-        android:title="@string/nav_bar_profile"
+        android:id="@+id/empty"
+        android:visible="false"
         />
 
 </menu>

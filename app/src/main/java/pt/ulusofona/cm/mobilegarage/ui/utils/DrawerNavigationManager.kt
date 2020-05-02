@@ -16,6 +16,20 @@ class DrawerNavigationManager {
             transition.commit()
         }
 
+        fun goToProfile(fm: FragmentManager) {
+            placeFragment(
+                fm,
+                ProfileFragment()
+            )
+        }
+
+        fun goToMyVehicles(fm: FragmentManager) {
+            placeFragment(
+                fm,
+                MyVehiclesFragment()
+            )
+        }
+
         fun goToContacts(fm: FragmentManager) {
             placeFragment(
                 fm,

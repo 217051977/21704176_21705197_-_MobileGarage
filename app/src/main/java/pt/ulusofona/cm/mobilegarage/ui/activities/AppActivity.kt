@@ -13,6 +13,8 @@ import pt.ulusofona.cm.mobilegarage.ui.utils.NavBarNavigationManager
 import pt.ulusofona.cm.mobilegarage.ui.viewmodels.DrawerViewModel
 import pt.ulusofona.cm.mobilegarage.ui.viewmodels.NavBarViewModel
 
+private val TAG = AppActivity::class.java.simpleName
+
 class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var navBarViewModel: NavBarViewModel
@@ -21,16 +23,24 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-            R.id.nav_log_out -> finish()
-            R.id.nav_contacts -> drawerViewModel.onClickContacts(
+            R.id.profile -> drawerViewModel.onClickProfile(
+                this,
+                TAG,
+                this.supportFragmentManager
+            )
+            R.id.vehicles -> drawerViewModel.onClickMyVehicles(
                 this,
                 this::class.java.simpleName,
                 this.supportFragmentManager
             )
+            R.id.nav_log_out -> finish()
+            R.id.nav_contacts -> drawerViewModel.onClickContacts(
+                this,
+                TAG,
+                this.supportFragmentManager
+            )
         }
-        for (i in 0 until nav_bar.menu.size()) {
-            nav_bar.menu.getItem(i).isChecked = false
-        }
+        nav_bar.menu.getItem(nav_bar.menu.size() - 1).isChecked = true
         drawer.closeDrawers()
         return true
     }
@@ -57,7 +67,7 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         setupDrawerMenu()
         setupNavBar()
         setLastInitVars()
-        NavBarNavigationManager.goToMyVehicles(supportFragmentManager)
+        NavBarNavigationManager.goToHomePage(supportFragmentManager)
     }
 
     private fun setLastInitVars() {
@@ -67,20 +77,11 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
     private fun setupNavBar() {
 
+        nav_bar.menu.findItem(R.id.nav_bar_home).isChecked = true
+
         nav_bar.setOnNavigationItemSelectedListener { item ->
 
             when(item.itemId) {
-
-                R.id.nav_bar_my_vehicles -> {
-                    navBarViewModel.onClickMyVehicles(
-                        this,
-                        this::class.java.simpleName,
-                        this.supportFragmentManager
-                    )
-
-                    return@setOnNavigationItemSelectedListener true
-
-                }
 
                 R.id.nav_bar_favorites -> {
                     navBarViewModel.onClickFavorites(
@@ -88,7 +89,6 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
                         this::class.java.simpleName,
                         this.supportFragmentManager
                     )
-
                     return@setOnNavigationItemSelectedListener true
 
                 }
@@ -99,24 +99,12 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
                         this::class.java.simpleName,
                         this.supportFragmentManager
                     )
-
                     return@setOnNavigationItemSelectedListener true
 
                 }
 
                 R.id.nav_bar_park_me_now -> {
                     navBarViewModel.onClickParkMeNow(
-                        this,
-                        this::class.java.simpleName,
-                        this.supportFragmentManager
-                    )
-
-                    return@setOnNavigationItemSelectedListener true
-
-                }
-
-                R.id.nav_bar_profile -> {
-                    navBarViewModel.onClickProfile(
                         this,
                         this::class.java.simpleName,
                         this.supportFragmentManager

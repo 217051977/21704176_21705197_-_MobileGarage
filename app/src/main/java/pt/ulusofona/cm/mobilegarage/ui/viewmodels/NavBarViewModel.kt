@@ -10,15 +10,6 @@ class NavBarViewModel : ViewModel() {
 
     private val feedback: Feedback = Feedback.getInstance()
 
-    fun onClickMyVehicles(
-        context: Context,
-        TAG: String?,
-        supportFragmentManager: FragmentManager
-    ) {
-        feedback.createFullButton(TAG, context, "nav_bar_my_vehicles")
-        NavBarNavigationManager.goToMyVehicles(supportFragmentManager)
-    }
-
     fun onClickFavorites(
         context: Context,
         TAG: String?,
@@ -44,15 +35,6 @@ class NavBarViewModel : ViewModel() {
     ) {
         feedback.createFullButton(TAG, context, "nav_bar_park_me_now")
         NavBarNavigationManager.goToParkMeNow(supportFragmentManager)
-    }
-
-    fun onClickProfile(
-        context: Context,
-        TAG: String?,
-        supportFragmentManager: FragmentManager
-    ) {
-        feedback.createFullButton(TAG, context, "nav_bar_profile")
-        NavBarNavigationManager.goToProfile(supportFragmentManager)
     }
 
 }

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="nav_bar_my_vehicles">Meus veículos</string>
     <string name="nav_bar_favorites">Favoritos</string>
     <string name="nav_bar_home">Ecrã inicial</string>
     <string name="nav_bar_park_me_now">Estacionar agora</string>
-    <string name="nav_bar_profile">Perfil</string>
 </resources>
