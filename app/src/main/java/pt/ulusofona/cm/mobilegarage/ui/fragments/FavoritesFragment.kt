@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import butterknife.ButterKnife
+import butterknife.OnClick
 import kotlinx.android.synthetic.main.fragment_home_menu.*
 import pt.ulusofona.cm.mobilegarage.R
 import pt.ulusofona.cm.mobilegarage.ui.viewmodels.ParkViewModel
@@ -38,6 +39,18 @@ class FavoritesFragment : Fragment() {
             activity as Context,
             activity?.supportFragmentManager!!,
             viewModel
+        )
+    }
+
+    @OnClick(
+        R.id.filter_button_favorites
+    )
+    fun onClickFilter(view: View) {
+        viewModel.goToFilterOption(
+            activity as Context,
+            this::class.java.simpleName,
+            activity?.supportFragmentManager!!,
+            fav = true
         )
     }
 

@@ -52,18 +52,6 @@ class HomeMenuFragment : Fragment() {
             this::class.java.simpleName,
             activity?.supportFragmentManager!!
         )
-//        MaterialAlertDialogBuilder(activity as Context)
-//            .setTitle(resources.getString(R.string.filter_title))
-//            .setNeutralButton(resources.getString(R.string.filter_cancel)) { dialog, which ->
-//
-//            }
-//            .setPositiveButton(resources.getString(R.string.filter_ok)) { dialog, which ->
-//
-//            }
-//            .setMultiChoiceItems(arrayOf("q", "w", "e", "r"), booleanArrayOf(false, false, true, true)) { dialog, which, isChecked ->
-//
-//            }
-//            .show()
     }
 
 }

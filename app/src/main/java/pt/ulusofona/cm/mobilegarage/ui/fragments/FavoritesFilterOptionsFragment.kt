@@ -14,9 +14,9 @@ import kotlinx.android.synthetic.main.fragment_filter_options.*
 import pt.ulusofona.cm.mobilegarage.R
 import pt.ulusofona.cm.mobilegarage.ui.viewmodels.FilterOptionsViewModel
 
-private val TAG: String = FilterOptionsFragment::class.java.simpleName
+private val TAG: String = FavoritesFilterOptionsFragment::class.java.simpleName
 
-class FilterOptionsFragment : Fragment() {
+class FavoritesFilterOptionsFragment : Fragment() {
 
     private lateinit var viewModel: FilterOptionsViewModel
 
@@ -127,7 +127,8 @@ class FilterOptionsFragment : Fragment() {
             TAG,
             activity as Context,
             "filter_apply_button",
-            activity?.supportFragmentManager!!
+            activity?.supportFragmentManager!!,
+            fav = true
         )
     }
 

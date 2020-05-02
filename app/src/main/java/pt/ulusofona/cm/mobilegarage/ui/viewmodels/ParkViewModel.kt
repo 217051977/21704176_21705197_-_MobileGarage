@@ -19,10 +19,11 @@ class ParkViewModel : ViewModel() {
     fun goToFilterOption(
         context: Context,
         TAG: String,
-        supportFragmentManager: FragmentManager
+        supportFragmentManager: FragmentManager,
+        fav: Boolean = false
     ) {
         feedback.createFullButton(TAG, context, "filter")
-        ParkNavigationManager.goToFilterOptions(supportFragmentManager)
+        ParkNavigationManager.goToFilterOptions(supportFragmentManager, fav)
     }
 
     fun getParkToShow(): Park? = parksLogic.getParkToShow()

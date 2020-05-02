@@ -79,10 +79,15 @@ class FilterOptionsViewModel : ViewModel() {
         TAG: String,
         context: Context,
         messageIntro: String,
-        fm: FragmentManager
+        fm: FragmentManager,
+        fav:Boolean = false
     ) {
         feedback.createFullMessage(TAG, context, messageIntro)
-        NavBarNavigationManager.goToHomePage(fm)
+        if (fav) {
+            NavBarNavigationManager.goToFavorites(fm)
+        } else {
+            NavBarNavigationManager.goToHomePage(fm)
+        }
     }
 
 }
