@@ -46,7 +46,10 @@ class FilterOptionsFragment : Fragment() {
             "surface" -> filter_park_type_surface.isChecked = true
             else -> filter_park_type_all.isChecked = true
         }
-
+        if (viewModel.getAccessibilityStatus()) {
+            filter_checkable_accessible_to_disable_people.isChecked = true
+        }
+        filter_distance_bar.progress = viewModel.getDistanceValueStatus()
     }
 
     @OnClick(
@@ -111,7 +114,9 @@ class FilterOptionsFragment : Fragment() {
         viewModel.onClickCheckableDisablePeopleFilter(
             TAG,
             activity as Context,
-            "filter_checkable_accessible_to_disable_people")
+            "filter_checkable_accessible_to_disable_people",
+            filter_checkable_accessible_to_disable_people.isChecked
+        )
     }
 
     @OnClick(
