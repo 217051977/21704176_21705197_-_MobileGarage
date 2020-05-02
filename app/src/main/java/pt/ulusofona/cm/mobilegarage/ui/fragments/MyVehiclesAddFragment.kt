@@ -20,6 +20,11 @@ class MyVehiclesAddFragment : Fragment() {
     private lateinit var viewModel: MyVehiclesViewModel
     private lateinit var vehicleCreated: Vehicle
 
+    lateinit var vehicleBrand: EditText
+    lateinit var vehicleModel: EditText
+    lateinit var vehiclePlate: EditText
+    lateinit var vehiclePlateDate: EditText
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,16 +36,27 @@ class MyVehiclesAddFragment : Fragment() {
             false
         )
 
-        val vehicleBrand: EditText = view.findViewById(R.id.vehicle_brand)
-        val vehicleModel: EditText = view.findViewById(R.id.vehicle_model)
-        val vehiclePlate: EditText = view.findViewById(R.id.vehicle_plate)
-        val vehiclePlateDate: EditText = view.findViewById(R.id.vehicle_plate_date)
+        vehicleBrand = view.findViewById(R.id.vehicle_brand)
+        vehicleModel = view.findViewById(R.id.vehicle_model)
+        vehiclePlate = view.findViewById(R.id.vehicle_plate)
+        vehiclePlateDate = view.findViewById(R.id.vehicle_plate_date)
+
+
+
+        viewModel = ViewModelProvider(this).get(MyVehiclesViewModel::class.java)
+        ButterKnife.bind(this, view)
+        return view
+    }
+
+
+    @OnClick(R.id.vehicles_submit)
+    fun onClickSubmitAdd(view: View) {
 
         vehicleCreated = Vehicle(
-            brand = vehicleBrand.toString(),
-            model = vehicleModel.toString(),
-            plate = vehiclePlate.toString(),
-            plateDate = vehiclePlateDate.toString(),
+            brand = vehicleBrand.text.toString(),
+            model = vehicleModel.text.toString(),
+            plate = vehiclePlate.text.toString(),
+            plateDate = vehiclePlateDate.text.toString(),
             insuranceDeadLineDate = Calendar.getInstance(),
             category = "N",
             month = 0,
@@ -48,15 +64,8 @@ class MyVehiclesAddFragment : Fragment() {
             pictureSrc = "mipmap-xxxhdpi/mustang_shelby_gt500.jpg",
             isParked = false,
             vehicleTypeIconSrc = "drawable/ic_directions_car_black_24dp.xml"
-            )
+        )
 
-        viewModel = ViewModelProvider(this).get(MyVehiclesViewModel::class.java)
-        ButterKnife.bind(this, view)
-        return view
-    }
-
-    @OnClick(R.id.vehicles_submit)
-    fun onClickSubmitAdd(view: View) {
         viewModel.onClickSubmitAddVehicle(activity?.supportFragmentManager!!, vehicleCreated)
     }
 

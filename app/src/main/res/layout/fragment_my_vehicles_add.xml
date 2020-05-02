@@ -50,6 +50,7 @@
 
             <EditText
                 android:id="@+id/vehicle_brand"
+                android:tag="vehicle_brand"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
