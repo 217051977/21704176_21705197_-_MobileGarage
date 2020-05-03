@@ -23,7 +23,8 @@ class MyVehiclesViewModel : ViewModel() {
         MyVehiclesNavigationManager.goToVehicleAdd(supp)
     }
 
-    fun onClickDeleteVehicle(supp: FragmentManager) {
+    fun onClickDeleteVehicle(supp: FragmentManager, vehicle: Vehicle) {
+        myVehiclesLogic.remove(vehicle)
         MyVehiclesNavigationManager.goToVehicleList(supp)
     }
 

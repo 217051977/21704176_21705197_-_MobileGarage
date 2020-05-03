@@ -47,6 +47,10 @@ class MockingDBCars private constructor(){
         storage.add(vehicle)
     }
 
+    fun remove(vehicle: Vehicle) {
+        storage.remove(vehicle)
+    }
+
     fun getAll(): List<Vehicle> = storage.toList()
 
 }

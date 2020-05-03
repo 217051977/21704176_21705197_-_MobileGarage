@@ -45,7 +45,7 @@ class MyVehiclesDetailsFragment : Fragment() {
 
     @OnClick(R.id.my_vehicles_details_delete)
     fun onClickDeleteVehicle(view: View) {
-        viewModel.onClickCancelAddVehicle(activity?.supportFragmentManager!!)
+        viewModel.onClickDeleteVehicle(activity?.supportFragmentManager!!, vehicleToShow)
     }
 
 }
