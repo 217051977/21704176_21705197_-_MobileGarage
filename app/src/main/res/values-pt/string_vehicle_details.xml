@@ -9,6 +9,8 @@
     <string name="vehicle_detail_plate_date">Data de Matricula</string>
     <string name="vehicle_detail_edit">Editar</string>
     <string name="vehicle_detail_delete">Apagar</string>
+    <string name="vehicle_detail_cancel">Cancelar</string>
+    <string name="vehicle_detail_submit">Submeter</string>
     <string name="description_icon_vehicle">Meu Veículo</string>
 
 </resources>

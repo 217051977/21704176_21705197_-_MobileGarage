@@ -9,6 +9,8 @@
     <string name="vehicle_detail_plate_date">Plate Date</string>
     <string name="vehicle_detail_edit">Edit</string>
     <string name="vehicle_detail_delete">Delete</string>
+    <string name="vehicle_detail_cancel">Cancel</string>
+    <string name="vehicle_detail_submit">Submit</string>
     <string name="description_icon_vehicle">My Vehicles</string>
 
 </resources>
