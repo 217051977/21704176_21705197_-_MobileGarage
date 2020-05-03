@@ -8,7 +8,9 @@ import pt.ulusofona.cm.mobilegarage.data.local.entities.Feedback
 import pt.ulusofona.cm.mobilegarage.data.local.entities.Park
 import pt.ulusofona.cm.mobilegarage.domain.mobilegarage.ParksLogic
 import pt.ulusofona.cm.mobilegarage.ui.adapters.FavoritesAdapter
+import pt.ulusofona.cm.mobilegarage.ui.adapters.FavoritesLandScapeAdapter
 import pt.ulusofona.cm.mobilegarage.ui.adapters.ParkingListAdapter
+import pt.ulusofona.cm.mobilegarage.ui.adapters.ParkingListLandScapeAdapter
 import pt.ulusofona.cm.mobilegarage.ui.utils.ParkNavigationManager
 
 class ParkViewModel : ViewModel() {
@@ -32,6 +34,20 @@ class ParkViewModel : ViewModel() {
         parksLogic.setParkToShow(park)
     }
 
+    fun setFavoritesLandScapeAdapter(
+        context: Context,
+        supportFragmentManager: FragmentManager,
+        viewModel: ParkViewModel
+    ): FavoritesLandScapeAdapter {
+        return FavoritesLandScapeAdapter(
+            context,
+            R.layout.item_park_element,
+            parksLogic.getAllFavorites() as MutableList<Park>,
+            supportFragmentManager,
+            viewModel
+        )
+    }
+
     fun setFavoritesAdapter(
         context: Context,
         supportFragmentManager: FragmentManager,
@@ -44,6 +60,31 @@ class ParkViewModel : ViewModel() {
             supportFragmentManager,
             viewModel
         )
+    }
+
+    fun setLandScapeAdapter(
+        context: Context,
+        supportFragmentManager: FragmentManager,
+        viewModel: ParkViewModel
+    ): ParkingListLandScapeAdapter {
+        val parks: List<Park> = parksLogic.getAll()
+        return if (parks.isNotEmpty()) {
+            ParkingListLandScapeAdapter(
+                context,
+                R.layout.item_park_element,
+                parks as MutableList <Park>,
+                supportFragmentManager,
+                viewModel
+            )
+        } else {
+            ParkingListLandScapeAdapter(
+                context,
+                R.layout.item_park_element,
+                mutableListOf(),
+                supportFragmentManager,
+                viewModel
+            )
+        }
     }
 
     fun setAdapter(

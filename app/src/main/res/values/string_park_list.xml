@@ -4,4 +4,6 @@
     <string name="item_park_type">Park Type</string>
     <string name="item_park_availability">Park Availability</string>
     <string name="item_park_go_to">Go to</string>
+    <string name="item_park_address">Address</string>
+    <string name="item_park_distance">Distance</string>
 </resources>

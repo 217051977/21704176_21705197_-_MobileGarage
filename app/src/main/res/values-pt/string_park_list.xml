@@ -4,4 +4,6 @@
     <string name="item_park_type">Tipo Parque</string>
     <string name="item_park_availability">Disponibilidade Parque</string>
     <string name="item_park_go_to">Ir para</string>
+    <string name="item_park_address">Morada</string>
+    <string name="item_park_distance">Distância</string>
 </resources>
