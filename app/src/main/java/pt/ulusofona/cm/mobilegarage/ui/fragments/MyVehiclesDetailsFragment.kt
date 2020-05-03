@@ -48,5 +48,12 @@ class MyVehiclesDetailsFragment : Fragment() {
         viewModel.onClickDeleteVehicle(activity?.supportFragmentManager!!, vehicleToShow)
     }
 
+    @OnClick(R.id.my_vehicles_details_back)
+    fun onClickCancel(view: View) {
+        viewModel.onClickCancelAddVehicle(activity?.supportFragmentManager!!)
+    }
+
+
+
 }
 
