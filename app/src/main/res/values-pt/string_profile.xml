@@ -3,14 +3,14 @@
     <string name="profile_name">Nome Perfil</string>
     <string name="profile_b_day_title">Data Nascimento</string>
     <string name="profile_b_day">DD/MM/AAAA</string>
-    <string name="profile_license_cat_title">License cat</string> <!-- ?? -->
-    <string name="profile_license_cat">Cat</string> <!-- ?? -->
-    <string name="profile_locality_title">Location</string> <!-- ?? -->
-    <string name="profile_locality">Locality</string> <!-- ?? -->
+    <string name="profile_license_cat_title">Categoria</string>
+    <string name="profile_license_cat">Cat</string>
+    <string name="profile_locality_title">Localidade</string>
+    <string name="profile_locality">Localidade</string>
     <string name="profile_number_of_vehicles_title">Nº Veículos</string>
     <string name="profile_number_of_vehicles">Veículos</string>
     <string name="profile_edit_button">Editar Perfil</string>
-    <string name="profile_monthly_average_spent_title">Monthly avg. spent</string> <!-- ?? -->
-    <string name="profile_monthly_average_spent">Monthly avg. spent</string> <!-- ?? -->
+    <string name="profile_monthly_average_spent_title">Média de gastos mensais</string>
+    <string name="profile_monthly_average_spent">Média de gastos mensais</string>
     <string name="profile_emel_support">Suporte EMEL</string>
 </resources>

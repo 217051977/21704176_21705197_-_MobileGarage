@@ -3,7 +3,7 @@
     <string name="profile_name">Profile name</string>
     <string name="profile_b_day_title">Date of birth</string>
     <string name="profile_b_day">DD/MM/AAAA</string>
-    <string name="profile_license_cat_title">License cat</string>
+    <string name="profile_license_cat_title">Category</string>
     <string name="profile_license_cat">Cat</string>
     <string name="profile_locality_title">Location</string>
     <string name="profile_locality">Locality</string>
