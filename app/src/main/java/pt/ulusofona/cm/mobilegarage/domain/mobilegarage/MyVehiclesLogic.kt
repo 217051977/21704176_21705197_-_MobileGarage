@@ -19,4 +19,9 @@ class MyVehiclesLogic {
         storage.insert(vehicle)
     }
 
+    fun remove(vehicle: Vehicle) {
+        storage.remove(vehicle)
+    }
+
+
 }

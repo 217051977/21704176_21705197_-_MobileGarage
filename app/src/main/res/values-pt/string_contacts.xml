@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="contact_service_station">Estação de serviço</string>
-    <string name="contact_name_saldanha">Saldanha</string>
+    <string name="contact_name_saldanha">Loja do Cidadão do Saldanha</string>
     <string name="contact_address_saldanha">Mercado 31 de Janeiro, Rua Engenheiro Vieira da Silva</string>
     <string name="contact_timetable_saldanha">Horário: Segunda-feira a Sexta-feira - 9h00 às 19h00</string>
 
