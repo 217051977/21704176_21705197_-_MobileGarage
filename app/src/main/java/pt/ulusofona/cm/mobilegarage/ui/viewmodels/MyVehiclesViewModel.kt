@@ -45,14 +45,14 @@ class MyVehiclesViewModel : ViewModel() {
             0 -> MyVehiclesAdapter(
                 context,
                 R.layout.item_vehicle_list,
-                myVehiclesLogic.getAll() as MutableList<Vehicle>,
+                mutableListOf(),
                 supportFragmentManager,
                 viewModel
             )
             else -> MyVehiclesAdapter(
                 context,
                 R.layout.item_vehicle_list,
-                mutableListOf(),
+                myVehiclesLogic.getAll() as MutableList<Vehicle>,
                 supportFragmentManager,
                 viewModel
             )
