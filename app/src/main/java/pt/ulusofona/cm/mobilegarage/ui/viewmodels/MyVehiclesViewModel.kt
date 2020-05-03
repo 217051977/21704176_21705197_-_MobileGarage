@@ -19,7 +19,7 @@ class MyVehiclesViewModel(application: Application) : AndroidViewModel(applicati
 
     fun getVehicleToShow(): Vehicle? = myVehiclesLogic.getVehicleToShow()
 
-    fun setVehicleToShow(vehicle: Vehicle) {
+    suspend fun setVehicleToShow(vehicle: Vehicle) {
         myVehiclesLogic.setVehicleToShow(vehicle)
     }
 
@@ -42,7 +42,7 @@ class MyVehiclesViewModel(application: Application) : AndroidViewModel(applicati
         MyVehiclesNavigationManager.goToVehicleList(supp)
     }
 
-    fun setAdapter(context: Context, supportFragmentManager: FragmentManager, viewModel: MyVehiclesViewModel): MyVehiclesAdapter {
+    suspend fun setAdapter(context: Context, supportFragmentManager: FragmentManager, viewModel: MyVehiclesViewModel): MyVehiclesAdapter {
         return MyVehiclesAdapter(
             context,
             R.layout.item_vehicle_list,

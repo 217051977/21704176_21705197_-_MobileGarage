@@ -4,6 +4,7 @@ import android.util.Log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import pt.ulusofona.cm.mobilegarage.data.local.entities.Vehicle
 import pt.ulusofona.cm.mobilegarage.data.local.list.MockingDBCars
 import pt.ulusofona.cm.mobilegarage.data.local.room.dao.VehicleDao
@@ -14,23 +15,23 @@ class MyVehiclesLogic(private val storage: VehicleDao) {
 
     var vehicle: Vehicle? = null
 
+    var vehicles: List<Vehicle> = mutableListOf()
+
     fun getVehicleToShow(): Vehicle? = vehicle
 
-    fun setVehicleToShow(v: Vehicle) {
-        CoroutineScope(Dispatchers.IO).launch {
+    suspend fun setVehicleToShow(v: Vehicle) {
+//        CoroutineScope(Dispatchers.IO).launch {
             vehicle = storage.setVehicleToShow(v.uuid)
-        }
+//        }
     }
 
-    fun getAll(): List<Vehicle> {
-        var vehicles: List<Vehicle> = mutableListOf()
-        CoroutineScope(Dispatchers.IO).launch {
-            val cenas = storage.getAll()
-            Log.e(this::class.java.simpleName, cenas.toString())
-            vehicles = cenas
-        }
-        return vehicles
-    }
+    suspend fun getAll(): List<Vehicle> = storage.getAll()
+    //{
+//            val cenas = storage.getAll()
+//            Log.e(this::class.java.simpleName, cenas.toString())
+//            vehicles = storage.getAll()
+//        return cenas
+//    }
 
     fun add(vehicle: Vehicle) {
         CoroutineScope(Dispatchers.IO).launch {

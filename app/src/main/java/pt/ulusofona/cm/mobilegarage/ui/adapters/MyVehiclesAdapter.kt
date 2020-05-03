@@ -8,6 +8,9 @@ import android.widget.TextView
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_vehicle_list.view.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import pt.ulusofona.cm.mobilegarage.data.local.entities.Feedback
 import pt.ulusofona.cm.mobilegarage.data.local.entities.Vehicle
 import pt.ulusofona.cm.mobilegarage.ui.utils.MyVehiclesNavigationManager
@@ -58,7 +61,9 @@ class MyVehiclesAdapter(
                 context,
                 items[position].plate
             )
-            viewModel.setVehicleToShow(items[position])
+            CoroutineScope(Dispatchers.Main.immediate).launch {
+                viewModel.setVehicleToShow(items[position])
+            }
             MyVehiclesNavigationManager.goToVehicleDetails(supportFragmentManager)
 
         }
