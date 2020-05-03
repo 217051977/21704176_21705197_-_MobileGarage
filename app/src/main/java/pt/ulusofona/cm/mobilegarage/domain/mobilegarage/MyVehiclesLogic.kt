@@ -1,5 +1,6 @@
 package pt.ulusofona.cm.mobilegarage.domain.mobilegarage
 
+import android.util.Log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -24,7 +25,9 @@ class MyVehiclesLogic(private val storage: VehicleDao) {
     fun getAll(): List<Vehicle> {
         var vehicles: List<Vehicle> = mutableListOf()
         CoroutineScope(Dispatchers.IO).launch {
-            vehicles = storage.getAll()
+            val cenas = storage.getAll()
+            Log.e(this::class.java.simpleName, cenas.toString())
+            vehicles = cenas
         }
         return vehicles
     }
