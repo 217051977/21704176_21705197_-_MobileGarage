@@ -6,8 +6,10 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
+import androidx.core.view.get
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_app.*
@@ -23,13 +25,20 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
     private lateinit var navBarViewModel: NavBarViewModel
     private lateinit var drawerViewModel: DrawerViewModel
-//    private lateinit var viewModel: NavBarViewModel
-
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.profile -> {
                 toolbar.title = resources.getString(R.string.drawer_profile)
+                /*supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                toolbar.setNavigationOnClickListener(View.OnClickListener {
+                    onBackPressed()
+                    supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                    ****NEED DO WORK ON THE NUMBER OF CLICKS NEED TO GO BACK TO HOME PAGE****
+                    setupDrawerMenu()
+                    nav_bar.menu[1].isChecked = true
+                    NavBarNavigationManager.goToHomePage(supportFragmentManager)
+                })*/
                 drawerViewModel.onClickProfile(
                     this,
                     TAG,
