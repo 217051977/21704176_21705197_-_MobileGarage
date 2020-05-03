@@ -23,7 +23,7 @@
             android:layout_height="match_parent"
             android:background="#d2691e"
             android:gravity="center"
-            android:text="Go to"
+            android:text="@string/item_park_go_to"
             android:textColor="#ffffff" />
 
     </LinearLayout>
