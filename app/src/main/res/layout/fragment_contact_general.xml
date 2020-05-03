@@ -87,7 +87,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                app:srcCompat="@drawable/ic_access_time_black_24dp"
+                app:srcCompat="@drawable/ic_time"
                 android:contentDescription="@string/description_icon_clock"
                 />
 

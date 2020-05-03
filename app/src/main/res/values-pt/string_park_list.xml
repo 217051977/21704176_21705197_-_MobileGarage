@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="item_park_name">Park Name</string>
-    <string name="item_park_type">Park Type</string>
-    <string name="item_park_availability">Park Availability</string>
+    <string name="item_park_name">Nome Parque</string>
+    <string name="item_park_type">Tipo Parque</string>
+    <string name="item_park_availability">Disponibilidade Parque</string>
 </resources>

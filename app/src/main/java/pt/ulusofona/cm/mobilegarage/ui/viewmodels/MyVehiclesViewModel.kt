@@ -1,10 +1,13 @@
 package pt.ulusofona.cm.mobilegarage.ui.viewmodels
 
+import android.app.Application
 import android.content.Context
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import pt.ulusofona.cm.mobilegarage.R
 import pt.ulusofona.cm.mobilegarage.data.local.entities.Vehicle
+import pt.ulusofona.cm.mobilegarage.data.local.room.MobileGarageDatabase
 import pt.ulusofona.cm.mobilegarage.domain.mobilegarage.MyVehiclesLogic
 import pt.ulusofona.cm.mobilegarage.ui.adapters.MyVehiclesAdapter
 import pt.ulusofona.cm.mobilegarage.ui.utils.MyVehiclesNavigationManager

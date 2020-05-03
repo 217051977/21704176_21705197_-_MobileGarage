@@ -2,8 +2,8 @@
 <resources>
     <string name="drawer_user_name">Nome de utilizador</string>
     <string name="drawer_user_image_description">Imagem de utilizador</string>
-    <string name="drawer_my_vehicles">My Vehicles</string>
-    <string name="drawer_profile">Profile</string>
+    <string name="drawer_my_vehicles">Meus Veículos</string>
+    <string name="drawer_profile">Perfil</string>
 
     <string name="functionality">Funcionalidades</string>
     <string name="drawer_option_contacts">Contactos</string>
@@ -14,6 +14,6 @@
     <string name="drawer_option_log_out">Sair</string>
 
     <string name="others">Outros</string>
-    <string name="drawer_open">Open</string>
-    <string name="drawer_close">Close</string>
+    <string name="drawer_open">Abrir</string>
+    <string name="drawer_close">Fechar</string>
 </resources>
