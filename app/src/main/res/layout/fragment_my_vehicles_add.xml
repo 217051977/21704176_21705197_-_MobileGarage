@@ -165,8 +165,10 @@
         android:id="@+id/vehicles_submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Submit"
+        android:text="@string/vehicle_detail_submit"
+        android:backgroundTint="@color/app_color_green"
         android:onClick="onClickSubmitAdd"
+        android:layout_marginTop="20dp"
         />
 
     <Button
@@ -175,7 +177,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/color_primary_white"
         android:background="@color/color_primary_red"
-        android:text="Cancel"
+        android:text="@string/vehicle_detail_cancel"
         android:onClick="onClickCancelAdd"
         />
 

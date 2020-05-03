@@ -159,22 +159,42 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/my_vehicles_details_edit"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Edit"
-        /> <!-- Change later to "vehicle_detail_edit" -->
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_marginTop="20dp"
+        >
+
+        <Button
+            android:id="@+id/my_vehicles_details_edit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/app_color_green"
+            android:text="@string/vehicle_detail_edit"
+            />
+
+        <Button
+            android:id="@+id/my_vehicles_details_delete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/color_primary_white"
+            android:backgroundTint="@color/color_primary_red"
+            android:text="@string/vehicle_detail_delete"
+            android:onClick="onClickDeleteVehicle"
+            />
+
+    </LinearLayout>
 
     <Button
-        android:id="@+id/my_vehicles_details_delete"
+        android:id="@+id/my_vehicles_details_back"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/color_primary_white"
-        android:background="@color/color_primary_red"
-        android:text="Delete"
-        android:onClick="onClickDeleteVehicle"
+        android:text="@string/vehicle_detail_cancel"
+        android:onClick="onClickCancel"
         />
-    <!-- Change later to "vehicle_detail_delete" -->
 
 </LinearLayout>
