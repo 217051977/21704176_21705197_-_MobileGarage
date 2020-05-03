@@ -1,6 +1,7 @@
 package pt.ulusofona.cm.mobilegarage.ui.fragments
 
 import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -36,11 +37,19 @@ class HomeMenuFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         parking_list.layoutManager = LinearLayoutManager(activity as Context)
-        parking_list.adapter = viewModel.setAdapter(
-            activity as Context,
-            activity?.supportFragmentManager!!,
-            viewModel
-        )
+        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            parking_list.adapter = viewModel.setLandScapeAdapter(
+                activity as Context,
+                activity?.supportFragmentManager!!,
+                viewModel
+            )
+        } else {
+            parking_list.adapter = viewModel.setAdapter(
+                activity as Context,
+                activity?.supportFragmentManager!!,
+                viewModel
+            )
+        }
     }
 
     @OnClick(
