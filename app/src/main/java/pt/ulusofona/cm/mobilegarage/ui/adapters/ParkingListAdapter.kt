@@ -1,6 +1,8 @@
 package pt.ulusofona.cm.mobilegarage.ui.adapters
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -59,6 +61,12 @@ class ParkingListAdapter(
     override fun getItemCount() = items.size
 
     private fun setOnClickTreatment(holder: ParkingListViewHolder, position: Int) {
+        holder.itemView.goTo.setOnClickListener {
+            val gmmIntentURI: Uri = Uri.parse("google.navigation:q=${items[position].address}")
+            val mapIntent: Intent = Intent(Intent.ACTION_VIEW, gmmIntentURI)
+            mapIntent.setPackage("com.google.android.apps.maps")
+            context.startActivity(mapIntent)
+        }
         holder.itemView.add_favorite.setOnClickListener {
             val park: Park = items[position]
             feedback.createFullButton(
@@ -80,7 +88,7 @@ class ParkingListAdapter(
             notifyDataSetChanged()
         }
 
-        holder.itemView.setOnClickListener {
+        holder.itemView.park.setOnClickListener {
             feedback.createFullButton(
                 this::class.java.simpleName,
                 context,

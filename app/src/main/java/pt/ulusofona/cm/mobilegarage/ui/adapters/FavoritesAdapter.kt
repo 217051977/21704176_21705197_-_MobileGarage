@@ -1,6 +1,8 @@
 package pt.ulusofona.cm.mobilegarage.ui.adapters
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +10,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
+import com.chauthai.swipereveallayout.SwipeRevealLayout
+import com.chauthai.swipereveallayout.ViewBinderHelper
 import kotlinx.android.synthetic.main.item_park_element.view.*
 import pt.ulusofona.cm.mobilegarage.R
 import pt.ulusofona.cm.mobilegarage.data.local.entities.Feedback
@@ -55,6 +59,12 @@ class FavoritesAdapter(
     override fun getItemCount() = items.size
 
     private fun setOnClickTreatment(holder: FavoritesViewHolder, position: Int) {
+        holder.itemView.goTo.setOnClickListener {
+            val gmmIntentURI: Uri = Uri.parse("google.navigation:q=${items[position].address}")
+            val mapIntent: Intent = Intent(Intent.ACTION_VIEW, gmmIntentURI)
+            mapIntent.setPackage("com.google.android.apps.maps")
+            context.startActivity(mapIntent)
+        }
         holder.itemView.add_favorite.setOnClickListener {
             val park: Park = items[position]
             feedback.createFullButton(
@@ -70,7 +80,7 @@ class FavoritesAdapter(
             notifyDataSetChanged()
         }
 
-        holder.itemView.setOnClickListener {
+        holder.itemView.park.setOnClickListener {
             feedback.createFullButton(
                 this::class.java.simpleName,
                 context,
