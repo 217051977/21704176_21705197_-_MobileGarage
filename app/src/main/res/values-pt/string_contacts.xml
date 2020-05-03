@@ -19,7 +19,7 @@
     <string name="contact_email_removed_vehicles">parque.rebocados@emel.pt</string>
     <string name="contact_timetable_removed_vehicles">Todos os dias: 8h às 24h</string>
     <string name="contact_info_removed_vehicles">
-Free SMS to the number 3838, indicating the word "Reboque" followed by a space and the plate number of the car (with or without dashes between the characters).
+SMS Gratuito para o número 3838, indicando-se a palavra Reboque seguida de um espaço e da matrícula do carro (Com ou sem traços entre os caracteres).
     </string>
 
     <string name="contact_general_vehicles">Geral</string>
