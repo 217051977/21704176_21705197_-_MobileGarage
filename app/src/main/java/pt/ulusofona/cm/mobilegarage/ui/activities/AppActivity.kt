@@ -1,5 +1,8 @@
 package pt.ulusofona.cm.mobilegarage.ui.activities
 
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -12,6 +15,7 @@ import pt.ulusofona.cm.mobilegarage.R
 import pt.ulusofona.cm.mobilegarage.ui.utils.NavBarNavigationManager
 import pt.ulusofona.cm.mobilegarage.ui.viewmodels.DrawerViewModel
 import pt.ulusofona.cm.mobilegarage.ui.viewmodels.NavBarViewModel
+import java.lang.Exception
 
 private val TAG = AppActivity::class.java.simpleName
 
@@ -20,6 +24,7 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
     private lateinit var navBarViewModel: NavBarViewModel
     private lateinit var drawerViewModel: DrawerViewModel
 //    private lateinit var viewModel: NavBarViewModel
+
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
@@ -38,11 +43,30 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
                 TAG,
                 this.supportFragmentManager
             )
-            R.id.gira -> drawerViewModel.onClickGira(
-                this,
-                TAG,
-                this.supportFragmentManager
-            )
+            R.id.gira -> {
+                var playStoreUri: Uri
+                var playStoreIntent: Intent
+                val packageName: String = "pt.emel.bikeshare"
+                try {
+                    startActivity(
+                        Intent(
+                            packageManager.getLaunchIntentForPackage(packageName)
+                        )
+                    )
+                } catch (packageNotInstalled: PackageManager.NameNotFoundException) {
+                    try {
+                        playStoreUri = Uri.parse("market://details?id=$packageName")
+                        playStoreIntent = Intent(Intent.ACTION_VIEW, playStoreUri)
+                        startActivity(playStoreIntent)
+                    } catch (e: Exception) {
+                        playStoreUri = Uri.parse(
+                            "http://play.google.com/store/apps/details?id=$packageName"
+                        )
+                        playStoreIntent = Intent(Intent.ACTION_VIEW, playStoreUri)
+                        startActivity(playStoreIntent)
+                    }
+                }
+            }
             R.id.traffic -> drawerViewModel.onClickTraffic(
                 this,
                 TAG,
