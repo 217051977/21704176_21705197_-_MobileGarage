@@ -1,68 +1,22 @@
 package pt.ulusofona.cm.mobilegarage.domain.mobilegarage
 
-import android.util.Log
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import pt.ulusofona.cm.mobilegarage.data.local.entities.Vehicle
 import pt.ulusofona.cm.mobilegarage.data.local.list.MockingDBCars
-import pt.ulusofona.cm.mobilegarage.data.local.room.dao.VehicleDao
 
-class MyVehiclesLogic(private val storage: VehicleDao) {
+class MyVehiclesLogic {
 
-    //private val storage: MockingDBCars = MockingDBCars.getInstance()
+    private val storage: MockingDBCars = MockingDBCars.getInstance()
 
-    var vehicle: Vehicle? = null
-
-    var vehicles: List<Vehicle> = mutableListOf()
-
-    fun getVehicleToShow(): Vehicle? = vehicle
-
-    suspend fun setVehicleToShow(v: Vehicle) {
-//        CoroutineScope(Dispatchers.IO).launch {
-            vehicle = storage.setVehicleToShow(v.uuid)
-//        }
-    }
-
-    suspend fun getAll(): List<Vehicle> = storage.getAll()
-    //{
-//            val cenas = storage.getAll()
-//            Log.e(this::class.java.simpleName, cenas.toString())
-//            vehicles = storage.getAll()
-//        return cenas
-//    }
-
-    fun add(vehicle: Vehicle) {
-        CoroutineScope(Dispatchers.IO).launch {
-            storage.insert(vehicle)
-        }
-    }
-
-    /*
-     var vehicle: Vehicle? = null
+    fun getVehicleToShow(): Vehicle? = storage.vehicle
 
     fun setVehicleToShow(vehicle: Vehicle) {
-        CoroutineScope(Dispatchers.IO).launch {
-            storage.setVehicleToShow(vehicleID = "1")
-        }
+        storage.vehicle = vehicle
     }
 
-    fun getVehicleToShow(): Vehicle? = vehicle
-
-    fun getAll(): List<Vehicle> {
-        var vehicles: List<Vehicle> = mutableListOf()
-        CoroutineScope(Dispatchers.IO).launch {
-            vehicles = storage.getAll()
-        }
-        return vehicles
-    }
+    fun getAll(): List<Vehicle> = storage.getAll()
 
     fun add(vehicle: Vehicle) {
-        CoroutineScope(Dispatchers.IO).launch {
-            storage.insert(vehicle)
-        }
+        storage.insert(vehicle)
     }
-     */
 
 }

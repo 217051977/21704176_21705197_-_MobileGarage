@@ -5,9 +5,8 @@ import java.util.*
 class Car(
     plate: String,
     insuranceDeadLineDate: Calendar
-) /*: Vehicle(
+) : Vehicle(
     plate = plate,
     insuranceDeadLineDate = insuranceDeadLineDate,
     category = "B"
 )
-        */

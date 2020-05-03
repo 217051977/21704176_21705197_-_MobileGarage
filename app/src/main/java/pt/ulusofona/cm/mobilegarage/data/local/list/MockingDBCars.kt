@@ -6,24 +6,20 @@ import java.util.*
 
 class MockingDBCars private constructor(){
 
-    /*
     private val storage: MutableList<Vehicle> = mutableListOf(
-        Vehicle(
-            uuid =
-            plate = "25-SW-00",
-            plateDate =
-            //Calendar.getInstance()
+        Car(
+            "25-SW-00",
+            Calendar.getInstance()
         ),
-        Vehicle(
+        Car(
             "DF-08-23",
             Calendar.getInstance()
         ),
-        Vehicle(
+        Car(
             "25-26-AD",
             Calendar.getInstance()
         )
     )
-
 
     var vehicle: Vehicle? = null
 
@@ -52,6 +48,5 @@ class MockingDBCars private constructor(){
     }
 
     fun getAll(): List<Vehicle> = storage.toList()
-*/
-}
 
+}

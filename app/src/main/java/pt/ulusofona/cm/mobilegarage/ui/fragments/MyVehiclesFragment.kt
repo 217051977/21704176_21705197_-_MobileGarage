@@ -11,9 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import butterknife.ButterKnife
 import butterknife.OnClick
 import kotlinx.android.synthetic.main.fragment_my_vehicles.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import pt.ulusofona.cm.mobilegarage.R
 import pt.ulusofona.cm.mobilegarage.ui.viewmodels.MyVehiclesViewModel
 
@@ -38,13 +35,11 @@ class MyVehiclesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         vehicle_list.layoutManager = LinearLayoutManager(activity as Context)
-        CoroutineScope(Dispatchers.Main.immediate).launch {
-            vehicle_list.adapter = viewModel.setAdapter(
-                activity as Context,
-                activity?.supportFragmentManager!!,
-                viewModel
-            )
-        }
+        vehicle_list.adapter = viewModel.setAdapter(
+            activity as Context,
+            activity?.supportFragmentManager!!,
+            viewModel
+        )
     }
 
     @OnClick(

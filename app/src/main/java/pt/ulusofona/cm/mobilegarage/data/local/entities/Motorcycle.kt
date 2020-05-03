@@ -5,7 +5,7 @@ import java.util.*
 class Motorcycle(
     plate: String,
     insuranceDeadLineDate: Calendar
-) /*: Vehicle(
+) : Vehicle(
     plate = plate,
     insuranceDeadLineDate = insuranceDeadLineDate,
     category = "A"
@@ -14,5 +14,5 @@ class Motorcycle(
     init {
         vehicleTypeIconSrc = "drawable/ic_motorcycle_black_24dp.xml"
     }
+
 }
-        */
