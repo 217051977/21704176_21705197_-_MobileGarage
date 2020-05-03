@@ -62,7 +62,7 @@ class ParkingListAdapter(
 
     private fun setOnClickTreatment(holder: ParkingListViewHolder, position: Int) {
         holder.itemView.goTo.setOnClickListener {
-            val gmmIntentURI: Uri = Uri.parse("geo:0,0?q=${items[position].address}")
+            val gmmIntentURI: Uri = Uri.parse("google.navigation:q=${items[position].address}")
             val mapIntent: Intent = Intent(Intent.ACTION_VIEW, gmmIntentURI)
             mapIntent.setPackage("com.google.android.apps.maps")
             context.startActivity(mapIntent)
