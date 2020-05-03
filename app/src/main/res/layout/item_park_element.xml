@@ -37,6 +37,7 @@
         >
 
         <LinearLayout
+            android:id="@+id/park"
             android:layout_width="match_parent"
             android:layout_height="90dp"
             android:orientation="horizontal"

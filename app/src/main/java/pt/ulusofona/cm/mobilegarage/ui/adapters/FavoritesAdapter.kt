@@ -80,7 +80,7 @@ class FavoritesAdapter(
             notifyDataSetChanged()
         }
 
-        holder.itemView.setOnClickListener {
+        holder.itemView.park.setOnClickListener {
             feedback.createFullButton(
                 this::class.java.simpleName,
                 context,
