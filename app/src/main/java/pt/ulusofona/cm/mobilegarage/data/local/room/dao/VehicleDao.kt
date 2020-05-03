@@ -3,7 +3,7 @@ package pt.ulusofona.cm.mobilegarage.data.local.room.dao
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import pt.ulusofona.cm.mobilegarage.data.local.room.Vehicle
+import pt.ulusofona.cm.mobilegarage.data.local.entities.Vehicle
 
 @Dao
 interface VehicleDao {

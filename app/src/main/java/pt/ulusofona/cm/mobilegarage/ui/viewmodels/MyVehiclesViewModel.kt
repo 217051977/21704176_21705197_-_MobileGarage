@@ -12,9 +12,10 @@ import pt.ulusofona.cm.mobilegarage.domain.mobilegarage.MyVehiclesLogic
 import pt.ulusofona.cm.mobilegarage.ui.adapters.MyVehiclesAdapter
 import pt.ulusofona.cm.mobilegarage.ui.utils.MyVehiclesNavigationManager
 
-class MyVehiclesViewModel : ViewModel() {
+class MyVehiclesViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val myVehiclesLogic: MyVehiclesLogic = MyVehiclesLogic()
+    private val storage = MobileGarageDatabase.getInstance(application).vehicleDao()
+    private val myVehiclesLogic: MyVehiclesLogic = MyVehiclesLogic(storage)
 
     fun getVehicleToShow(): Vehicle? = myVehiclesLogic.getVehicleToShow()
 

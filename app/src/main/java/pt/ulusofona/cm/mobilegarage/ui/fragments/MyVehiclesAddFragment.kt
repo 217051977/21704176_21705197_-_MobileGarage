@@ -58,12 +58,7 @@ class MyVehiclesAddFragment : Fragment() {
             plate = vehiclePlate.text.toString(),
             plateDate = vehiclePlateDate.text.toString(),
             insuranceDeadLineDate = Calendar.getInstance(),
-            category = "N",
-            month = 0,
-            year = 0,
-            pictureSrc = "mipmap-xxxhdpi/mustang_shelby_gt500.jpg",
-            isParked = false,
-            vehicleTypeIconSrc = "drawable/ic_directions_car_black_24dp.xml"
+            isParked = false
         )
 
         viewModel.onClickSubmitAddVehicle(activity?.supportFragmentManager!!, vehicleCreated)

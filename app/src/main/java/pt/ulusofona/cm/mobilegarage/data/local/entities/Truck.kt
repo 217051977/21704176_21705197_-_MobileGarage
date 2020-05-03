@@ -5,7 +5,7 @@ import java.util.*
 class Truck(
     plate: String,
     insuranceDeadLineDate: Calendar
-) : Vehicle(
+)/* : Vehicle(
     plate = plate,
     insuranceDeadLineDate = insuranceDeadLineDate,
     category = "C"
@@ -16,3 +16,4 @@ class Truck(
     }
 
 }
+        */

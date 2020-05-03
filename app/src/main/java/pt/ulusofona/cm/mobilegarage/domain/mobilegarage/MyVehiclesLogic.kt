@@ -1,22 +1,38 @@
 package pt.ulusofona.cm.mobilegarage.domain.mobilegarage
 
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import pt.ulusofona.cm.mobilegarage.data.local.entities.Vehicle
 import pt.ulusofona.cm.mobilegarage.data.local.list.MockingDBCars
+import pt.ulusofona.cm.mobilegarage.data.local.room.dao.VehicleDao
 
-class MyVehiclesLogic {
+class MyVehiclesLogic(private val storage: VehicleDao) {
 
-    private val storage: MockingDBCars = MockingDBCars.getInstance()
+    //private val storage: MockingDBCars = MockingDBCars.getInstance()
 
-    fun getVehicleToShow(): Vehicle? = storage.vehicle
+    var vehicle: Vehicle? = null
 
-    fun setVehicleToShow(vehicle: Vehicle) {
-        storage.vehicle = vehicle
+    fun getVehicleToShow(): Vehicle? = vehicle
+
+    fun setVehicleToShow(v: Vehicle) {
+        CoroutineScope(Dispatchers.IO).launch {
+            vehicle = storage.setVehicleToShow(v.uuid)
+        }
     }
 
-    fun getAll(): List<Vehicle> = storage.getAll()
+    fun getAll(): List<Vehicle> {
+        var vehicles: List<Vehicle> = mutableListOf()
+        CoroutineScope(Dispatchers.IO).launch {
+            vehicles = storage.getAll()
+        }
+        return vehicles
+    }
 
     fun add(vehicle: Vehicle) {
-        storage.insert(vehicle)
+        CoroutineScope(Dispatchers.IO).launch {
+            storage.insert(vehicle)
+        }
     }
 
     /*

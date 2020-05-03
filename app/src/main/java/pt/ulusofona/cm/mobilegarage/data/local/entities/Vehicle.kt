@@ -1,24 +1,36 @@
 package pt.ulusofona.cm.mobilegarage.data.local.entities
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverter
+import pt.ulusofona.cm.mobilegarage.data.local.room.DateConverter
 import java.util.*
 
-open class Vehicle (
+@Entity
+data class Vehicle (
+    @PrimaryKey
+    var uuid: String = UUID.randomUUID().toString(),
     val brand: String = "Mustang",
     val model: String = "GT500",
     val plate: String = "NN-NN-NN",
     val plateDate: String = "10/10",
-    var insuranceDeadLineDate: Calendar,
-    val category: String = "N",
-    var month: Int = 0,
-    var year: Int = 0,
-    var pictureSrc: String = "mipmap-xxxhdpi/mustang_shelby_gt500.jpg",
-    var isParked: Boolean = false,
+    val insuranceDeadLineDate: Calendar = Calendar.getInstance(),
+    val isParked: Boolean = false
+    ) {
+
+    /*
+    val category: String = "N"
+    var month: Int = 0
+    var year: Int = 0
+    var pictureSrc: String = "mipmap-xxxhdpi/mustang_shelby_gt500.jpg"
+
     var vehicleTypeIconSrc: String = "drawable/ic_directions_car_black_24dp.xml"
-) {
 
-    fun isYoungerThan(year: Int): Boolean = this.year < year
+    */
 
-    fun isOlderThan(year: Int): Boolean = this.year > year
+   // fun isYoungerThan(year: Int): Boolean = this.year < year
+
+    //fun isOlderThan(year: Int): Boolean = this.year > year
 
     fun getParkedStatus(): String = if (isParked) {
         "Parked"
@@ -85,6 +97,5 @@ open class Vehicle (
 
     private fun equalDayTo(actualDate: Calendar): Boolean =
         actualDate.get(Calendar.DAY_OF_MONTH) == insuranceDeadLineDate.get(Calendar.DAY_OF_MONTH)
-
 
 }

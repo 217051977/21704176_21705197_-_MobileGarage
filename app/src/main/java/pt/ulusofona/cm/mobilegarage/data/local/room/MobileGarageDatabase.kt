@@ -1,12 +1,12 @@
 package pt.ulusofona.cm.mobilegarage.data.local.room
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
+import pt.ulusofona.cm.mobilegarage.data.local.entities.Vehicle
 import pt.ulusofona.cm.mobilegarage.data.local.room.dao.VehicleDao
 
 @Database(entities = arrayOf(Vehicle::class), version = 1)
+@TypeConverters(DateConverter::class)
 abstract class MobileGarageDatabase : RoomDatabase() {
 
     abstract fun vehicleDao(): VehicleDao
