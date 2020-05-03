@@ -9,6 +9,7 @@ import android.widget.EditText
 import androidx.lifecycle.ViewModelProvider
 import butterknife.ButterKnife
 import butterknife.OnClick
+import com.google.android.material.snackbar.Snackbar
 
 import pt.ulusofona.cm.mobilegarage.R
 import pt.ulusofona.cm.mobilegarage.data.local.entities.Vehicle
@@ -61,6 +62,9 @@ class MyVehiclesAddFragment : Fragment() {
             isParked = false
         )
 
+
+        val snackbar: Snackbar = Snackbar.make(view, "Added ${vehicleCreated.plate} Vehicle", Snackbar.LENGTH_LONG);
+        snackbar.show();
         viewModel.onClickSubmitAddVehicle(activity?.supportFragmentManager!!, vehicleCreated)
     }
 

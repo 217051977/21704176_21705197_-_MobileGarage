@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import butterknife.ButterKnife
 import butterknife.OnClick
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_my_vehicles_details.*
 
 import pt.ulusofona.cm.mobilegarage.R
@@ -45,6 +46,8 @@ class MyVehiclesDetailsFragment : Fragment() {
 
     @OnClick(R.id.my_vehicles_details_delete)
     fun onClickDeleteVehicle(view: View) {
+        val snackbar: Snackbar = Snackbar.make(view, "Added ${vehicleToShow.plate} Vehicle", Snackbar.LENGTH_LONG);
+        snackbar.show();
         viewModel.onClickDeleteVehicle(activity?.supportFragmentManager!!, vehicleToShow)
     }
 
