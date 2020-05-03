@@ -8,8 +8,10 @@
     <string name="functionality">Funcionalidades</string>
     <string name="drawer_option_contacts">Contactos</string>
     <string name="drawer_option_gira">Gira</string>
-    <string name="drawer_option_map">Mapa</string>
     <string name="drawer_option_traffic">Tráfico</string>
+    <string name="drawer_option_map">Mapa</string>
+    <string name="drawer_option_find_vehicle">Encontrar veículo</string>
+    <string name="drawer_option_share_location">Partilhar localização</string>
     <string name="drawer_option_settings">Definições</string>
     <string name="drawer_option_log_out">Sair</string>
 

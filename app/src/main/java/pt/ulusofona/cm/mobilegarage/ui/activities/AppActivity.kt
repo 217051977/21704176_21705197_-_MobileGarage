@@ -28,22 +28,32 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-            R.id.profile -> drawerViewModel.onClickProfile(
-                this,
-                TAG,
-                this.supportFragmentManager
-            )
-            R.id.vehicles -> drawerViewModel.onClickMyVehicles(
-                this,
-                this::class.java.simpleName,
-                this.supportFragmentManager
-            )
-            R.id.nav_contacts -> drawerViewModel.onClickContacts(
-                this,
-                TAG,
-                this.supportFragmentManager
-            )
+            R.id.profile -> {
+                toolbar.title = resources.getString(R.string.drawer_profile)
+                drawerViewModel.onClickProfile(
+                    this,
+                    TAG,
+                    this.supportFragmentManager
+                )
+            }
+            R.id.vehicles -> {
+                toolbar.title = resources.getString(R.string.drawer_my_vehicles)
+                drawerViewModel.onClickMyVehicles(
+                    this,
+                    this::class.java.simpleName,
+                    this.supportFragmentManager
+                )
+            }
+            R.id.nav_contacts -> {
+                toolbar.title = resources.getString(R.string.drawer_option_contacts)
+                drawerViewModel.onClickContacts(
+                    this,
+                    TAG,
+                    this.supportFragmentManager
+                )
+            }
             R.id.gira -> {
+                toolbar.title = resources.getString(R.string.drawer_option_gira)
                 var playStoreUri: Uri
                 var playStoreIntent: Intent
                 val packageName: String = "pt.emel.bikeshare"
@@ -68,26 +78,38 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
                     }
                 }
             }
-            R.id.traffic -> drawerViewModel.onClickTraffic(
-                this,
-                TAG,
-                this.supportFragmentManager
-            )
-            R.id.map -> drawerViewModel.onClickMap(
-                this,
-                TAG,
-                this.supportFragmentManager
-            )
-            R.id.find_vehicle -> drawerViewModel.onClickFindVehicle(
-                this,
-                TAG,
-                this.supportFragmentManager
-            )
-            R.id.share_location -> drawerViewModel.onClickShareLocation(
-                this,
-                TAG,
-                this.supportFragmentManager
-            )
+            R.id.traffic -> {
+                toolbar.title = resources.getString(R.string.drawer_option_traffic)
+                drawerViewModel.onClickTraffic(
+                    this,
+                    TAG,
+                    this.supportFragmentManager
+                )
+            }
+            R.id.map -> {
+                toolbar.title = resources.getString(R.string.drawer_option_map)
+                drawerViewModel.onClickMap(
+                    this,
+                    TAG,
+                    this.supportFragmentManager
+                )
+            }
+            R.id.find_vehicle -> {
+                toolbar.title = resources.getString(R.string.drawer_option_find_vehicle)
+                drawerViewModel.onClickFindVehicle(
+                    this,
+                    TAG,
+                    this.supportFragmentManager
+                )
+            }
+            R.id.share_location -> {
+                toolbar.title = resources.getString(R.string.drawer_option_share_location)
+                drawerViewModel.onClickShareLocation(
+                    this,
+                    TAG,
+                    this.supportFragmentManager
+                )
+            }
             R.id.nav_log_out -> finish()
         }
         nav_bar.menu.getItem(nav_bar.menu.size() - 1).isChecked = true
@@ -134,6 +156,7 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
             when(item.itemId) {
 
                 R.id.nav_bar_favorites -> {
+                    toolbar.title = resources.getString(R.string.app_name)
                     navBarViewModel.onClickFavorites(
                         this,
                         this::class.java.simpleName,
@@ -144,6 +167,7 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
                 }
 
                 R.id.nav_bar_home -> {
+                    toolbar.title = resources.getString(R.string.app_name)
                     navBarViewModel.onClickHome(
                         this,
                         this::class.java.simpleName,
@@ -154,6 +178,7 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
                 }
 
                 R.id.nav_bar_park_me_now -> {
+                    toolbar.title = resources.getString(R.string.app_name)
                     navBarViewModel.onClickParkMeNow(
                         this,
                         this::class.java.simpleName,

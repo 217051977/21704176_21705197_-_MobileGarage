@@ -48,13 +48,13 @@
                 <item
                     android:id="@+id/find_vehicle"
                     android:icon="@drawable/ic_pin_drop_black_24dp"
-                    android:title="Find Vehicle"
+                    android:title="@string/drawer_option_find_vehicle"
                     />
 
                 <item
                     android:id="@+id/share_location"
                     android:icon="@drawable/ic_share_black_24dp"
-                    android:title="Share Location"
+                    android:title="@string/drawer_option_share_location"
                     />
             </menu>
         </item>
