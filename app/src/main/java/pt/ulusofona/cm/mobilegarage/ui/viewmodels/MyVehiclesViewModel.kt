@@ -40,12 +40,22 @@ class MyVehiclesViewModel : ViewModel() {
     }
 
     fun setAdapter(context: Context, supportFragmentManager: FragmentManager, viewModel: MyVehiclesViewModel): MyVehiclesAdapter {
-        return MyVehiclesAdapter(
-            context,
-            R.layout.item_vehicle_list,
-            myVehiclesLogic.getAll() as MutableList<Vehicle>,
-            supportFragmentManager,
-            viewModel
-        )
+        val vehicles: List<Vehicle> = myVehiclesLogic.getAll()
+        return when (vehicles.size) {
+            0 -> MyVehiclesAdapter(
+                context,
+                R.layout.item_vehicle_list,
+                myVehiclesLogic.getAll() as MutableList<Vehicle>,
+                supportFragmentManager,
+                viewModel
+            )
+            else -> MyVehiclesAdapter(
+                context,
+                R.layout.item_vehicle_list,
+                mutableListOf(),
+                supportFragmentManager,
+                viewModel
+            )
+        }
     }
 }
