@@ -48,6 +48,7 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
                 var playStoreIntent: Intent
                 val packageName: String = "pt.emel.bikeshare"
                 try {
+                    packageManager.getPackageInfo(packageName, 0)
                     startActivity(
                         Intent(
                             packageManager.getLaunchIntentForPackage(packageName)
