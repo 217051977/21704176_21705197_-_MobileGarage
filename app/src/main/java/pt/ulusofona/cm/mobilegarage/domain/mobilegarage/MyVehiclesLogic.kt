@@ -19,4 +19,30 @@ class MyVehiclesLogic {
         storage.insert(vehicle)
     }
 
+    /*
+     var vehicle: Vehicle? = null
+
+    fun setVehicleToShow(vehicle: Vehicle) {
+        CoroutineScope(Dispatchers.IO).launch {
+            storage.setVehicleToShow(vehicleID = "1")
+        }
+    }
+
+    fun getVehicleToShow(): Vehicle? = vehicle
+
+    fun getAll(): List<Vehicle> {
+        var vehicles: List<Vehicle> = mutableListOf()
+        CoroutineScope(Dispatchers.IO).launch {
+            vehicles = storage.getAll()
+        }
+        return vehicles
+    }
+
+    fun add(vehicle: Vehicle) {
+        CoroutineScope(Dispatchers.IO).launch {
+            storage.insert(vehicle)
+        }
+    }
+     */
+
 }

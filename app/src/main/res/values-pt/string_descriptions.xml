@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="description_icon_map">Map Icon</string>
-    <string name="description_icon_call">Call Icon</string>
-    <string name="description_icon_info">Info Icon</string>
-    <string name="description_icon_email">Email Icon</string>
-    <string name="description_icon_fax">Fax Icon</string>
-    <string name="description_icon_clock">Clock Icon</string>
-    <string name="description_icon_park">Park Icon</string>
+    <string name="description_icon_map">Icone Mapa</string>
+    <string name="description_icon_call">Icone Telefone</string>
+    <string name="description_icon_info">Icone Info</string>
+    <string name="description_icon_email">Icone Email</string>
+    <string name="description_icon_fax">Icone Fax</string>
+    <string name="description_icon_clock">Icone Relógio</string>
+    <string name="description_icon_park">Icone Parque</string>
 </resources>
