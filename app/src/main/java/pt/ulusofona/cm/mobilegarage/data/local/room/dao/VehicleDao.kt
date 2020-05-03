@@ -15,7 +15,7 @@ interface VehicleDao {
     suspend fun getAll(): List<Vehicle>
 
     @Query("SELECT * FROM vehicle WHERE uuid= :vehicleID ")
-    suspend fun setVehicleToShow(vehicleID: String)
+    suspend fun setVehicleToShow(vehicleID: String): Vehicle
 
 
 }
