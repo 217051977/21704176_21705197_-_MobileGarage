@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import pt.ulusofona.cm.mobilegarage.R
 import pt.ulusofona.cm.mobilegarage.data.local.entities.Feedback
 import pt.ulusofona.cm.mobilegarage.data.local.entities.Park
+import pt.ulusofona.cm.mobilegarage.data.remote.RetrofitBuilder
 import pt.ulusofona.cm.mobilegarage.domain.mobilegarage.ParksLogic
 import pt.ulusofona.cm.mobilegarage.ui.adapters.FavoritesAdapter
 import pt.ulusofona.cm.mobilegarage.ui.adapters.FavoritesLandScapeAdapter
@@ -13,9 +14,11 @@ import pt.ulusofona.cm.mobilegarage.ui.adapters.ParkingListAdapter
 import pt.ulusofona.cm.mobilegarage.ui.adapters.ParkingListLandScapeAdapter
 import pt.ulusofona.cm.mobilegarage.ui.utils.ParkNavigationManager
 
+const val ENDPOINT = "https://emel.city-platform.com/opendata/"
+
 class ParkViewModel : ViewModel() {
 
-    private val parksLogic: ParksLogic = ParksLogic()
+    private val parksLogic: ParksLogic = ParksLogic(RetrofitBuilder.getInstance(ENDPOINT))
     private val feedback: Feedback = Feedback.getInstance()
 
     fun goToFilterOption(
@@ -68,6 +71,7 @@ class ParkViewModel : ViewModel() {
         viewModel: ParkViewModel
     ): ParkingListLandScapeAdapter {
         val parks: List<Park> = parksLogic.getAll()
+        parksLogic.getParks()
         return if (parks.isNotEmpty()) {
             ParkingListLandScapeAdapter(
                 context,
@@ -93,6 +97,7 @@ class ParkViewModel : ViewModel() {
         viewModel: ParkViewModel
     ): ParkingListAdapter {
         val parks: List<Park> = parksLogic.getAll()
+        parksLogic.getParks()
         return if (parks.isNotEmpty()) {
             ParkingListAdapter(
                 context,
