@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_marginVertical="10dp"
-    tools:context=".ui.fragments.ServiceVehiclesFragment"
+    tools:context="pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments.ServiceVehiclesFragment"
     android:weightSum="18"
     >
 

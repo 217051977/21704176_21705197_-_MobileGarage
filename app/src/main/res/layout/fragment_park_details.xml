@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="5"
-    tools:context=".ui.fragments.ParkDetailsFragment"
+    tools:context="pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments.ParkDetailsFragment"
     >
 
     <ImageView

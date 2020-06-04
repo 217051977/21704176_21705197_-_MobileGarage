@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="pt.ulusofona.cm.mobilegarage">
+    package="pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17">
+<!--    package="pt.ulusofona.cm.mobilegarage">-->
 
     <application
         android:allowBackup="true"

@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_marginHorizontal="15dp"
     android:weightSum="5"
-    tools:context=".ui.fragments.MyVehiclesDetailsFragment"
+    tools:context="pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments.MyVehiclesDetailsFragment"
     >
 
     <!-- TODO: Update blank fragment layout -->

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.fragments.ContactsFragment"
+    tools:context="pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments.ContactsFragment"
     >
 
     <com.google.android.material.tabs.TabLayout
