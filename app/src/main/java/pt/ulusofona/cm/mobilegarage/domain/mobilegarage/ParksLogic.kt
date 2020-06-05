@@ -8,6 +8,7 @@ import pt.ulusofona.cm.mobilegarage.data.local.list.MockingDBParks
 import pt.ulusofona.cm.mobilegarage.data.remote.responses.ParkingLotsResponse
 import pt.ulusofona.cm.mobilegarage.data.remote.services.ParkingLotsService
 import retrofit2.Retrofit
+import java.util.*
 
 class ParksLogic(private val retrofit: Retrofit) {
 
@@ -27,6 +28,28 @@ class ParksLogic(private val retrofit: Retrofit) {
         }
         Thread.sleep(60)
         return lists
+    }
+
+    fun parkCreation(pakrs: List<ParkingLotsResponse>): List<Park> {
+        val newPark = mutableListOf<Park>()
+        var updateDate = Calendar.getInstance()
+        for (park in pakrs) {
+            var updateDateParts = park.lastUpdateDate.split(" ")
+            var datePart = updateDateParts[0].split("-")
+            var hourPart = updateDateParts[1].split(":")
+
+            updateDate.set(datePart[0].toInt(), datePart[1].toInt(), datePart[2].toInt(),
+                hourPart[0].toInt(), hourPart[1].toInt(), hourPart[2].toInt())
+
+            newPark.add(Park(
+                name = park.name,
+                lastUpdate = updateDate,
+                type = park.parkType,
+                nrParkingSpot = park.maxCapacity
+            ))
+        }
+
+        return newPark
     }
 
     private val storage: MockingDBParks = MockingDBParks.getInstance()

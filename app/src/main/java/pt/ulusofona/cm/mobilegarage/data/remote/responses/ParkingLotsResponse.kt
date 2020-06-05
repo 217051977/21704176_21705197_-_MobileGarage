@@ -9,7 +9,7 @@ data class ParkingLotsResponse (
     @SerializedName("nome") val name: String,
     @SerializedName("activo") val active: Short,
     @SerializedName("id_entidade") val entityID: Int,
-    @SerializedName("capacidade_maxima") val maxCapacity: String,
+    @SerializedName("capacidade_maxima") val maxCapacity: Int,
     @SerializedName("ocupacao") val occupation: Int,
     @SerializedName("data_ocupacao") val lastUpdateDate: String,
     val latitude: String, var longitude: String,

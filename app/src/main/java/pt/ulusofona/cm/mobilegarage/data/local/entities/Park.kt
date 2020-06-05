@@ -2,16 +2,16 @@ package pt.ulusofona.cm.mobilegarage.data.local.entities
 
 import java.util.*
 
-class Park(
+data class Park(
     val name: String,
-    var availability: Double,
-    var distance: Double,
     var lastUpdate: Calendar,
     val type: String,
-    var price: Double,
-    val address: String,
     val nrParkingSpot: Int,
-    val nrParkingSpotForDisablePeople: Int,
+    var availability: Double = 0.0,
+    var distance: Double = 0.0,
+    var price: Double = 0.0,
+    val address: String = "",
+    val nrParkingSpotForDisablePeople: Int = 0,
     var favorite: Boolean = false
 ) {
 
