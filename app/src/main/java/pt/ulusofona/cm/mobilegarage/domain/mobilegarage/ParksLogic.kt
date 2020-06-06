@@ -12,31 +12,31 @@ import java.util.*
 
 class ParksLogic(private val retrofit: Retrofit) {
 
-    fun getParks(): List<ParkingLotsResponse> {
+    fun getParks(): List<Park> {
         val service = retrofit.create(ParkingLotsService::class.java)
-        var lists = listOf<ParkingLotsResponse>()
+        var pakrs = listOf<ParkingLotsResponse>()
         CoroutineScope(Dispatchers.IO).launch {
             val response = service.getParkingLots("93600bb4e7fee17750ae478c22182dda")
 
             if (response.isSuccessful) {
-                lists = response.body()!!
+                pakrs = response.body()!!
             }
             /*
             val operacoes = response.body()
             listener?.onReceiveOperations(operacoes!!)
              */
         }
-        Thread.sleep(60)
-        return lists
+        Thread.sleep(80)
+        return parkCreation(pakrs)
     }
 
     fun parkCreation(pakrs: List<ParkingLotsResponse>): List<Park> {
         val newPark = mutableListOf<Park>()
-        var updateDate = Calendar.getInstance()
+        val updateDate = Calendar.getInstance()
         for (park in pakrs) {
-            var updateDateParts = park.lastUpdateDate.split(" ")
-            var datePart = updateDateParts[0].split("-")
-            var hourPart = updateDateParts[1].split(":")
+            val updateDateParts = park.lastUpdateDate.split(" ")
+            val datePart = updateDateParts[0].split("-")
+            val hourPart = updateDateParts[1].split(":")
 
             updateDate.set(datePart[0].toInt(), datePart[1].toInt(), datePart[2].toInt(),
                 hourPart[0].toInt(), hourPart[1].toInt(), hourPart[2].toInt())

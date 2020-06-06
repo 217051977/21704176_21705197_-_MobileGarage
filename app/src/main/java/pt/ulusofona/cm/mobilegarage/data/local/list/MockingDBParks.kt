@@ -19,6 +19,7 @@ class MockingDBParks private constructor(){
         "0"
     )
     private val storage: MutableList<Park> = mutableListOf(
+        /*
         Park(
             "park1",
             90.1,
@@ -51,6 +52,8 @@ class MockingDBParks private constructor(){
             100,
             10
         )
+
+         */
     )
 
     companion object {

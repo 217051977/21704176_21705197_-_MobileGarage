@@ -34,7 +34,7 @@ class ParkViewModel : ViewModel() {
     fun getParkToShow(): Park? = parksLogic.getParkToShow()
 
     fun setParkToShow(park: Park) {
-        parksLogic.setParkToShow(park)
+        //parksLogic.setParkToShow(park)
     }
 
     fun setFavoritesLandScapeAdapter(
@@ -45,7 +45,7 @@ class ParkViewModel : ViewModel() {
         return FavoritesLandScapeAdapter(
             context,
             R.layout.item_park_element,
-            parksLogic.getAllFavorites() as MutableList<Park>,
+           /* parksLogic.getAllFavorites()*/ null as MutableList<Park>,
             supportFragmentManager,
             viewModel
         )
@@ -59,7 +59,7 @@ class ParkViewModel : ViewModel() {
         return FavoritesAdapter(
             context,
             R.layout.item_park_element,
-            parksLogic.getAllFavorites() as MutableList<Park>,
+            /* parksLogic.getAllFavorites()*/ null as MutableList<Park>,
             supportFragmentManager,
             viewModel
         )
@@ -70,8 +70,8 @@ class ParkViewModel : ViewModel() {
         supportFragmentManager: FragmentManager,
         viewModel: ParkViewModel
     ): ParkingListLandScapeAdapter {
-        val parks: List<Park> = parksLogic.getAll()
-        parksLogic.getParks()
+        val parks: List<Park> = /*parksLogic.getAll()*/
+            parksLogic.getParks()
         return if (parks.isNotEmpty()) {
             ParkingListLandScapeAdapter(
                 context,
@@ -96,7 +96,7 @@ class ParkViewModel : ViewModel() {
         supportFragmentManager: FragmentManager,
         viewModel: ParkViewModel
     ): ParkingListAdapter {
-        val parks: List<Park> = parksLogic.getAll()
+        val parks: List<Park> = /*parksLogic.getAll() */
         parksLogic.getParks()
         return if (parks.isNotEmpty()) {
             ParkingListAdapter(
