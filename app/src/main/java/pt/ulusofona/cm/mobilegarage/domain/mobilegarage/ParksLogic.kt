@@ -1,5 +1,6 @@
 package pt.ulusofona.cm.mobilegarage.domain.mobilegarage
 
+import android.util.Log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -7,33 +8,32 @@ import pt.ulusofona.cm.mobilegarage.data.local.entities.Park
 import pt.ulusofona.cm.mobilegarage.data.local.list.MockingDBParks
 import pt.ulusofona.cm.mobilegarage.data.remote.responses.ParkingLotsResponse
 import pt.ulusofona.cm.mobilegarage.data.remote.services.ParkingLotsService
+import pt.ulusofona.cm.mobilegarage.ui.listeners.OnReceiveParkingLots
 import retrofit2.Retrofit
 import java.util.*
 
 class ParksLogic(private val retrofit: Retrofit) {
 
-    fun getParks(): List<Park> {
+    fun getParks(listener: OnReceiveParkingLots?) {
         val service = retrofit.create(ParkingLotsService::class.java)
-        var pakrs = listOf<ParkingLotsResponse>()
         CoroutineScope(Dispatchers.IO).launch {
             val response = service.getParkingLots("93600bb4e7fee17750ae478c22182dda")
 
             if (response.isSuccessful) {
-                pakrs = response.body()!!
+                val parks = response.body()
+                listener?.onReceiveParkingLots(parkCreation(parks!!))
+                Log.i(this::class.java.simpleName, response.message())
+            } else {
+                Log.i(this::class.java.simpleName, response.message())
             }
-            /*
-            val operacoes = response.body()
-            listener?.onReceiveOperations(operacoes!!)
-             */
         }
-        Thread.sleep(80)
-        return parkCreation(pakrs)
+        Thread.sleep(60)
     }
 
-    fun parkCreation(pakrs: List<ParkingLotsResponse>): List<Park> {
+    fun parkCreation(parks: List<ParkingLotsResponse>): List<Park> {
         val newPark = mutableListOf<Park>()
         val updateDate = Calendar.getInstance()
-        for (park in pakrs) {
+        for (park in parks) {
             val updateDateParts = park.lastUpdateDate.split(" ")
             val datePart = updateDateParts[0].split("-")
             val hourPart = updateDateParts[1].split(":")
