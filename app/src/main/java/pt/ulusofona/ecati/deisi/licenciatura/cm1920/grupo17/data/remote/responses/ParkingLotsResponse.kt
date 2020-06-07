@@ -1,4 +1,4 @@
-package pt.ulusofona.cm.mobilegarage.data.remote.responses
+package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.remote.responses
 
 import com.google.gson.annotations.SerializedName
 

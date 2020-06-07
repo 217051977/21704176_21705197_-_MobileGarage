@@ -1,6 +1,6 @@
-package pt.ulusofona.cm.mobilegarage.ui.listeners
+package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners
 
-import pt.ulusofona.cm.mobilegarage.data.local.entities.Park
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Park
 
 interface OnReceiveParkingLots {
 

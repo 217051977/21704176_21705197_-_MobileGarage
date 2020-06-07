@@ -1,4 +1,4 @@
-package pt.ulusofona.cm.mobilegarage.data.remote.requests
+package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.remote.requests
 
 // WITH NO PARAMETRES
 class ParkingLots() {}

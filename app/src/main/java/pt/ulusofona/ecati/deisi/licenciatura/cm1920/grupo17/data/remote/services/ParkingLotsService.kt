@@ -1,6 +1,6 @@
-package pt.ulusofona.cm.mobilegarage.data.remote.services
+package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.remote.services
 
-import pt.ulusofona.cm.mobilegarage.data.remote.responses.ParkingLotsResponse
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.remote.responses.ParkingLotsResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Header

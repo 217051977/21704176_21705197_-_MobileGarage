@@ -15,6 +15,10 @@ import butterknife.OnClick
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.fragment_home_menu.*
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Park
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.adapters.ParkingListAdapter
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.adapters.ParkingListLandScapeAdapter
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveParkingLots
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.ParkViewModel
 
 class HomeMenuFragment : Fragment(), OnReceiveParkingLots {
