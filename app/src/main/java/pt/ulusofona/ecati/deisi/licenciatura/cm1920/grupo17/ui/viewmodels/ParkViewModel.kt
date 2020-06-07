@@ -13,11 +13,18 @@ import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.adapters.ParkingL
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.adapters.ParkingListLandScapeAdapter
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.utils.ParkNavigationManager
 
+const val ENDPOINT = "https://emel.city-platform.com/opendata/"
+
 class ParkViewModel : ViewModel() {
 
-    private val parksLogic: ParksLogic =
-        ParksLogic()
+    private val parksLogic: ParksLogic = ParksLogic(RetrofitBuilder.getInstance(ENDPOINT))
     private val feedback: Feedback = Feedback.getInstance()
+
+    private var listenerParks: OnReceiveParkingLots? = null
+
+    fun getParks() {
+        parksLogic.getParks(listenerParks)
+    }
 
     fun goToFilterOption(
         context: Context,
@@ -32,7 +39,7 @@ class ParkViewModel : ViewModel() {
     fun getParkToShow(): Park? = parksLogic.getParkToShow()
 
     fun setParkToShow(park: Park) {
-        parksLogic.setParkToShow(park)
+        //parksLogic.setParkToShow(park)
     }
 
     fun setFavoritesLandScapeAdapter(
@@ -43,7 +50,7 @@ class ParkViewModel : ViewModel() {
         return FavoritesLandScapeAdapter(
             context,
             R.layout.item_park_element,
-            parksLogic.getAllFavorites() as MutableList<Park>,
+           /* parksLogic.getAllFavorites()*/ null as MutableList<Park>,
             supportFragmentManager,
             viewModel
         )
@@ -57,7 +64,7 @@ class ParkViewModel : ViewModel() {
         return FavoritesAdapter(
             context,
             R.layout.item_park_element,
-            parksLogic.getAllFavorites() as MutableList<Park>,
+            /* parksLogic.getAllFavorites()*/ null as MutableList<Park>,
             supportFragmentManager,
             viewModel
         )
@@ -73,7 +80,7 @@ class ParkViewModel : ViewModel() {
             ParkingListLandScapeAdapter(
                 context,
                 R.layout.item_park_element,
-                parks as MutableList<Park>,
+                parks as MutableList <Park>,
                 supportFragmentManager,
                 viewModel
             )
@@ -88,29 +95,14 @@ class ParkViewModel : ViewModel() {
         }
     }
 
-    fun setAdapter(
-        context: Context,
-        supportFragmentManager: FragmentManager,
-        viewModel: ParkViewModel
-    ): ParkingListAdapter {
-        val parks: List<Park> = parksLogic.getAll()
-        return if (parks.isNotEmpty()) {
-            ParkingListAdapter(
-                context,
-                R.layout.item_park_element,
-                parks as MutableList<Park>,
-                supportFragmentManager,
-                viewModel
-            )
-        } else {
-            ParkingListAdapter(
-                context,
-                R.layout.item_park_element,
-                mutableListOf(),
-                supportFragmentManager,
-                viewModel
-            )
-        }
+    fun registerListenerParks(listener: OnReceiveParkingLots) {
+        this.listenerParks = listener
     }
+
+    fun unregisterListener() {
+        listenerParks = null
+    }
+
+
 
 }

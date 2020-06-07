@@ -7,17 +7,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import butterknife.ButterKnife
 import butterknife.OnClick
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.fragment_home_menu.*
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.ParkViewModel
 
-class HomeMenuFragment : Fragment() {
+class HomeMenuFragment : Fragment(), OnReceiveParkingLots {
 
     private lateinit var viewModel: ParkViewModel
+    private var parks = listOf<Park>()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,20 +39,36 @@ class HomeMenuFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        viewModel.getParks()
+        Thread.sleep(60)
+
         parking_list.layoutManager = LinearLayoutManager(activity as Context)
         if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            parking_list.adapter = viewModel.setLandScapeAdapter(
+            parking_list.adapter = setLandScapeAdapter(
                 activity as Context,
                 activity?.supportFragmentManager!!,
                 viewModel
             )
         } else {
-            parking_list.adapter = viewModel.setAdapter(
+            parking_list.adapter = setAdapter(
                 activity as Context,
                 activity?.supportFragmentManager!!,
                 viewModel
             )
         }
+    }
+
+    override fun onReceiveParkingLots(parks: List<Park>) = parks.let { this.parks = it }
+
+    override fun onStart() {
+        viewModel.registerListenerParks(this)
+        super.onStart()
+    }
+
+    override fun onDestroy() {
+        viewModel.unregisterListener()
+        super.onDestroy()
     }
 
     @OnClick(
@@ -62,4 +82,52 @@ class HomeMenuFragment : Fragment() {
         )
     }
 
+
+    fun setLandScapeAdapter(
+        context: Context,
+        supportFragmentManager: FragmentManager,
+        viewModel: ParkViewModel
+    ): ParkingListLandScapeAdapter {
+        return if (parks.isNotEmpty()) {
+            ParkingListLandScapeAdapter(
+                context,
+                R.layout.item_park_element,
+                parks as MutableList <Park>,
+                supportFragmentManager,
+                viewModel
+            )
+        } else {
+            ParkingListLandScapeAdapter(
+                context,
+                R.layout.item_park_element,
+                mutableListOf(),
+                supportFragmentManager,
+                viewModel
+            )
+        }
+    }
+
+    fun setAdapter(
+        context: Context,
+        supportFragmentManager: FragmentManager,
+        viewModel: ParkViewModel
+    ): ParkingListAdapter {
+        return if (parks.isNotEmpty()) {
+            ParkingListAdapter(
+                context,
+                R.layout.item_park_element,
+                parks as MutableList <Park>,
+                supportFragmentManager,
+                viewModel
+            )
+        } else {
+            ParkingListAdapter(
+                context,
+                R.layout.item_park_element,
+                mutableListOf(),
+                supportFragmentManager,
+                viewModel
+            )
+        }
+    }
 }
