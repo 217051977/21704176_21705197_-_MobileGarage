@@ -1,2 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <!--  primaries  -->
+    <color name="color_primary_black">#000000</color>
+    <color name="color_primary_white">#FFFFFF</color>
+    <color name="color_primary_red">#FF0000</color>
+    <color name="color_primary_green">#00FF00</color>
+    <color name="color_primary_blue">#0000FF</color>
+    <!--  app colors  -->
+    <color name="colorPrimary">#000000</color> <!-- ORANGE -->
+    <color name="colorPrimaryDark">#FFFFFF</color>
+    <color name="colorAccent">#000000</color>
+
+    <color name="lightGrey">#cccccc</color>
+    <color name="transparent">#00000000</color>
+</resources>

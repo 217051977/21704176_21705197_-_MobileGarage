@@ -3,16 +3,16 @@
     <!-- Base application theme. -->
     <style name="appTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/color_primary_black</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/color_primary_black</item>
-        <item name="colorAccent">@color/color_primary_black</item>
+        <item name="colorAccent">@color/color_primary_white</item>
     </style>
 
     <style name="toolbarTheme" parent="appTheme">
         <!-- Customize your theme here. -->
-        <item name="android:background">@color/app_color_orange</item>
-        <item name="android:textColorPrimary">@color/color_primary_black</item>
-        <item name="android:textColorSecondary">@color/color_primary_white</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:textColorPrimary">@color/colorPrimaryDark</item>
+        <item name="android:textColorSecondary">@color/colorAccent</item>
     </style>
 
     <style name="navBarTheme" parent="appTheme">
