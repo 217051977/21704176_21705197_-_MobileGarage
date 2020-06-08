@@ -25,7 +25,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         app:srcCompat="@drawable/ic_add_black_24dp"
-        app:backgroundTint="@color/app_color_blue"
+        app:backgroundTint="@color/colorPrimary"
         android:layout_marginBottom="20dp"
         />
 

@@ -166,7 +166,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/vehicle_detail_submit"
-        android:backgroundTint="@color/app_color_green"
+        android:backgroundTint="@color/color_primary_green"
         android:onClick="onClickSubmitAdd"
         android:layout_marginTop="20dp"
         />

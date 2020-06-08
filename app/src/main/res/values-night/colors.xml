@@ -7,7 +7,7 @@
     <color name="color_primary_green">#00FF00</color>
     <color name="color_primary_blue">#0000FF</color>
     <!--  app colors  -->
-    <color name="colorPrimary">#000000</color> <!-- ORANGE -->
+    <color name="colorPrimary">#FABE3F</color> <!-- ORANGE -->
     <color name="colorPrimaryDark">#FFFFFF</color>
     <color name="colorAccent">#000000</color>
 

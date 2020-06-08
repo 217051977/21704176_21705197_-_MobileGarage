@@ -1,12 +1,15 @@
 package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.activities
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.format.DateFormat
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.navigation.NavigationView
@@ -16,6 +19,8 @@ import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.utils.NavBarNavig
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.DrawerViewModel
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.NavBarViewModel
 import java.lang.Exception
+import java.text.SimpleDateFormat
+import java.util.*
 
 private val TAG = AppActivity::class.java.simpleName
 
@@ -132,6 +137,32 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+
+        val appSettingPrefs: SharedPreferences = getSharedPreferences("AppSettingPrefs", 0)
+        val sharedPrefsEdit: SharedPreferences.Editor = appSettingPrefs.edit()
+
+        val presentTime = DateFormat.format(
+            "hh:mm:ss", Date()
+        ) as String
+
+        val sdf = SimpleDateFormat("hh:mm")
+        val nightTime: Date = sdf.parse("20:00")
+        val time: Date = sdf.parse(presentTime)
+
+
+        if (!time.before(nightTime)) {
+            // DAY
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            sharedPrefsEdit.putBoolean("NightMode", false)
+            sharedPrefsEdit.apply()
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            sharedPrefsEdit.putBoolean("NightMode", true)
+            sharedPrefsEdit.apply()
+        }
+
         super.onCreate(savedInstanceState)
 /*        remove title bar
         this.supportActionBar?.hide()

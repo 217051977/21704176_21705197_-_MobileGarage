@@ -4,7 +4,7 @@
     >
 
     <solid
-        android:color="@color/app_color_blue"
+        android:color="@color/color_primary_blue"
         />
 
     <corners
