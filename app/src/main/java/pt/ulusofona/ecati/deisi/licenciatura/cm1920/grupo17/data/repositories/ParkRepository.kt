@@ -4,6 +4,7 @@ import android.util.Log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Park
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.room.dao.ParkDao
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.remote.responses.ParkingLotsResponse
@@ -21,16 +22,21 @@ class ParkRepository(private val local: ParkDao, private val remote: Retrofit) {
         CoroutineScope(Dispatchers.IO).launch {
             val response = service.getParkingLots(apiKey)
 
+            var parks: List<Park>? = null
             if (response.isSuccessful) {
-                val parks = response.body()
-                listener?.onReceiveParkingLots(parkCreation(parks!!))
+                val parksWeb = response.body()
+                parks = parkCreation(parksWeb!!)
                 Log.i(this::class.java.simpleName, response.message())
 
             } else {
-                val parks = local.getAll()
-                listener?.onReceiveParkingLots(parks)
+                parks = local.getAll()
                 Log.i(this::class.java.simpleName, response.message())
             }
+
+            withContext(Dispatchers.Main) {
+                listener?.onReceiveParkingLots(parks)
+            }
+
         }
 
     }

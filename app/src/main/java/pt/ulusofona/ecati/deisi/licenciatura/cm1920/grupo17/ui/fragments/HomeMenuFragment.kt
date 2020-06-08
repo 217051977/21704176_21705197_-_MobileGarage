@@ -62,7 +62,7 @@ class HomeMenuFragment : Fragment(), OnReceiveParkingLots {
         }
     }
 
-    override fun onReceiveParkingLots(parks: List<Park>) = parks.let { this.parks = it }
+    override fun onReceiveParkingLots(parks: List<Park>) = parks.let { this.parks = parks }
 
     override fun onStart() {
         viewModel.registerListenerParks(this)
