@@ -9,7 +9,7 @@ data class Park(
     @PrimaryKey
     val parkID: String,
     val name: String,
-    var lastUpdate: Calendar,
+    var lastDate: Calendar,
     val type: String,
     val nrParkingSpot: Int,
     var availability: Double = 0.0,
@@ -25,11 +25,11 @@ data class Park(
     fun getLastUpdateNotification(): String = "Last update: ${getLastUpdate()}"
 
     fun getLastUpdate(): String =
-        "${lastUpdate.get(
+        "${lastDate.get(
             Calendar.DATE
-        )}/${lastUpdate.get(
+        )}/${lastDate.get(
             Calendar.MONTH
-        ) + 1}/${lastUpdate.get(
+        ) + 1}/${lastDate.get(
             Calendar.YEAR
         )}"
 
@@ -49,7 +49,7 @@ data class Park(
         "name: $name\n" +
                 "availability: $availability\n" +
                 "distance: $distance\n" +
-                "lastUpdate: $lastUpdate\n" +
+                "lastUpdate: $lastDate\n" +
                 "type: $type\n" +
                 "price: $price\n" +
                 "price: $address\n"

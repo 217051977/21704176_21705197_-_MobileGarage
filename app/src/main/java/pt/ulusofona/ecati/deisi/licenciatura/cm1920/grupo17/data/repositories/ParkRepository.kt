@@ -50,7 +50,7 @@ class ParkRepository(private val local: ParkDao, private val remote: Retrofit) {
                 Park(
                     parkID = park.parkID,
                     name = park.name,
-                    lastUpdate = updateDate,
+                    lastDate = updateDate,
                     type = park.parkType,
                     nrParkingSpot = park.maxCapacity
                 )
