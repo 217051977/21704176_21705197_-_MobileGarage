@@ -26,7 +26,6 @@ class HomeMenuFragment : Fragment(), OnReceiveParkingLots {
     private lateinit var viewModel: ParkViewModel
     private var parks = listOf<Park>()
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -86,8 +85,7 @@ class HomeMenuFragment : Fragment(), OnReceiveParkingLots {
         )
     }
 
-
-    fun setLandScapeAdapter(
+    private fun setLandScapeAdapter(
         context: Context,
         supportFragmentManager: FragmentManager,
         viewModel: ParkViewModel
@@ -111,7 +109,7 @@ class HomeMenuFragment : Fragment(), OnReceiveParkingLots {
         }
     }
 
-    fun setAdapter(
+    private fun setAdapter(
         context: Context,
         supportFragmentManager: FragmentManager,
         viewModel: ParkViewModel

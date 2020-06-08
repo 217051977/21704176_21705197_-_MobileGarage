@@ -1,8 +1,13 @@
 package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.util.*
 
+@Entity
 data class Park(
+    @PrimaryKey
+    val parkID: String,
     val name: String,
     var lastUpdate: Calendar,
     val type: String,

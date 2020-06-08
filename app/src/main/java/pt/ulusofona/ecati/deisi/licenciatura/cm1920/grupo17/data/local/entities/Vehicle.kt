@@ -1,10 +1,14 @@
 package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.util.*
 
+@Entity
 open class Vehicle (
     val brand: String = "Mustang",
     val model: String = "GT500",
+    @PrimaryKey
     val plate: String = "NN-NN-NN",
     val plateDate: String = "10/10",
     var insuranceDeadLineDate: Calendar,
