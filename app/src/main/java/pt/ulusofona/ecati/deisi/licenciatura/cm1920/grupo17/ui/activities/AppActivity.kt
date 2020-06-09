@@ -1,13 +1,15 @@
 package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.activities
 
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.format.DateFormat
 import android.view.MenuItem
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
@@ -15,12 +17,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_app.*
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.utils.BatteryReceiver
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.utils.NavBarNavigationManager
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.DrawerViewModel
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.NavBarViewModel
 import java.lang.Exception
-import java.text.SimpleDateFormat
-import java.util.*
+import java.time.LocalTime
 
 private val TAG = AppActivity::class.java.simpleName
 
@@ -28,6 +30,9 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
     private lateinit var navBarViewModel: NavBarViewModel
     private lateinit var drawerViewModel: DrawerViewModel
+
+    private var baterryReceiver =  BatteryReceiver()
+    private var intentFilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
@@ -136,44 +141,11 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         super.onBackPressed()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
-
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-
-        val appSettingPrefs: SharedPreferences = getSharedPreferences("AppSettingPrefs", 0)
-        val sharedPrefsEdit: SharedPreferences.Editor = appSettingPrefs.edit()
-
-        val presentTime = DateFormat.format(
-            "hh:mm:ss", Date()
-        ) as String
-
-        val sdf = SimpleDateFormat("hh:mm")
-        val nightTimeInit: Date = sdf.parse("20:00")
-        val nightTimeEnd: Date = sdf.parse("05:00")
-        val time: Date = sdf.parse(presentTime)
-
-        // CHECK IF TIME BETWEEN 20:00 AND 05:00
-        if (time.after(nightTimeInit) && time.before(nightTimeEnd)) {
-            // DAY
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            sharedPrefsEdit.putBoolean("NightMode", false)
-            sharedPrefsEdit.apply()
-        } else {
-            // NIGHT
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            sharedPrefsEdit.putBoolean("NightMode", true)
-            sharedPrefsEdit.apply()
-        }
-
+        checkLightMode()
         super.onCreate(savedInstanceState)
-/*        remove title bar
-        this.supportActionBar?.hide()
-        remove notification bar
-        this.window.setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN
-        )
-        set content view AFTER ABOVE sequence (to avoid crash)*/
+
         setContentView(R.layout.activity_app)
         setSupportActionBar(toolbar)
         setupDrawerMenu()
@@ -253,4 +225,39 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        registerReceiver(baterryReceiver, intentFilter)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        unregisterReceiver(baterryReceiver)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun checkLightMode() {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+
+        val appSettingPrefs: SharedPreferences = getSharedPreferences("AppSettingPrefs", 0)
+        val sharedPrefsEdit: SharedPreferences.Editor = appSettingPrefs.edit()
+
+        val presentTime: LocalTime = LocalTime.now()
+
+        val nightTimeInit = LocalTime.of(20, 0)
+        val nightTimeEnd = LocalTime.of(5,0)
+
+        // BETWEEN 20:00 AND 05:00 -> NIGHT else -> DAY
+        if ((presentTime.isAfter(nightTimeEnd) && presentTime.isBefore(nightTimeInit))) {
+            // DAY
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            sharedPrefsEdit.putBoolean("NightMode", false)
+            sharedPrefsEdit.apply()
+        } else {
+            // NIGHT
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            sharedPrefsEdit.putBoolean("NightMode", true)
+            sharedPrefsEdit.apply()
+        }
+    }
 }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_message_low_battery">Bateria Fraca (20%!)</string>
+    <string name="dialog_message">Ativar Modo Noturno?</string>
+    <string name="dialog_response_yes">Sim</string>
+    <string name="dialog_response_no">Não</string>
+</resources>

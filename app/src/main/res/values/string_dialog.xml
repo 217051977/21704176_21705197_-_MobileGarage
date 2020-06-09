@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_message_low_battery">Low Battery (20%!)</string>
+    <string name="dialog_message">Activate Dark Mode? </string>
+    <string name="dialog_response_yes">Yes</string>
+    <string name="dialog_response_no">No</string>
+</resources>
