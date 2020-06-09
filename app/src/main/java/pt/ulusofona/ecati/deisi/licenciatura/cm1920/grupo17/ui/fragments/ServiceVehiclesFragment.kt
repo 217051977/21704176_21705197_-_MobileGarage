@@ -44,4 +44,12 @@ class ServiceVehiclesFragment : Fragment() {
         )
     }
 
+    @OnClick(R.id.contact_info_removed_vehicles)
+    fun sendMessage(view: View) {
+        viewModel.sendMessage(
+            activity as Context,
+            this::class.java.simpleName
+        )
+    }
+
 }

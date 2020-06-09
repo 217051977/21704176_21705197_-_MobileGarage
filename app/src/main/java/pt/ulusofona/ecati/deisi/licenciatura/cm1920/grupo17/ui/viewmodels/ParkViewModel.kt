@@ -86,7 +86,4 @@ class ParkViewModel(application: Application): AndroidViewModel(application) {
     fun unregisterListener() {
         listenerParks = null
     }
-
-
-
 }
