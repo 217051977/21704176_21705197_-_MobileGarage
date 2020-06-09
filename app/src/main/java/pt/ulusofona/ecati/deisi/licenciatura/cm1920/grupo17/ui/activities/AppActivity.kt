@@ -153,7 +153,7 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         val time: Date = sdf.parse(presentTime)
 
         // CHECK IF TIME BETWEEN 20:00 AND 05:00
-        if (!time.after(nightTimeInit) && !time.before(nightTimeEnd)) {
+        if (time.after(nightTimeInit) && time.before(nightTimeEnd)) {
             // DAY
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             sharedPrefsEdit.putBoolean("NightMode", false)
