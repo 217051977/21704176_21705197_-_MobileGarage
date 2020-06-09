@@ -148,16 +148,18 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         ) as String
 
         val sdf = SimpleDateFormat("hh:mm")
-        val nightTime: Date = sdf.parse("20:00")
+        val nightTimeInit: Date = sdf.parse("20:00")
+        val nightTimeEnd: Date = sdf.parse("05:00")
         val time: Date = sdf.parse(presentTime)
 
-
-        if (!time.before(nightTime)) {
+        // CHECK IF TIME BETWEEN 20:00 AND 05:00
+        if (!time.after(nightTimeInit) && !time.before(nightTimeEnd)) {
             // DAY
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             sharedPrefsEdit.putBoolean("NightMode", false)
             sharedPrefsEdit.apply()
         } else {
+            // NIGHT
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             sharedPrefsEdit.putBoolean("NightMode", true)
             sharedPrefsEdit.apply()

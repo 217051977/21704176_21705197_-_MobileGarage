@@ -15,7 +15,7 @@
         android:layout_height="0dp"
         android:layout_weight="2"
         android:layout_gravity="center"
-        app:srcCompat="@drawable/ic_local_parking_black_24dp"
+        app:srcCompat="@drawable/ic_local_parking"
         android:contentDescription="@string/description_icon_park"
         />
 

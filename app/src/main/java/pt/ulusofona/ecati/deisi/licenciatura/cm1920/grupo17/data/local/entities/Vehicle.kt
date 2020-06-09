@@ -17,7 +17,7 @@ open class Vehicle (
     var year: Int = 0,
     var pictureSrc: String = "mipmap-xxxhdpi/mustang_shelby_gt500.jpg",
     var isParked: Boolean = false,
-    var vehicleTypeIconSrc: String = "drawable/ic_directions_car_black_24dp.xml"
+    var vehicleTypeIconSrc: String = "drawable/ic_car.xml"
 ) {
 
     fun isYoungerThan(year: Int): Boolean = this.year < year
