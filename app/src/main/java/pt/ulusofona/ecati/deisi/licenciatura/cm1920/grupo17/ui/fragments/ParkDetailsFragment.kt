@@ -13,12 +13,12 @@ import butterknife.OnClick
 import kotlinx.android.synthetic.main.fragment_park_details.*
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Park
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceivePark
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.ParkViewModel
 
-class ParkDetailsFragment : Fragment() {
+class ParkDetailsFragment : Fragment(), OnReceivePark {
 
     private lateinit var viewModel: ParkViewModel
-    private lateinit var parkToShow: Park
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,24 +37,38 @@ class ParkDetailsFragment : Fragment() {
         return view
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        parkToShow = viewModel.getParkToShow()!!
-        park_details_name.text = parkToShow.name
-        park_details_address.text = parkToShow.getAddressNotification()
-        park_details_last_update.text = parkToShow.getLastUpdateNotification()
-        park_details_distance.text = parkToShow.distance.toString()
-        park_details_type.text = parkToShow.type
-        park_details_nr_parks.text = parkToShow.nrParkingSpot.toString()
-        park_details_availability.text = parkToShow.getAvailabilityStatus()
+    override fun onReceivePark(park: Park?) {
+
+        park.let { viewModel.park = park }
+
+        park_details_name.text = park?.name
+        park_details_address.text = park?.address
+        park_details_last_update.text = park?.getLastUpdateNotification()
+        park_details_distance.text = park?.distance.toString()
+        park_details_type.text = park?.type
+        park_details_nr_parks.text = park?.nrParkingSpot.toString()
+        park_details_availability.text = park?.getAvailabilityStatus()
         park_details_availability_nr_parks.text =
-            parkToShow.nrParkingSpotForDisablePeople.toString()
+            park?.nrParkingSpotForDisablePeople.toString()
+
     }
+
+    override fun onStart() {
+        viewModel.registerListenerPark(this)
+        super.onStart()
+    }
+
+    override fun onDestroy() {
+        viewModel.unregisterListenerPark()
+        super.onDestroy()
+    }
+
 
     @OnClick(
         R.id.park_details_go_to
     )
     fun goTo(view: View) {
-        val gmmIntentURI: Uri = Uri.parse("google.navigation:q=${parkToShow.address}")
+        val gmmIntentURI: Uri = Uri.parse("google.navigation:q=${viewModel.park?.address}")
         val mapIntent: Intent = Intent(Intent.ACTION_VIEW, gmmIntentURI)
         mapIntent.setPackage("com.google.android.apps.maps")
         startActivity(mapIntent)

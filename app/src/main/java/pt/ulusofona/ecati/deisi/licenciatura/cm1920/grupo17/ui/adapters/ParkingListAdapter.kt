@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.item_park_element.view.*
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Feedback
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Park
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceivePark
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.utils.ParkNavigationManager
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.ParkViewModel
 
@@ -21,6 +22,7 @@ class ParkingListAdapter(
     private val context: Context,
     private val layout: Int,
     private val items: MutableList<Park>,
+    private val listenerPark: OnReceivePark?,
     private val supportFragmentManager: FragmentManager
 ) : RecyclerView.Adapter<ParkingListAdapter.ParkingListViewHolder>() {
 
@@ -94,7 +96,7 @@ class ParkingListAdapter(
                 context,
                 items[position].name
             )
-
+            listenerPark?.onReceivePark(items[position]) // notifies
             ParkNavigationManager.goToParkDetails(supportFragmentManager)
         }
     }

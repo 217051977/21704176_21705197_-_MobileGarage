@@ -5,6 +5,7 @@ import android.content.Context
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
+import kotlinx.android.synthetic.main.fragment_park_details.*
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Feedback
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Park
@@ -16,6 +17,7 @@ import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.adapters.Favorite
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.adapters.FavoritesLandScapeAdapter
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.adapters.ParkingListAdapter
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.adapters.ParkingListLandScapeAdapter
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceivePark
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveParkingLots
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.utils.ParkNavigationManager
 
@@ -30,6 +32,7 @@ class ParkViewModel(application: Application): AndroidViewModel(application) {
     private val feedback: Feedback = Feedback.getInstance()
 
     private var listenerParks: OnReceiveParkingLots? = null
+    private var listenerPark: OnReceivePark? = null
     var parks = listOf<Park>(
         /*Park(
             parkID = "park1",
@@ -39,14 +42,25 @@ class ParkViewModel(application: Application): AndroidViewModel(application) {
             nrParkingSpot = 0
         )*/
     )
+    var park: Park? = null
 
     fun registerListenerParks(listener: OnReceiveParkingLots) {
         this.listenerParks = listener
         parksLogic.getParks(listenerParks)
     }
 
-    fun unregisterListener() {
+
+    fun registerListenerPark(listener: OnReceivePark) {
+        this.listenerPark = listener
+    }
+
+
+    fun unregisterListenerParks() {
         listenerParks = null
+    }
+
+    fun unregisterListenerPark() {
+        listenerPark = null
     }
 
     fun goToFilterOption(
@@ -58,8 +72,6 @@ class ParkViewModel(application: Application): AndroidViewModel(application) {
         feedback.createFullButton(TAG, context, "filter")
         ParkNavigationManager.goToFilterOptions(supportFragmentManager, fav)
     }
-
-    fun getParkToShow(): Park? = parksLogic.getParkToShow()
 
     fun setParkToShow(park: Park) {
         //parksLogic.setParkToShow(park)
@@ -95,38 +107,37 @@ class ParkViewModel(application: Application): AndroidViewModel(application) {
 
      fun setLandScapeAdapter(
         context: Context,
-        supportFragmentManager: FragmentManager,
-        viewModel: ParkViewModel
+        supportFragmentManager: FragmentManager
     ): ParkingListLandScapeAdapter {
         return if (parks.isNotEmpty()) {
             ParkingListLandScapeAdapter(
                 context,
                 R.layout.item_park_element,
                 parks as MutableList <Park>,
-                supportFragmentManager,
-                viewModel
+                listenerPark,
+                supportFragmentManager
             )
         } else {
             ParkingListLandScapeAdapter(
                 context,
                 R.layout.item_park_element,
                 mutableListOf(),
-                supportFragmentManager,
-                viewModel
+                listenerPark,
+                supportFragmentManager
             )
         }
     }
 
      fun setAdapter(
         context: Context,
-        supportFragmentManager: FragmentManager,
-        viewModel: ParkViewModel
+        supportFragmentManager: FragmentManager
     ): ParkingListAdapter {
         return if (parks.isNotEmpty()) {
             ParkingListAdapter(
                 context,
                 R.layout.item_park_element,
                 parks as MutableList <Park>,
+                listenerPark,
                 supportFragmentManager
             )
         } else {
@@ -134,6 +145,7 @@ class ParkViewModel(application: Application): AndroidViewModel(application) {
                 context,
                 R.layout.item_park_element,
                 mutableListOf(),
+                listenerPark,
                 supportFragmentManager
             )
         }
