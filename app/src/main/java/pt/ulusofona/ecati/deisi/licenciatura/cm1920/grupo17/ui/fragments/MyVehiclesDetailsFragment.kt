@@ -20,6 +20,16 @@ class MyVehiclesDetailsFragment : Fragment(), OnReceiveVehicle {
 
     private lateinit var viewModel: MyVehiclesViewModel
 
+    override fun onStart() {
+        viewModel.registerListenerVehicle(this)
+        super.onStart()
+    }
+
+    override fun onDestroy() {
+        viewModel.unregisterListenerVehicle()
+        super.onDestroy()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -46,17 +56,7 @@ class MyVehiclesDetailsFragment : Fragment(), OnReceiveVehicle {
 
     }
 
-    override fun onStart() {
-        viewModel.registerListenerVehicle(this)
-        super.onStart()
-    }
-
-    override fun onDestroy() {
-        viewModel.unregisterListenerVehicle()
-        super.onDestroy()
-    }
-
-
+    /**************** FUNCTIONS ************************/
     @OnClick(R.id.my_vehicles_details_delete)
     fun onClickDeleteVehicle(view: View) {
         val vehicle = viewModel.vehicle!!
@@ -69,6 +69,8 @@ class MyVehiclesDetailsFragment : Fragment(), OnReceiveVehicle {
     fun onClickCancel(view: View) {
         viewModel.onClickCancelAddVehicle(activity?.supportFragmentManager!!)
     }
+
+    /**************** END ************************/
 
 }
 

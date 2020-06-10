@@ -1,24 +1,59 @@
 package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments
 
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import butterknife.ButterKnife
 import butterknife.OnClick
 import kotlinx.android.synthetic.main.fragment_park_details.*
+import org.w3c.dom.Text
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Park
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceivePark
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.ParkViewModel
 
+const val SHARED_PREFS = "sharePrefs"
+const val NAME = "name"
+const val ADDRESS = "address"
+const val LAST_UPDATE = "lastUpdate"
+const val DISTANCE = "distance"
+const val TYPE = "type"
+const val NR_PARKS = "nrParks"
+const val AVAILABILITY = "availability"
+const val DISABLE_AVAILABILITY = "disableAvailability"
+
 class ParkDetailsFragment : Fragment(), OnReceivePark {
 
     private lateinit var viewModel: ParkViewModel
+    private lateinit var sharedPreferences: SharedPreferences
+
+    lateinit var parkName: TextView
+    lateinit var parkAddress: TextView
+    lateinit var parkLastUpdate: TextView
+    lateinit var parkDistance: TextView
+    lateinit var parkType: TextView
+    lateinit var parkNrParks: TextView
+    lateinit var parkAvailability: TextView
+    lateinit var parkDisableAvailability: TextView
+
+    override fun onStart() {
+        viewModel.registerListenerPark(this)
+        super.onStart()
+    }
+
+    override fun onDestroy() {
+        viewModel.unregisterListenerPark()
+        super.onDestroy()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,9 +65,17 @@ class ParkDetailsFragment : Fragment(), OnReceivePark {
             container,
             false
         )
+
+        parkName = view.findViewById(R.id.park_details_name)
+        parkAddress = view.findViewById(R.id.park_details_address)
+        parkLastUpdate = view.findViewById(R.id.park_details_last_update)
+        parkDistance = view.findViewById(R.id.park_details_distance)
+        parkType = view.findViewById(R.id.park_details_type)
+        parkNrParks = view.findViewById(R.id.park_details_nr_parks)
+        parkAvailability = view.findViewById(R.id.park_details_availability)
+        parkDisableAvailability = view.findViewById(R.id.park_details_availability_nr_parks)
+
         viewModel = ViewModelProvider(this).get(ParkViewModel::class.java)
-//        val position = intent.get
-//        view.park_details_name =
         ButterKnife.bind(this, view)
         return view
     }
@@ -40,6 +83,8 @@ class ParkDetailsFragment : Fragment(), OnReceivePark {
     override fun onReceivePark(park: Park?) {
 
         park.let { viewModel.park = park }
+
+        // sharedPreferences = requireActivity().getSharedPreferences(SHARED_PREFS, MODE_PRIVATE)
 
         park_details_name.text = park?.name
         park_details_address.text = park?.address
@@ -52,17 +97,6 @@ class ParkDetailsFragment : Fragment(), OnReceivePark {
             park?.nrParkingSpotForDisablePeople.toString()
 
     }
-
-    override fun onStart() {
-        viewModel.registerListenerPark(this)
-        super.onStart()
-    }
-
-    override fun onDestroy() {
-        viewModel.unregisterListenerPark()
-        super.onDestroy()
-    }
-
 
     @OnClick(
         R.id.park_details_go_to

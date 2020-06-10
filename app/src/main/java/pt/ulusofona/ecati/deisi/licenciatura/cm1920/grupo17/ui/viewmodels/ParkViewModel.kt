@@ -30,6 +30,7 @@ class ParkViewModel(application: Application): AndroidViewModel(application) {
     private val parksLogic: ParksLogic = ParksLogic(ParkRepository(local = local, remote = remote))
     private val feedback: Feedback = Feedback.getInstance()
 
+    // LISTENERS
     private var listenerParks: OnReceiveParks? = null
     private var listenerFavorites: OnReceiveFavorites? = null
     private var listenerPark: OnReceivePark? = null
@@ -38,6 +39,7 @@ class ParkViewModel(application: Application): AndroidViewModel(application) {
     var favorites = listOf<Park>()
     var park: Park? = null
 
+    /**************** REGISTERS AND UNREGISTERS ************************/
     fun registerListenerParks(listener: OnReceiveParks) {
         this.listenerParks = listener
         parksLogic.getParks(listenerParks)
@@ -50,7 +52,6 @@ class ParkViewModel(application: Application): AndroidViewModel(application) {
     fun registerListenerFavorites(listener: OnReceiveFavorites) {
         this.listenerFavorites = listener
         parksLogic.getFavorites(listenerFavorites)
-
     }
 
     fun unregisterListenerParks() {
@@ -61,11 +62,12 @@ class ParkViewModel(application: Application): AndroidViewModel(application) {
         listenerPark = null
     }
 
-
     fun unregisterListenerFavorites() {
         listenerFavorites = null
     }
+    /************************ END ********************************/
 
+    /**************** FUNCTIONS *************************/
     fun goToFilterOption(
         context: Context,
         TAG: String,
@@ -75,7 +77,9 @@ class ParkViewModel(application: Application): AndroidViewModel(application) {
         feedback.createFullButton(TAG, context, "filter")
         ParkNavigationManager.goToFilterOptions(supportFragmentManager, fav)
     }
+    /**************** END *************************/
 
+    /**************** SET ADAPTERS *************************/
     fun setFavoritesLandScapeAdapter(
         context: Context,
         supportFragmentManager: FragmentManager
@@ -106,46 +110,27 @@ class ParkViewModel(application: Application): AndroidViewModel(application) {
         context: Context,
         supportFragmentManager: FragmentManager
     ): ParkingListLandScapeAdapter {
-        return if (parks.isNotEmpty()) {
-            ParkingListLandScapeAdapter(
-                context,
-                R.layout.item_park_element,
-                parks as MutableList <Park>,
-                listenerPark,
-                supportFragmentManager
-            )
-        } else {
-            ParkingListLandScapeAdapter(
-                context,
-                R.layout.item_park_element,
-                mutableListOf(),
-                listenerPark,
-                supportFragmentManager
-            )
-        }
+         return ParkingListLandScapeAdapter(
+             context,
+             R.layout.item_park_element,
+             parks as MutableList <Park>,
+             listenerPark,
+             supportFragmentManager
+         )
     }
 
      fun setAdapter(
         context: Context,
         supportFragmentManager: FragmentManager
-    ): ParkingListAdapter {
-        return if (parks.isNotEmpty()) {
-            ParkingListAdapter(
-                context,
-                R.layout.item_park_element,
-                parks as MutableList <Park>,
-                listenerPark,
-                supportFragmentManager
-            )
-        } else {
-            ParkingListAdapter(
-                context,
-                R.layout.item_park_element,
-                mutableListOf(),
-                listenerPark,
-                supportFragmentManager
-            )
-        }
-    }
+     ): ParkingListAdapter {
+        return ParkingListAdapter(
+            context,
+            R.layout.item_park_element,
+            parks as MutableList <Park>,
+            listenerPark,
+            supportFragmentManager
+        )
+     }
+    /********************** END *************************/
 
 }

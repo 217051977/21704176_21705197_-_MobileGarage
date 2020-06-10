@@ -24,13 +24,14 @@ class MyVehiclesViewModel(application: Application): AndroidViewModel(applicatio
     private val local = MobileGarageDatabase.getInstance(application).vehicleDao()
     private val myVehicleLogic: MyVehiclesLogic =  MyVehiclesLogic(VehiclesRepository(local = local))
 
+    // LISTENERS
     private var listenerVehicles: OnReceiveVehicles? = null
     private var listenerVehicle: OnReceiveVehicle? = null
 
     var vehicles = listOf<Vehicle>()
     var vehicle: Vehicle? = null
 
-
+    /**************** REGISTERS AND UNREGISTERS ************************/
     fun registerListenerVehicles(listener: OnReceiveVehicles) {
         this.listenerVehicles = listener
         myVehicleLogic.getVehicles(listenerVehicles)
@@ -47,8 +48,9 @@ class MyVehiclesViewModel(application: Application): AndroidViewModel(applicatio
     fun unregisterListenerVehicle() {
         listenerVehicle = null
     }
+    /************************ END ********************************/
 
-
+    /**************** FUNCTIONS ************************/
     fun onClickAddVehicle(supp: FragmentManager) {
         MyVehiclesNavigationManager.goToVehicleAdd(supp)
     }
@@ -58,8 +60,6 @@ class MyVehiclesViewModel(application: Application): AndroidViewModel(applicatio
         MyVehiclesNavigationManager.goToVehicleList(supp)
     }
 
-    // fun onClickEditVehicle(supp: FragmentManager) {}
-
     fun onClickCancelAddVehicle(supp: FragmentManager) {
         MyVehiclesNavigationManager.goToVehicleList(supp)
     }
@@ -68,23 +68,19 @@ class MyVehiclesViewModel(application: Application): AndroidViewModel(applicatio
         //myVehiclesLogic.add(vehicle)
         MyVehiclesNavigationManager.goToVehicleList(supp)
     }
+    /************************ END ********************************/
 
+
+    /**************** ADAPTERS *************************/
     fun setAdapter(context: Context, supportFragmentManager: FragmentManager): MyVehiclesAdapter {
-        return when (vehicles.size) {
-            0 -> MyVehiclesAdapter(
-                context,
-                R.layout.item_vehicle_list,
-                mutableListOf(),
-                listenerVehicle,
-                supportFragmentManager
-            )
-            else -> MyVehiclesAdapter(
-                context,
-                R.layout.item_vehicle_list,
-                vehicles as MutableList<Vehicle>,
-                listenerVehicle,
-                supportFragmentManager
-            )
-        }
+        return MyVehiclesAdapter(
+            context,
+            R.layout.item_vehicle_list,
+            mutableListOf(),
+            listenerVehicle,
+            supportFragmentManager
+        )
     }
+    /************************ END ********************************/
+
 }

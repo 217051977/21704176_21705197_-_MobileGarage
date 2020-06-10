@@ -57,12 +57,10 @@ class ParkRepository(private val local: ParkDao, private val remote: Retrofit) {
             }
 
             withContext(Dispatchers.Main) {
-                Log.i(this::class.java.simpleName, parks.toString())
+                Log.i(this::class.java.simpleName, "NrParks: ${parks.size}")
                 listener?.onReceiveParks(parks)
             }
-
         }
-
     }
 
     fun getFavorites(listener: OnReceiveFavorites?) {

@@ -3,6 +3,7 @@ package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.adapters
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,9 @@ import android.widget.TextView
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_park_element.view.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Feedback
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Park
@@ -85,7 +89,10 @@ class FavoritesAdapter(
                 context,
                 items[position].name
             )
-            listenerPark?.onReceivePark(items[position])
+            CoroutineScope(Dispatchers.Main).launch {
+                Log.i(this::class.java.simpleName, "ParkFav: ${items[position]}")
+                listenerPark?.onReceivePark(items[position])
+            }
             ParkNavigationManager.goToParkDetails(supportFragmentManager)
         }
     }

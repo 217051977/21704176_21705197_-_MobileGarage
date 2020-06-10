@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import butterknife.ButterKnife
 import butterknife.OnClick
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.activities.AppActivity
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.SettingsViewModel
 
 class SettingsFragment : Fragment() {
@@ -40,8 +41,6 @@ class SettingsFragment : Fragment() {
     @OnClick(R.id.dialog_message)
     fun onToogleDarkMode(view: View) {
         val switch: Switch = view.findViewById(view.id)
-        viewModel.onToogleDarkMode(activity as Context, switch)
+        viewModel.onToogleDarkMode(activity as AppActivity, switch)
     }
-
-
 }
