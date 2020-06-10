@@ -51,7 +51,7 @@ class FavoritesAdapter(
         holder.parkName.text = items[position].name
         holder.availability.text = items[position].getAvailabilityStatus()
         holder.parkType.text = items[position].type
-        holder.favIcon.setImageResource(R.drawable.ic_favorite_black_24dp)
+        holder.favIcon.setImageResource(R.drawable.ic_favorite_filled)
     }
 
     override fun getItemCount() = items.size
@@ -72,7 +72,7 @@ class FavoritesAdapter(
             )
             park.favorite = false
             holder.favIcon.setImageResource(
-                R.drawable.ic_favorite_border_black_24dp
+                R.drawable.ic_favorite_border
             )
             items.remove(park)
             notifyDataSetChanged()

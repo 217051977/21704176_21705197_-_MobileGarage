@@ -16,7 +16,6 @@ import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Park
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceivePark
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.utils.ParkNavigationManager
-import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.ParkViewModel
 
 class ParkingListLandScapeAdapter(
     private val context: Context,
@@ -55,9 +54,9 @@ class ParkingListLandScapeAdapter(
         holder.availability.text = items[position].getAvailabilityStatus()
         holder.parkType.text = items[position].type
         if (items[position].favorite) {
-            holder.favIcon.setImageResource(R.drawable.ic_favorite_black_24dp)
+            holder.favIcon.setImageResource(R.drawable.ic_favorite_filled)
         } else {
-            holder.favIcon.setImageResource(R.drawable.ic_favorite_border_black_24dp)
+            holder.favIcon.setImageResource(R.drawable.ic_favorite_border)
         }
         holder.address.text = items[position].address
         holder.distance.text = items[position].distance.toString()
@@ -82,12 +81,12 @@ class ParkingListLandScapeAdapter(
             if (park.favorite) {
                 park.favorite = false
                 holder.favIcon.setImageResource(
-                    R.drawable.ic_favorite_border_black_24dp
+                    R.drawable.ic_favorite_border
                 )
             } else {
                 park.favorite = true
                 holder.favIcon.setImageResource(
-                    R.drawable.ic_favorite_black_24dp
+                    R.drawable.ic_favorite_filled
                 )
             }
             notifyDataSetChanged()
