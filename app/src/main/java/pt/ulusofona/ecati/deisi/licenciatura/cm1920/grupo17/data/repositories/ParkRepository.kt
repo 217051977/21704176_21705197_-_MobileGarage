@@ -9,35 +9,14 @@ import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.room.dao.ParkDao
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.remote.responses.ParkingLotsResponse
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.remote.services.ParkingLotsService
-import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveParkingLots
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveFavorites
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveParks
 import retrofit2.Retrofit
 import java.util.*
 
 class ParkRepository(private val local: ParkDao, private val remote: Retrofit) {
 
     private val apiKey = "93600bb4e7fee17750ae478c22182dda"
-
-    fun getParks(listener: OnReceiveParkingLots?) {
-        val service = remote.create(ParkingLotsService::class.java)
-        CoroutineScope(Dispatchers.IO).launch {
-            val response = service.getParkingLots(apiKey)
-
-            var parks: List<Park>? = null
-            if (response.isSuccessful) {
-                val parksWeb = response.body()
-                parks = parkCreation(parksWeb!!)
-            } else {
-                parks = local.getAll()
-            }
-
-            withContext(Dispatchers.Main) {
-                Log.i(this::class.java.simpleName, parks.toString())
-                listener?.onReceiveParkingLots(parks)
-            }
-
-        }
-
-    }
 
     private fun parkCreation(parks: List<ParkingLotsResponse>): List<Park> {
         val newPark = mutableListOf<Park>()
@@ -64,5 +43,44 @@ class ParkRepository(private val local: ParkDao, private val remote: Retrofit) {
         return newPark
     }
 
+    fun getParks(listener: OnReceiveParks?) {
+        val service = remote.create(ParkingLotsService::class.java)
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = service.getParkingLots(apiKey)
 
+            var parks: List<Park>? = null
+            if (response.isSuccessful) {
+                val parksWeb = response.body()
+                parks = parkCreation(parksWeb!!)
+            } else {
+                parks = local.getAll()
+            }
+
+            withContext(Dispatchers.Main) {
+                Log.i(this::class.java.simpleName, parks.toString())
+                listener?.onReceiveParks(parks)
+            }
+
+        }
+
+    }
+
+    fun getFavorites(listener: OnReceiveFavorites?) {
+
+        val favoriteParks = mutableListOf<Park>()
+        var parks = mutableListOf<Park>()
+
+        CoroutineScope(Dispatchers.IO).launch {
+            parks = local.getAll() as MutableList<Park>
+        }
+
+        for (park in parks) {
+            if (park.favorite) {
+                favoriteParks.add(park)
+            }
+        }
+
+        listener?.onReceiveFavorites(favoriteParks)
+
+    }
 }

@@ -4,8 +4,6 @@ import android.app.Application
 import android.content.Context
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.ViewModel
-import kotlinx.android.synthetic.main.fragment_park_details.*
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Feedback
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Park
@@ -17,8 +15,9 @@ import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.adapters.Favorite
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.adapters.FavoritesLandScapeAdapter
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.adapters.ParkingListAdapter
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.adapters.ParkingListLandScapeAdapter
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveFavorites
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceivePark
-import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveParkingLots
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveParks
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.utils.ParkNavigationManager
 
 const val ENDPOINT = "https://emel.city-platform.com/opendata/"
@@ -31,29 +30,28 @@ class ParkViewModel(application: Application): AndroidViewModel(application) {
     private val parksLogic: ParksLogic = ParksLogic(ParkRepository(local = local, remote = remote))
     private val feedback: Feedback = Feedback.getInstance()
 
-    private var listenerParks: OnReceiveParkingLots? = null
+    private var listenerParks: OnReceiveParks? = null
+    private var listenerFavorites: OnReceiveFavorites? = null
     private var listenerPark: OnReceivePark? = null
-    var parks = listOf<Park>(
-        /*Park(
-            parkID = "park1",
-            name = "park1",
-            lastDate = Calendar.getInstance(),
-            type = "Estruturado",
-            nrParkingSpot = 0
-        )*/
-    )
+
+    var parks = listOf<Park>()
+    var favorites = listOf<Park>()
     var park: Park? = null
 
-    fun registerListenerParks(listener: OnReceiveParkingLots) {
+    fun registerListenerParks(listener: OnReceiveParks) {
         this.listenerParks = listener
         parksLogic.getParks(listenerParks)
     }
-
 
     fun registerListenerPark(listener: OnReceivePark) {
         this.listenerPark = listener
     }
 
+    fun registerListenerFavorites(listener: OnReceiveFavorites) {
+        this.listenerFavorites = listener
+        parksLogic.getFavorites(listenerFavorites)
+
+    }
 
     fun unregisterListenerParks() {
         listenerParks = null
@@ -61,6 +59,11 @@ class ParkViewModel(application: Application): AndroidViewModel(application) {
 
     fun unregisterListenerPark() {
         listenerPark = null
+    }
+
+
+    fun unregisterListenerFavorites() {
+        listenerFavorites = null
     }
 
     fun goToFilterOption(
@@ -73,35 +76,29 @@ class ParkViewModel(application: Application): AndroidViewModel(application) {
         ParkNavigationManager.goToFilterOptions(supportFragmentManager, fav)
     }
 
-    fun setParkToShow(park: Park) {
-        //parksLogic.setParkToShow(park)
-    }
-
     fun setFavoritesLandScapeAdapter(
         context: Context,
-        supportFragmentManager: FragmentManager,
-        viewModel: ParkViewModel
+        supportFragmentManager: FragmentManager
     ): FavoritesLandScapeAdapter {
         return FavoritesLandScapeAdapter(
             context,
             R.layout.item_park_element,
-           /* parksLogic.getAllFavorites()*/ null as MutableList<Park>,
-            supportFragmentManager,
-            viewModel
+            favorites as MutableList<Park>,
+            listenerPark,
+            supportFragmentManager
         )
     }
 
     fun setFavoritesAdapter(
         context: Context,
-        supportFragmentManager: FragmentManager,
-        viewModel: ParkViewModel
+        supportFragmentManager: FragmentManager
     ): FavoritesAdapter {
         return FavoritesAdapter(
             context,
             R.layout.item_park_element,
-            /* parksLogic.getAllFavorites()*/ null as MutableList<Park>,
-            supportFragmentManager,
-            viewModel
+            favorites as MutableList<Park>,
+            listenerPark,
+            supportFragmentManager
         )
     }
 

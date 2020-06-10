@@ -14,10 +14,10 @@ import butterknife.OnClick
 import kotlinx.android.synthetic.main.fragment_home_menu.*
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Park
-import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveParkingLots
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveParks
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.ParkViewModel
 
-class HomeMenuFragment : Fragment(), OnReceiveParkingLots {
+class HomeMenuFragment : Fragment(), OnReceiveParks {
 
     private lateinit var viewModel: ParkViewModel
 
@@ -36,7 +36,7 @@ class HomeMenuFragment : Fragment(), OnReceiveParkingLots {
         return view
     }
 
-    override fun onReceiveParkingLots(parks: List<Park>) {
+    override fun onReceiveParks(parks: List<Park>) {
 
         parks.let { viewModel.parks = parks }
 

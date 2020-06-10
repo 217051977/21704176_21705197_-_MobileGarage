@@ -13,9 +13,11 @@ import butterknife.ButterKnife
 import butterknife.OnClick
 import kotlinx.android.synthetic.main.fragment_home_menu.*
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Park
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveFavorites
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.ParkViewModel
 
-class FavoritesFragment : Fragment() {
+class FavoritesFragment : Fragment(), OnReceiveFavorites {
 
     private lateinit var viewModel: ParkViewModel
 
@@ -34,19 +36,30 @@ class FavoritesFragment : Fragment() {
         return view
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onStart() {
+        viewModel.registerListenerFavorites(this)
+        super.onStart()
+    }
+
+    override fun onDestroy() {
+        viewModel.unregisterListenerFavorites()
+        super.onDestroy()
+    }
+
+    override fun onReceiveFavorites(favorites: List<Park>) {
+
+        favorites.let { viewModel.favorites = favorites }
+
         parking_list.layoutManager = LinearLayoutManager(activity as Context)
         if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             parking_list.adapter = viewModel.setFavoritesLandScapeAdapter(
                 activity as Context,
-                activity?.supportFragmentManager!!,
-                viewModel
+                activity?.supportFragmentManager!!
             )
         } else {
             parking_list.adapter = viewModel.setFavoritesAdapter(
                 activity as Context,
-                activity?.supportFragmentManager!!,
-                viewModel
+                activity?.supportFragmentManager!!
             )
         }
     }
@@ -62,5 +75,7 @@ class FavoritesFragment : Fragment() {
             fav = true
         )
     }
+
+
 
 }

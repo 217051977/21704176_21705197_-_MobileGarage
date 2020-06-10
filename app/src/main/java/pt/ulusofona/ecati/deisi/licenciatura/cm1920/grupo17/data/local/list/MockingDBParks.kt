@@ -155,14 +155,6 @@ class MockingDBParks private constructor(){
         return parks.toList()
     }
 
-    fun getAllFavorites(): List<Park> {
-        val favoriteParks: MutableList<Park> = mutableListOf()
-        for (park in storage) {
-            if (park.favorite) {
-                favoriteParks.add(park)
-            }
-        }
-        return favoriteParks
-    }
+
 
 }
