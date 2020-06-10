@@ -11,6 +11,10 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#000000</color>
 
+    <!-- switch colors -->
+    <color name="switchActivated">#FABE3F</color>
+    <color name="switchDisabled">#f1f1f1</color>
+
     <color name="lightGrey">#cccccc</color>
     <color name="transparent">#00000000</color>
 </resources>

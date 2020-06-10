@@ -26,14 +26,12 @@ class ParkRepository(private val local: ParkDao, private val remote: Retrofit) {
             if (response.isSuccessful) {
                 val parksWeb = response.body()
                 parks = parkCreation(parksWeb!!)
-                Log.i(this::class.java.simpleName, response.message())
-
             } else {
                 parks = local.getAll()
-                Log.i(this::class.java.simpleName, response.message())
             }
 
             withContext(Dispatchers.Main) {
+                Log.i(this::class.java.simpleName, parks.toString())
                 listener?.onReceiveParkingLots(parks)
             }
 

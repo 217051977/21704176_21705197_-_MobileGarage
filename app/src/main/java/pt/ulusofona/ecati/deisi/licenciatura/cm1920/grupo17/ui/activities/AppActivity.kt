@@ -127,6 +127,15 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
                     this.supportFragmentManager
                 )
             }
+
+            R.id.nav_settings -> {
+                drawerViewModel.onClickSettings(
+                    this,
+                    TAG,
+                    this.supportFragmentManager
+                )
+            }
+
             R.id.nav_log_out -> finish()
         }
         nav_bar.menu.getItem(nav_bar.menu.size() - 1).isChecked = true
@@ -206,7 +215,6 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
             false
 
         }
-
     }
 
     private fun setupDrawerMenu() {
@@ -237,6 +245,7 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun checkLightMode() {
+
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
 
         val appSettingPrefs: SharedPreferences = getSharedPreferences("AppSettingPrefs", 0)
@@ -248,7 +257,7 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         val nightTimeEnd = LocalTime.of(5,0)
 
         // BETWEEN 20:00 AND 05:00 -> NIGHT else -> DAY
-        if ((presentTime.isAfter(nightTimeEnd) && presentTime.isBefore(nightTimeInit))) {
+        if (presentTime.isAfter(nightTimeEnd) && presentTime.isBefore(nightTimeInit)) {
             // DAY
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             sharedPrefsEdit.putBoolean("NightMode", false)

@@ -17,7 +17,7 @@ class LogInViewModel : ViewModel() {
             context,
             "Sending to register fragment"
         )
-        NavigationManager.goToRegisterPage(supp)
+        //NavigationManager.goToRegisterPage(supp)
     }
 
     fun onClickLogIn(context: Context, supp: FragmentManager) {

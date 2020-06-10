@@ -21,8 +21,7 @@ class ParkingListAdapter(
     private val context: Context,
     private val layout: Int,
     private val items: MutableList<Park>,
-    private val supportFragmentManager: FragmentManager,
-    private var viewModel: ParkViewModel
+    private val supportFragmentManager: FragmentManager
 ) : RecyclerView.Adapter<ParkingListAdapter.ParkingListViewHolder>() {
 
     private val feedback: Feedback = Feedback.getInstance()
@@ -67,6 +66,7 @@ class ParkingListAdapter(
             mapIntent.setPackage("com.google.android.apps.maps")
             context.startActivity(mapIntent)
         }
+
         holder.itemView.add_favorite.setOnClickListener {
             val park: Park = items[position]
             feedback.createFullButton(
@@ -94,7 +94,7 @@ class ParkingListAdapter(
                 context,
                 items[position].name
             )
-            viewModel.setParkToShow(items[position])
+
             ParkNavigationManager.goToParkDetails(supportFragmentManager)
         }
     }

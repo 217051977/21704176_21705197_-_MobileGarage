@@ -3,6 +3,7 @@ package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments
 import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,11 +21,11 @@ import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.adapters.ParkingL
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.adapters.ParkingListLandScapeAdapter
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveParkingLots
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.ParkViewModel
+import java.util.*
 
 class HomeMenuFragment : Fragment(), OnReceiveParkingLots {
 
     private lateinit var viewModel: ParkViewModel
-    private var parks = listOf<Park>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,28 +42,26 @@ class HomeMenuFragment : Fragment(), OnReceiveParkingLots {
         return view
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        viewModel.getParks()
-        Thread.sleep(60)
+    override fun onReceiveParkingLots(parks: List<Park>) {
+
+        parks.let { viewModel.parks = parks }
 
         parking_list.layoutManager = LinearLayoutManager(activity as Context)
         if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            parking_list.adapter = setLandScapeAdapter(
+            parking_list.adapter = viewModel.setLandScapeAdapter(
                 activity as Context,
                 activity?.supportFragmentManager!!,
                 viewModel
             )
         } else {
-            parking_list.adapter = setAdapter(
+            parking_list.adapter = viewModel.setAdapter(
                 activity as Context,
                 activity?.supportFragmentManager!!,
                 viewModel
             )
         }
     }
-
-    override fun onReceiveParkingLots(parks: List<Park>) = parks.let { this.parks = parks }
 
     override fun onStart() {
         viewModel.registerListenerParks(this)
@@ -83,53 +82,5 @@ class HomeMenuFragment : Fragment(), OnReceiveParkingLots {
             this::class.java.simpleName,
             activity?.supportFragmentManager!!
         )
-    }
-
-    private fun setLandScapeAdapter(
-        context: Context,
-        supportFragmentManager: FragmentManager,
-        viewModel: ParkViewModel
-    ): ParkingListLandScapeAdapter {
-        return if (parks.isNotEmpty()) {
-            ParkingListLandScapeAdapter(
-                context,
-                R.layout.item_park_element,
-                parks as MutableList <Park>,
-                supportFragmentManager,
-                viewModel
-            )
-        } else {
-            ParkingListLandScapeAdapter(
-                context,
-                R.layout.item_park_element,
-                mutableListOf(),
-                supportFragmentManager,
-                viewModel
-            )
-        }
-    }
-
-    private fun setAdapter(
-        context: Context,
-        supportFragmentManager: FragmentManager,
-        viewModel: ParkViewModel
-    ): ParkingListAdapter {
-        return if (parks.isNotEmpty()) {
-            ParkingListAdapter(
-                context,
-                R.layout.item_park_element,
-                parks as MutableList <Park>,
-                supportFragmentManager,
-                viewModel
-            )
-        } else {
-            ParkingListAdapter(
-                context,
-                R.layout.item_park_element,
-                mutableListOf(),
-                supportFragmentManager,
-                viewModel
-            )
-        }
     }
 }

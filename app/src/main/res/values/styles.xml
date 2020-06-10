@@ -15,6 +15,11 @@
         <item name="android:textColorSecondary">@color/colorAccent</item>
     </style>
 
+    <style name="SwitchTheme" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/switchActivated</item>
+        <item name="colorSwitchThumbNormal">@color/switchDisabled</item>
+    </style>
+
     <style name="navBarTheme" parent="appTheme">
         <!-- Customize your theme here. -->
         <item name="android:background">@color/lightGrey</item>

@@ -3,8 +3,6 @@ package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.utils
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
-import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments.LogInFragment
-import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments.RegisterFragment
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments.SettingsFragment
 
 class NavigationManager {
@@ -18,6 +16,7 @@ class NavigationManager {
             transition.commit()
         }
 
+        /*
         fun goToLogInPage(fm: FragmentManager) {
             placeFragment(
                 fm,
@@ -31,13 +30,7 @@ class NavigationManager {
                 RegisterFragment()
             )
         }
-
-        fun goToSettingsPage(fm: FragmentManager) {
-            placeFragment(
-                fm,
-                SettingsFragment()
-            )
-        }
+         */
 
     }
 

@@ -30,9 +30,23 @@ class ParkViewModel(application: Application): AndroidViewModel(application) {
     private val feedback: Feedback = Feedback.getInstance()
 
     private var listenerParks: OnReceiveParkingLots? = null
+    var parks = listOf<Park>(
+        /*Park(
+            parkID = "park1",
+            name = "park1",
+            lastDate = Calendar.getInstance(),
+            type = "Estruturado",
+            nrParkingSpot = 0
+        )*/
+    )
 
-    fun getParks() {
+    fun registerListenerParks(listener: OnReceiveParkingLots) {
+        this.listenerParks = listener
         parksLogic.getParks(listenerParks)
+    }
+
+    fun unregisterListener() {
+        listenerParks = null
     }
 
     fun goToFilterOption(
@@ -79,11 +93,50 @@ class ParkViewModel(application: Application): AndroidViewModel(application) {
         )
     }
 
-    fun registerListenerParks(listener: OnReceiveParkingLots) {
-        this.listenerParks = listener
+     fun setLandScapeAdapter(
+        context: Context,
+        supportFragmentManager: FragmentManager,
+        viewModel: ParkViewModel
+    ): ParkingListLandScapeAdapter {
+        return if (parks.isNotEmpty()) {
+            ParkingListLandScapeAdapter(
+                context,
+                R.layout.item_park_element,
+                parks as MutableList <Park>,
+                supportFragmentManager,
+                viewModel
+            )
+        } else {
+            ParkingListLandScapeAdapter(
+                context,
+                R.layout.item_park_element,
+                mutableListOf(),
+                supportFragmentManager,
+                viewModel
+            )
+        }
     }
 
-    fun unregisterListener() {
-        listenerParks = null
+     fun setAdapter(
+        context: Context,
+        supportFragmentManager: FragmentManager,
+        viewModel: ParkViewModel
+    ): ParkingListAdapter {
+        return if (parks.isNotEmpty()) {
+            ParkingListAdapter(
+                context,
+                R.layout.item_park_element,
+                parks as MutableList <Park>,
+                supportFragmentManager
+            )
+        } else {
+            ParkingListAdapter(
+                context,
+                R.layout.item_park_element,
+                mutableListOf(),
+                supportFragmentManager
+            )
+        }
     }
+
 }

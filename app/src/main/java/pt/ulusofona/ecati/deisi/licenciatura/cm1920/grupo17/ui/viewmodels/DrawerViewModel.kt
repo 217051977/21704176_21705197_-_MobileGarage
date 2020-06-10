@@ -97,4 +97,13 @@ class DrawerViewModel : ViewModel() {
         DrawerNavigationManager.goToShareLocation(supportFragmentManager)
     }
 
+    fun onClickSettings(
+        context: Context,
+        TAG: String?,
+        supportFragmentManager: FragmentManager
+    ) {
+        feedback.createFullButton(TAG, context,"nav_settings")
+        DrawerNavigationManager.goToSettings(supportFragmentManager)
+    }
+
 }

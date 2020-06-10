@@ -23,7 +23,6 @@ class MyVehiclesAdapter(
 
     private val feedback: Feedback = Feedback.getInstance()
 
-
     class MyVehiclesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val isParked: TextView = view.is_parked
         val insurancePaid: TextView = view.insurance_paid

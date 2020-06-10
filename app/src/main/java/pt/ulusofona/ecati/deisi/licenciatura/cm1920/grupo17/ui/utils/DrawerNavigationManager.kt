@@ -72,6 +72,11 @@ class DrawerNavigationManager {
             )
         }
 
+        fun goToSettings(fm: FragmentManager) {
+            placeFragment(
+                fm,
+                SettingsFragment()
+            )
+        }
     }
-
 }
