@@ -1,31 +1,60 @@
 package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels
 
+import android.app.Application
 import android.content.Context
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Vehicle
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.room.MobileGarageDatabase
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.repositories.ParkRepository
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.repositories.VehiclesRepository
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.domain.mobilegarage.MyVehiclesLogic
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.domain.mobilegarage.ParksLogic
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.adapters.MyVehiclesAdapter
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceivePark
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveParks
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveVehicle
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveVehicles
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.utils.MyVehiclesNavigationManager
 
-class MyVehiclesViewModel : ViewModel() {
+class MyVehiclesViewModel(application: Application): AndroidViewModel(application) {
 
-    private val myVehiclesLogic: MyVehiclesLogic =
-        MyVehiclesLogic()
+    private val local = MobileGarageDatabase.getInstance(application).vehicleDao()
+    private val myVehicleLogic: MyVehiclesLogic =  MyVehiclesLogic(VehiclesRepository(local = local))
 
-    fun getVehicleToShow(): Vehicle? = myVehiclesLogic.getVehicleToShow()
+    private var listenerVehicles: OnReceiveVehicles? = null
+    private var listenerVehicle: OnReceiveVehicle? = null
 
-    fun setVehicleToShow(vehicle: Vehicle) {
-        myVehiclesLogic.setVehicleToShow(vehicle)
+    var vehicles = listOf<Vehicle>()
+    var vehicle: Vehicle? = null
+
+
+    fun registerListenerVehicles(listener: OnReceiveVehicles) {
+        this.listenerVehicles = listener
+        myVehicleLogic.getVehicles(listenerVehicles)
     }
+
+    fun registerListenerVehicle(listener: OnReceiveVehicle) {
+        this.listenerVehicle = listener
+    }
+
+    fun unregisterListenerVehicles() {
+        listenerVehicles = null
+    }
+
+    fun unregisterListenerVehicle() {
+        listenerVehicle = null
+    }
+
 
     fun onClickAddVehicle(supp: FragmentManager) {
         MyVehiclesNavigationManager.goToVehicleAdd(supp)
     }
 
     fun onClickDeleteVehicle(supp: FragmentManager, vehicle: Vehicle) {
-        myVehiclesLogic.remove(vehicle)
+        //myVehiclesLogic.remove(vehicle)
         MyVehiclesNavigationManager.goToVehicleList(supp)
     }
 
@@ -36,26 +65,25 @@ class MyVehiclesViewModel : ViewModel() {
     }
 
     fun onClickSubmitAddVehicle(supp: FragmentManager, vehicle: Vehicle) {
-        myVehiclesLogic.add(vehicle)
+        //myVehiclesLogic.add(vehicle)
         MyVehiclesNavigationManager.goToVehicleList(supp)
     }
 
-    fun setAdapter(context: Context, supportFragmentManager: FragmentManager, viewModel: MyVehiclesViewModel): MyVehiclesAdapter {
-        val vehicles: List<Vehicle> = myVehiclesLogic.getAll()
+    fun setAdapter(context: Context, supportFragmentManager: FragmentManager): MyVehiclesAdapter {
         return when (vehicles.size) {
             0 -> MyVehiclesAdapter(
                 context,
                 R.layout.item_vehicle_list,
                 mutableListOf(),
-                supportFragmentManager,
-                viewModel
+                listenerVehicle,
+                supportFragmentManager
             )
             else -> MyVehiclesAdapter(
                 context,
                 R.layout.item_vehicle_list,
-                myVehiclesLogic.getAll() as MutableList<Vehicle>,
-                supportFragmentManager,
-                viewModel
+                vehicles as MutableList<Vehicle>,
+                listenerVehicle,
+                supportFragmentManager
             )
         }
     }

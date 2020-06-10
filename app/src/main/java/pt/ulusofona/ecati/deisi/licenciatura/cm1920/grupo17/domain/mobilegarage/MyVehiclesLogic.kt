@@ -2,26 +2,14 @@ package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.domain.mobilegarage
 
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Vehicle
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.list.MockingDBCars
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.repositories.VehiclesRepository
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveVehicles
 
-class MyVehiclesLogic {
+class MyVehiclesLogic(private val repository: VehiclesRepository) {
 
     private val storage: MockingDBCars = MockingDBCars.getInstance()
 
-    fun getVehicleToShow(): Vehicle? = storage.vehicle
-
-    fun setVehicleToShow(vehicle: Vehicle) {
-        storage.vehicle = vehicle
-    }
-
-    fun getAll(): List<Vehicle> = storage.getAll()
-
-    fun add(vehicle: Vehicle) {
-        storage.insert(vehicle)
-    }
-
-    fun remove(vehicle: Vehicle) {
-        storage.remove(vehicle)
-    }
+   fun getVehicles(listener: OnReceiveVehicles?) = repository.getVehicles(listener)
 
 
 }

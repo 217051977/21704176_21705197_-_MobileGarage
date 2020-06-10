@@ -13,12 +13,12 @@ import kotlinx.android.synthetic.main.fragment_my_vehicles_details.*
 
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Vehicle
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveVehicle
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.MyVehiclesViewModel
 
-class MyVehiclesDetailsFragment : Fragment() {
+class MyVehiclesDetailsFragment : Fragment(), OnReceiveVehicle {
 
     private lateinit var viewModel: MyVehiclesViewModel
-    private lateinit var vehicleToShow: Vehicle
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,27 +35,40 @@ class MyVehiclesDetailsFragment : Fragment() {
         return view
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        vehicleToShow = viewModel.getVehicleToShow()!!
-        vehicle_detail_brand.text = vehicleToShow.brand
-        vehicle_detail_model.text = vehicleToShow.model
-        vehicle_detail_plate.text = vehicleToShow.plate
-        vehicle_detail_plate_date.text = vehicleToShow.plateDate
+    override fun onReceiveVehicle(vehicle: Vehicle) {
+
+        vehicle.let { viewModel.vehicle = vehicle }
+
+        vehicle_detail_brand.text = vehicle.brand
+        vehicle_detail_model.text = vehicle.model
+        vehicle_detail_plate.text = vehicle.plate
+        vehicle_detail_plate_date.text = vehicle.plateDate
+
     }
+
+    override fun onStart() {
+        viewModel.registerListenerVehicle(this)
+        super.onStart()
+    }
+
+    override fun onDestroy() {
+        viewModel.unregisterListenerVehicle()
+        super.onDestroy()
+    }
+
 
     @OnClick(R.id.my_vehicles_details_delete)
     fun onClickDeleteVehicle(view: View) {
-        val snackbar: Snackbar = Snackbar.make(view, "Deleted ${vehicleToShow.plate} Vehicle", Snackbar.LENGTH_LONG);
+        val vehicle = viewModel.vehicle!!
+        val snackbar: Snackbar = Snackbar.make(view, "Deleted ${vehicle.plate} Vehicle", Snackbar.LENGTH_LONG);
         snackbar.show();
-        viewModel.onClickDeleteVehicle(activity?.supportFragmentManager!!, vehicleToShow)
+        viewModel.onClickDeleteVehicle(activity?.supportFragmentManager!!, vehicle)
     }
 
     @OnClick(R.id.my_vehicles_details_back)
     fun onClickCancel(view: View) {
         viewModel.onClickCancelAddVehicle(activity?.supportFragmentManager!!)
     }
-
-
 
 }
 

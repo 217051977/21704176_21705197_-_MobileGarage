@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_vehicle_list.view.*
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Feedback
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Vehicle
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveVehicle
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.utils.MyVehiclesNavigationManager
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.MyVehiclesViewModel
 
@@ -17,8 +18,8 @@ class MyVehiclesAdapter(
     private val context: Context,
     private val layout: Int,
     private val items: MutableList<Vehicle>,
-    private val supportFragmentManager: FragmentManager,
-    private var viewModel: MyVehiclesViewModel
+    private val listenerVehicle: OnReceiveVehicle?,
+    private val supportFragmentManager: FragmentManager
 ) : RecyclerView.Adapter<MyVehiclesAdapter.MyVehiclesViewHolder>() {
 
     private val feedback: Feedback = Feedback.getInstance()
@@ -57,7 +58,7 @@ class MyVehiclesAdapter(
                 context,
                 items[position].plate
             )
-            viewModel.setVehicleToShow(items[position])
+            listenerVehicle?.onReceiveVehicle(items[position])
             MyVehiclesNavigationManager.goToVehicleDetails(supportFragmentManager)
 
         }

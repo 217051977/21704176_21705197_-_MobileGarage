@@ -12,9 +12,11 @@ import butterknife.ButterKnife
 import butterknife.OnClick
 import kotlinx.android.synthetic.main.fragment_my_vehicles.*
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Vehicle
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveVehicles
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.MyVehiclesViewModel
 
-class MyVehiclesFragment : Fragment() {
+class MyVehiclesFragment : Fragment(), OnReceiveVehicles {
 
     private lateinit var viewModel: MyVehiclesViewModel
 
@@ -33,20 +35,33 @@ class MyVehiclesFragment : Fragment() {
         return view
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onReceiveVehicles(vehicles: List<Vehicle>) {
+
+        vehicles.let { viewModel.vehicles = vehicles }
+
         vehicle_list.layoutManager = LinearLayoutManager(activity as Context)
         vehicle_list.adapter = viewModel.setAdapter(
             activity as Context,
-            activity?.supportFragmentManager!!,
-            viewModel
+            activity?.supportFragmentManager!!
         )
     }
+
 
     @OnClick(
         R.id.add_vehicle
     )
     fun onClickAddVehicle(view: View) {
         viewModel.onClickAddVehicle(activity?.supportFragmentManager!!)
+    }
+
+    override fun onStart() {
+        viewModel.registerListenerVehicles(this)
+        super.onStart()
+    }
+
+    override fun onDestroy() {
+        viewModel.unregisterListenerVehicles()
+        super.onDestroy()
     }
 
 }
