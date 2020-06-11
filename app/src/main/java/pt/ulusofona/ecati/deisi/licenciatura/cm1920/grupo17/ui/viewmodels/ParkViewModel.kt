@@ -3,6 +3,8 @@ package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels
 import android.app.Activity
 import android.app.Application
 import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.view.View
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.AndroidViewModel
@@ -44,7 +46,17 @@ class ParkViewModel(application: Application): AndroidViewModel(application) {
     /**************** REGISTERS AND UNREGISTERS ************************/
     fun registerListenerParks(listener: OnReceiveParks, view: View?, context: Context) {
         this.listenerParks = listener
-        parksLogic.getParks(listenerParks, view, context)
+
+        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
+        val isConnected: Boolean? = activeNetwork?.isConnectedOrConnecting
+
+        if (isConnected!!) {
+            parksLogic.getParksOnline(listenerParks, view, context)
+        } else {
+            parksLogic.getParksOffline(listenerParks, view, context)
+        }
+
     }
 
     fun registerListenerPark(listener: OnReceivePark) {
