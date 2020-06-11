@@ -8,6 +8,9 @@ import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
 import android.view.MenuItem
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -27,6 +30,8 @@ import java.time.LocalTime
 private val TAG = AppActivity::class.java.simpleName
 
 class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    private lateinit var mainHandler: Handler
 
     private lateinit var navBarViewModel: NavBarViewModel
     private lateinit var drawerViewModel: DrawerViewModel
@@ -152,6 +157,7 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
+        mainHandler = Handler(Looper.getMainLooper())
         checkLightMode()
         super.onCreate(savedInstanceState)
 
@@ -256,17 +262,77 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         val nightTimeInit = LocalTime.of(20, 0)
         val nightTimeEnd = LocalTime.of(5,0)
 
+        var elapseTime = 0
+
         // BETWEEN 20:00 AND 05:00 -> NIGHT else -> DAY
         if (presentTime.isAfter(nightTimeEnd) && presentTime.isBefore(nightTimeInit)) {
             // DAY
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            sharedPrefsEdit.putBoolean("NightMode", false)
-            sharedPrefsEdit.apply()
+            removeDarkMode(sharedPrefsEdit)
+            elapseTime = ((20*60*60) - (presentTime.hour*60*60 + presentTime.minute*60 + presentTime.second))*1000
+            Log.e(this::class.java.simpleName, elapseTime.toString())
+            activateDarkTheme(true, elapseTime.toLong(), sharedPrefsEdit)
         } else {
             // NIGHT
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            sharedPrefsEdit.putBoolean("NightMode", true)
-            sharedPrefsEdit.apply()
+            applyDarkMode(sharedPrefsEdit)
+            elapseTime = if (presentTime.hour > 19) {
+                ((29 * 60 * 60) - (presentTime.hour * 60 * 60 + presentTime.minute * 60 + presentTime.second)) * 1000
+            } else {
+                ((5 * 60 * 60) - (presentTime.hour * 60 * 60 + presentTime.minute * 60 + presentTime.second)) * 1000
+            }
+            activateDarkTheme(false, elapseTime.toLong(), sharedPrefsEdit)
+        }
+    }
+
+    private fun applyDarkMode(sharedPrefsEdit: SharedPreferences.Editor) {
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        sharedPrefsEdit.putBoolean("NightMode", true)
+        sharedPrefsEdit.apply()
+
+    }
+
+    private fun removeDarkMode(sharedPrefsEdit: SharedPreferences.Editor) {
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        sharedPrefsEdit.putBoolean("NightMode", false)
+        sharedPrefsEdit.apply()
+
+    }
+
+    private fun activateDarkTheme(activate: Boolean, elapseTime: Long, sharedPrefsEdit: SharedPreferences.Editor) {
+        Log.e(this::class.java.simpleName, elapseTime.toString())
+
+        val on = object : Runnable{
+            override fun run() {
+/**                this is the function that is applying the dark mode
+//                applyDarkMode(sharedPrefsEdit)
+**/
+                activateDarkTheme(false, 54000000, sharedPrefsEdit)
+//                mainHandler.postDelayed(this, elapseTime)
+            }
+        }
+
+        if (activate) {
+            mainHandler.postDelayed(on, elapseTime)
+        } else {
+            mainHandler.post {
+                object : Runnable {
+                    override fun run() {
+                        Log.e(this::class.java.simpleName, "Entered")
+                        removeDarkMode(sharedPrefsEdit)
+                        mainHandler.postDelayed(
+                            /*
+                            1h = 60min
+                            1min = 60 sec
+                            1h = (60*60)sec
+                            * */
+                            this,
+                            elapseTime
+                        )
+                        activateDarkTheme(true, 32400000, sharedPrefsEdit)
+                    }
+                }
+            }
         }
     }
 }
