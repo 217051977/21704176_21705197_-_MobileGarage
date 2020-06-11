@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.activity_app.*
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.utils.BatteryReceiver
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.utils.NavBarNavigationManager
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.utils.TimeThread
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.DrawerViewModel
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.NavBarViewModel
 import java.lang.Exception
@@ -39,6 +40,7 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
     private var intentFilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+
         when(item.itemId) {
             R.id.profile -> {
                 toolbar.title = resources.getString(R.string.drawer_profile)
@@ -156,14 +158,17 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
+        checkLightMode()
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_app)
         setSupportActionBar(toolbar)
         setupDrawerMenu()
         setupNavBar()
         setLastInitVars()
         NavBarNavigationManager.goToHomePage(supportFragmentManager)
-        startThread()
+        //startThread()
+
     }
 
     private fun setLastInitVars() {
@@ -212,11 +217,8 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
                     return@setOnNavigationItemSelectedListener true
 
                 }
-
             }
-
             false
-
         }
     }
 
@@ -236,9 +238,11 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onResume() {
         super.onResume()
         registerReceiver(baterryReceiver, intentFilter)
+        checkLightMode()
     }
 
     override fun onPause() {
@@ -250,51 +254,33 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         val t = TimeThread(this)
         t.start()
     }
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun checkLightMode() {
 
-    class TimeThread(val activity: AppActivity) : Thread() {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
 
-        @RequiresApi(Build.VERSION_CODES.O)
-        fun checkLightMode() {
+        val appSettingPrefs: SharedPreferences = getSharedPreferences("AppSettingPrefs", 0)
+        val sharedPrefsEdit: SharedPreferences.Editor = appSettingPrefs.edit()
 
-            val appSettingPrefs: SharedPreferences =  activity.getSharedPreferences("AppSettingPrefs", 0)
-            val sharedPrefsEdit: SharedPreferences.Editor = appSettingPrefs.edit()
+        val presentTime: LocalTime = LocalTime.now()
 
-            val presentTime: LocalTime = LocalTime.now()
+        val nightTimeInit = LocalTime.of(20, 0)
+        val nightTimeEnd = LocalTime.of(5,0)
 
-            val nightTimeInit = LocalTime.of(20, 0)
-            val nightTimeEnd = LocalTime.of(5,0)
-
+        // BETWEEN 20:00 AND 05:00 -> NIGHT else -> DAY
+        Log.i(this::class.java.simpleName, "present: $presentTime e limiteIni: $nightTimeInit limiteFim: $nightTimeEnd")
+        if (!presentTime.isBefore(nightTimeInit) && !presentTime.isAfter(nightTimeEnd)) {
+            // DAY
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-
-            // BETWEEN 20:00 AND 05:00 -> NIGHT else -> DAY
-            Log.i(this::class.java.simpleName, "present: $presentTime e limiteIni: $nightTimeInit limiteFim: $nightTimeEnd")
-            if (presentTime.isAfter(nightTimeEnd) && presentTime.isBefore(nightTimeInit)) {
-                // DAY
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                sharedPrefsEdit.putBoolean("NightMode", false)
-                sharedPrefsEdit.apply()
-            } else {
-                // NIGHT
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                sharedPrefsEdit.putBoolean("NightMode", true)
-                sharedPrefsEdit.apply()
-            }
-            Log.i(TAG, appSettingPrefs.getBoolean("NightMode", true).toString())
+            sharedPrefsEdit.putBoolean("NightMode", false)
+            sharedPrefsEdit.apply()
+        } else {
+            // NIGHT
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            sharedPrefsEdit.putBoolean("NightMode", true)
+            sharedPrefsEdit.apply()
         }
+        Log.i(TAG, appSettingPrefs.getBoolean("NightMode", true).toString())
 
-        @RequiresApi(Build.VERSION_CODES.O)
-        override fun run() {
-            for (i in 0..60) {
-
-                try {
-                    checkLightMode()
-                }catch (e:Exception) {
-                    Log.i(this::class.java.simpleName, "Erro")
-                }
-
-                sleep(1000)
-            }
-        }
     }
-
 }

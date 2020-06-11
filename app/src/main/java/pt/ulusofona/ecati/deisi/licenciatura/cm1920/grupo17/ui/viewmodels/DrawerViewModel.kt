@@ -14,17 +14,6 @@ class DrawerViewModel : ViewModel() {
 
     private val feedback: Feedback = Feedback.getInstance()
 
-    fun setAdapter(childFragmentManager: FragmentManager): ViewPagerAdapter {
-        val adapter: ViewPagerAdapter =
-            ViewPagerAdapter(
-                childFragmentManager
-            )
-        adapter.addFragment(ServiceStationFragment(), "Station")
-        adapter.addFragment(ContactGeneralFragment(), "General")
-        adapter.addFragment(ServiceVehiclesFragment(), "Vehicles")
-        return adapter
-    }
-
     fun onClickProfile(
         context: Context,
         TAG: String?,

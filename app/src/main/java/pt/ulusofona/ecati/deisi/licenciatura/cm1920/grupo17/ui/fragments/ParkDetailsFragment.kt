@@ -88,8 +88,6 @@ class ParkDetailsFragment : Fragment(), OnReceivePark {
 
         park.let {
 
-            viewModel.park = park
-
             Log.i(TAG, "Park: $park")
             park_details_name.text = park?.name
             park_details_address.text = park?.address

@@ -19,6 +19,7 @@ import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.Settin
 
 class SettingsFragment : Fragment() {
 
+    //var activity: AppActivity = getActivity()
     private lateinit var viewModel: SettingsViewModel;
 
     override fun onCreateView(

@@ -83,4 +83,9 @@ data class Vehicle (
     private fun equalDayTo(actualDate: Calendar): Boolean =
         actualDate.get(Calendar.DAY_OF_MONTH) == insuranceDeadLineDate.get(Calendar.DAY_OF_MONTH)
 
+
+    override fun toString(): String {
+        return "Brand = $brand\nModel = $model\n Plate = $plate"
+    }
+
 }

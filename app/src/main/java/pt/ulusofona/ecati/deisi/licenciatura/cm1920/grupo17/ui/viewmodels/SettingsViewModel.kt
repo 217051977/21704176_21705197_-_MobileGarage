@@ -24,5 +24,4 @@ class SettingsViewModel: ViewModel() {
             sharedPrefsEdit.apply()
         }
     }
-
 }

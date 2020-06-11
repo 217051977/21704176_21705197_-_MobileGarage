@@ -14,6 +14,7 @@ import butterknife.OnClick
 import kotlinx.android.synthetic.main.fragment_my_vehicles.*
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Vehicle
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.adapters.MyVehiclesAdapter
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveVehicles
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.MyVehiclesViewModel
 
@@ -50,15 +51,18 @@ class MyVehiclesFragment : Fragment(), OnReceiveVehicles {
 
     override fun onReceiveVehicles(vehicles: List<Vehicle>) {
 
-        vehicles.let { viewModel.vehicles = vehicles }
+        vehicles.let {
 
-        Log.i(TAG, vehicles.toString())
-
-        vehicle_list.layoutManager = LinearLayoutManager(activity as Context)
-        vehicle_list.adapter = viewModel.setAdapter(
-            activity as Context,
-            activity?.supportFragmentManager!!
-        )
+            Log.i(TAG, vehicles.toString())
+            vehicle_list.layoutManager = LinearLayoutManager(activity as Context)
+            vehicle_list.adapter =
+                MyVehiclesAdapter(
+                    activity as Context,
+                    R.layout.item_vehicle_list,
+                    vehicles as MutableList<Vehicle>,
+                    activity?.supportFragmentManager!!
+                )
+        }
     }
 
 

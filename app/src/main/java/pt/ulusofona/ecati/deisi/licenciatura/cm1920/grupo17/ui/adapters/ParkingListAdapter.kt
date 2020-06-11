@@ -25,7 +25,6 @@ class ParkingListAdapter(
     private val context: Context,
     private val layout: Int,
     private val items: MutableList<Park>,
-    private val listenerPark: OnReceivePark?,
     private val supportFragmentManager: FragmentManager
 ) : RecyclerView.Adapter<ParkingListAdapter.ParkingListViewHolder>() {
 
@@ -99,10 +98,6 @@ class ParkingListAdapter(
                 context,
                 items[position].name
             )
-            CoroutineScope(Dispatchers.Main).launch {
-                Log.i(this::class.java.simpleName, "Park: ${items[position]}")
-                listenerPark?.onReceivePark(items[position])
-            }
             ParkNavigationManager.goToParkDetails(supportFragmentManager)
         }
     }

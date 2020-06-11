@@ -18,7 +18,6 @@ class MyVehiclesAdapter(
     private val context: Context,
     private val layout: Int,
     private val items: MutableList<Vehicle>,
-    private val listenerVehicle: OnReceiveVehicle?,
     private val supportFragmentManager: FragmentManager
 ) : RecyclerView.Adapter<MyVehiclesAdapter.MyVehiclesViewHolder>() {
 
@@ -58,9 +57,7 @@ class MyVehiclesAdapter(
                 context,
                 items[position].plate
             )
-            listenerVehicle?.onReceiveVehicle(items[position])
             MyVehiclesNavigationManager.goToVehicleDetails(supportFragmentManager)
-
         }
     }
 

@@ -74,16 +74,4 @@ class MyVehiclesViewModel(application: Application): AndroidViewModel(applicatio
     /************************ END ********************************/
 
 
-    /**************** ADAPTERS *************************/
-    fun setAdapter(context: Context, supportFragmentManager: FragmentManager): MyVehiclesAdapter {
-        return MyVehiclesAdapter(
-            context,
-            R.layout.item_vehicle_list,
-            mutableListOf(),
-            listenerVehicle,
-            supportFragmentManager
-        )
-    }
-    /************************ END ********************************/
-
 }

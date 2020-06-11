@@ -24,7 +24,7 @@ data class Park(
 
     fun getLastUpdateNotification(): String = "Last update: ${getLastUpdate()}"
 
-    fun getLastUpdate(): String =
+    private fun getLastUpdate(): String =
         "${lastDate.get(
             Calendar.DATE
         )}/${lastDate.get(
@@ -51,7 +51,6 @@ data class Park(
                 "distance: $distance\n" +
                 "lastUpdate: $lastDate\n" +
                 "type: $type\n" +
-                "price: $price\n" +
-                "price: $address\n"
+                "price: $price\n"
 
 }
