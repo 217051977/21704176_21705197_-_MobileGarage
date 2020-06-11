@@ -1,6 +1,5 @@
 package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments
 
-import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
@@ -31,11 +30,13 @@ const val NR_PARKS = "nrParks"
 const val AVAILABILITY = "availability"
 const val DISABLE_AVAILABILITY = "disableAvailability"
 
+private val TAG = ParkDetailsFragment::class.java.simpleName
+
 class ParkDetailsFragment : Fragment(), OnReceivePark {
 
     private lateinit var viewModel: ParkViewModel
-    private lateinit var sharedPreferences: SharedPreferences
 
+    /*
     lateinit var parkName: TextView
     lateinit var parkAddress: TextView
     lateinit var parkLastUpdate: TextView
@@ -44,6 +45,7 @@ class ParkDetailsFragment : Fragment(), OnReceivePark {
     lateinit var parkNrParks: TextView
     lateinit var parkAvailability: TextView
     lateinit var parkDisableAvailability: TextView
+     */
 
     override fun onStart() {
         viewModel.registerListenerPark(this)
@@ -66,6 +68,7 @@ class ParkDetailsFragment : Fragment(), OnReceivePark {
             false
         )
 
+        /*
         parkName = view.findViewById(R.id.park_details_name)
         parkAddress = view.findViewById(R.id.park_details_address)
         parkLastUpdate = view.findViewById(R.id.park_details_last_update)
@@ -74,6 +77,7 @@ class ParkDetailsFragment : Fragment(), OnReceivePark {
         parkNrParks = view.findViewById(R.id.park_details_nr_parks)
         parkAvailability = view.findViewById(R.id.park_details_availability)
         parkDisableAvailability = view.findViewById(R.id.park_details_availability_nr_parks)
+         */
 
         viewModel = ViewModelProvider(this).get(ParkViewModel::class.java)
         ButterKnife.bind(this, view)
@@ -82,18 +86,22 @@ class ParkDetailsFragment : Fragment(), OnReceivePark {
 
     override fun onReceivePark(park: Park?) {
 
-        park.let { viewModel.park = park }
+        park.let {
 
-        park_details_name.text = park?.name
-        park_details_address.text = park?.address
-        park_details_last_update.text = park?.getLastUpdateNotification()
-        park_details_distance.text = park?.distance.toString()
-        park_details_type.text = park?.type
-        park_details_nr_parks.text = park?.nrParkingSpot.toString()
-        park_details_availability.text = park?.getAvailabilityStatus()
-        park_details_availability_nr_parks.text =
-            park?.nrParkingSpotForDisablePeople.toString()
+            viewModel.park = park
 
+            Log.i(TAG, "Park: $park")
+            park_details_name.text = park?.name
+            park_details_address.text = park?.address
+            park_details_last_update.text = park?.getLastUpdateNotification()
+            park_details_distance.text = park?.distance.toString()
+            park_details_type.text = park?.type
+            park_details_nr_parks.text = park?.nrParkingSpot.toString()
+            park_details_availability.text = park?.getAvailabilityStatus()
+            park_details_availability_nr_parks.text =
+                park?.nrParkingSpotForDisablePeople.toString()
+
+        }
     }
 
     @OnClick(

@@ -5,24 +5,17 @@ import androidx.room.PrimaryKey
 import java.util.*
 
 @Entity
-open class Vehicle (
-    val brand: String = "Mustang",
-    val model: String = "GT500",
+data class Vehicle (
     @PrimaryKey
     val plate: String = "NN-NN-NN",
-    val plateDate: String = "10/10",
+    val brand: String = "No Brand",
+    val model: String = "No Model",
+    val plateDate: String = "XX/XX",
     var insuranceDeadLineDate: Calendar,
     val category: String = "N",
-    var month: Int = 0,
-    var year: Int = 0,
-    var pictureSrc: String = "mipmap-xxxhdpi/mustang_shelby_gt500.jpg",
     var isParked: Boolean = false,
     var vehicleTypeIconSrc: String = "drawable/ic_car.xml"
 ) {
-
-    fun isYoungerThan(year: Int): Boolean = this.year < year
-
-    fun isOlderThan(year: Int): Boolean = this.year > year
 
     fun getParkedStatus(): String = if (isParked) {
         "Parked"
@@ -89,6 +82,5 @@ open class Vehicle (
 
     private fun equalDayTo(actualDate: Calendar): Boolean =
         actualDate.get(Calendar.DAY_OF_MONTH) == insuranceDeadLineDate.get(Calendar.DAY_OF_MONTH)
-
 
 }

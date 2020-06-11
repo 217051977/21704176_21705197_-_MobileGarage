@@ -2,6 +2,7 @@ package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,12 +17,14 @@ import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveVehicles
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.MyVehiclesViewModel
 
+private val TAG = MyVehiclesFragment::class.java.simpleName
+
 class MyVehiclesFragment : Fragment(), OnReceiveVehicles {
 
     private lateinit var viewModel: MyVehiclesViewModel
 
     override fun onStart() {
-        viewModel.registerListenerVehicles(this)
+        viewModel.registerListenerVehicles(this, activity as Context)
         super.onStart()
     }
 
@@ -48,6 +51,8 @@ class MyVehiclesFragment : Fragment(), OnReceiveVehicles {
     override fun onReceiveVehicles(vehicles: List<Vehicle>) {
 
         vehicles.let { viewModel.vehicles = vehicles }
+
+        Log.i(TAG, vehicles.toString())
 
         vehicle_list.layoutManager = LinearLayoutManager(activity as Context)
         vehicle_list.adapter = viewModel.setAdapter(

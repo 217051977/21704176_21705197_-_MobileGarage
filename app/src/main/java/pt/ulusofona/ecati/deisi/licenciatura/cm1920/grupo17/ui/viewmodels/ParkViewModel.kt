@@ -5,6 +5,7 @@ import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.AndroidViewModel
@@ -25,6 +26,7 @@ import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnRecei
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.utils.ParkNavigationManager
 
 const val ENDPOINT = "https://emel.city-platform.com/opendata/"
+private val TAG = ParkViewModel::class.java.simpleName
 
 class ParkViewModel(application: Application): AndroidViewModel(application) {
 
@@ -48,15 +50,14 @@ class ParkViewModel(application: Application): AndroidViewModel(application) {
         this.listenerParks = listener
 
         val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
+        val activeNetwork: NetworkInfo? = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI)
         val isConnected: Boolean? = activeNetwork?.isConnected
 
-        if (false) {
+        if (isConnected!!) {
             parksLogic.getParksOnline(listenerParks, view, context)
         } else {
             parksLogic.getParksOffline(listenerParks, view, context)
         }
-
     }
 
     fun registerListenerPark(listener: OnReceivePark) {

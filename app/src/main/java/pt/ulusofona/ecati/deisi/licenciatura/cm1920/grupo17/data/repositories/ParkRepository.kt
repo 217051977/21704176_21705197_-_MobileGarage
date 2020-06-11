@@ -53,7 +53,6 @@ class ParkRepository(private val local: ParkDao, private val remote: Retrofit) {
     fun getParksOnline(listener: OnReceiveParks?, view: View?, context: Context) {
         Log.i(TAG, "Online")
 
-        val firstTime = true
         val snackBarPrefs: SharedPreferences =  context.getSharedPreferences("SnackBarPrefs", 0)
         val sharedPrefsEdit: SharedPreferences.Editor = snackBarPrefs.edit()
 
@@ -82,7 +81,7 @@ class ParkRepository(private val local: ParkDao, private val remote: Retrofit) {
 
                 val userWarned = snackBarPrefs.getBoolean("userWarned", false)
 
-                if (firstTime && !userWarned) {
+                if (!userWarned) {
                     val snackbar: Snackbar = Snackbar.make(view!!, "Error acessing Server! Getting Data from Cache", Snackbar.LENGTH_LONG);
                     snackbar.show();
                     sharedPrefsEdit.putBoolean("userWarned", true)
