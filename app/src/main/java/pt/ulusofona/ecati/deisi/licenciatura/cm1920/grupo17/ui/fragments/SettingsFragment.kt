@@ -41,7 +41,7 @@ class SettingsFragment : Fragment() {
 
     @OnClick(R.id.dialog_message)
     fun onToogleDarkMode(view: View) {
-        val switch: Switch = view.findViewById(view.id)
-        viewModel.onToogleDarkMode(activity as Context, switch)
+        val switch: Switch = view.findViewById(R.id.dialog_message)
+        viewModel.onToogleDarkMode(requireContext(), switch)
     }
 }

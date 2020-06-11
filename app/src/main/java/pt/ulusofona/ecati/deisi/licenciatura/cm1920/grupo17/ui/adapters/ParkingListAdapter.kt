@@ -98,6 +98,7 @@ class ParkingListAdapter(
                 context,
                 items[position].name
             )
+            val vehicle = items[position]
             ParkNavigationManager.goToParkDetails(supportFragmentManager)
         }
     }

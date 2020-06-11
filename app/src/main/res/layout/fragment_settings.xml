@@ -10,11 +10,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/dialog_message"
-        android:textSize="12sp"
+        android:textSize="24sp"
         android:textOn="@string/dialog_response_yes"
         android:textOff="@string/dialog_response_no"
         android:checked="false"
         android:onClick="onToogleDarkMode"
+        android:textColor="@color/colorPrimaryDark"
         android:theme="@style/SwitchTheme"/>
 
 </FrameLayout>
