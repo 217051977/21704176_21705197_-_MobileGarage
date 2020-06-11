@@ -1,6 +1,8 @@
 package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.repositories
 
 import android.util.Log
+import android.view.View
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -14,9 +16,12 @@ import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnRecei
 import retrofit2.Retrofit
 import java.util.*
 
+private val TAG = ParkRepository::class.java.simpleName
+
 class ParkRepository(private val local: ParkDao, private val remote: Retrofit) {
 
     private val apiKey = "93600bb4e7fee17750ae478c22182dda"
+    private var userWarned = false
 
     private fun parkCreation(parks: List<ParkingLotsResponse>): List<Park> {
         val newPark = mutableListOf<Park>()
@@ -43,21 +48,36 @@ class ParkRepository(private val local: ParkDao, private val remote: Retrofit) {
         return newPark
     }
 
-    fun getParks(listener: OnReceiveParks?) {
+    fun getParks(listener: OnReceiveParks?, view: View?) {
         val service = remote.create(ParkingLotsService::class.java)
         CoroutineScope(Dispatchers.IO).launch {
             val response = service.getParkingLots(apiKey)
 
             var parks: List<Park>? = null
             if (response.isSuccessful) {
+
+                Log.i(TAG, "Local Antes delete ${local.getAll().size}")
+                local.deleteParks() // DELETE BEFORE UPDATE
+                Log.i(TAG, "Local Depois delete ${local.getAll().size}")
+
                 val parksWeb = response.body()
                 parks = parkCreation(parksWeb!!)
+                local.insertParks(parks) // UPDATES PARKS
+                Log.i(TAG, "Local Depois do insert ${local.getAll().size}")
+
             } else {
                 parks = local.getAll()
+                Log.i(TAG, "Local ${parks.size}")
+
+                if (!userWarned) {
+                    val snackbar: Snackbar = Snackbar.make(view!!, "Getting Data from Cache", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                    userWarned = true
+                }
             }
 
             withContext(Dispatchers.Main) {
-                Log.i(this::class.java.simpleName, "NrParks: ${parks.size}")
+                Log.i(TAG, "NrParks: ${parks.size}")
                 listener?.onReceiveParks(parks)
             }
         }

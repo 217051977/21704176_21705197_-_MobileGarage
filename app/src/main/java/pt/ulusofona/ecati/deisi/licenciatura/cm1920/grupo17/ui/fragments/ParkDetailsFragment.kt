@@ -84,8 +84,6 @@ class ParkDetailsFragment : Fragment(), OnReceivePark {
 
         park.let { viewModel.park = park }
 
-        // sharedPreferences = requireActivity().getSharedPreferences(SHARED_PREFS, MODE_PRIVATE)
-
         park_details_name.text = park?.name
         park_details_address.text = park?.address
         park_details_last_update.text = park?.getLastUpdateNotification()

@@ -55,7 +55,7 @@ class HomeMenuFragment : Fragment(), OnReceiveParks {
     }
 
     override fun onStart() {
-        viewModel.registerListenerParks(this)
+        viewModel.registerListenerParks(this, view)
         super.onStart()
     }
 

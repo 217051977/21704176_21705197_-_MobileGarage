@@ -8,7 +8,11 @@ import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatDelegate
@@ -152,15 +156,14 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
-        checkLightMode()
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_app)
         setSupportActionBar(toolbar)
         setupDrawerMenu()
         setupNavBar()
         setLastInitVars()
         NavBarNavigationManager.goToHomePage(supportFragmentManager)
+        startThread()
     }
 
     private fun setLastInitVars() {
@@ -243,30 +246,54 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         unregisterReceiver(baterryReceiver)
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun checkLightMode() {
+    private fun startThread() {
+        val t = TimeThread(this)
+        t.start()
+    }
 
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+    class TimeThread(val activity: AppActivity) : Thread() {
 
-        val appSettingPrefs: SharedPreferences = getSharedPreferences("AppSettingPrefs", 0)
-        val sharedPrefsEdit: SharedPreferences.Editor = appSettingPrefs.edit()
+        @RequiresApi(Build.VERSION_CODES.O)
+        fun checkLightMode() {
 
-        val presentTime: LocalTime = LocalTime.now()
+            val appSettingPrefs: SharedPreferences =  activity.getSharedPreferences("AppSettingPrefs", 0)
+            val sharedPrefsEdit: SharedPreferences.Editor = appSettingPrefs.edit()
 
-        val nightTimeInit = LocalTime.of(20, 0)
-        val nightTimeEnd = LocalTime.of(5,0)
+            val presentTime: LocalTime = LocalTime.now()
 
-        // BETWEEN 20:00 AND 05:00 -> NIGHT else -> DAY
-        if (presentTime.isAfter(nightTimeEnd) && presentTime.isBefore(nightTimeInit)) {
-            // DAY
+            val nightTimeInit = LocalTime.of(20, 0)
+            val nightTimeEnd = LocalTime.of(5,0)
+
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            sharedPrefsEdit.putBoolean("NightMode", false)
-            sharedPrefsEdit.apply()
-        } else {
-            // NIGHT
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            sharedPrefsEdit.putBoolean("NightMode", true)
-            sharedPrefsEdit.apply()
+
+            // BETWEEN 20:00 AND 05:00 -> NIGHT else -> DAY
+            Log.i(this::class.java.simpleName, "present: $presentTime e limiteIni: $nightTimeInit limiteFim: $nightTimeEnd")
+            if (presentTime.isAfter(nightTimeEnd) && presentTime.isBefore(nightTimeInit)) {
+                // DAY
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                sharedPrefsEdit.putBoolean("NightMode", false)
+                sharedPrefsEdit.apply()
+            } else {
+                // NIGHT
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                sharedPrefsEdit.putBoolean("NightMode", true)
+                sharedPrefsEdit.apply()
+            }
+            Log.i(TAG, appSettingPrefs.getBoolean("NightMode", true).toString())
+        }
+
+        @RequiresApi(Build.VERSION_CODES.O)
+        override fun run() {
+            for (i in 0..90) {
+                try {
+                    checkLightMode()
+                }catch (e:Exception) {
+                    Log.i(this::class.java.simpleName, "Erro")
+                }
+                Log.d(this::class.java.simpleName, i.toString())
+                sleep(1000)
+            }
         }
     }
+
 }

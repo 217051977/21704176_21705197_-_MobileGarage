@@ -1,5 +1,6 @@
 package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.domain.mobilegarage
 
+import android.view.View
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Park
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.list.MockingDBParks
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.repositories.ParkRepository
@@ -10,7 +11,7 @@ class ParksLogic(private val repository: ParkRepository) {
 
     private val storage: MockingDBParks = MockingDBParks.getInstance()
 
-    fun getParks(listener: OnReceiveParks?) = repository.getParks(listener)
+    fun getParks(listener: OnReceiveParks?, view: View?) = repository.getParks(listener, view)
 
     fun getFavorites(listener: OnReceiveFavorites?) = repository.getFavorites(listener)
 

@@ -2,6 +2,7 @@ package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels
 
 import android.app.Application
 import android.content.Context
+import android.view.View
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.AndroidViewModel
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
@@ -40,9 +41,9 @@ class ParkViewModel(application: Application): AndroidViewModel(application) {
     var park: Park? = null
 
     /**************** REGISTERS AND UNREGISTERS ************************/
-    fun registerListenerParks(listener: OnReceiveParks) {
+    fun registerListenerParks(listener: OnReceiveParks, view: View?) {
         this.listenerParks = listener
-        parksLogic.getParks(listenerParks)
+        parksLogic.getParks(listenerParks, view)
     }
 
     fun registerListenerPark(listener: OnReceivePark) {

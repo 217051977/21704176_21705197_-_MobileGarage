@@ -16,6 +16,7 @@
         android:theme="@style/appTheme">
         <activity android:name=".ui.activities.ContactsActivity"></activity>
         <activity android:name=".ui.activities.AppActivity"
+            android:launchMode = "singleTask"
             android:configChanges="uiMode">
         </activity>
         <activity android:name=".ui.activities.SplashScreenActivity">
