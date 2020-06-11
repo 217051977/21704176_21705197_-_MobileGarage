@@ -43,27 +43,27 @@ class HomeMenuFragment : Fragment(), OnReceiveParks {
 
     override fun onReceiveParks(parks: List<Park>) {
 
-        parks.let { viewModel.parks = parks }
-        Log.i(TAG, "Parks: $parks")
+        parks.let {
 
-        parking_list.layoutManager = LinearLayoutManager(activity as Context)
-        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            parking_list.adapter =
-                ParkingListLandScapeAdapter(
-                    activity as Context,
-                    R.layout.item_park_element,
-                    parks as MutableList<Park>,
-                    activity?.supportFragmentManager!!
-                )
-
-        } else {
-            parking_list.adapter =
-                ParkingListAdapter(
-                    activity as Context,
-                    R.layout.item_park_element,
-                    parks as MutableList<Park>,
-                    activity?.supportFragmentManager!!
-                )
+            Log.i(TAG, "Parks: $parks")
+            parking_list.layoutManager = LinearLayoutManager(activity as Context)
+            if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                parking_list.adapter =
+                    ParkingListLandScapeAdapter(
+                        activity as Context,
+                        R.layout.item_park_element,
+                        parks as MutableList<Park>,
+                        activity?.supportFragmentManager!!
+                    )
+            } else {
+                parking_list.adapter =
+                    ParkingListAdapter(
+                        activity as Context,
+                        R.layout.item_park_element,
+                        parks as MutableList<Park>,
+                        activity?.supportFragmentManager!!
+                    )
+            }
         }
     }
 

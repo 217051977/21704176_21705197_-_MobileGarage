@@ -1,6 +1,7 @@
 package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,8 @@ import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Vehicle
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveVehicle
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.MyVehiclesViewModel
+
+private val TAG = MyVehiclesDetailsFragment::class.java.simpleName
 
 class MyVehiclesDetailsFragment : Fragment(), OnReceiveVehicle {
 
@@ -47,16 +50,17 @@ class MyVehiclesDetailsFragment : Fragment(), OnReceiveVehicle {
 
     override fun onReceiveVehicle(vehicle: Vehicle) {
 
-        vehicle.let { viewModel.vehicle = vehicle }
+        vehicle.let {
 
-        vehicle_detail_brand.text = vehicle.brand
-        vehicle_detail_model.text = vehicle.model
-        vehicle_detail_plate.text = vehicle.plate
-        vehicle_detail_plate_date.text = vehicle.plateDate
+            Log.i(TAG, "Vehicle: $vehicle")
+            vehicle_detail_brand.text = vehicle.brand
+            vehicle_detail_model.text = vehicle.model
+            vehicle_detail_plate.text = vehicle.plate
+            vehicle_detail_plate_date.text = vehicle.plateDate
 
+        }
     }
 
-    /**************** FUNCTIONS ************************/
     @OnClick(R.id.my_vehicles_details_delete)
     fun onClickDeleteVehicle(view: View) {
         val vehicle = viewModel.vehicle!!
@@ -69,8 +73,5 @@ class MyVehiclesDetailsFragment : Fragment(), OnReceiveVehicle {
     fun onClickCancel(view: View) {
         viewModel.onClickCancelAddVehicle(activity?.supportFragmentManager!!)
     }
-
-    /**************** END ************************/
-
 }
 

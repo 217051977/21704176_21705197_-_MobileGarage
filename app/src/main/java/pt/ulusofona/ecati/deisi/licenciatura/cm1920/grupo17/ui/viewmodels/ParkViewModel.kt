@@ -82,7 +82,6 @@ class ParkViewModel(application: Application): AndroidViewModel(application) {
     }
     /************************ END ********************************/
 
-    /**************** FUNCTIONS *************************/
     fun goToFilterOption(
         context: Context,
         TAG: String,
@@ -92,6 +91,5 @@ class ParkViewModel(application: Application): AndroidViewModel(application) {
         feedback.createFullButton(TAG, context, "filter")
         ParkNavigationManager.goToFilterOptions(supportFragmentManager, fav)
     }
-    /**************** END *************************/
 
 }

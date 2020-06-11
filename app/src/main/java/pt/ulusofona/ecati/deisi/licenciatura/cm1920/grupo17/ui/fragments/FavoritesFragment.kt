@@ -83,7 +83,4 @@ class FavoritesFragment : Fragment(), OnReceiveFavorites {
             fav = true
         )
     }
-
-
-
 }
