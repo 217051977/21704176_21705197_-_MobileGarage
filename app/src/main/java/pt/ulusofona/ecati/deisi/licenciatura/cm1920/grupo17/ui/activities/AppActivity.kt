@@ -284,13 +284,14 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
         @RequiresApi(Build.VERSION_CODES.O)
         override fun run() {
-            for (i in 0..90) {
+            for (i in 0..60) {
+
                 try {
                     checkLightMode()
                 }catch (e:Exception) {
                     Log.i(this::class.java.simpleName, "Erro")
                 }
-                Log.d(this::class.java.simpleName, i.toString())
+
                 sleep(1000)
             }
         }

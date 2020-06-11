@@ -9,8 +9,6 @@ import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnRecei
 
 class ParksLogic(private val repository: ParkRepository) {
 
-    private val storage: MockingDBParks = MockingDBParks.getInstance()
-
     fun getParksOnline(listener: OnReceiveParks?, view: View?, context: Context) = repository.getParksOnline(listener, view, context)
 
     fun getParksOffline(listener: OnReceiveParks?, view: View?, context: Context) = repository.getParksOffline(listener, view, context)

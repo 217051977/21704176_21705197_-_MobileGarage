@@ -49,9 +49,9 @@ class ParkViewModel(application: Application): AndroidViewModel(application) {
 
         val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
-        val isConnected: Boolean? = activeNetwork?.isConnectedOrConnecting
+        val isConnected: Boolean? = activeNetwork?.isConnected
 
-        if (isConnected!!) {
+        if (false) {
             parksLogic.getParksOnline(listenerParks, view, context)
         } else {
             parksLogic.getParksOffline(listenerParks, view, context)
