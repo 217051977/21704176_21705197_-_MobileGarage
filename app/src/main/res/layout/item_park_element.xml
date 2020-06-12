@@ -44,15 +44,35 @@
             android:weightSum="2"
             >
 
-            <TextView
-                android:id="@+id/text_park_name"
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:text="@string/item_park_name"
-                />
+                android:weightSum="2"
+                >
+
+                <TextView
+                    android:id="@+id/text_park_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:text="@string/item_park_name"
+                    />
+
+                <TextView
+                    android:id="@+id/text_distance"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:text="@string/park_details_distance"
+                    />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:orientation="vertical"

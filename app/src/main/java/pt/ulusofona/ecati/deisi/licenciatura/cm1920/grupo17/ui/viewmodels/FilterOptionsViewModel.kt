@@ -11,10 +11,11 @@ import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.utils.NavBarNavig
 class FilterOptionsViewModel : ViewModel() {
 
     private val feedback: Feedback = Feedback.getInstance()
-    private val filterLogic: FilterLogic =
-        FilterLogic()
+    private val filterLogic: FilterLogic = FilterLogic()
 
     private var distanceBarValue: Int = 0
+
+    fun getFilters() : Array<String> = filterLogic.getFilters()
 
     fun getFilterSortStatus(): String = filterLogic.getFilterSortStatus()
 

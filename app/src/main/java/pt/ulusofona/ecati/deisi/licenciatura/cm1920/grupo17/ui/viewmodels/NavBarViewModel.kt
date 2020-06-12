@@ -4,7 +4,9 @@ import android.content.Context
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModel
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Feedback
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.repositories.ParkRepository
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.utils.NavBarNavigationManager
+import java.lang.Exception
 
 class NavBarViewModel : ViewModel() {
 
@@ -34,7 +36,13 @@ class NavBarViewModel : ViewModel() {
         supportFragmentManager: FragmentManager
     ) {
         feedback.createFullButton(TAG, context, "nav_bar_park_me_now")
-        NavBarNavigationManager.goToParkMeNow(supportFragmentManager)
+        val parkRepository = ParkRepository()
+        var parks = try {
+            parkRepository.getParksOnline()
+        } catch (offline: Exception) {
+            parkRepository.getParksOffline()
+        }
+//        NavBarNavigationManager.goToParkMeNow(supportFragmentManager)
     }
 
 }

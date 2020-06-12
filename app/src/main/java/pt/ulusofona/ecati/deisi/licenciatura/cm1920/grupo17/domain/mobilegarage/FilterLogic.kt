@@ -1,31 +1,33 @@
 package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.domain.mobilegarage
 
-import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.list.MockingDBParks
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.list.FiltersStatus
 
 class FilterLogic {
 
-    private val storage: MockingDBParks = MockingDBParks.getInstance()
+    private val filterStatus: FiltersStatus = FiltersStatus.getInstance()
 
-    fun getFilterSortStatus(): String = storage.getFilterSortStatus()
+    fun getFilters(): Array<String> = filterStatus.getFilters()
 
-    fun getFilterParkTypeStatus(): String = storage.getFilterParkTypeStatus()
+    fun getFilterSortStatus(): String = filterStatus.getFilterSortStatus()
 
-    fun getAccessibilityStatus(): Boolean = storage.getAccessibilityStatus()
+    fun getFilterParkTypeStatus(): String = filterStatus.getFilterParkTypeStatus()
 
-    fun getDistanceValueStatus(): Int = storage.getDistanceValueStatus()
+    fun getAccessibilityStatus(): Boolean = filterStatus.getAccessibilityStatus()
 
-    fun setSortByDistanceStatus() { storage.setSortByDistanceStatus() }
+    fun getDistanceValueStatus(): Int = filterStatus.getDistanceValueStatus()
 
-    fun setSortByAvailabilityStatus() { storage.setSortByAvailabilityStatus() }
+    fun setSortByDistanceStatus() { filterStatus.setSortByDistanceStatus() }
 
-    fun setSurfaceParkDistanceStatus() { storage.setSurfaceParkStatus() }
+    fun setSortByAvailabilityStatus() { filterStatus.setSortByAvailabilityStatus() }
 
-    fun setStructureParkAvailabilityStatus() { storage.setStructureParkStatus() }
+    fun setSurfaceParkDistanceStatus() { filterStatus.setSurfaceParkStatus() }
 
-    fun setAllParkAllStatus() { storage.setAllParksStatus() }
+    fun setStructureParkAvailabilityStatus() { filterStatus.setStructureParkStatus() }
 
-    fun setAccessibilityStatus(status: Boolean) { storage.setAccessibilityStatus(status) }
+    fun setAllParkAllStatus() { filterStatus.setAllParksStatus() }
 
-    fun setDistanceValueStatus(value: Int) { storage.setDistanceValueStatus(value) }
+    fun setAccessibilityStatus(status: Boolean) { filterStatus.setAccessibilityStatus(status) }
+
+    fun setDistanceValueStatus(value: Int) { filterStatus.setDistanceValueStatus(value) }
 
 }
