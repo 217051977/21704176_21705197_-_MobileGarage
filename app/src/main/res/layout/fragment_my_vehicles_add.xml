@@ -44,7 +44,7 @@
             android:text="@string/vehicle_detail_brand"
             />
 
-        <TextView
+        <EditText
             android:id="@+id/vehicle_detail_brand"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
             android:text="@string/vehicle_detail_model"
             />
 
-        <TextView
+        <EditText
             android:id="@+id/vehicle_detail_model"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -112,7 +112,7 @@
                 android:text="@string/vehicle_detail_plate"
                 />
 
-            <TextView
+            <EditText
                 android:id="@+id/vehicle_detail_plate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -138,10 +138,10 @@
                 android:gravity="center"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:text="@string/vehicle_detail_plate"
+                android:text="@string/vehicle_detail_plate_date"
                 />
 
-            <TextView
+            <EditText
                 android:id="@+id/vehicle_detail_plate_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

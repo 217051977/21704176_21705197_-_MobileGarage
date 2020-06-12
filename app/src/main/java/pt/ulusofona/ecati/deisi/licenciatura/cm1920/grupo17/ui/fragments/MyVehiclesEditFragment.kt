@@ -39,7 +39,7 @@ class MyVehiclesEditFragment(vehicle: Vehicle) : Fragment() {
 
         vehicleBrand = view.findViewById(R.id.vehicle_detail_brand)
         vehicleModel = view.findViewById(R.id.vehicle_detail_model)
-        vehiclePlate = view.findViewById(R.id.plate)
+        vehiclePlate = view.findViewById(R.id.vehicle_detail_plate)
         vehiclePlateDate = view.findViewById(R.id.vehicle_detail_plate_date)
 
         viewModel = ViewModelProvider(this).get(MyVehiclesViewModel::class.java)
@@ -67,7 +67,7 @@ class MyVehiclesEditFragment(vehicle: Vehicle) : Fragment() {
 
     @OnClick(R.id.vehicles_cancel)
     fun onClickCancelEdit(view: View) {
-        viewModel.onClickCancelEditVehicle(activity?.supportFragmentManager!!)
+        viewModel.onClickCancelEditVehicle(activity?.supportFragmentManager!!, vehicle)
     }
 }
 

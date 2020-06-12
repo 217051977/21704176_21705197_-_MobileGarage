@@ -16,5 +16,4 @@ class MyVehiclesLogic(private val repository: VehiclesRepository) {
 
    fun deleteVehicle(vehicle: Vehicle) = repository.deleteVehicle(vehicle)
 
-
 }

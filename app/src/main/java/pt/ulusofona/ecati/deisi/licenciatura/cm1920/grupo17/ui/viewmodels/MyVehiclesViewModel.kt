@@ -26,9 +26,6 @@ class MyVehiclesViewModel(application: Application): AndroidViewModel(applicatio
     private var listenerVehicles: OnReceiveVehicles? = null
     private var listenerVehicle: OnReceiveVehicle? = null
 
-    var vehicles = listOf<Vehicle>()
-    var vehicle: Vehicle? = null
-
     /**************** REGISTERS AND UNREGISTERS ************************/
     fun registerListenerVehicles(listener: OnReceiveVehicles, context: Context) {
         this.listenerVehicles = listener
@@ -68,8 +65,8 @@ class MyVehiclesViewModel(application: Application): AndroidViewModel(applicatio
         MyVehiclesNavigationManager.goToVehicleList(supp)
     }
 
-    fun onClickCancelEditVehicle(supp: FragmentManager) {
-        MyVehiclesNavigationManager.goToVehicleList(supp)
+    fun onClickCancelEditVehicle(supp: FragmentManager, vehicle: Vehicle) {
+        MyVehiclesNavigationManager.goToVehicleDetails(supp, vehicle)
     }
 
     fun onClickSubmitEditVehicle(supp: FragmentManager, vehicle: Vehicle) {
@@ -80,7 +77,6 @@ class MyVehiclesViewModel(application: Application): AndroidViewModel(applicatio
     fun onClickEditVehicle(supp: FragmentManager, vehicle: Vehicle) {
         MyVehiclesNavigationManager.goToVehicleEdit(supp, vehicle)
     }
-
 
     fun onClickBlockVehicle(context: Context, vehicle: Vehicle) {
 
