@@ -73,6 +73,7 @@ class ParkDetailsFragment(park: Park) : Fragment(), OnReceivePark {
     )
     fun goTo(view: View) {
         val gmmIntentURI: Uri = Uri.parse("google.navigation:q=${park.address}")
+        Log.i(TAG, "Park adress $park")
         val mapIntent: Intent = Intent(Intent.ACTION_VIEW, gmmIntentURI)
         mapIntent.setPackage("com.google.android.apps.maps")
         startActivity(mapIntent)
