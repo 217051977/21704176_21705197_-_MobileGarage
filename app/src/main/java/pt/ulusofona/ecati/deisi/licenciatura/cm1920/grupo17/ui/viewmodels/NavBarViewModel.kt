@@ -36,13 +36,13 @@ class NavBarViewModel : ViewModel() {
         supportFragmentManager: FragmentManager
     ) {
         feedback.createFullButton(TAG, context, "nav_bar_park_me_now")
-        val parkRepository = ParkRepository()
-        var parks = try {
-            parkRepository.getParksOnline()
-        } catch (offline: Exception) {
-            parkRepository.getParksOffline()
-        }
-//        NavBarNavigationManager.goToParkMeNow(supportFragmentManager)
+//        val parkRepository = ParkRepository()
+//        var parks = try {
+//            parkRepository.getParksOnline()
+//        } catch (offline: Exception) {
+//            parkRepository.getParksOffline()
+//        }
+        NavBarNavigationManager.goToParkMeNow(supportFragmentManager)
     }
 
 }
