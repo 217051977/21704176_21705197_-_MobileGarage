@@ -40,8 +40,9 @@ class MyVehiclesViewModel(application: Application): AndroidViewModel(applicatio
         myVehicleLogic.getVehicles(listenerVehicles, context)
     }
 
-    fun registerListenerVehicle(listener: OnReceiveVehicle) {
+    fun registerListenerVehicle(listener: OnReceiveVehicle, vehiclePlate: String) {
         this.listenerVehicle = listener
+        myVehicleLogic.getVehicle(listener, vehiclePlate)
     }
 
     fun unregisterListenerVehicles() {

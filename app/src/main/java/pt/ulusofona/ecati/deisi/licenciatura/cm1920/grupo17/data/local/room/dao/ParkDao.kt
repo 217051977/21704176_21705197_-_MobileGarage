@@ -19,9 +19,8 @@ interface ParkDao {
     @Query("SELECT * FROM park")
     suspend fun getAll(): List<Park>
 
-    /*
     @Query("SELECT * FROM park WHERE parkID= :parkID ")
-    suspend fun setParkToShow(parkID: String): Park
-     */
+    suspend fun getPark(parkID: String): Park
+
 
 }

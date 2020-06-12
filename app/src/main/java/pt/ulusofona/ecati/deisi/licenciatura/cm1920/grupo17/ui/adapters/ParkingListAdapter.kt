@@ -98,8 +98,8 @@ class ParkingListAdapter(
                 context,
                 items[position].name
             )
-            val vehicle = items[position]
-            ParkNavigationManager.goToParkDetails(supportFragmentManager)
+            val park = items[position]
+            ParkNavigationManager.goToParkDetails(supportFragmentManager, park.parkID)
         }
     }
 

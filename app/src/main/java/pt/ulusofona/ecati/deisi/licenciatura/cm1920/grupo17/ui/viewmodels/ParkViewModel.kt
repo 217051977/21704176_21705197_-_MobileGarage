@@ -39,9 +39,8 @@ class ParkViewModel(application: Application): AndroidViewModel(application) {
     // LISTENERS
     private var listenerParks: OnReceiveParks? = null
     private var listenerFavorites: OnReceiveFavorites? = null
-    private var listenerPark: OnReceivePark? = null
+    var listenerPark: OnReceivePark? = null
 
-    var parks = listOf<Park>()
     var favorites = listOf<Park>()
     var park: Park? = null
 
@@ -54,14 +53,15 @@ class ParkViewModel(application: Application): AndroidViewModel(application) {
         val isConnected: Boolean? = activeNetwork?.isConnected
 
         if (isConnected!!) {
-            parksLogic.getParksOnline(listenerParks, view, context)
+            parksLogic.getParksOnline(listenerParks, view)
         } else {
-            parksLogic.getParksOffline(listenerParks, view, context)
+            parksLogic.getParksOffline(listenerParks, view)
         }
     }
 
-    fun registerListenerPark(listener: OnReceivePark) {
+    fun registerListenerPark(listener: OnReceivePark, parkID: String) {
         this.listenerPark = listener
+        parksLogic.getPark(listener, parkID)
     }
 
     fun registerListenerFavorites(listener: OnReceiveFavorites) {

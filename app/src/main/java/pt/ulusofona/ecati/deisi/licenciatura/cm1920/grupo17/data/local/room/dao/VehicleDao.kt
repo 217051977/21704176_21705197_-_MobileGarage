@@ -1,6 +1,7 @@
 package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.room.dao
 
 import androidx.room.*
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Park
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Vehicle
 
 @Dao
@@ -20,10 +21,8 @@ interface VehicleDao {
     @Query("SELECT * FROM vehicle")
     suspend fun getAll(): List<Vehicle>
 
-    /*
-    @Query("SELECT * FROM vehicle")
-    suspend fun getAll(): List<Vehicle>
-     */
+    @Query("SELECT * FROM vehicle WHERE plate= :vehiclePlate ")
+    suspend fun getVehicle(vehiclePlate: String): Vehicle
 
 
 

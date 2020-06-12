@@ -15,6 +15,7 @@ import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.room.dao.
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.remote.responses.ParkingLotsResponse
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.remote.services.ParkingLotsService
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveFavorites
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceivePark
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveParks
 import retrofit2.Retrofit
 import java.util.*
@@ -53,7 +54,7 @@ class ParkRepository(private val local: ParkDao, private val remote: Retrofit) {
         return newPark
     }
 
-    fun getParksOnline(listener: OnReceiveParks?, view: View?, context: Context) {
+    fun getParksOnline(listener: OnReceiveParks?, view: View?) {
         Log.i(TAG, "Online")
 
         /*
@@ -109,7 +110,7 @@ class ParkRepository(private val local: ParkDao, private val remote: Retrofit) {
         }
     }
 
-    fun getParksOffline(listener: OnReceiveParks?, view: View?, context: Context) {
+    fun getParksOffline(listener: OnReceiveParks?, view: View?) {
         Log.i(TAG, "Offline")
 
         CoroutineScope(Dispatchers.IO).launch {
@@ -131,6 +132,14 @@ class ParkRepository(private val local: ParkDao, private val remote: Retrofit) {
             sharedPrefsEdit.putBoolean("userWarned", true)
             sharedPrefsEdit.apply()
              */
+        }
+    }
+
+    fun getPark(listener: OnReceivePark?, parkID: String) {
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val park = local.getPark(parkID)
+            listener?.onReceivePark(park)
         }
     }
 

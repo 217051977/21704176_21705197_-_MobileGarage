@@ -32,10 +32,10 @@ class ParkNavigationManager {
             }
         }
 
-        fun goToParkDetails(fm: FragmentManager) {
+        fun goToParkDetails(fm: FragmentManager, parkID: String) {
             placeFragment(
                 fm,
-                ParkDetailsFragment()
+                ParkDetailsFragment(parkID)
             )
         }
 

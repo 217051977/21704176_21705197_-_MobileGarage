@@ -19,12 +19,13 @@ import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.MyVehi
 
 private val TAG = MyVehiclesDetailsFragment::class.java.simpleName
 
-class MyVehiclesDetailsFragment : Fragment(), OnReceiveVehicle {
+class MyVehiclesDetailsFragment(vehiclePlate: String) : Fragment(), OnReceiveVehicle {
 
     private lateinit var viewModel: MyVehiclesViewModel
+    private val vehiclePlate = vehiclePlate
 
     override fun onStart() {
-        viewModel.registerListenerVehicle(this)
+        viewModel.registerListenerVehicle(this, vehiclePlate)
         super.onStart()
     }
 

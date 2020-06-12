@@ -1,54 +1,31 @@
 package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import butterknife.ButterKnife
 import butterknife.OnClick
 import kotlinx.android.synthetic.main.fragment_park_details.*
-import org.w3c.dom.Text
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Park
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceivePark
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.ParkViewModel
 
-const val SHARED_PREFS = "sharePrefs"
-const val NAME = "name"
-const val ADDRESS = "address"
-const val LAST_UPDATE = "lastUpdate"
-const val DISTANCE = "distance"
-const val TYPE = "type"
-const val NR_PARKS = "nrParks"
-const val AVAILABILITY = "availability"
-const val DISABLE_AVAILABILITY = "disableAvailability"
-
 private val TAG = ParkDetailsFragment::class.java.simpleName
 
-class ParkDetailsFragment : Fragment(), OnReceivePark {
+class ParkDetailsFragment(parkID: String) : Fragment(), OnReceivePark {
 
     private lateinit var viewModel: ParkViewModel
-
-    /*
-    lateinit var parkName: TextView
-    lateinit var parkAddress: TextView
-    lateinit var parkLastUpdate: TextView
-    lateinit var parkDistance: TextView
-    lateinit var parkType: TextView
-    lateinit var parkNrParks: TextView
-    lateinit var parkAvailability: TextView
-    lateinit var parkDisableAvailability: TextView
-     */
+    private val parkID = parkID
 
     override fun onStart() {
-        viewModel.registerListenerPark(this)
+        viewModel.registerListenerPark(this, parkID)
         super.onStart()
     }
 
@@ -67,17 +44,6 @@ class ParkDetailsFragment : Fragment(), OnReceivePark {
             container,
             false
         )
-
-        /*
-        parkName = view.findViewById(R.id.park_details_name)
-        parkAddress = view.findViewById(R.id.park_details_address)
-        parkLastUpdate = view.findViewById(R.id.park_details_last_update)
-        parkDistance = view.findViewById(R.id.park_details_distance)
-        parkType = view.findViewById(R.id.park_details_type)
-        parkNrParks = view.findViewById(R.id.park_details_nr_parks)
-        parkAvailability = view.findViewById(R.id.park_details_availability)
-        parkDisableAvailability = view.findViewById(R.id.park_details_availability_nr_parks)
-         */
 
         viewModel = ViewModelProvider(this).get(ParkViewModel::class.java)
         ButterKnife.bind(this, view)
@@ -111,5 +77,4 @@ class ParkDetailsFragment : Fragment(), OnReceivePark {
         mapIntent.setPackage("com.google.android.apps.maps")
         startActivity(mapIntent)
     }
-
 }

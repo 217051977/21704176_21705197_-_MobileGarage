@@ -3,6 +3,7 @@ package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.utils
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Vehicle
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments.MyVehiclesAddFragment
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments.MyVehiclesDetailsFragment
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments.MyVehiclesFragment
@@ -25,10 +26,10 @@ class MyVehiclesNavigationManager {
             )
         }
 
-        fun goToVehicleDetails(fm: FragmentManager) {
+        fun goToVehicleDetails(fm: FragmentManager, vehiclePlate: String) {
             placeFragment(
                 fm,
-                MyVehiclesDetailsFragment()
+                MyVehiclesDetailsFragment(vehiclePlate)
             )
         }
 

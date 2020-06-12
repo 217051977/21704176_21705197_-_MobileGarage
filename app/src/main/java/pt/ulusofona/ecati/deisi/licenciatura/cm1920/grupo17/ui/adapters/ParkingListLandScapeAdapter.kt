@@ -97,7 +97,8 @@ class ParkingListLandScapeAdapter(
                 context,
                 items[position].name
             )
-            ParkNavigationManager.goToParkDetails(supportFragmentManager)
+            val park = items[position]
+            ParkNavigationManager.goToParkDetails(supportFragmentManager, park.parkID)
         }
     }
 
