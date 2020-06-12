@@ -6,10 +6,11 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.BatteryManager
+import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
 
-
+private val TAG = BatteryReceiver::class.java.simpleName
 class BatteryReceiver: BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
@@ -25,12 +26,15 @@ class BatteryReceiver: BroadcastReceiver() {
                 // Specifying a listener allows you to take an action before dismissing the dialog.
                 .setMessage(R.string.dialog_message)
                 .setPositiveButton(R.string.dialog_response_yes, DialogInterface.OnClickListener() { dialog, which ->
-                    //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    Log.i(TAG, "CLicked YES")
                     })
-                .setNegativeButton(R.string.dialog_response_no, null)
+                .setNegativeButton(R.string.dialog_response_no, DialogInterface.OnClickListener() { dialog, which ->
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    Log.i(TAG, "CLicked NO")
+                })
                 .show()
         }
-        // AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     }
 
 }

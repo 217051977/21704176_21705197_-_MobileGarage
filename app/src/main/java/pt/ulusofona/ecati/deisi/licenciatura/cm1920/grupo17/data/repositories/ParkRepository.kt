@@ -23,7 +23,7 @@ private val TAG = ParkRepository::class.java.simpleName
 
 class ParkRepository(private val local: ParkDao, private val remote: Retrofit) {
 
-    private val apiKey = "93600bb4e7fee17750ae478c22182dda"
+    private val apiKey = "93600bb4e7fee17750ae478c22182dd"
 
     private fun parkCreation(parks: List<ParkingLotsResponse>): List<Park> {
         val newPark = mutableListOf<Park>()
@@ -80,13 +80,15 @@ class ParkRepository(private val local: ParkDao, private val remote: Retrofit) {
                 Log.i(TAG, "Local ${parks.size}")
 
                 val userWarned = snackBarPrefs.getBoolean("userWarned", false)
-
+                var a = false
                 if (!userWarned) {
                     val snackbar: Snackbar = Snackbar.make(view!!, "Error acessing Server! Getting Data from Cache", Snackbar.LENGTH_LONG);
                     snackbar.show();
                     sharedPrefsEdit.putBoolean("userWarned", true)
                     sharedPrefsEdit.apply()
+                    a = true
                 }
+                Log.i(TAG, "Boolean = $a")
             }
 
             withContext(Dispatchers.Main) {

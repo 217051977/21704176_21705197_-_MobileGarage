@@ -269,7 +269,7 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
         // BETWEEN 20:00 AND 05:00 -> NIGHT else -> DAY
         Log.i(this::class.java.simpleName, "present: $presentTime e limiteIni: $nightTimeInit limiteFim: $nightTimeEnd")
-        if (!presentTime.isBefore(nightTimeInit) && !presentTime.isAfter(nightTimeEnd)) {
+        if (presentTime.isBefore(nightTimeInit) && presentTime.isAfter(nightTimeEnd)) {
             // DAY
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             sharedPrefsEdit.putBoolean("NightMode", false)
