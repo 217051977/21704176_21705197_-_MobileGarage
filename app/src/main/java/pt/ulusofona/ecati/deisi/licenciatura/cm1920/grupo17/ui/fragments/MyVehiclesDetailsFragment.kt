@@ -19,13 +19,13 @@ import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.MyVehi
 
 private val TAG = MyVehiclesDetailsFragment::class.java.simpleName
 
-class MyVehiclesDetailsFragment(vehiclePlate: String) : Fragment(), OnReceiveVehicle {
+class MyVehiclesDetailsFragment(vehicle: Vehicle) : Fragment(), OnReceiveVehicle {
 
     private lateinit var viewModel: MyVehiclesViewModel
-    private val vehiclePlate = vehiclePlate
+    private val vehicle = vehicle
 
     override fun onStart() {
-        viewModel.registerListenerVehicle(this, vehiclePlate)
+        viewModel.registerListenerVehicle(this, vehicle)
         super.onStart()
     }
 
@@ -64,10 +64,9 @@ class MyVehiclesDetailsFragment(vehiclePlate: String) : Fragment(), OnReceiveVeh
 
     @OnClick(R.id.my_vehicles_details_delete)
     fun onClickDeleteVehicle(view: View) {
-        val vehicle = viewModel.vehicle!!
+        viewModel.onClickDeleteVehicle(activity?.supportFragmentManager!!, vehicle)
         val snackbar: Snackbar = Snackbar.make(view, "Deleted ${vehicle.plate} Vehicle", Snackbar.LENGTH_LONG);
         snackbar.show();
-        viewModel.onClickDeleteVehicle(activity?.supportFragmentManager!!, vehicle)
     }
 
     @OnClick(R.id.my_vehicles_details_back)

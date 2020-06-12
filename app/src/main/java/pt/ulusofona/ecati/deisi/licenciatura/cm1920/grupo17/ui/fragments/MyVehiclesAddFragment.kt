@@ -42,8 +42,6 @@ class MyVehiclesAddFragment : Fragment() {
         vehiclePlate = view.findViewById(R.id.vehicle_plate)
         vehiclePlateDate = view.findViewById(R.id.vehicle_plate_date)
 
-
-
         viewModel = ViewModelProvider(this).get(MyVehiclesViewModel::class.java)
         ButterKnife.bind(this, view)
         return view
@@ -63,10 +61,9 @@ class MyVehiclesAddFragment : Fragment() {
                 isParked = false
             )
 
-
+        viewModel.onClickSubmitAddVehicle(activity?.supportFragmentManager!!, vehicleCreated)
         val snackbar: Snackbar = Snackbar.make(view, "Added ${vehicleCreated.plate} Vehicle", Snackbar.LENGTH_LONG);
         snackbar.show();
-        viewModel.onClickSubmitAddVehicle(activity?.supportFragmentManager!!, vehicleCreated)
     }
 
     @OnClick(R.id.vehicles_cancel)

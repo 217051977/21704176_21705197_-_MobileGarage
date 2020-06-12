@@ -26,10 +26,10 @@ class MyVehiclesNavigationManager {
             )
         }
 
-        fun goToVehicleDetails(fm: FragmentManager, vehiclePlate: String) {
+        fun goToVehicleDetails(fm: FragmentManager, vehicle: Vehicle) {
             placeFragment(
                 fm,
-                MyVehiclesDetailsFragment(vehiclePlate)
+                MyVehiclesDetailsFragment(vehicle)
             )
         }
 

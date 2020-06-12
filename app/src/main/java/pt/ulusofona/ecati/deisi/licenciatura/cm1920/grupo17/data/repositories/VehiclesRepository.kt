@@ -69,11 +69,25 @@ class VehiclesRepository(private val local: VehicleDao) {
         }
     }
 
-    fun getVehicle(listener: OnReceiveVehicle?, vehicleID: String) {
+    fun getVehicle(listener: OnReceiveVehicle?, vehicle: Vehicle) {
 
         CoroutineScope(Dispatchers.IO).launch {
-            val vehicle = local.getVehicle(vehicleID)
+            val vehicle = local.getVehicle(vehicle.plate)
             listener?.onReceiveVehicle(vehicle)
+        }
+    }
+
+    fun addVehicle(vehicle: Vehicle) {
+
+        CoroutineScope(Dispatchers.IO).launch {
+            local.insertVehicle(vehicle)
+        }
+    }
+
+    fun deleteVehicle(vehicle: Vehicle) {
+
+        CoroutineScope(Dispatchers.IO).launch {
+            local.deleteVehicle(vehicle)
         }
     }
 

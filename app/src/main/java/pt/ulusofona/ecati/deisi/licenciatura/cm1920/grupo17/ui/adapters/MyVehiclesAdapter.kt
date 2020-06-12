@@ -58,7 +58,7 @@ class MyVehiclesAdapter(
                 items[position].plate
             )
             val vehicle = items[position]
-            MyVehiclesNavigationManager.goToVehicleDetails(supportFragmentManager, vehicle.plate)
+            MyVehiclesNavigationManager.goToVehicleDetails(supportFragmentManager, vehicle)
         }
     }
 

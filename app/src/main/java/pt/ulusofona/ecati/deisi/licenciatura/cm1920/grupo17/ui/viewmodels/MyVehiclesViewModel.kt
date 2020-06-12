@@ -40,9 +40,9 @@ class MyVehiclesViewModel(application: Application): AndroidViewModel(applicatio
         myVehicleLogic.getVehicles(listenerVehicles, context)
     }
 
-    fun registerListenerVehicle(listener: OnReceiveVehicle, vehiclePlate: String) {
+    fun registerListenerVehicle(listener: OnReceiveVehicle, vehicle: Vehicle) {
         this.listenerVehicle = listener
-        myVehicleLogic.getVehicle(listener, vehiclePlate)
+        myVehicleLogic.getVehicle(listener, vehicle)
     }
 
     fun unregisterListenerVehicles() {
@@ -60,7 +60,7 @@ class MyVehiclesViewModel(application: Application): AndroidViewModel(applicatio
     }
 
     fun onClickDeleteVehicle(supp: FragmentManager, vehicle: Vehicle) {
-        //myVehiclesLogic.remove(vehicle)
+        myVehicleLogic.deleteVehicle(vehicle)
         MyVehiclesNavigationManager.goToVehicleList(supp)
     }
 
@@ -69,10 +69,9 @@ class MyVehiclesViewModel(application: Application): AndroidViewModel(applicatio
     }
 
     fun onClickSubmitAddVehicle(supp: FragmentManager, vehicle: Vehicle) {
-        //myVehiclesLogic.add(vehicle)
+        myVehicleLogic.addVehicle(vehicle)
         MyVehiclesNavigationManager.goToVehicleList(supp)
     }
     /************************ END ********************************/
-
 
 }

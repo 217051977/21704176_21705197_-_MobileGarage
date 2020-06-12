@@ -160,7 +160,7 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
-        mainHandler = Handler(Looper.getMainLooper())
+        //mainHandler = Handler(Looper.getMainLooper())
         checkLightMode()
         super.onCreate(savedInstanceState)
 
@@ -270,18 +270,30 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         val nightTimeInit = LocalTime.of(20, 0)
         val nightTimeEnd = LocalTime.of(5,0)
 
-        var elapseTime = 0
+        //var elapseTime = 0
 
         // BETWEEN 20:00 AND 05:00 -> NIGHT else -> DAY
         Log.i(this::class.java.simpleName, "present: $presentTime e limiteIni: $nightTimeInit limiteFim: $nightTimeEnd")
         if (presentTime.isBefore(nightTimeInit) && presentTime.isAfter(nightTimeEnd)) {
             // DAY
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            sharedPrefsEdit.putBoolean("NightMode", false)
+            sharedPrefsEdit.apply()
+
+            /*
             removeDarkMode(sharedPrefsEdit)
             elapseTime = ((20*60*60) - (presentTime.hour*60*60 + presentTime.minute*60 + presentTime.second))*1000
             Log.e(this::class.java.simpleName, elapseTime.toString())
             activateDarkTheme(true, elapseTime.toLong(), sharedPrefsEdit)
+             */
+
         } else {
             // NIGHT
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            sharedPrefsEdit.putBoolean("NightMode", true)
+            sharedPrefsEdit.apply()
+
+            /*
             applyDarkMode(sharedPrefsEdit)
             elapseTime = if (presentTime.hour > 19) {
                 ((29 * 60 * 60) - (presentTime.hour * 60 * 60 + presentTime.minute * 60 + presentTime.second)) * 1000
@@ -289,9 +301,12 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
                 ((5 * 60 * 60) - (presentTime.hour * 60 * 60 + presentTime.minute * 60 + presentTime.second)) * 1000
             }
             activateDarkTheme(false, elapseTime.toLong(), sharedPrefsEdit)
+             */
         }
+        Log.i(TAG, appSettingPrefs.getBoolean("NightMode", true).toString())
     }
 
+    /*
     private fun applyDarkMode(sharedPrefsEdit: SharedPreferences.Editor) {
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -307,7 +322,9 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         sharedPrefsEdit.apply()
 
     }
+     */
 
+    /*
     private fun activateDarkTheme(activate: Boolean, elapseTime: Long, sharedPrefsEdit: SharedPreferences.Editor) {
         Log.e(this::class.java.simpleName, elapseTime.toString())
 
@@ -346,4 +363,5 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         Log.i(TAG, appSettingPrefs.getBoolean("NightMode", true).toString())
 
     }
+     */
 }
