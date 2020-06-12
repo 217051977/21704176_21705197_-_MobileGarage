@@ -343,7 +343,7 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
                 }
             }
         }
-        Log.i(TAG, appSettingPrefs.getBoolean("NightMode", true).toString())
+//        Log.i(TAG, appSettingPrefs.getBoolean("NightMode", true).toString())
 
     }
 }

@@ -1,6 +1,7 @@
 package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import kotlinx.android.synthetic.main.fragment_filter_options.*
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.FilterOptionsViewModel
 
+const val EXTRA_FILTERS = "pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments.FILTERS"
 private val TAG: String = HomeMenuFilterOptionsFragment::class.java.simpleName
 
 class HomeMenuFilterOptionsFragment : Fragment() {
@@ -129,6 +131,16 @@ class HomeMenuFilterOptionsFragment : Fragment() {
             "filter_apply_button",
             activity?.supportFragmentManager!!
         )
+
+        /*val intent = Intent(activity as Context, HomeMenuFragment::class.java)
+        intent.apply {
+            putExtra(
+                EXTRA_FILTERS,
+                viewModel.getFilters()
+            )
+        }
+        startActivity(intent)*/
+
     }
 
     private fun setUpSeekBar() {
