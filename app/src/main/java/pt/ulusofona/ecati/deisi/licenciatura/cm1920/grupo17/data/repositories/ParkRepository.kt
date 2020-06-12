@@ -23,7 +23,10 @@ private val TAG = ParkRepository::class.java.simpleName
 
 class ParkRepository(private val local: ParkDao, private val remote: Retrofit) {
 
-    private val apiKey = "93600bb4e7fee17750ae478c22182dd"
+    private val apiKey = "93600bb4e7fee17750ae478c22182d"
+    private lateinit var snackBarPrefs: SharedPreferences
+    private lateinit var sharedPrefsEdit: SharedPreferences.Editor
+    var userWarned = false
 
     private fun parkCreation(parks: List<ParkingLotsResponse>): List<Park> {
         val newPark = mutableListOf<Park>()
@@ -53,8 +56,10 @@ class ParkRepository(private val local: ParkDao, private val remote: Retrofit) {
     fun getParksOnline(listener: OnReceiveParks?, view: View?, context: Context) {
         Log.i(TAG, "Online")
 
-        val snackBarPrefs: SharedPreferences =  context.getSharedPreferences("SnackBarPrefs", 0)
-        val sharedPrefsEdit: SharedPreferences.Editor = snackBarPrefs.edit()
+        /*
+        snackBarPrefs = context.getSharedPreferences("SnackBarPrefs", 0)
+        sharedPrefsEdit = snackBarPrefs.edit()
+         */
 
         val service = remote.create(ParkingLotsService::class.java)
         CoroutineScope(Dispatchers.IO).launch {
@@ -73,22 +78,28 @@ class ParkRepository(private val local: ParkDao, private val remote: Retrofit) {
                 local.insertParks(parks) // UPDATES PARKS
                 Log.i(TAG, "Local Depois do insert ${local.getAll().size}")
 
+                userWarned = false
+
+                /*
+                sharedPrefsEdit.putBoolean("userWarned", false)
+                sharedPrefsEdit.apply()
+                 */
+
             } else {
                 Log.i(TAG, response.message())
 
                 parks = local.getAll()
                 Log.i(TAG, "Local ${parks.size}")
 
-                val userWarned = snackBarPrefs.getBoolean("userWarned", false)
-                var a = false
                 if (!userWarned) {
                     val snackbar: Snackbar = Snackbar.make(view!!, "Error acessing Server! Getting Data from Cache", Snackbar.LENGTH_LONG);
                     snackbar.show();
+                    userWarned = true
+                    /*
                     sharedPrefsEdit.putBoolean("userWarned", true)
                     sharedPrefsEdit.apply()
-                    a = true
+                     */
                 }
-                Log.i(TAG, "Boolean = $a")
             }
 
             withContext(Dispatchers.Main) {
@@ -100,9 +111,6 @@ class ParkRepository(private val local: ParkDao, private val remote: Retrofit) {
 
     fun getParksOffline(listener: OnReceiveParks?, view: View?, context: Context) {
         Log.i(TAG, "Offline")
-
-        val snackBarPrefs: SharedPreferences =  context.getSharedPreferences("SnackBarPrefs", 0)
-        val sharedPrefsEdit: SharedPreferences.Editor = snackBarPrefs.edit()
 
         CoroutineScope(Dispatchers.IO).launch {
             val parks = local.getAll()
