@@ -135,31 +135,6 @@ class ParkRepository(private val local: ParkDao, private val remote: Retrofit) {
         }
     }
 
-    fun getParksOfflineFiltered(listener: OnReceiveParks?, view: View?, filters: List<String>) {
-        Log.i(TAG, "Offline")
-
-        CoroutineScope(Dispatchers.IO).launch {
-            val parks = local.getAll()
-
-            withContext(Dispatchers.Main) {
-                Log.i(TAG, "NrParks: ${parks.size}")
-                listener?.onReceiveParks(parks)
-            }
-        }
-
-        // val userWarned = snackBarPrefs.getBoolean("userWarned", false)
-
-        if (!userWarned) {
-            val snackbar: Snackbar = Snackbar.make(view!!, "Offline! Getting Data from Cache", Snackbar.LENGTH_LONG);
-            snackbar.show();
-            userWarned = true
-            /*
-            sharedPrefsEdit.putBoolean("userWarned", true)
-            sharedPrefsEdit.apply()
-             */
-        }
-    }
-
     fun getPark(listener: OnReceivePark?, parkID: String) {
 
         CoroutineScope(Dispatchers.IO).launch {

@@ -4,7 +4,7 @@ import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.
 
 class FiltersStatus {
 
-    private val filterStatus: MutableList<String> = mutableListOf(
+    private var filterStatus: MutableList<String> = mutableListOf(
         "availability",
         "all",
         "false",
@@ -25,6 +25,15 @@ class FiltersStatus {
             }
         }
 
+    }
+
+    fun resetFilters() {
+        filterStatus = mutableListOf(
+        "availability",
+        "all",
+        "false",
+        "0"
+        )
     }
 
     fun getFilters(): Array<String> = filterStatus.toTypedArray()
