@@ -34,6 +34,7 @@ class ParkingListAdapter(
         val parkName: TextView = view.text_park_name
         val availability: TextView = view.text_availability
         val parkType: TextView = view.text_park_type
+        var distance: TextView = view.text_distance
         val favIcon: ImageView = view.add_favorite
     }
 
@@ -54,6 +55,7 @@ class ParkingListAdapter(
         holder.parkName.text = items[position].name
         holder.availability.text = items[position].getAvailabilityStatus()
         holder.parkType.text = items[position].type
+        holder.distance.text = items[position].distance.toString()
         if (items[position].favorite) {
             holder.favIcon.setImageResource(R.drawable.ic_favorite_filled)
         } else {
