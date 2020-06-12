@@ -113,9 +113,7 @@ class FavoritesFragment : Fragment(), OnReceiveFavorites {
         val filterStatus = viewModelFilters.getFilters()/* activity?.intent!!.getStringArrayExtra(EXTRA_FILTERS)*/
         var parksToShow = favorites
 
-        if (filterStatus != null) {
-            parksToShow = sortParks(filterStatus, favorites.toMutableList())
-        }
+        parksToShow = sortParks(filterStatus, favorites.toMutableList())
 
         favorites.let {
             parking_list.layoutManager = LinearLayoutManager(activity as Context)
@@ -124,7 +122,11 @@ class FavoritesFragment : Fragment(), OnReceiveFavorites {
                     FavoritesLandScapeAdapter(
                         activity as Context,
                         R.layout.item_park_element,
-                        parksToShow as MutableList<Park>,
+                        if (parksToShow.isEmpty()) {
+                            mutableListOf()
+                        } else {
+                            parksToShow as MutableList<Park>
+                        },
                         activity?.supportFragmentManager!!
                 )
             } else {
@@ -132,7 +134,11 @@ class FavoritesFragment : Fragment(), OnReceiveFavorites {
                     FavoritesAdapter(
                         activity as Context,
                         R.layout.item_park_element,
-                        parksToShow as MutableList<Park>,
+                        if (parksToShow.isEmpty()) {
+                            mutableListOf()
+                        } else {
+                            parksToShow as MutableList<Park>
+                        },
                         activity?.supportFragmentManager!!
                     )
             }
