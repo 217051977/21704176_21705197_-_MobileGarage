@@ -6,89 +6,83 @@
     android:orientation="vertical"
     android:layout_marginHorizontal="15dp"
     android:weightSum="5"
-    tools:context="pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments.MyVehiclesDetailsFragment"
+    tools:context="pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments.MyVehiclesAddFragment"
     >
 
     <!-- TODO: Update blank fragment layout -->
-    <ImageView
-        android:id="@+id/vehicle_image"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:layout_gravity="center"
-        android:src="@mipmap/mustang_shelby_gt500"
-        android:contentDescription="@string/description_icon_park"
-        /> <!-- Change later to "description_icon_vehicle" -->
-
-
-
-    <!-- Field Brand & Model-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:weightSum="2"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/vehicle_image"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_gravity="center"
+            android:src="@mipmap/mustang_shelby_gt500"
+            android:contentDescription="@string/description_icon_vehicle"
+            />
+
+    </LinearLayout>
+
+    <!-- Field Brand -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="1"
         >
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="1"
-            >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:text="@string/vehicle_detail_brand"
+            />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:gravity="center"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:text="@string/vehicle_detail_brand"
-                />
+        <TextView
+            android:id="@+id/vehicle_detail_brand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="@string/vehicle_detail_brand"
+            />
 
-            <EditText
-                android:id="@+id/vehicle_brand"
-                android:tag="vehicle_brand"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:hint="@string/vehicle_detail_brand"
-                />
+    </LinearLayout>
 
-        </LinearLayout>
+    <!-- Field Model-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        >
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="1"
-            >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:text="@string/vehicle_detail_model"
+            />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:gravity="center"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:text="@string/vehicle_detail_model"
-                />
-
-            <EditText
-                android:id="@+id/vehicle_model"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:hint="@string/vehicle_detail_model"
-                />
-
-        </LinearLayout>
+        <TextView
+            android:id="@+id/vehicle_detail_model"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="@string/vehicle_detail_model"
+            />
 
     </LinearLayout>
 
@@ -118,14 +112,14 @@
                 android:text="@string/vehicle_detail_plate"
                 />
 
-            <EditText
-                android:id="@+id/vehicle_plate"
+            <TextView
+                android:id="@+id/vehicle_detail_plate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:gravity="center"
                 android:textSize="20sp"
-                android:hint="@string/vehicle_detail_plate"
+                android:text="@string/vehicle_detail_plate"
                 />
 
         </LinearLayout>
@@ -144,17 +138,17 @@
                 android:gravity="center"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:text="@string/vehicle_detail_plate_date"
+                android:text="@string/vehicle_detail_plate"
                 />
 
-            <EditText
-                android:id="@+id/vehicle_plate_date"
+            <TextView
+                android:id="@+id/vehicle_detail_plate_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:gravity="center"
                 android:textSize="20sp"
-                android:hint="@string/vehicle_detail_plate_date"
+                android:text="@string/vehicle_detail_plate_date"
                 />
 
         </LinearLayout>

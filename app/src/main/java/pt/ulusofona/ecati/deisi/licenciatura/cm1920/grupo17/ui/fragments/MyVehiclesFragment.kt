@@ -65,7 +65,6 @@ class MyVehiclesFragment : Fragment(), OnReceiveVehicles {
         }
     }
 
-
     /**************** FUNCTIONS ************************/
     @OnClick(
         R.id.add_vehicle
@@ -73,6 +72,4 @@ class MyVehiclesFragment : Fragment(), OnReceiveVehicles {
     fun onClickAddVehicle(view: View) {
         viewModel.onClickAddVehicle(activity?.supportFragmentManager!!)
     }
-
-
 }

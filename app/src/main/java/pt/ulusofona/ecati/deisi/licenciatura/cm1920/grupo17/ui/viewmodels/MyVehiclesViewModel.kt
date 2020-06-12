@@ -2,20 +2,15 @@ package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels
 
 import android.app.Application
 import android.content.Context
-import android.util.Log
+import android.content.Intent
+import android.net.Uri
+import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.ViewModel
-import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Vehicle
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.room.MobileGarageDatabase
-import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.repositories.ParkRepository
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.repositories.VehiclesRepository
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.domain.mobilegarage.MyVehiclesLogic
-import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.domain.mobilegarage.ParksLogic
-import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.adapters.MyVehiclesAdapter
-import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceivePark
-import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveParks
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveVehicle
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveVehicles
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.utils.MyVehiclesNavigationManager
@@ -72,6 +67,28 @@ class MyVehiclesViewModel(application: Application): AndroidViewModel(applicatio
         myVehicleLogic.addVehicle(vehicle)
         MyVehiclesNavigationManager.goToVehicleList(supp)
     }
-    /************************ END ********************************/
 
+    fun onClickCancelEditVehicle(supp: FragmentManager) {
+        MyVehiclesNavigationManager.goToVehicleList(supp)
+    }
+
+    fun onClickSubmitEditVehicle(supp: FragmentManager, vehicle: Vehicle) {
+        myVehicleLogic.addVehicle(vehicle)
+        MyVehiclesNavigationManager.goToVehicleList(supp)
+    }
+
+    fun onClickEditVehicle(supp: FragmentManager, vehicle: Vehicle) {
+        MyVehiclesNavigationManager.goToVehicleEdit(supp, vehicle)
+    }
+
+
+    fun onClickBlockVehicle(context: Context, vehicle: Vehicle) {
+
+        val uri = Uri.parse("smsto:$3838")
+        val intent = Intent(Intent.ACTION_SENDTO, uri)
+        intent.putExtra("sms_body", "Reboque ${vehicle.plate}")
+        context.startActivity(intent)
+
+    }
+    /************************ END ********************************/
 }

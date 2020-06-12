@@ -11,6 +11,7 @@
     <string name="vehicle_detail_delete">Apagar</string>
     <string name="vehicle_detail_cancel">Cancelar</string>
     <string name="vehicle_detail_submit">Submeter</string>
+    <string name="vehicle_detail_contact">Veiculo Bloqueado?</string>
     <string name="description_icon_vehicle">Meu Veículo</string>
 
 </resources>

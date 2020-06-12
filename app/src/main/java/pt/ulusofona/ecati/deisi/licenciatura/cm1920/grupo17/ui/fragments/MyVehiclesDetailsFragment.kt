@@ -1,5 +1,6 @@
 package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -67,6 +68,16 @@ class MyVehiclesDetailsFragment(vehicle: Vehicle) : Fragment(), OnReceiveVehicle
         viewModel.onClickDeleteVehicle(activity?.supportFragmentManager!!, vehicle)
         val snackbar: Snackbar = Snackbar.make(view, "Deleted ${vehicle.plate} Vehicle", Snackbar.LENGTH_LONG);
         snackbar.show();
+    }
+
+    @OnClick(R.id.my_vehicles_details_edit)
+    fun onClickEditVehicle(view: View) {
+        viewModel.onClickEditVehicle(activity?.supportFragmentManager!!, vehicle)
+    }
+
+    @OnClick(R.id.vehicle_detail_contact)
+    fun onClickBlockVehicle(view: View) {
+        viewModel.onClickBlockVehicle(activity as Context, vehicle)
     }
 
     @OnClick(R.id.my_vehicles_details_back)

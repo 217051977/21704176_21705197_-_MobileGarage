@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_marginHorizontal="15dp"
     android:weightSum="5"
-    tools:context="pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments.MyVehiclesDetailsFragment"
+    tools:context="pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments.MyVehiclesEditFragment"
     >
 
     <!-- TODO: Update blank fragment layout -->
@@ -142,75 +142,37 @@
                 />
 
             <TextView
-            android:id="@+id/vehicle_detail_plate_date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:textSize="20sp"
-            android:text="@string/vehicle_detail_plate_date"
+                android:id="@+id/vehicle_detail_plate_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:text="@string/vehicle_detail_plate_date"
                 />
 
         </LinearLayout>
 
     </LinearLayout>
 
-    <LinearLayout
+    <Button
+        android:id="@+id/vehicles_submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:text="@string/vehicle_detail_submit"
+        android:backgroundTint="@color/color_primary_green"
+        android:onClick="onClickSubmitEdit"
         android:layout_marginTop="20dp"
-        >
-
-        <Button
-            android:id="@+id/vehicle_detail_contact"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="@color/color_primary_white"
-            android:backgroundTint="@color/colorPrimary"
-            android:text="@string/vehicle_detail_contact"
-            android:onClick="onClickBlockVehicle"
-            />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        android:layout_marginTop="20dp"
-        >
-
-        <Button
-            android:id="@+id/my_vehicles_details_edit"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/color_primary_green"
-            android:text="@string/vehicle_detail_edit"
-            />
-
-        <Button
-            android:id="@+id/my_vehicles_details_delete"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="@color/color_primary_white"
-            android:backgroundTint="@color/color_primary_red"
-            android:text="@string/vehicle_detail_delete"
-            android:onClick="onClickDeleteVehicle"
-            />
-
-    </LinearLayout>
+        />
 
     <Button
-        android:id="@+id/my_vehicles_details_back"
+        android:id="@+id/vehicles_cancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/color_primary_white"
+        android:background="@color/color_primary_red"
         android:text="@string/vehicle_detail_cancel"
-        android:onClick="onClickCancel"
+        android:onClick="onClickCancelEdit"
         />
 
 </LinearLayout>

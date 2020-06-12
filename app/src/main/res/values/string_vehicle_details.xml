@@ -11,6 +11,7 @@
     <string name="vehicle_detail_delete">Delete</string>
     <string name="vehicle_detail_cancel">Cancel</string>
     <string name="vehicle_detail_submit">Submit</string>
+    <string name="vehicle_detail_contact">Vehicle towed?</string>
     <string name="description_icon_vehicle">My Vehicles</string>
 
 </resources>

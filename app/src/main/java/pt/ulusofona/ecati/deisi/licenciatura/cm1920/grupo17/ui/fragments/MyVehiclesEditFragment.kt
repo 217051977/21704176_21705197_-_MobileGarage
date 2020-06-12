@@ -16,10 +16,10 @@ import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.MyVehiclesViewModel
 import java.util.*
 
-class MyVehiclesAddFragment : Fragment() {
+class MyVehiclesEditFragment(vehicle: Vehicle) : Fragment() {
 
     private lateinit var viewModel: MyVehiclesViewModel
-    private lateinit var vehicleCreated: Vehicle
+    private var vehicle: Vehicle = vehicle
 
     lateinit var vehicleBrand: EditText
     lateinit var vehicleModel: EditText
@@ -32,14 +32,14 @@ class MyVehiclesAddFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(
-            R.layout.fragment_my_vehicles_add,
+            R.layout.fragment_my_vehicles_edit,
             container,
             false
         )
 
         vehicleBrand = view.findViewById(R.id.vehicle_detail_brand)
         vehicleModel = view.findViewById(R.id.vehicle_detail_model)
-        vehiclePlate = view.findViewById(R.id.vehicle_detail_plate)
+        vehiclePlate = view.findViewById(R.id.plate)
         vehiclePlateDate = view.findViewById(R.id.vehicle_detail_plate_date)
 
         viewModel = ViewModelProvider(this).get(MyVehiclesViewModel::class.java)
@@ -48,9 +48,9 @@ class MyVehiclesAddFragment : Fragment() {
     }
 
     @OnClick(R.id.vehicles_submit)
-    fun onClickSubmitAdd(view: View) {
+    fun onClickSubmitEdit(view: View) {
 
-        vehicleCreated =
+        vehicle =
             Vehicle(
                 brand = vehicleBrand.text.toString(),
                 model = vehicleModel.text.toString(),
@@ -60,14 +60,14 @@ class MyVehiclesAddFragment : Fragment() {
                 isParked = false
             )
 
-        viewModel.onClickSubmitAddVehicle(activity?.supportFragmentManager!!, vehicleCreated)
-        val snackbar: Snackbar = Snackbar.make(view, "Added ${vehicleCreated.plate} Vehicle", Snackbar.LENGTH_LONG);
+        viewModel.onClickSubmitEditVehicle(activity?.supportFragmentManager!!, vehicle)
+        val snackbar: Snackbar = Snackbar.make(view, "Edit ${vehicle.plate} Vehicle", Snackbar.LENGTH_LONG);
         snackbar.show();
     }
 
     @OnClick(R.id.vehicles_cancel)
-    fun onClickCancelAdd(view: View) {
-        viewModel.onClickCancelAddVehicle(activity?.supportFragmentManager!!)
+    fun onClickCancelEdit(view: View) {
+        viewModel.onClickCancelEditVehicle(activity?.supportFragmentManager!!)
     }
 }
 

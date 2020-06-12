@@ -6,6 +6,7 @@ import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Vehicle
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments.MyVehiclesAddFragment
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments.MyVehiclesDetailsFragment
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments.MyVehiclesEditFragment
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments.MyVehiclesFragment
 
 class MyVehiclesNavigationManager {
@@ -40,8 +41,12 @@ class MyVehiclesNavigationManager {
             )
         }
 
-
-
+        fun goToVehicleEdit(fm: FragmentManager, vehicle: Vehicle) {
+            placeFragment(
+                fm,
+                MyVehiclesEditFragment(vehicle)
+            )
+        }
     }
 
 }

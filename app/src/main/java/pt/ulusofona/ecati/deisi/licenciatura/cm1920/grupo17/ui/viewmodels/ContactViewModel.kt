@@ -31,19 +31,4 @@ class ContactViewModel : ViewModel() {
         intent.data = Uri.parse("smsto:$3838")
         context.startActivity(intent)
     }
-
-    fun sendMessage(
-        context: Context,
-        TAG: String?,
-        plateNumber: String
-    ) {
-        feedback.createFullButton(TAG, context, "go to dial")
-        val intent = Intent(Intent.ACTION_SENDTO)
-        intent.data = Uri.parse("smsto:$3838")
-        intent.putExtra("sms_body", "Reboque $plateNumber")
-        context.startActivity(intent)
-    }
-
-
-
 }
