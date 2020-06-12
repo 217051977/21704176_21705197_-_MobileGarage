@@ -14,6 +14,8 @@ import butterknife.OnClick
 import kotlinx.android.synthetic.main.fragment_home_menu.*
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Park
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.adapters.FavoritesAdapter
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.adapters.FavoritesLandScapeAdapter
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveFavorites
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.ParkViewModel
 
@@ -48,19 +50,25 @@ class FavoritesFragment : Fragment(), OnReceiveFavorites {
 
     override fun onReceiveFavorites(favorites: List<Park>) {
 
-        favorites.let { viewModel.favorites = favorites }
-
-        parking_list.layoutManager = LinearLayoutManager(activity as Context)
-        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            parking_list.adapter = viewModel.setFavoritesLandScapeAdapter(
-                activity as Context,
-                activity?.supportFragmentManager!!
-            )
-        } else {
-            parking_list.adapter = viewModel.setFavoritesAdapter(
-                activity as Context,
-                activity?.supportFragmentManager!!
-            )
+        favorites.let {
+            parking_list.layoutManager = LinearLayoutManager(activity as Context)
+            if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                parking_list.adapter =
+                    FavoritesLandScapeAdapter(
+                        activity as Context,
+                        R.layout.item_park_element,
+                        favorites as MutableList<Park>,
+                        activity?.supportFragmentManager!!
+                )
+            } else {
+                parking_list.adapter =
+                    FavoritesAdapter(
+                        activity as Context,
+                        R.layout.item_park_element,
+                        favorites as MutableList<Park>,
+                        activity?.supportFragmentManager!!
+                    )
+            }
         }
     }
 
@@ -75,7 +83,4 @@ class FavoritesFragment : Fragment(), OnReceiveFavorites {
             fav = true
         )
     }
-
-
-
 }

@@ -1,9 +1,9 @@
 package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.list
 
-import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Car
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Vehicle
 import java.util.*
 
+/*
 class MockingDBCars private constructor(){
 
     private val storage: MutableList<Vehicle> = mutableListOf(
@@ -55,3 +55,4 @@ class MockingDBCars private constructor(){
     fun getAll(): List<Vehicle> = storage.toList()
 
 }
+ */

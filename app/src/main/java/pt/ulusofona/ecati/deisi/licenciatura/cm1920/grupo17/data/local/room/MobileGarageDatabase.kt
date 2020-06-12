@@ -7,7 +7,7 @@ import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.room.dao.ParkDao
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.room.dao.VehicleDao
 
-@Database(entities = arrayOf(Vehicle::class, Park::class), version = 1)
+@Database(entities = arrayOf(Vehicle::class, Park::class), version = 2)
 @TypeConverters(DateConverter::class)
 abstract class MobileGarageDatabase : RoomDatabase() {
 

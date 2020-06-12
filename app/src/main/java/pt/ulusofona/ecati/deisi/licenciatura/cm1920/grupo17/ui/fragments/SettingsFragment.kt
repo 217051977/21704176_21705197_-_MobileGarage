@@ -19,6 +19,7 @@ import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.Settin
 
 class SettingsFragment : Fragment() {
 
+    //var activity: AppActivity = getActivity()
     private lateinit var viewModel: SettingsViewModel;
 
     override fun onCreateView(
@@ -40,7 +41,7 @@ class SettingsFragment : Fragment() {
 
     @OnClick(R.id.dialog_message)
     fun onToogleDarkMode(view: View) {
-        val switch: Switch = view.findViewById(view.id)
-        viewModel.onToogleDarkMode(activity as AppActivity, switch)
+        val switch: Switch = view.findViewById(R.id.dialog_message)
+        viewModel.onToogleDarkMode(requireContext(), switch)
     }
 }

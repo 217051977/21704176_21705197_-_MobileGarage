@@ -12,6 +12,7 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatDelegate
@@ -22,6 +23,7 @@ import kotlinx.android.synthetic.main.activity_app.*
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.utils.BatteryReceiver
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.utils.NavBarNavigationManager
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.utils.TimeThread
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.DrawerViewModel
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.NavBarViewModel
 import java.lang.Exception
@@ -40,6 +42,7 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
     private var intentFilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+
         when(item.itemId) {
             R.id.profile -> {
                 toolbar.title = resources.getString(R.string.drawer_profile)
@@ -167,6 +170,8 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         setupNavBar()
         setLastInitVars()
         NavBarNavigationManager.goToHomePage(supportFragmentManager)
+        //startThread()
+
     }
 
     private fun setLastInitVars() {
@@ -215,11 +220,8 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
                     return@setOnNavigationItemSelectedListener true
 
                 }
-
             }
-
             false
-
         }
     }
 
@@ -239,9 +241,11 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onResume() {
         super.onResume()
         registerReceiver(baterryReceiver, intentFilter)
+        checkLightMode()
     }
 
     override fun onPause() {
@@ -249,6 +253,10 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         unregisterReceiver(baterryReceiver)
     }
 
+    private fun startThread() {
+        val t = TimeThread(this)
+        t.start()
+    }
     @RequiresApi(Build.VERSION_CODES.O)
     private fun checkLightMode() {
 
@@ -265,7 +273,8 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         var elapseTime = 0
 
         // BETWEEN 20:00 AND 05:00 -> NIGHT else -> DAY
-        if (presentTime.isAfter(nightTimeEnd) && presentTime.isBefore(nightTimeInit)) {
+        Log.i(this::class.java.simpleName, "present: $presentTime e limiteIni: $nightTimeInit limiteFim: $nightTimeEnd")
+        if (presentTime.isBefore(nightTimeInit) && presentTime.isAfter(nightTimeEnd)) {
             // DAY
             removeDarkMode(sharedPrefsEdit)
             elapseTime = ((20*60*60) - (presentTime.hour*60*60 + presentTime.minute*60 + presentTime.second))*1000
@@ -334,5 +343,7 @@ class AppActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
                 }
             }
         }
+        Log.i(TAG, appSettingPrefs.getBoolean("NightMode", true).toString())
+
     }
 }

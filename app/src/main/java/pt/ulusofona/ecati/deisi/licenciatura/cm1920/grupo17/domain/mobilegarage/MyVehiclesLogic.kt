@@ -1,14 +1,15 @@
 package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.domain.mobilegarage
 
-import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.list.MockingDBCars
+import android.content.Context
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.repositories.VehiclesRepository
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveVehicle
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveVehicles
 
 class MyVehiclesLogic(private val repository: VehiclesRepository) {
 
-    private val storage: MockingDBCars = MockingDBCars.getInstance()
+   fun getVehicles(listener: OnReceiveVehicles?, context: Context) = repository.getVehicles(listener, context)
 
-   fun getVehicles(listener: OnReceiveVehicles?) = repository.getVehicles(listener)
+   fun getVehicle(listener: OnReceiveVehicle?, vehiclePlate: String) = repository.getVehicle(listener, vehiclePlate)
 
 
 }

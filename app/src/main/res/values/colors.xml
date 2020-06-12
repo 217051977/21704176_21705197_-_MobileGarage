@@ -9,7 +9,7 @@
 <!--  app colors  -->
     <color name="colorPrimary">#FABE3F</color> <!-- ORANGE -->
     <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#000000</color>
+    <color name="colorAccent">#FFFFFF</color>
 
     <!-- switch colors -->
     <color name="switchActivated">#FABE3F</color>

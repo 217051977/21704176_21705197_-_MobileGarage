@@ -26,7 +26,6 @@ class FavoritesAdapter(
     private val context: Context,
     private val layout: Int,
     private val items: MutableList<Park>,
-    private val listenerPark: OnReceivePark?,
     private val supportFragmentManager: FragmentManager
 ) : RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHolder>() {
 
@@ -89,11 +88,8 @@ class FavoritesAdapter(
                 context,
                 items[position].name
             )
-            CoroutineScope(Dispatchers.Main).launch {
-                Log.i(this::class.java.simpleName, "ParkFav: ${items[position]}")
-                listenerPark?.onReceivePark(items[position])
-            }
-            ParkNavigationManager.goToParkDetails(supportFragmentManager)
+            val park = items[position]
+            ParkNavigationManager.goToParkDetails(supportFragmentManager, park.parkID)
         }
     }
 

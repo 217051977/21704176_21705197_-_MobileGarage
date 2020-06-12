@@ -1,7 +1,12 @@
 package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels
 
+import android.app.Activity
 import android.app.Application
 import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
+import android.util.Log
+import android.view.View
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.AndroidViewModel
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
@@ -21,6 +26,7 @@ import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnRecei
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.utils.ParkNavigationManager
 
 const val ENDPOINT = "https://emel.city-platform.com/opendata/"
+private val TAG = ParkViewModel::class.java.simpleName
 
 class ParkViewModel(application: Application): AndroidViewModel(application) {
 
@@ -33,20 +39,29 @@ class ParkViewModel(application: Application): AndroidViewModel(application) {
     // LISTENERS
     private var listenerParks: OnReceiveParks? = null
     private var listenerFavorites: OnReceiveFavorites? = null
-    private var listenerPark: OnReceivePark? = null
+    var listenerPark: OnReceivePark? = null
 
-    var parks = listOf<Park>()
     var favorites = listOf<Park>()
     var park: Park? = null
 
     /**************** REGISTERS AND UNREGISTERS ************************/
-    fun registerListenerParks(listener: OnReceiveParks) {
+    fun registerListenerParks(listener: OnReceiveParks, view: View?, context: Context) {
         this.listenerParks = listener
-        parksLogic.getParks(listenerParks)
+
+        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork: NetworkInfo? = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI)
+        val isConnected: Boolean? = activeNetwork?.isConnected
+
+        if (isConnected!!) {
+            parksLogic.getParksOnline(listenerParks, view)
+        } else {
+            parksLogic.getParksOffline(listenerParks, view)
+        }
     }
 
-    fun registerListenerPark(listener: OnReceivePark) {
+    fun registerListenerPark(listener: OnReceivePark, parkID: String) {
         this.listenerPark = listener
+        parksLogic.getPark(listener, parkID)
     }
 
     fun registerListenerFavorites(listener: OnReceiveFavorites) {
@@ -67,7 +82,6 @@ class ParkViewModel(application: Application): AndroidViewModel(application) {
     }
     /************************ END ********************************/
 
-    /**************** FUNCTIONS *************************/
     fun goToFilterOption(
         context: Context,
         TAG: String,
@@ -77,60 +91,5 @@ class ParkViewModel(application: Application): AndroidViewModel(application) {
         feedback.createFullButton(TAG, context, "filter")
         ParkNavigationManager.goToFilterOptions(supportFragmentManager, fav)
     }
-    /**************** END *************************/
-
-    /**************** SET ADAPTERS *************************/
-    fun setFavoritesLandScapeAdapter(
-        context: Context,
-        supportFragmentManager: FragmentManager
-    ): FavoritesLandScapeAdapter {
-        return FavoritesLandScapeAdapter(
-            context,
-            R.layout.item_park_element,
-            favorites as MutableList<Park>,
-            listenerPark,
-            supportFragmentManager
-        )
-    }
-
-    fun setFavoritesAdapter(
-        context: Context,
-        supportFragmentManager: FragmentManager
-    ): FavoritesAdapter {
-        return FavoritesAdapter(
-            context,
-            R.layout.item_park_element,
-            favorites as MutableList<Park>,
-            listenerPark,
-            supportFragmentManager
-        )
-    }
-
-     fun setLandScapeAdapter(
-        context: Context,
-        supportFragmentManager: FragmentManager
-    ): ParkingListLandScapeAdapter {
-         return ParkingListLandScapeAdapter(
-             context,
-             R.layout.item_park_element,
-             parks as MutableList <Park>,
-             listenerPark,
-             supportFragmentManager
-         )
-    }
-
-     fun setAdapter(
-        context: Context,
-        supportFragmentManager: FragmentManager
-     ): ParkingListAdapter {
-        return ParkingListAdapter(
-            context,
-            R.layout.item_park_element,
-            parks as MutableList <Park>,
-            listenerPark,
-            supportFragmentManager
-        )
-     }
-    /********************** END *************************/
 
 }

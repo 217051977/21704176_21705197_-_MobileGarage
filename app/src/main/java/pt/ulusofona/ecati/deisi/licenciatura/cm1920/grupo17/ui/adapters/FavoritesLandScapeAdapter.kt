@@ -22,7 +22,6 @@ class FavoritesLandScapeAdapter(
     private val context: Context,
     private val layout: Int,
     private val items: MutableList<Park>,
-    private val listenerPark: OnReceivePark?,
     private val supportFragmentManager: FragmentManager
 ) : RecyclerView.Adapter<FavoritesLandScapeAdapter.FavoritesLandScapeViewHolder>() {
 
@@ -89,8 +88,8 @@ class FavoritesLandScapeAdapter(
                 context,
                 items[position].name
             )
-            listenerPark?.onReceivePark(items[position])
-            ParkNavigationManager.goToParkDetails(supportFragmentManager)
         }
+        val park = items[position]
+        ParkNavigationManager.goToParkDetails(supportFragmentManager, park.parkID)
     }
 }

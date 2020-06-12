@@ -2,6 +2,7 @@ package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels
 
 import android.app.Application
 import android.content.Context
+import android.util.Log
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
@@ -19,6 +20,8 @@ import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnRecei
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.listeners.OnReceiveVehicles
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.utils.MyVehiclesNavigationManager
 
+private val TAG = MyVehiclesViewModel::class.java.simpleName
+
 class MyVehiclesViewModel(application: Application): AndroidViewModel(application) {
 
     private val local = MobileGarageDatabase.getInstance(application).vehicleDao()
@@ -32,13 +35,14 @@ class MyVehiclesViewModel(application: Application): AndroidViewModel(applicatio
     var vehicle: Vehicle? = null
 
     /**************** REGISTERS AND UNREGISTERS ************************/
-    fun registerListenerVehicles(listener: OnReceiveVehicles) {
+    fun registerListenerVehicles(listener: OnReceiveVehicles, context: Context) {
         this.listenerVehicles = listener
-        myVehicleLogic.getVehicles(listenerVehicles)
+        myVehicleLogic.getVehicles(listenerVehicles, context)
     }
 
-    fun registerListenerVehicle(listener: OnReceiveVehicle) {
+    fun registerListenerVehicle(listener: OnReceiveVehicle, vehiclePlate: String) {
         this.listenerVehicle = listener
+        myVehicleLogic.getVehicle(listener, vehiclePlate)
     }
 
     fun unregisterListenerVehicles() {
@@ -70,17 +74,5 @@ class MyVehiclesViewModel(application: Application): AndroidViewModel(applicatio
     }
     /************************ END ********************************/
 
-
-    /**************** ADAPTERS *************************/
-    fun setAdapter(context: Context, supportFragmentManager: FragmentManager): MyVehiclesAdapter {
-        return MyVehiclesAdapter(
-            context,
-            R.layout.item_vehicle_list,
-            mutableListOf(),
-            listenerVehicle,
-            supportFragmentManager
-        )
-    }
-    /************************ END ********************************/
 
 }

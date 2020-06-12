@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import butterknife.ButterKnife
 import com.google.android.material.tabs.TabLayout
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.adapters.ViewPagerAdapter
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.DrawerViewModel
 
 class ContactsFragment : Fragment() {
@@ -31,18 +33,22 @@ class ContactsFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(DrawerViewModel::class.java)
 
-        viewPager.adapter = viewModel.setAdapter(childFragmentManager)
+        viewPager.adapter = setAdapter(childFragmentManager)
+
         tabLayout.setupWithViewPager(viewPager)
 
         ButterKnife.bind(this, view)
         return view
     }
 
-
-
-
-
-
-
-
+    private fun setAdapter(childFragmentManager: FragmentManager): ViewPagerAdapter {
+        val adapter =
+            ViewPagerAdapter(
+                childFragmentManager
+            )
+        adapter.addFragment(ServiceStationFragment(), "Station")
+        adapter.addFragment(ContactGeneralFragment(), "General")
+        adapter.addFragment(ServiceVehiclesFragment(), "Vehicles")
+        return adapter
+    }
 }
