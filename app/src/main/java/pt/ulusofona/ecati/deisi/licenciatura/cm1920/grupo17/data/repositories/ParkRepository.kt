@@ -23,7 +23,7 @@ private val TAG = ParkRepository::class.java.simpleName
 
 class ParkRepository(private val local: ParkDao, private val remote: Retrofit) {
 
-    private val apiKey = "93600bb4e7fee17750ae478c22182d"
+    private val apiKey = "93600bb4e7fee17750ae478c22182dda"
     private lateinit var snackBarPrefs: SharedPreferences
     private lateinit var sharedPrefsEdit: SharedPreferences.Editor
     var userWarned = false
@@ -121,13 +121,16 @@ class ParkRepository(private val local: ParkDao, private val remote: Retrofit) {
             }
         }
 
-        val userWarned = snackBarPrefs.getBoolean("userWarned", false)
+        // val userWarned = snackBarPrefs.getBoolean("userWarned", false)
 
         if (!userWarned) {
             val snackbar: Snackbar = Snackbar.make(view!!, "Offline! Getting Data from Cache", Snackbar.LENGTH_LONG);
             snackbar.show();
+            userWarned = true
+            /*
             sharedPrefsEdit.putBoolean("userWarned", true)
             sharedPrefsEdit.apply()
+             */
         }
     }
 
