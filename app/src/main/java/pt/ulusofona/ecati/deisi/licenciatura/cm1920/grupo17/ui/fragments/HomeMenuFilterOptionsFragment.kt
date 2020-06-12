@@ -15,7 +15,6 @@ import kotlinx.android.synthetic.main.fragment_filter_options.*
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.FilterOptionsViewModel
 
-const val EXTRA_FILTERS = "pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments.FILTERS"
 private val TAG: String = HomeMenuFilterOptionsFragment::class.java.simpleName
 
 class HomeMenuFilterOptionsFragment : Fragment() {
