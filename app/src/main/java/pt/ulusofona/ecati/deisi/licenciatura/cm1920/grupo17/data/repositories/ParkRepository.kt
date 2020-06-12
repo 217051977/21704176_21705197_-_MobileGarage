@@ -135,10 +135,10 @@ class ParkRepository(private val local: ParkDao, private val remote: Retrofit) {
         }
     }
 
-    fun getPark(listener: OnReceivePark?, parkID: String) {
+    fun getPark(listener: OnReceivePark?, park: Park) {
 
         CoroutineScope(Dispatchers.IO).launch {
-            val park = local.getPark(parkID)
+            val park = local.getPark(park.parkID)
             listener?.onReceivePark(park)
         }
     }

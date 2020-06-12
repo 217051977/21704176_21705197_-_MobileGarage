@@ -19,13 +19,13 @@ import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.viewmodels.ParkVi
 
 private val TAG = ParkDetailsFragment::class.java.simpleName
 
-class ParkDetailsFragment(parkID: String) : Fragment(), OnReceivePark {
+class ParkDetailsFragment(park: Park) : Fragment(), OnReceivePark {
 
     private lateinit var viewModel: ParkViewModel
-    private val parkID = parkID
+    private val park = park
 
     override fun onStart() {
-        viewModel.registerListenerPark(this, parkID)
+        viewModel.registerListenerPark(this, park)
         super.onStart()
     }
 
@@ -72,7 +72,7 @@ class ParkDetailsFragment(parkID: String) : Fragment(), OnReceivePark {
         R.id.park_details_go_to
     )
     fun goTo(view: View) {
-        val gmmIntentURI: Uri = Uri.parse("google.navigation:q=${viewModel.park?.address}")
+        val gmmIntentURI: Uri = Uri.parse("google.navigation:q=${park.address}")
         val mapIntent: Intent = Intent(Intent.ACTION_VIEW, gmmIntentURI)
         mapIntent.setPackage("com.google.android.apps.maps")
         startActivity(mapIntent)

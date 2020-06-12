@@ -90,6 +90,6 @@ class FavoritesLandScapeAdapter(
             )
         }
         val park = items[position]
-        ParkNavigationManager.goToParkDetails(supportFragmentManager, park.parkID)
+        ParkNavigationManager.goToParkDetails(supportFragmentManager, park)
     }
 }

@@ -15,7 +15,7 @@ class ParksLogic(private val repository: ParkRepository) {
 
     fun getParksOffline(listener: OnReceiveParks?, view: View?) = repository.getParksOffline(listener, view)
 
-    fun getPark(listener: OnReceivePark?, parkID: String) = repository.getPark(listener, parkID)
+    fun getPark(listener: OnReceivePark?, park: Park) = repository.getPark(listener, park)
 
     fun getFavorites(listener: OnReceiveFavorites?) = repository.getFavorites(listener)
 

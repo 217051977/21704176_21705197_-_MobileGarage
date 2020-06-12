@@ -13,10 +13,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:text="@string/contact_name_saldanha"
-        android:textSize="24sp"
-        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:layout_margin="12sp"
         />
 
     <LinearLayout
@@ -87,9 +87,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:text="@string/contact_name_laranjeiras"
-        android:textSize="24sp"
+        android:textSize="20sp"
+        android:layout_margin="12sp"
         />
 
     <LinearLayout
@@ -160,9 +161,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:text="@string/contact_name_lisboa"
-        android:textSize="24sp"
+        android:textSize="20sp"
+        android:layout_margin="12sp"
         />
 
     <LinearLayout

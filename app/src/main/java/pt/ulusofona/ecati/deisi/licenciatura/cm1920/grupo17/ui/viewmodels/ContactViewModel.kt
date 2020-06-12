@@ -28,7 +28,7 @@ class ContactViewModel : ViewModel() {
     ) {
         feedback.createFullButton(TAG, context, "go to dial")
         val intent = Intent(Intent.ACTION_SENDTO)
-        intent.data = Uri.parse("smsto:$3838")
+        intent.data = Uri.parse("smsto:3838")
         context.startActivity(intent)
     }
 }

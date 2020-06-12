@@ -59,9 +59,9 @@ class ParkViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
-    fun registerListenerPark(listener: OnReceivePark, parkID: String) {
+    fun registerListenerPark(listener: OnReceivePark, park: Park) {
         this.listenerPark = listener
-        parksLogic.getPark(listener, parkID)
+        parksLogic.getPark(listener, park)
     }
 
     fun registerListenerFavorites(listener: OnReceiveFavorites) {

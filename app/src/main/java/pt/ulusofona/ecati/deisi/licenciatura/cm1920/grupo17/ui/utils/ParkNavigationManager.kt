@@ -3,6 +3,7 @@ package pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.utils
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.R
+import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.data.local.entities.Park
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments.FavoritesFilterOptionsFragment
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments.HomeMenuFilterOptionsFragment
 import pt.ulusofona.ecati.deisi.licenciatura.cm1920.grupo17.ui.fragments.ParkDetailsFragment
@@ -32,10 +33,10 @@ class ParkNavigationManager {
             }
         }
 
-        fun goToParkDetails(fm: FragmentManager, parkID: String) {
+        fun goToParkDetails(fm: FragmentManager, park: Park) {
             placeFragment(
                 fm,
-                ParkDetailsFragment(parkID)
+                ParkDetailsFragment(park)
             )
         }
 

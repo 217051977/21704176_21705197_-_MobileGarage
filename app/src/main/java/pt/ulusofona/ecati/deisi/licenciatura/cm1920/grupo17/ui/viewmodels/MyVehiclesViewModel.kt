@@ -80,7 +80,7 @@ class MyVehiclesViewModel(application: Application): AndroidViewModel(applicatio
 
     fun onClickBlockVehicle(context: Context, vehicle: Vehicle) {
 
-        val uri = Uri.parse("smsto:$3838")
+        val uri = Uri.parse("smsto:3838")
         val intent = Intent(Intent.ACTION_SENDTO, uri)
         intent.putExtra("sms_body", "Reboque ${vehicle.plate}")
         context.startActivity(intent)
